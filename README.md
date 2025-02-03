@@ -1,1 +1,89 @@
-# fojiphoto.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Factorial Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        .important {
+            font-style: italic;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p><strong>Factorial Studio Private Limited</strong></p>
+        <p><strong>Last Updated: January 27, 2023</strong></p>
+        
+        <h2>1. Your Consent</h2>
+        <p class="important">BY INSTALLING THE APPS ON YOUR MOBILE DEVICE, ENTERING INTO, CONNECTING TO, ACCESSING, AND/OR USING THE APPS, YOU AGREE TO THE TERMS AND CONDITIONS SET FORTH IN THIS PRIVACY POLICY.</p>
+        <p>If you disagree with any terms, you must not install, access, or use the Apps and should delete them immediately.</p>
+        
+        <h2>2. Children’s Privacy Policy</h2>
+        <p>We are committed to protecting the privacy of children under 16 years old. Our policy follows the <span class="important">Children’s Online Privacy Protection Act (COPPA) and GDPR regulations</span>. We do not knowingly collect personal information from children without parental consent.</p>
+        
+        <h3>2.1 Information We Collect</h3>
+        <ul>
+            <li>Non-personal Information (e.g., device type, OS version, language settings).</li>
+            <li>Persistent Device Identifier (e.g., advertising identifier for ad-serving compliance).</li>
+        </ul>
+        
+        <h3>2.2 How We Use This Information</h3>
+        <ul>
+            <li>Enhancing user experience.</li>
+            <li>Improving game functionality.</li>
+            <li>Ensuring app security and fraud prevention.</li>
+        </ul>
+        
+        <h2>3. Information Sharing</h2>
+        <p>We may share anonymized user data with:</p>
+        <ul>
+            <li>Third-party analytics providers.</li>
+            <li>Ad networks for contextual ads.</li>
+            <li>Legal authorities when required.</li>
+        </ul>
+        
+        <h2>4. Advertising</h2>
+        <p>We use third-party advertising services that may collect user data for targeted advertising. Users can opt-out of personalized ads via device settings.</p>
+        
+        <h2>5. Data Protection</h2>
+        <p>We take reasonable measures to secure user data but cannot guarantee absolute security due to the nature of online transmissions.</p>
+        
+        <h2>6. California Privacy Rights</h2>
+        <p>If you are a California resident, you have the right to:</p>
+        <ul>
+            <li>Request access to personal information collected.</li>
+            <li>Request deletion of personal data.</li>
+            <li>Opt out of data sharing for targeted advertising.</li>
+        </ul>
+        
+        <h2>7. Contact Us</h2>
+        <p>If you have any questions regarding this Privacy Policy, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:feedback@factorialstudio.com">factorialstudiosusa@gmail.com</a></p>
+        <p><strong>Address:</strong> 2305 Oates Dr, Mesquite, TX 75150</p>
+    </div>
+</body>
+</html>
