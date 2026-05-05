@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casual Publishing | Factorial Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;
+  --neon:#00ffe0;--text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
+  --border:rgba(0,255,224,0.10);--border2:rgba(0,255,224,0.18);
+  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,224,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,255,224,0.025) 1px,transparent 1px);
+  background-size:80px 80px;opacity:0.4}
+.policy-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;background:rgba(4,5,8,0.85);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)}
+.policy-logo{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:800;
+  font-size:1.05rem;letter-spacing:0.06em;color:var(--text)}
+.policy-logo img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,255,224,0.35))}
+.policy-logo em{color:var(--neon);font-style:normal}
+.back-link{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);padding:10px 18px;border:1px solid var(--border2);border-radius:2px;
+  transition:all 0.25s}
+.back-link:hover{color:var(--neon);border-color:var(--neon);background:rgba(0,255,224,0.04);text-decoration:none}
+.policy-hero{padding:80px 48px 40px;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.policy-hero .crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--neon);margin-bottom:18px}
+.policy-hero .crumbs span{color:var(--muted);margin:0 10px}
+.policy-hero h1{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:900;
+  text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05}
+.policy-hero h1 em{color:var(--neon);font-style:normal}
+.policy-hero .meta{margin-top:14px;color:var(--muted);font-family:var(--f-mono);font-size:0.78rem}
+.policy-body{max-width:920px;margin:0 auto;padding:60px 48px 80px;flex:1;position:relative;z-index:1}
+.policy-body h2{font-family:var(--f-head);font-size:1.55rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:0.02em;margin:50px 0 18px;color:var(--text);
+  padding-bottom:12px;border-bottom:1px solid var(--border2)}
+.policy-body h2:first-child{margin-top:0}
+.policy-body h3{font-family:var(--f-head);font-size:1.15rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.04em;margin:34px 0 12px;color:var(--neon)}
+.policy-body h4{font-family:var(--f-mono);font-size:0.95rem;font-weight:500;
+  margin:24px 0 10px;color:var(--text)}
+.policy-body p{margin:14px 0;color:#cfd5e6;font-size:1rem}
+.policy-body ul,.policy-body ol{margin:14px 0 14px 24px;padding-left:8px}
+.policy-body li{margin:8px 0;color:#cfd5e6}
+.policy-body li::marker{color:var(--neon)}
+.policy-body strong{color:var(--text);font-weight:600}
+.policy-body a{word-break:break-word}
+.policy-foot{padding:36px 48px;border-top:1px solid var(--border);background:var(--dark1);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;
+  position:relative;z-index:1}
+.policy-foot p{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.08em}
+.policy-foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.policy-foot .links a{font-family:var(--f-mono);font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--muted)}
+.policy-foot .links a:hover{color:var(--neon);text-decoration:none}
+@media (max-width:720px){
+  .policy-nav{padding:14px 22px}
+  .policy-hero{padding:50px 22px 30px}
+  .policy-body{padding:36px 22px 60px}
+  .policy-foot{padding:28px 22px}
+  .back-link{padding:8px 12px;font-size:0.62rem}
+}
+</style>
+</head>
+<body>
+<nav class="policy-nav">
+  <a href="index.html" class="policy-logo">
+    <img src="images/logo.png" alt="Factorial Studio">
+    Factorial<em>Studio</em>
+  </a>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+</nav>
+
+<header class="policy-hero">
+  <div class="crumbs">
+    <a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Casual Publishing
+  </div>
+  <h1>Casual Publishing Game Submission</h1>
+  <div class="meta"></div>
+</header>
+
+<main class="policy-body">
+<h3>Terms &amp; Conditions</h3>
+<p>Last updated: February 25, 2025</p>
+<h3>1. Object</h3>
+<p>These terms and conditions (the “Submission T&amp;Cs” ) govern the submission of mobile games to Factorial Studio Private Limited (“ Factorial Studio ”, “we”, “us”, or “our”) under our Casual Publishing program .</p>
+<p>By submitting a game through our online submission form or any other submission channel designated by Factorial Studio (the “Submission Form” ), the submitting party (the “Participating Studio” or “you” ) accepts and agrees to be bound by these Submission T&amp;Cs.</p>
+<h3>2. Submission</h3>
+<ul><li>Any individual or entity that has developed a mobile game (published or unpublished) may submit a game to Factorial Studio for review and consideration under our Casual Publishing program.</li><li>The Submission Form is intended for studios or developers who wish to collaborate with Factorial Studio on growing, optimizing, or publishing their game.</li></ul>
+<p>The Participating Studio understands and agrees that:</p>
+<ul><li>A submission does not create any obligation on Factorial Studio to: Review the game; Provide feedback; or Enter into any agreement or business relationship.</li><li>Once a game is submitted, Factorial Studio may or may not contact the Participating Studio for further discussion, at its sole discretion.</li></ul>
+<h3>3. Reference (Referral)</h3>
+<p>If the Submission Form includes the details of a third-party individual or entity who introduced the Participating Studio to Factorial Studio’s Casual Publishing program (the “Reference” ), then:</p>
+<ul><li>Factorial Studio may, at its sole discretion , offer a referral reward to the Reference if: The Participating Studio later signs a publishing or cooperation agreement with Factorial Studio for a submitted game; and That game reaches a specific performance or revenue milestone defined by Factorial Studio in the applicable referral program at that time (the “Referral Reward” ).</li></ul>
+<ul><li>Any Referral Reward (if applicable) will: Only be payable once per game , and Only be payable to one Reference identified and validated by Factorial Studio.</li><li>The Reference must not : Have a direct ownership interest in the Participating Studio; or Be a direct employee, partner, or shareholder of the Participating Studio.</li></ul>
+<p>Referral programs, thresholds, and amounts may be changed, suspended, or discontinued by Factorial Studio at any time, and no entitlement exists unless and until a separate referral confirmation is agreed in writing by Factorial Studio.</p>
+<h3>4. Confidentiality</h3>
+<p>Factorial Studio agrees that:</p>
+<ul><li>Any confidential information disclosed by the Participating Studio as part of the submission (including, but not limited to, builds, gameplay, concepts, performance metrics, internal documentation) will be used solely for: Reviewing the game; Evaluating its potential; and/or Discussing possible cooperation with the Participating Studio.</li></ul>
+<p>Factorial Studio will:</p>
+<ul><li>Take reasonable measures to protect the secrecy of such confidential information;</li><li>Not disclose confidential information to third parties, except: To its employees, contractors, or advisors who need to know it for the above purposes and are under confidentiality obligations; or Where required by law, regulation, or court order.</li></ul>
+<p>This confidentiality obligation does not apply to information that:</p>
+<ul><li>Is or becomes publicly available through no fault of Factorial Studio;</li><li>Was already lawfully known to Factorial Studio before disclosure;</li><li>Is independently developed by Factorial Studio without use of the Participating Studio’s confidential information;</li><li>Is received from a third party without breach of a confidentiality obligation.</li></ul>
+<h3>5. No License Granted</h3>
+<p>Nothing in these Submission T&amp;Cs:</p>
+<ul><li>Transfers ownership of any intellectual property rights from one Party to the other; or</li><li>Grants any license or rights under any patent, copyright, trade secret, trademark, or other intellectual property right, except as explicitly stated below.</li></ul>
+<p>By submitting a game, the Participating Studio grants Factorial Studio a limited, non-exclusive, revocable, royalty-free license to:</p>
+<ul><li>Install, run, and test the game;</li><li>Capture gameplay footage, screenshots, and creatives for internal evaluation and test campaigns;</li><li>Analyze performance metrics related to the game.</li></ul>
+<p>Any broader or commercial license (e.g., for publishing, full UA scale, revenue share) will only arise under a separate written agreement signed between Factorial Studio and the Participating Studio.</p>
+<h3>6. No Commitment / No Partnership</h3>
+<p>Both Factorial Studio and the Participating Studio acknowledge and agree that:</p>
+<ul><li>Submission of a game does not : Create an exclusive relationship; Obligate either Party to enter into any publishing, co-development, or other commercial agreement; Create a partnership, joint venture, agency, or any other form of legal entity or business enterprise.</li><li>Any exchange of confidential information or game builds is purely for evaluation purposes .</li></ul>
+<p>If Factorial Studio and the Participating Studio decide to enter into a business relationship (e.g., publishing, co-dev, or UA scaling):</p>
+<ul><li>They will sign a separate written agreement that will define: Revenue sharing; Rights and obligations; Exclusivity (if any); Term, termination, and other commercial terms.</li></ul>
+<p>Only such signed agreement will be legally binding in respect of any publishing or commercial cooperation.</p>
+<h3>7. Representations and Warranties of the Participating Studio</h3>
+<p>By submitting a game, the Participating Studio represents and warrants that:</p>
+<ol><li>Ownership &amp; Rights It is the valid, lawful owner (or holds all necessary rights and licenses) to submit the game and all related materials to Factorial Studio.</li><li>Accuracy of Information All information and data provided in the Submission Form are true, accurate, and not misleading.</li><li>No Infringement The game and its assets (including code, art, music, branding, etc.) do not infringe: Any copyright, trademark, design right, trade secret, or other IP right of any third party; Any privacy, publicity, or moral rights of any person.</li><li>Content Compliance The game submitted does not contain content that is: Defamatory, harassing, hate-promoting, or grossly offensive; Pornographic or otherwise inappropriate for the intended store rating; Fraudulent or illegal under applicable law.</li><li>Compliance with Laws (Including Anti-Corruption) The Participating Studio complies with applicable laws and regulations, including anti-corruption and anti-bribery rules. It has not offered or provided any bribe, kickback, or improper advantage to any employee, representative, or partner of Factorial Studio.</li><li>Sanctions &amp; Restricted Lists The Participating Studio is not located in, or acting on behalf of, any country, entity, or individual subject to comprehensive international sanctions or listed on any major sanctions list where Factorial Studio is prohibited from doing business under applicable law.</li></ol>
+<h3>8. Use of Data</h3>
+<p>By submitting a game, the Participating Studio acknowledges that:</p>
+<ul><li>Personal and business information (such as names, email addresses, contact details, studio info, and submission details) may be stored and processed by Factorial Studio for: Reviewing and evaluating the game; Communicating with the Participating Studio; Maintaining internal records about submissions and evaluation history.</li></ul>
+<p>Data will be processed in accordance with Factorial Studio’s Privacy Policy .</p>
+<p>The Participating Studio may contact:</p>
+<p>???? contact@factorialstudio.com</p>
+<p>to request access, correction, or deletion of its contact data where permitted by applicable law.</p>
+<h3>9. Jurisdiction and Applicable Law</h3>
+<p>These Submission T&amp;Cs:</p>
+<ul><li>Are governed by and construed in accordance with the laws of Pakistan , without regard to conflict-of-law principles.</li></ul>
+<p>Any dispute arising out of or in connection with these submissions shall be subject to the exclusive jurisdiction of the competent courts located in Lahore, Pakistan , unless otherwise required by mandatory applicable law.</p>
+</main>
+
+<footer class="policy-foot">
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; NTN: 9232454</p>
+  <div class="links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="purchase.html">Purchase</a>
+    <a href="refund.html">Refund</a>
+    <a href="user-tcs.html">User T&amp;Cs</a>
+    <a href="developer-tcs.html">Developer T&amp;Cs</a>
+    <a href="casual-publishing.html">Casual Publishing</a>
+    <a href="hr-privacy.html">HR Privacy</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
