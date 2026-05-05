@@ -905,6 +905,24 @@ body::after {
   z-index: 1;
   text-shadow: 0 0 40px rgba(0,255,224,0.4);
 }
+.team-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 1;
+  filter: saturate(0.95) contrast(1.02);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+.team-card:hover .team-photo { transform: scale(1.04); filter: saturate(1.05) contrast(1.05); }
+.team-avatar-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,11,18,0) 55%, rgba(8,11,18,0.55) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
 .team-scan-line {
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--neon), transparent);
@@ -1638,8 +1656,8 @@ footer {
   <div class="team-grid">
     <div class="team-card reveal">
       <div class="team-avatar-wrap">
+        <img class="team-photo" src="coreleadership/qasim.png" alt="Muhammad Qasim">
         <div class="team-scan-line"></div>
-        <div class="team-initials">MQ</div>
       </div>
       <div class="team-body">
         <div class="team-name">Muhammad Qasim</div>
@@ -1649,8 +1667,8 @@ footer {
     </div>
     <div class="team-card reveal delay-1">
       <div class="team-avatar-wrap">
+        <img class="team-photo" src="coreleadership/anam.png" alt="Anam Shraf">
         <div class="team-scan-line"></div>
-        <div class="team-initials">AS</div>
       </div>
       <div class="team-body">
         <div class="team-name">Anam Shraf</div>
@@ -1660,8 +1678,8 @@ footer {
     </div>
     <div class="team-card reveal delay-2">
       <div class="team-avatar-wrap">
+        <img class="team-photo" src="coreleadership/ali.png" alt="Ali Javid">
         <div class="team-scan-line"></div>
-        <div class="team-initials">AJ</div>
       </div>
       <div class="team-body">
         <div class="team-name">Ali Javid</div>
@@ -1671,8 +1689,8 @@ footer {
     </div>
     <div class="team-card reveal delay-3">
       <div class="team-avatar-wrap">
+        <img class="team-photo" src="coreleadership/sana.png" alt="Sana Yousaf">
         <div class="team-scan-line"></div>
-        <div class="team-initials">SY</div>
       </div>
       <div class="team-body">
         <div class="team-name">Sana Yousaf</div>
