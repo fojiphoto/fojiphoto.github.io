@@ -798,6 +798,24 @@ body::after {
   content: '';
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at 30% 30%, rgba(0,255,224,0.1), transparent 60%);
+  z-index: 2; pointer-events: none;
+}
+.about-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.05);
+  transition: transform 0.6s ease;
+}
+.about-frame:hover .about-photo { transform: scale(1.03); }
+.about-photo-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,11,18,0) 55%, rgba(8,11,18,0.55) 100%),
+    linear-gradient(90deg, rgba(8,11,18,0.35) 0%, transparent 30%);
+  z-index: 1; pointer-events: none;
 }
 .about-grid-inner {
   position: absolute; inset: 0;
@@ -1992,13 +2010,8 @@ footer {
     </div>
     <div class="about-vis reveal delay-2">
       <div class="about-frame">
-        <div class="about-grid-inner"></div>
-        <div class="about-center-logo">
-          <div class="about-hex">
-            <div class="about-hex-text">FS</div>
-          </div>
-          <div class="about-frame-label">// Est. 2016 · Global</div>
-        </div>
+        <img class="about-photo" src="images/qa-lab.png" alt="Factorial Studio QA Lab">
+        <div class="about-photo-overlay"></div>
         <div class="about-corner ac-tl"></div>
         <div class="about-corner ac-tr"></div>
         <div class="about-corner ac-bl"></div>
