@@ -1362,6 +1362,246 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 24px; }
 }
+
+/* ══════════════════════════════════════════
+   ENGAGEMENT MODELS
+══════════════════════════════════════════ */
+#engagement { background: var(--dark1); }
+.engage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 50px; }
+.engage-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  padding: 36px 30px;
+  position: relative;
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.engage-card:hover { transform: translateY(-6px); border-color: var(--border2); box-shadow: 0 30px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,255,224,0.08); }
+.engage-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.4s;
+}
+.engage-card:hover::before { transform: scaleX(1); }
+.engage-num {
+  font-family: var(--f-mono);
+  font-size: 0.65rem; letter-spacing: 0.3em;
+  color: var(--neon); margin-bottom: 18px;
+}
+.engage-title {
+  font-family: var(--f-head);
+  font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.engage-desc { color: var(--muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 18px; }
+.engage-tag {
+  display: inline-block;
+  font-family: var(--f-mono); font-size: 0.62rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--neon); padding: 6px 12px;
+  border: 1px solid var(--border2); border-radius: 2px;
+}
+
+/* Trust strip */
+.trust-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  margin-top: 60px;
+}
+.trust-item {
+  background: var(--dark2);
+  padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 6px; align-items: flex-start;
+}
+.trust-icon { font-size: 1.4rem; margin-bottom: 8px; color: var(--neon); }
+.trust-h { font-family: var(--f-head); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.trust-p { font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; line-height: 1.5; }
+
+/* ══════════════════════════════════════════
+   FAQ — OUTSOURCING SIMPLIFIED
+══════════════════════════════════════════ */
+#faq { background: var(--black); }
+.faq-wrap {
+  max-width: 920px; margin: 50px auto 0;
+  background: var(--dark2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 16px 28px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center; gap: 18px;
+  background: none; border: none;
+  padding: 22px 4px; cursor: pointer;
+  font-family: var(--f-head);
+  font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text);
+  text-align: left;
+  transition: color 0.25s;
+}
+.faq-q:hover { color: var(--neon); }
+.faq-q .plus {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--neon);
+  font-size: 1rem; font-weight: 400;
+  transition: transform 0.3s, background 0.25s;
+}
+.faq-item.open .faq-q { color: var(--neon); }
+.faq-item.open .faq-q .plus { transform: rotate(45deg); background: rgba(0,255,224,0.06); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-item.open .faq-a { max-height: 320px; }
+.faq-a-inner {
+  padding: 0 4px 22px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 0.96rem;
+}
+
+/* ══════════════════════════════════════════
+   SERVICE REGIONS PILL ROW
+══════════════════════════════════════════ */
+.regions-row {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 24px;
+}
+.region-pill {
+  font-family: var(--f-mono); font-size: 0.62rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  background: rgba(0,255,224,0.02);
+  display: flex; align-items: center; gap: 8px;
+}
+.region-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon);
+}
+
+/* ══════════════════════════════════════════
+   MASCOT BOT — "QUASAR"
+══════════════════════════════════════════ */
+#quasar {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 600;
+  width: 84px; height: 84px;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 8px 24px rgba(0,255,224,0.35));
+  animation: quasarFloat 4s ease-in-out infinite;
+}
+@keyframes quasarFloat {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.quasar-body {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0c1020 0%, #161d32 100%);
+  border: 2px solid var(--neon);
+  border-radius: 22px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0,255,224,0.15);
+  transition: transform 0.25s, border-color 0.25s;
+}
+#quasar:hover .quasar-body { transform: scale(1.08); border-color: #ffffff; }
+.quasar-eyes {
+  display: flex; gap: 10px;
+}
+.quasar-eye {
+  width: 14px; height: 14px;
+  background: var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--neon);
+  animation: quasarBlink 5s infinite;
+}
+@keyframes quasarBlink {
+  0%, 95%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+.quasar-mouth {
+  position: absolute; bottom: 18px;
+  width: 24px; height: 3px;
+  background: var(--neon);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--neon);
+}
+.quasar-antenna {
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 2px; height: 12px;
+  background: var(--neon);
+}
+.quasar-antenna::after {
+  content: '';
+  position: absolute; top: -6px; left: -3px;
+  width: 8px; height: 8px;
+  background: var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 14px var(--neon);
+  animation: dotPulse 1.5s infinite;
+}
+.quasar-bubble {
+  position: absolute;
+  bottom: 100%; right: 0;
+  margin-bottom: 16px;
+  background: var(--dark2);
+  border: 1px solid var(--border2);
+  padding: 14px 18px;
+  min-width: 230px; max-width: 280px;
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--text);
+  border-radius: 4px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+  opacity: 0;
+  transform: translateY(8px) scale(0.92);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.quasar-bubble.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.quasar-bubble::after {
+  content: '';
+  position: absolute; bottom: -8px; right: 24px;
+  width: 14px; height: 14px;
+  background: var(--dark2);
+  border-right: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+  transform: rotate(45deg);
+}
+.quasar-name {
+  font-family: var(--f-mono); font-size: 0.6rem;
+  letter-spacing: 0.22em; color: var(--neon);
+  margin-bottom: 6px;
+}
+@media (max-width: 720px) {
+  #quasar { width: 64px; height: 64px; bottom: 18px; right: 18px; }
+  .quasar-eye { width: 10px; height: 10px; }
+  .quasar-bubble { min-width: 200px; font-size: 0.7rem; padding: 12px 14px; }
+  .engage-grid { grid-template-columns: 1fr; }
+  .trust-strip { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
 </head>
 <body>
@@ -1370,6 +1610,22 @@ footer {
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
 
+<!-- MASCOT BOT — QUASAR -->
+<div id="quasar" onclick="quasarTalk()" title="Click me!">
+  <div class="quasar-bubble" id="quasar-bubble">
+    <div class="quasar-name">// QUASAR ONLINE</div>
+    <div id="quasar-text">Hi! I'm Quasar — your QA companion. Click me for a tip! 🤖</div>
+  </div>
+  <div class="quasar-body">
+    <div class="quasar-antenna"></div>
+    <div class="quasar-eyes">
+      <div class="quasar-eye"></div>
+      <div class="quasar-eye"></div>
+    </div>
+    <div class="quasar-mouth"></div>
+  </div>
+</div>
+
 <!-- MOBILE NAV -->
 <div id="mobile-nav">
   <a href="#services" onclick="closeMobileNav()">Services</a>
@@ -1377,6 +1633,7 @@ footer {
   <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
   <a href="#team" onclick="closeMobileNav()">Team</a>
   <a href="#process" onclick="closeMobileNav()">Process</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
   <a href="privacy.html">Privacy</a>
   <a href="terms.html">Terms of Use</a>
   <a href="developer-tcs.html">Developer T&amp;Cs</a>
@@ -1400,6 +1657,7 @@ footer {
     <a href="#portfolio">Portfolio</a>
     <a href="#team">Team</a>
     <a href="#process">Process</a>
+    <a href="#faq">FAQ</a>
     <a href="privacy.html">Privacy</a>
     <div class="nav-drop" id="terms-drop">
       <button class="nav-drop-trigger" onclick="toggleDrop(event)">Terms &amp; Conditions</button>
@@ -1450,20 +1708,20 @@ footer {
     </div>
     <div class="hero-metrics">
       <div>
-        <div class="metric-val">150<span class="metric-unit">+</span></div>
-        <div class="metric-label">Games Shipped</div>
+        <div class="metric-val">24<span class="metric-unit">h</span></div>
+        <div class="metric-label">Bug Report Turnaround</div>
       </div>
       <div>
-        <div class="metric-val">40<span class="metric-unit">+</span></div>
-        <div class="metric-label">Global Partners</div>
+        <div class="metric-val">50<span class="metric-unit">+</span></div>
+        <div class="metric-label">Real Test Devices</div>
       </div>
       <div>
-        <div class="metric-val">8<span class="metric-unit">yr</span></div>
-        <div class="metric-label">In Operation</div>
+        <div class="metric-val">60<span class="metric-unit">%</span></div>
+        <div class="metric-label">Cost Savings vs US/UK</div>
       </div>
       <div>
-        <div class="metric-val">99<span class="metric-unit">%</span></div>
-        <div class="metric-label">Client Retention</div>
+        <div class="metric-val">98<span class="metric-unit">%</span></div>
+        <div class="metric-label">Test Coverage Avg</div>
       </div>
     </div>
   </div>
@@ -1823,6 +2081,104 @@ footer {
   </div>
 </section>
 
+<!-- ══ ENGAGEMENT MODELS ══ -->
+<section id="engagement" class="section">
+  <div class="s-eyebrow reveal">Work With Us</div>
+  <h2 class="s-title reveal delay-1">Engagement <em>Models</em></h2>
+  <p class="s-desc reveal delay-2">Flexible partnership structures that adapt to your project scale, timeline, and budget — with offshore rates that deliver typically <strong style="color:var(--text)">40–60% cost savings</strong> compared to US/UK based agencies.</p>
+
+  <div class="engage-grid">
+    <div class="engage-card reveal">
+      <div class="engage-num">01 · Fixed Scope</div>
+      <div class="engage-title">Project-Based</div>
+      <div class="engage-desc">Defined scope, defined cost. Best for one-off games, console ports, or specific QA cycles with clear deliverables and milestones.</div>
+      <span class="engage-tag">Fixed Cost</span>
+    </div>
+    <div class="engage-card reveal delay-1">
+      <div class="engage-num">02 · Dedicated Team</div>
+      <div class="engage-title">Staff Augmentation</div>
+      <div class="engage-desc">Monthly dedicated developers, artists, or QA engineers fully integrated into your sprints. Scale up or down as your roadmap shifts.</div>
+      <span class="engage-tag">Monthly Retainer</span>
+    </div>
+    <div class="engage-card reveal delay-2">
+      <div class="engage-num">03 · Hourly T&amp;M</div>
+      <div class="engage-title">Time &amp; Materials</div>
+      <div class="engage-desc">Pay for what you use. Ideal for evolving requirements, bug-fix sprints, or live-ops support where flexibility matters most.</div>
+      <span class="engage-tag">Hourly Billing</span>
+    </div>
+  </div>
+
+  <div class="trust-strip reveal delay-3">
+    <div class="trust-item">
+      <div class="trust-icon">⚡</div>
+      <div class="trust-h">24-Hour Turnaround</div>
+      <div class="trust-p">Critical bug reports delivered within one business day, across timezones</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📱</div>
+      <div class="trust-h">50+ Real Devices</div>
+      <div class="trust-p">No emulator-only testing — actual iOS &amp; Android device lab on-site</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <div class="trust-h">NDA &amp; GDPR / ISO</div>
+      <div class="trust-p">Strict NDAs with all clients &amp; staff, international data standards</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎮</div>
+      <div class="trust-h">Unity &amp; Unreal</div>
+      <div class="trust-p">Source-level debugging, optimization logs, in-engine analysis</div>
+    </div>
+  </div>
+
+  <div class="regions-row reveal delay-4" style="justify-content:center;margin-top:40px;">
+    <span class="region-pill">United Kingdom</span>
+    <span class="region-pill">United States</span>
+    <span class="region-pill">Canada</span>
+    <span class="region-pill">UAE</span>
+    <span class="region-pill">Qatar</span>
+    <span class="region-pill">Europe</span>
+  </div>
+</section>
+
+<!-- ══ FAQ — OUTSOURCING SIMPLIFIED ══ -->
+<section id="faq" class="section section-alt">
+  <div class="s-eyebrow reveal">Common Questions</div>
+  <h2 class="s-title reveal delay-1">Outsourcing <em>Simplified</em></h2>
+  <p class="s-desc reveal delay-2">Everything you need to know about partnering with a global gaming studio.</p>
+
+  <div class="faq-wrap reveal delay-2">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you sign NDAs for game projects? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes, absolutely. We sign strict Non-Disclosure Agreements (NDAs) with all clients and employees. Your IP security is our top priority, and we adhere to international data protection standards (GDPR / ISO).</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you test mobile games on real devices? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. We do not rely solely on emulators. We maintain a device lab with 50+ real iOS and Android devices to ensure accurate performance, battery, and touch-response testing.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you handle Unity and Unreal Engine projects? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Our team includes specialized Unity and Unreal Engine developers and QA engineers. We can debug directly within the engine, provide optimization logs, and handle source-code level analysis.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How does your pricing model work for outsourcing? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">We offer flexible engagement models: Project-Based (Fixed Cost), Staff Augmentation (Monthly Dedicated Resources), and Hourly T&amp;M. Our offshore rates provide typically 40–60% cost savings compared to US/UK based agencies.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is your turnaround time for bug reports? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">We offer 24-hour turnaround for critical bug reports. Our team works across time zones to align with your development sprints, ensuring you have fresh reports by the start of your day.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Where is Factorial Studio based? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Our headquarters is at 306 Tariq Business Center, Lahore, Pakistan. We serve clients globally — UK, USA, Canada, UAE, Qatar, and across Europe — with timezone-aligned delivery.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you support Play Store / App Store published titles? <span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes — we offer end-to-end mobile publishing including ASO, store optimization, monetization tuning, and live-ops support. Reach our publishing team at aso@factorialstudio.com.</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ TESTIMONIALS ══ -->
 <section id="testimonials" class="section section-alt">
   <div class="s-eyebrow reveal">Client Voices</div>
@@ -2085,7 +2441,7 @@ const metricObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       const vals = e.target.querySelectorAll('.metric-val');
-      const data = [[150,'+'],[40,'+'],[8,'yr'],[99,'%']];
+      const data = [[24,'h'],[50,'+'],[60,'%'],[98,'%']];
       vals.forEach((v, i) => {
         const unit = v.querySelector('.metric-unit');
         const suf = unit ? unit.textContent : '';
@@ -2131,6 +2487,46 @@ document.addEventListener('click', e => {
   const d = document.getElementById('terms-drop');
   if (d && !d.contains(e.target)) d.classList.remove('open');
 });
+
+// ── FAQ accordion ──
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── Quasar mascot bot ──
+const quasarTips = [
+  "Did you know? We test on 50+ real devices, not just emulators. 📱",
+  "We sign NDAs with every client. Your IP is safe with us. 🔒",
+  "Need a QA crew yesterday? 24-hour bug-report turnaround. ⚡",
+  "Unity? Unreal? Custom engine? We've shipped on all of them. 🎮",
+  "Offshore rates that save you 40–60% vs US/UK. Just saying. 💸",
+  "Stuck on console certification? That's literally our thing. 🎯",
+  "Working hard or working smart? Both. Always. 🧠",
+  "Psst — scroll down to see our work. 👇",
+  "We hunt bugs for breakfast. 🐛",
+  "Lahore HQ, global delivery. Your timezone is our timezone. 🌐",
+  "Live-ops, ASO, mobile publishing — we do it all. 📡",
+  "Coffee break? I'll wait. ☕"
+];
+let quasarIdx = 0;
+let quasarTimeout;
+function quasarTalk() {
+  const bubble = document.getElementById('quasar-bubble');
+  const text = document.getElementById('quasar-text');
+  text.textContent = quasarTips[quasarIdx % quasarTips.length];
+  quasarIdx++;
+  bubble.classList.add('show');
+  clearTimeout(quasarTimeout);
+  quasarTimeout = setTimeout(() => bubble.classList.remove('show'), 5500);
+}
+// First tip after 3s, then random tips every 25–45s
+setTimeout(() => quasarTalk(), 3000);
+setInterval(() => {
+  if (Math.random() < 0.7) quasarTalk();
+}, 32000);
 
 // ── Form submit ──
 function handleSubmit(btn) {
