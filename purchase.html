@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchase Terms | Factorial Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;
+  --neon:#00ffe0;--text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
+  --border:rgba(0,255,224,0.10);--border2:rgba(0,255,224,0.18);
+  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,224,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,255,224,0.025) 1px,transparent 1px);
+  background-size:80px 80px;opacity:0.4}
+.policy-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;background:rgba(4,5,8,0.85);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)}
+.policy-logo{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:800;
+  font-size:1.05rem;letter-spacing:0.06em;color:var(--text)}
+.policy-logo img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,255,224,0.35))}
+.policy-logo em{color:var(--neon);font-style:normal}
+.back-link{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);padding:10px 18px;border:1px solid var(--border2);border-radius:2px;
+  transition:all 0.25s}
+.back-link:hover{color:var(--neon);border-color:var(--neon);background:rgba(0,255,224,0.04);text-decoration:none}
+.policy-hero{padding:80px 48px 40px;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.policy-hero .crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--neon);margin-bottom:18px}
+.policy-hero .crumbs span{color:var(--muted);margin:0 10px}
+.policy-hero h1{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:900;
+  text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05}
+.policy-hero h1 em{color:var(--neon);font-style:normal}
+.policy-hero .meta{margin-top:14px;color:var(--muted);font-family:var(--f-mono);font-size:0.78rem}
+.policy-body{max-width:920px;margin:0 auto;padding:60px 48px 80px;flex:1;position:relative;z-index:1}
+.policy-body h2{font-family:var(--f-head);font-size:1.55rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:0.02em;margin:50px 0 18px;color:var(--text);
+  padding-bottom:12px;border-bottom:1px solid var(--border2)}
+.policy-body h2:first-child{margin-top:0}
+.policy-body h3{font-family:var(--f-head);font-size:1.15rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.04em;margin:34px 0 12px;color:var(--neon)}
+.policy-body h4{font-family:var(--f-mono);font-size:0.95rem;font-weight:500;
+  margin:24px 0 10px;color:var(--text)}
+.policy-body p{margin:14px 0;color:#cfd5e6;font-size:1rem}
+.policy-body ul,.policy-body ol{margin:14px 0 14px 24px;padding-left:8px}
+.policy-body li{margin:8px 0;color:#cfd5e6}
+.policy-body li::marker{color:var(--neon)}
+.policy-body strong{color:var(--text);font-weight:600}
+.policy-body a{word-break:break-word}
+.policy-foot{padding:36px 48px;border-top:1px solid var(--border);background:var(--dark1);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;
+  position:relative;z-index:1}
+.policy-foot p{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.08em}
+.policy-foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.policy-foot .links a{font-family:var(--f-mono);font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--muted)}
+.policy-foot .links a:hover{color:var(--neon);text-decoration:none}
+@media (max-width:720px){
+  .policy-nav{padding:14px 22px}
+  .policy-hero{padding:50px 22px 30px}
+  .policy-body{padding:36px 22px 60px}
+  .policy-foot{padding:28px 22px}
+  .back-link{padding:8px 12px;font-size:0.62rem}
+}
+</style>
+</head>
+<body>
+<nav class="policy-nav">
+  <a href="index.html" class="policy-logo">
+    <img src="images/logo.png" alt="Factorial Studio">
+    Factorial<em>Studio</em>
+  </a>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+</nav>
+
+<header class="policy-hero">
+  <div class="crumbs">
+    <a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Purchase Terms
+  </div>
+  <h1>Purchase Terms &amp; Conditions</h1>
+  <div class="meta">Last Updated: February 25, 2025</div>
+</header>
+
+<main class="policy-body">
+<p>Last updated: February 25, 2025</p>
+<h3>1. Scope of These Terms</h3>
+<p>These Terms and Conditions (the “Purchase Terms” ) govern the purchase of:</p>
+<ul><li>In-app products, items, or virtual currency ( “In-App Purchases” ), and</li><li>Recurring paid access to features or content ( “Subscriptions” ),</li></ul>
+<p>within the mobile games and applications published by Factorial Studio Private Limited (“ Factorial Studio ”, “we”, “us”, or “our”).</p>
+<p>By making any In-App Purchase or Subscription in our Apps, you agree that:</p>
+<ul><li>You are entering into a legally binding contract , and</li><li>You have the legal capacity to do so, or you have permission from your parent or legal guardian to enter into this contract.</li></ul>
+<p>Please note that use of our Apps downloaded via the Apple App Store is also subject to the Apple Media Services Terms &amp; Conditions / End User License Agreement , and Apps downloaded via Google Play are subject to Google Play’s terms and policies .</p>
+<h3>2. Where Purchases Are Processed (Apple / Google)</h3>
+<p>All In-App Purchases and Subscriptions in our Apps are:</p>
+<ul><li>Purchased from and billed by the Apple App Store or Google Play Store , not directly by Factorial Studio.</li></ul>
+<p>This means:</p>
+<ul><li>Your purchase is also subject to the terms and conditions of Apple or Google .</li><li>Factorial Studio does not have access to your full store account, payment card details, or complete transaction history.</li><li>If you want to verify what you bought, what type of subscription you have, or how you are billed: Check your Apple ID / App Store account or Your Google Play account and receipts.</li></ul>
+<p>On mobile devices, in-game purchases use the payment method you have on file in your Apple or Google account.</p>
+<p>For more details, see the official support pages:</p>
+<ul><li>Apple: https://support.apple.com/en-us/HT202039</li><li>Google: https://support.google.com/googleplay/answer/7018481</li></ul>
+<h3>3. “No Ads” In-App Purchase</h3>
+<p>In many of our Apps, users may be able to buy a “No Ads” (or similarly named) In-App Purchase.</p>
+<ul><li>This feature is intended to stop or reduce ads that automatically interrupt gameplay (for example: full-screen interstitials during level transitions).</li></ul>
+<p>However:</p>
+<ul><li>The “No Ads” purchase does not disable optional “rewarded video” ads .</li><li>Rewarded ads are videos that you choose to watch in order to: Double your rewards; Gain extra coins, gems, energy, or lives; Unlock skins, avatars, or other bonuses.</li></ul>
+<p>Because rewarded videos are fully optional and triggered by the user to gain a benefit, the “No Ads” purchase does not remove them.</p>
+<h3>4. Subscriptions &amp; Free Trials</h3>
+<p>Some of our Apps may offer weekly, monthly, or other recurring Subscriptions (the “Subscription” ) to access extra features or premium content (the “Subscribed Services” ). In some cases, a free trial period may be available.</p>
+<h4>4.1 Free Trial Period (if offered)</h4>
+<ul><li>A free trial (for example, 3 days) allows you to use the Subscribed Services without being charged during that period.</li><li>At the end of the free trial, the Subscription may automatically convert to a paid Subscription, and your Apple / Google account will be charged the Subscription price unless you cancel at least 24 hours before the trial ends.</li></ul>
+<p>Any unused portion of a free trial period may be forfeited when you purchase or continue a Subscription.</p>
+<h4>4.2 Auto-Renewal</h4>
+<ul><li>Subscriptions are generally auto-renewing .</li><li>Your Apple or Google account may be charged for renewal within 24 hours before the current subscription period ends.</li><li>The Subscription will continue to renew automatically until you cancel it via your store account settings.</li></ul>
+<p>The price and billing frequency (e.g., weekly or monthly) will be displayed:</p>
+<ul><li>Inside the App, and/or</li><li>On the store’s purchase confirmation screen.</li></ul>
+<h3>5. Managing &amp; Cancelling Subscriptions (User Termination)</h3>
+<p>Subscriptions are managed exclusively by Apple App Store and Google Play Store .</p>
+<p>In general:</p>
+<ul><li>Most Subscriptions automatically renew unless you cancel them.</li><li>If you cancel, you can normally continue using the Subscribed Services until the end of the current billing period .</li><li>If you cancel during a free trial , you may lose immediate access to the Subscribed Services, depending on the store’s policy.</li><li>If you signed up for a free or discounted trial and do not want to be charged, you must cancel at least 24 hours before the trial ends.</li></ul>
+<p>To manage or cancel your Subscription:</p>
+<ul><li>Apple (iOS) : Go to Settings → [Your Name] → Subscriptions or open the App Store → Account → Subscriptions .</li><li>Google Play (Android) : Open Google Play Store → Profile → Payments &amp; Subscriptions → Subscriptions .</li></ul>
+<p>Factorial Studio cannot cancel Subscriptions or change billing on your behalf; only you can do this through your store account.</p>
+<h3>6. Termination by Factorial Studio</h3>
+<p>Except for the store’s automatic renewal process, Factorial Studio may cancel, suspend, or restrict your access to Subscribed Services if:</p>
+<ul><li>You fail to comply with our Terms of Use , Privacy Policy , or these Purchase Terms ;</li><li>We suspect fraudulent, abusive, or unlawful activity related to your account or Subscription;</li><li>Continued provision of the Subscribed Services would violate applicable law, platform rules, or our internal policies.</li></ul>
+<p>Where technically and legally possible, we will try to notify you, but we are not obliged to provide any refund if access is terminated for the reasons above.</p>
+<p>Automatic renewal itself remains managed by Apple / Google , and you remain responsible for cancelling any future renewals in your store account if you do not wish to continue your Subscription.</p>
+<h3>7. Refunds &amp; Unused Currency / Items</h3>
+<p>Because all In-App Purchases and Subscriptions are processed by Apple or Google :</p>
+<ul><li>Any refund requests must be made directly to the respective store, and</li><li>Are subject to Apple’s or Google’s refund policies , not Factorial Studio’s internal policy.</li></ul>
+<p>Regarding virtual currency and in-game items :</p>
+<ul><li>Virtual currency and digital items have no real-world cash value and cannot be exchanged for money.</li><li>Factorial Studio is not required to provide a refund, compensation, or cash-out for: Unused virtual currency; Unused items or boosts; Time remaining on a Subscription after you stop using the App; Loss of progress due to device change, uninstall, or other non-mandatory reasons, unless required by law.</li></ul>
+<h3>8. Legal Capacity &amp; Parents / Guardians</h3>
+<p>By making any In-App Purchase or Subscription, you confirm that:</p>
+<ul><li>You are of legal age and capacity to enter into such a contract in your country, or</li><li>You have obtained permission from your parent or legal guardian .</li></ul>
+<p>Parents and guardians are responsible for:</p>
+<ul><li>Managing purchase settings and parental controls on the device and store account;</li><li>Monitoring and controlling their child’s in-App purchase behavior;</li><li>Ensuring that children do not make unauthorized purchases.</li></ul>
+<h3>9. Contact</h3>
+<p>If you have any questions or comments about these Purchase Terms, or about purchases in our Apps, you can contact us at:</p>
+<p>???? contact@factorialstudio.com</p>
+<p>For issues related to billing, charges, refunds, or subscription status , please also refer to:</p>
+<ul><li>Your Apple ID / App Store account or Google Play account , and</li><li>The official Apple / Google support pages linked above.</li></ul>
+</main>
+
+<footer class="policy-foot">
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; NTN: 9232454</p>
+  <div class="links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="purchase.html">Purchase</a>
+    <a href="refund.html">Refund</a>
+    <a href="user-tcs.html">User T&amp;Cs</a>
+    <a href="developer-tcs.html">Developer T&amp;Cs</a>
+    <a href="hr-privacy.html">HR Privacy</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

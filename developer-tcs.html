@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer T&amp;Cs | Factorial Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;
+  --neon:#00ffe0;--text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
+  --border:rgba(0,255,224,0.10);--border2:rgba(0,255,224,0.18);
+  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,224,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,255,224,0.025) 1px,transparent 1px);
+  background-size:80px 80px;opacity:0.4}
+.policy-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;background:rgba(4,5,8,0.85);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)}
+.policy-logo{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:800;
+  font-size:1.05rem;letter-spacing:0.06em;color:var(--text)}
+.policy-logo img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,255,224,0.35))}
+.policy-logo em{color:var(--neon);font-style:normal}
+.back-link{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);padding:10px 18px;border:1px solid var(--border2);border-radius:2px;
+  transition:all 0.25s}
+.back-link:hover{color:var(--neon);border-color:var(--neon);background:rgba(0,255,224,0.04);text-decoration:none}
+.policy-hero{padding:80px 48px 40px;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.policy-hero .crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--neon);margin-bottom:18px}
+.policy-hero .crumbs span{color:var(--muted);margin:0 10px}
+.policy-hero h1{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:900;
+  text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05}
+.policy-hero h1 em{color:var(--neon);font-style:normal}
+.policy-hero .meta{margin-top:14px;color:var(--muted);font-family:var(--f-mono);font-size:0.78rem}
+.policy-body{max-width:920px;margin:0 auto;padding:60px 48px 80px;flex:1;position:relative;z-index:1}
+.policy-body h2{font-family:var(--f-head);font-size:1.55rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:0.02em;margin:50px 0 18px;color:var(--text);
+  padding-bottom:12px;border-bottom:1px solid var(--border2)}
+.policy-body h2:first-child{margin-top:0}
+.policy-body h3{font-family:var(--f-head);font-size:1.15rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.04em;margin:34px 0 12px;color:var(--neon)}
+.policy-body h4{font-family:var(--f-mono);font-size:0.95rem;font-weight:500;
+  margin:24px 0 10px;color:var(--text)}
+.policy-body p{margin:14px 0;color:#cfd5e6;font-size:1rem}
+.policy-body ul,.policy-body ol{margin:14px 0 14px 24px;padding-left:8px}
+.policy-body li{margin:8px 0;color:#cfd5e6}
+.policy-body li::marker{color:var(--neon)}
+.policy-body strong{color:var(--text);font-weight:600}
+.policy-body a{word-break:break-word}
+.policy-foot{padding:36px 48px;border-top:1px solid var(--border);background:var(--dark1);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;
+  position:relative;z-index:1}
+.policy-foot p{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.08em}
+.policy-foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.policy-foot .links a{font-family:var(--f-mono);font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--muted)}
+.policy-foot .links a:hover{color:var(--neon);text-decoration:none}
+@media (max-width:720px){
+  .policy-nav{padding:14px 22px}
+  .policy-hero{padding:50px 22px 30px}
+  .policy-body{padding:36px 22px 60px}
+  .policy-foot{padding:28px 22px}
+  .back-link{padding:8px 12px;font-size:0.62rem}
+}
+</style>
+</head>
+<body>
+<nav class="policy-nav">
+  <a href="index.html" class="policy-logo">
+    <img src="images/logo.png" alt="Factorial Studio">
+    Factorial<em>Studio</em>
+  </a>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+</nav>
+
+<header class="policy-hero">
+  <div class="crumbs">
+    <a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Developer T&amp;Cs
+  </div>
+  <h1>Terms &amp; Conditions for Developers</h1>
+  <div class="meta">Last Updated: February 25, 2025</div>
+</header>
+
+<main class="policy-body">
+<h2>T&amp;Cs for Developers</h2>
+<p>Last updated: February 25, 2025</p>
+<p>These Developer Terms and Conditions (the “Developer T&amp;Cs” or “Terms” ) govern the relationship between:</p>
+<p>Factorial Studio Private Limited , a company registered in Pakistan, having its office at 306 Tariq Business Center, Lahore, Pakistan (referred to as “Factorial Studio”, “we”, “us”, or “our” ),</p>
+<p>and</p>
+<p>Any individual or legal entity that submits a mobile game or application to Factorial Studio or uses our developer tools, portals, or programs (referred to as the “Developer” or “you” ).</p>
+<p>Factorial Studio and the Developer are together referred to as the “Parties” and individually as a “Party” .</p>
+<p>These Terms apply to your use of:</p>
+<ul><li>Any Factorial Studio developer portal, dashboard or platform (the “Developer Platform” ),</li><li>Any publishing, testing, live-ops or scaling programs operated by Factorial Studio (collectively, the “Programs” ).</li></ul>
+<h3>1. Acceptance of the Terms</h3>
+<p>By creating a developer account, submitting a game or build, or using any Developer Platform / Program, you:</p>
+<ul><li>Confirm that you have read, understood, and accepted these Terms without reservation ; and</li><li>Agree to comply with these Terms and all applicable laws and regulations.</li></ul>
+<p>If you do not agree to these Terms, you must not submit any game or use the Developer Platform.</p>
+<p>If you are accepting these Terms on behalf of a company or studio, you represent that you have the authority to bind that entity.</p>
+<h3>2. Description of the Developer Platform &amp; Programs</h3>
+<p>Factorial Studio may provide one or more of the following:</p>
+<ol><li>Developer Platform / Dashboard An online interface where Developers can create an account, submit games, view testing results, and manage their relationship with Factorial Studio.</li><li>Testing &amp; Publishing Program A program under which Factorial Studio may run marketing and performance tests (“Test Campaigns”) on submitted games to evaluate their potential with players. Factorial Studio may, at its discretion, spend its own budget to run such Test Campaigns (e.g., user acquisition tests, creative tests, retention tests).</li><li>Live-ops / Scaling Program For selected games with validated performance, Factorial Studio may offer publishing, live-ops, monetization, UA scaling, and optimization support , under separate agreements.</li></ol>
+<p>The exact features, tools, and conditions may change over time at Factorial Studio’s discretion.</p>
+<h3>3. Registration and Developer Account</h3>
+<p>To access the Developer Platform, you may be required to:</p>
+<ul><li>Complete a registration form with accurate and complete information,</li><li>Provide contact details (name, email, studio name, etc.), and</li><li>Create login credentials (username and password) or use supported SSO methods (if available).</li></ul>
+<p>Once your registration is accepted:</p>
+<ul><li>A Developer Account will be created for you.</li><li>You are responsible for: Keeping your password confidential; Restricting access to your account; Notifying Factorial Studio promptly if you suspect unauthorized access.</li></ul>
+<p>Factorial Studio may, at its discretion:</p>
+<ul><li>Request additional information or documentation from you;</li><li>Refuse registration;</li><li>Suspend or disable a Developer Account if: Information provided is false or incomplete; You breach these Terms; or Required information is not provided within a reasonable time.</li></ul>
+<p>All actions and submissions made via your Developer Account are deemed to be made by you.</p>
+<h3>4. Use of the Developer Platform</h3>
+<h4>4.1 General Use</h4>
+<p>Subject to these Terms, Factorial Studio grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Developer Platform for the sole purpose of:</p>
+<ul><li>Submitting games and related materials for testing, review, or publishing discussions;</li><li>Viewing test results and analytics shared by Factorial Studio;</li><li>Communicating with Factorial Studio regarding your submissions and Programs.</li></ul>
+<p>You are responsible for:</p>
+<ul><li>Any costs of internet access or equipment used to access the Platform;</li><li>Ensuring that your use of the Platform complies with all applicable laws.</li></ul>
+<p>Factorial Studio is not obligated to:</p>
+<ul><li>Store or back up any files, builds, or materials you upload;</li><li>Return any materials submitted by you. You should keep your own backups of all files.</li></ul>
+<h4>4.2 Prohibited Content &amp; Behavior</h4>
+<p>You agree not to upload, share, or otherwise make available via the Platform any content that:</p>
+<ul><li>Is illegal, harmful, defamatory, obscene, or otherwise unlawful;</li><li>Violates privacy or publicity rights;</li><li>Incites violence, hatred, discrimination, or harassment;</li><li>You do not have the legal right to use or share (including confidential or third-party information);</li><li>Infringes the intellectual property or other rights of any person or entity;</li><li>Contains spam, unsolicited promotions, or pyramid schemes;</li><li>Contains malware, viruses, or any code designed to damage or disrupt software, hardware, or networks.</li></ul>
+<p>If you submit a Game, you represent and warrant that:</p>
+<ul><li>You have all necessary rights and permissions to submit it; and</li><li>The Game does not infringe any third-party rights.</li></ul>
+<p>Factorial Studio may immediately disable your Developer Account, without prior notice, if you violate this section or any material provision of these Terms. A Developer whose account is disabled for breach may not create a new account without Factorial Studio’s explicit written consent.</p>
+<h3>5. Game Submission, Testing &amp; Publishing Discussions</h3>
+<h4>5.1 Game Submission</h4>
+<p>When you submit a game (the “Game” ) to the Developer Platform, Factorial Studio may request:</p>
+<ul><li>Store link, build file, or test build (APK / IPA / project build);</li><li>Game name, icon, screenshots, and videos;</li><li>Basic game information (genre, core mechanic, target audience, monetization model, etc.).</li></ul>
+<p>By submitting a Game, you acknowledge and agree that:</p>
+<ul><li>Factorial Studio may run Test Campaigns or internal evaluations at its sole discretion;</li><li>Factorial Studio may decide not to test or proceed with your Game for any reason;</li><li>Any test budget or marketing spend is fully controlled by Factorial Studio and not guaranteed.</li></ul>
+<h4>5.2 Test Campaigns &amp; Results</h4>
+<p>If Factorial Studio runs Test Campaigns:</p>
+<ul><li>Factorial Studio and its affiliates may access and analyze all test data, including but not limited to installs, retention, CPI, CTR, revenue, and engagement metrics.</li><li>Factorial Studio may share high-level results with you via the Platform or by email.</li><li>Factorial Studio is under no obligation to share raw data, ad accounts, or complete campaign details.</li></ul>
+<h4>5.3 Publishing &amp; Negotiations</h4>
+<ul><li>Submitting a Game through the Developer Platform does not automatically create a publishing agreement .</li><li>If Factorial Studio is interested in publishing, co-developing, or scaling your Game, the Parties may negotiate a separate written agreement (the “Publishing Agreement” or “Cooperation Agreement” ).</li><li>Only such separate signed agreement will govern: Revenue share; Ownership of derivative works; Long-term exclusivity (if any); Detailed obligations and rights.</li></ul>
+<p>Until such a separate agreement is signed:</p>
+<ul><li>You remain the owner of your Game (see Section 6);</li><li>Factorial Studio has no obligation to publish, promote, or maintain your Game.</li></ul>
+<h3>6. Intellectual Property &amp; Licenses</h3>
+<h4>6.1 Platform &amp; Tools</h4>
+<ul><li>All rights in the Developer Platform, tools, dashboards, and related materials are owned by Factorial Studio or its licensors.</li><li>You are granted only a limited license to use the Platform as described in these Terms.</li><li>You may not copy, modify, reverse engineer, or create derivative works based on the Platform.</li></ul>
+<h4>6.2 Games Submitted by Developer</h4>
+<ul><li>You retain full ownership of all intellectual property rights in your Game , including copyrights, designs, trademarks, and other rights, unless otherwise agreed in a separate written agreement.</li></ul>
+<p>By submitting a Game to the Developer Platform, you grant Factorial Studio a free, worldwide, non-exclusive, revocable license to:</p>
+<ul><li>Install, run, and test the Game;</li><li>Capture gameplay footage and screenshots for internal evaluation;</li><li>Use test assets (icon, creatives, videos) to run marketing Test Campaigns;</li><li>Analyze and store performance and engagement data for internal business purposes.</li></ul>
+<p>If a separate Publishing or Cooperation Agreement is signed, the IP and license terms in that agreement will override this section to the extent of any conflict.</p>
+<h3>7. Developer Obligations &amp; Responsibilities</h3>
+<p>The Developer agrees to:</p>
+<ul><li>Use the Developer Platform only for legitimate, lawful purposes;</li><li>Maintain accurate and up-to-date account information;</li><li>Ensure that any Game submitted does not contain malicious code or hidden functionality intended to harm users, devices, or networks;</li><li>Ensure that use of the Platform and submission of Games complies with all applicable laws, platform policies (Google Play, Apple App Store, etc.), and third-party terms.</li></ul>
+<p>The Developer agrees not to:</p>
+<ul><li>Use the Platform to create or assist any system that replicates or competes directly with the Platform itself;</li><li>Attempt to bypass any security or access control measures implemented by Factorial Studio;</li><li>Scrape, harvest, or systematically collect data from the Platform;</li><li>Sub-license, sell, rent, or transfer access to the Platform to any third party.</li></ul>
+<p>Factorial Studio may disable your Developer Account if you breach this section. A Developer whose account is disabled for breach may not create a new account without Factorial Studio’s explicit written consent.</p>
+<h3>8. Liability &amp; Indemnity</h3>
+<p>The Developer Platform and Programs are provided “as is” and “as available” , without any guarantee of uninterrupted or error-free operation.</p>
+<p>To the maximum extent permitted by law:</p>
+<ul><li>Factorial Studio and its licensors shall not be liable for: Any indirect, incidental, consequential, or special damages; Any loss of profits, revenue, data, business opportunity, or goodwill; Any damage arising from: Your use or inability to use the Developer Platform; Any decisions made based on test results or communications; Any third-party services or platforms (e.g., stores, ad networks, analytics tools).</li><li>If any liability is found despite the above, Factorial Studio’s aggregate liability towards the Developer under these Terms shall be limited to the greater of : The total amount (if any) paid by Factorial Studio directly to the Developer under these Terms in the 12 months preceding the claim; or The minimum amount required by applicable law.</li></ul>
+<p>The Developer agrees to indemnify and hold harmless Factorial Studio from any claims, losses, damages, costs, and expenses (including reasonable legal fees) arising out of:</p>
+<ul><li>Any breach of these Terms by the Developer;</li><li>Any Game or content submitted by the Developer that infringes third-party rights or violates law;</li><li>Any misuse of the Platform by the Developer or its representatives.</li></ul>
+<h3>9. Electronic Communication</h3>
+<ul><li>Communication between the Parties may occur via unencrypted email or other electronic means.</li><li>A communication is deemed received when it reaches the recipient’s email server in readable form.</li><li>If received after 5:00 p.m. (recipient’s local time) or on a non-business day, it will be deemed received on the next business day.</li></ul>
+<h3>10. Duration &amp; Termination</h3>
+<ul><li>These Terms apply from the moment you first use the Developer Platform or submit a Game and remain in effect until terminated as described below.</li></ul>
+<p>Either Party may:</p>
+<ul><li>Terminate the relationship at any time by written notice (including email).</li></ul>
+<p>Factorial Studio may, in particular, terminate or suspend with immediate effect:</p>
+<ul><li>Your access to the Developer Platform in case of breach of these Terms;</li><li>Any Program or testing of your Game at its sole discretion.</li></ul>
+<p>Termination:</p>
+<ul><li>Does not affect rights and obligations that have already arisen prior to termination (e.g., confidentiality, IP rights, existing signed Publishing Agreement);</li><li>Does not automatically delete historical test data that Factorial Studio is entitled to retain under its Privacy Policy and internal policies.</li></ul>
+<h3>11. Data Protection</h3>
+<p>By using the Developer Platform and submitting Games, you acknowledge that Factorial Studio may process certain personal and business data about you and your team.</p>
+<ul><li>Data collection and processing will be carried out in accordance with our Privacy Policy available on our website.</li><li>You are responsible for complying with any applicable data protection laws in relation to your own team and any personal data you share with Factorial Studio.</li></ul>
+<h3>12. Confidentiality</h3>
+<p>“ Confidential Information ” means any non-public information disclosed by Factorial Studio to the Developer (in writing, orally, or by access to systems), including but not limited to:</p>
+<ul><li>Test results, metrics, CPI, LTV, retention, ARPU, revenue or spend data;</li><li>Product plans, internal tools, processes, and strategies;</li><li>Business, financial, or operational information;</li><li>Any non-public documentation, dashboards, or reports.</li></ul>
+<ul><li>Keep all Confidential Information strictly confidential;</li><li>Use Confidential Information solely for the purpose of evaluating and working with Factorial Studio under these Terms;</li><li>Not disclose Confidential Information to third parties without Factorial Studio’s prior written consent;</li><li>Apply at least the same level of care as used for its own confidential information (and no less than reasonable care).</li></ul>
+<p>These confidentiality obligations survive termination of these Terms.</p>
+<h3>13. Miscellaneous</h3>
+<ul><li>The Developer may not assign, transfer, or sub-license any of its rights or obligations under these Terms without Factorial Studio’s prior written consent. If any provision of these Terms is held invalid or unenforceable, the remaining provisions shall remain in full force and effect, and the invalid provision shall be replaced by a valid one that best reflects the original intent.</li></ul>
+<h3>14. Governing Law &amp; Jurisdiction</h3>
+<p>These Terms and any non-contractual obligations arising out of or in connection with them shall be governed by and construed in accordance with the laws of Pakistan .</p>
+<p>Subject to any mandatory provisions of applicable law, any dispute arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the competent courts in Lahore, Pakistan .</p>
+<p>If you have any questions about these Developer T&amp;Cs, please contact us at: ???? contact@factorialstudio.com</p>
+</main>
+
+<footer class="policy-foot">
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; NTN: 9232454</p>
+  <div class="links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="purchase.html">Purchase</a>
+    <a href="refund.html">Refund</a>
+    <a href="user-tcs.html">User T&amp;Cs</a>
+    <a href="developer-tcs.html">Developer T&amp;Cs</a>
+    <a href="hr-privacy.html">HR Privacy</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

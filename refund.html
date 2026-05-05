@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy | Factorial Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;
+  --neon:#00ffe0;--text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
+  --border:rgba(0,255,224,0.10);--border2:rgba(0,255,224,0.18);
+  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,224,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,255,224,0.025) 1px,transparent 1px);
+  background-size:80px 80px;opacity:0.4}
+.policy-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;background:rgba(4,5,8,0.85);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)}
+.policy-logo{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:800;
+  font-size:1.05rem;letter-spacing:0.06em;color:var(--text)}
+.policy-logo img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,255,224,0.35))}
+.policy-logo em{color:var(--neon);font-style:normal}
+.back-link{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);padding:10px 18px;border:1px solid var(--border2);border-radius:2px;
+  transition:all 0.25s}
+.back-link:hover{color:var(--neon);border-color:var(--neon);background:rgba(0,255,224,0.04);text-decoration:none}
+.policy-hero{padding:80px 48px 40px;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.policy-hero .crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--neon);margin-bottom:18px}
+.policy-hero .crumbs span{color:var(--muted);margin:0 10px}
+.policy-hero h1{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:900;
+  text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05}
+.policy-hero h1 em{color:var(--neon);font-style:normal}
+.policy-hero .meta{margin-top:14px;color:var(--muted);font-family:var(--f-mono);font-size:0.78rem}
+.policy-body{max-width:920px;margin:0 auto;padding:60px 48px 80px;flex:1;position:relative;z-index:1}
+.policy-body h2{font-family:var(--f-head);font-size:1.55rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:0.02em;margin:50px 0 18px;color:var(--text);
+  padding-bottom:12px;border-bottom:1px solid var(--border2)}
+.policy-body h2:first-child{margin-top:0}
+.policy-body h3{font-family:var(--f-head);font-size:1.15rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.04em;margin:34px 0 12px;color:var(--neon)}
+.policy-body h4{font-family:var(--f-mono);font-size:0.95rem;font-weight:500;
+  margin:24px 0 10px;color:var(--text)}
+.policy-body p{margin:14px 0;color:#cfd5e6;font-size:1rem}
+.policy-body ul,.policy-body ol{margin:14px 0 14px 24px;padding-left:8px}
+.policy-body li{margin:8px 0;color:#cfd5e6}
+.policy-body li::marker{color:var(--neon)}
+.policy-body strong{color:var(--text);font-weight:600}
+.policy-body a{word-break:break-word}
+.policy-foot{padding:36px 48px;border-top:1px solid var(--border);background:var(--dark1);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;
+  position:relative;z-index:1}
+.policy-foot p{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.08em}
+.policy-foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.policy-foot .links a{font-family:var(--f-mono);font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--muted)}
+.policy-foot .links a:hover{color:var(--neon);text-decoration:none}
+@media (max-width:720px){
+  .policy-nav{padding:14px 22px}
+  .policy-hero{padding:50px 22px 30px}
+  .policy-body{padding:36px 22px 60px}
+  .policy-foot{padding:28px 22px}
+  .back-link{padding:8px 12px;font-size:0.62rem}
+}
+</style>
+</head>
+<body>
+<nav class="policy-nav">
+  <a href="index.html" class="policy-logo">
+    <img src="images/logo.png" alt="Factorial Studio">
+    Factorial<em>Studio</em>
+  </a>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+</nav>
+
+<header class="policy-hero">
+  <div class="crumbs">
+    <a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Refund Policy
+  </div>
+  <h1>Refund Policy</h1>
+  <div class="meta">Last Updated: February 25, 2025 · Stripe (US iOS) purchases</div>
+</header>
+
+<main class="policy-body">
+<p>Last updated: February 25, 2025</p>
+<p>This Refund Policy explains how refunds work for certain one-time virtual item purchases processed via Stripe in our games.</p>
+<p>It applies only when:</p>
+<ul><li>You made a one-time, non-subscription purchase of a virtual item (e.g., coins, gems, power-ups, skins),</li><li>On an iOS device , distributed via the US App Store , and</li><li>The payment was processed using Stripe as the checkout provider (not Apple in-app purchase billing).</li></ul>
+<p>If your purchase was handled through Apple’s in-app purchase system or any other platform , then that platform’s own refund process and rules will apply instead.</p>
+<p>Refunds are not automatic . Each request is reviewed individually to ensure everything is in order. If something went wrong with your purchase, we’ll do our best to help.</p>
+<p>If you live in the United States, nothing in this Policy limits any rights you may have under applicable consumer protection laws or your card network’s rules.</p>
+<p>If you live in the EU/EEA, you may have a statutory right of withdrawal for certain digital purchases. This Policy does not affect that right, although where allowed by law, you may be asked to waive it at the time of purchase in order to receive immediate access to digital content.</p>
+<h3>1. What This Policy Covers</h3>
+<p>This Policy applies to:</p>
+<ul><li>iOS purchases made via the United States App Store ,</li><li>For one-time, non-subscription virtual items (such as virtual currency, consumables, or cosmetic items),</li><li>Only where payment was completed through Stripe’s checkout system instead of Apple’s in-app purchase billing.</li></ul>
+<p>It does not cover:</p>
+<ul><li>Subscriptions (recurring payments),</li><li>Purchases billed by Apple or Google directly,</li><li>Purchases on other platforms or regions.</li></ul>
+<h3>2. Refund Eligibility: Key Points</h3>
+<p>We want you to enjoy what you buy. While refunds may be available in some situations, submitting a request does not guarantee approval. Each request is reviewed on a case-by-case basis, and we reserve the right to decline based on the criteria below.</p>
+<h4>2.1 Timing</h4>
+<ul><li>To be eligible for a Stripe-based refund under this Policy, your request must be submitted within 7 calendar days of the purchase date shown on your Stripe receipt .</li></ul>
+<h4>2.2 What’s Covered</h4>
+<p>Refund requests may be considered for:</p>
+<ul><li>One-time, non-subscription virtual items purchased on iOS,</li><li>Where the payment was processed via Stripe , as described above.</li></ul>
+<p>If a purchase was made by a minor without parental consent , a verified parent or legal guardian may request a refund on the minor’s behalf. We may ask for documentation to confirm the relationship and the circumstances.</p>
+<h4>2.3 When Refunds Are Not Available</h4>
+<p>Refunds are generally not available in the following situations:</p>
+<ul><li>The purchase was made more than 7 calendar days before your refund request (based on the date shown on your Stripe receipt).</li><li>The purchased item(s) have been fully used, consumed, or enjoyed , and you have simply changed your mind.</li><li>The purchase was made in violation of our Terms of Use , Purchase Terms , or other applicable policies.</li><li>We detect or reasonably suspect abuse of the refund process , such as: Repeatedly purchasing and refunding the same item, Using virtual items and then seeking refunds, Other fraudulent or manipulative behaviors.</li></ul>
+<p>Please note: Repeated refund requests —especially after items have been used—may affect your eligibility for future refunds and may lead to account restrictions.</p>
+<h3>3. How to Request a Refund</h3>
+<p>To keep the process secure and efficient, all refund requests under this Policy must:</p>
+<ul><li>Be submitted by the account holder , or</li><li>By a verified parent or legal guardian (in the case of a minor’s account),</li></ul>
+<p>using the official support channels described below. We are not able to process refund requests sent through unofficial methods (e.g., random email addresses, social media DMs, etc.).</p>
+<h4>3.1 Submitting a Request In-Game</h4>
+<p>Please follow these steps:</p>
+<ol><li>Open the game where you made the purchase.</li><li>Go to Settings and tap the Support / Help / Submit Ticket option (wording may vary by game).</li><li>Create a support ticket and include: Stripe Receipt ID (e.g., #0000-0000, or the transaction reference shown in your email receipt), Date of purchase and a short description of the item(s) purchased, A brief explanation of why you’re requesting a refund , Screenshot of the purchase confirmation or receipt (optional but helpful), If the request involves a minor : Proof of parental/guardian relationship, and Any relevant explanation about how the purchase occurred.</li></ol>
+<p>We may ask for additional details if needed to verify the request.</p>
+<h3>4. How We Review Refund Requests</h3>
+<p>Once your request reaches our support team:</p>
+<ul><li>We’ll send a confirmation to let you know we received it.</li><li>Every request is reviewed carefully, considering factors such as: Whether the request was submitted within the 7-day window , Whether the item has been used, consumed, or transferred , Whether a technical issue (e.g., failed delivery) prevented you from receiving the item, Whether the charge appears to be a duplicate or accidental purchase , Your account’s history of previous refunds or charge issues, Any signs of fraud, misuse, or abuse .</li></ul>
+<p>We aim to review most refund requests within 10 business days .</p>
+<p>If we need more information, we may follow up by requesting further details or documentation. If we do not receive a response from you within 5 business days , we may close the request.</p>
+<h3>5. Receiving Your Refund</h3>
+<p>If your refund request is approved :</p>
+<ul><li>The refund will be issued to the original payment method used at checkout (via Stripe).</li><li>We cannot send refunds to a different card, bank account, wallet, or payment method.</li></ul>
+<p>Processing time:</p>
+<ul><li>Once processed, it may take 5–10 business days (or sometimes longer, depending on your bank or payment provider) for the refund to appear on your statement.</li><li>You will receive a notification from us once the refund has been approved and processed on our side.</li></ul>
+<p>If your request is not approved , we’ll send you a brief explanation. All refund decisions made under this Policy are final and are generally not subject to appeal, without prejudice to any rights you may have under law or your card network’s rules.</p>
+<h3>6. What Happens to Virtual Items After a Refund</h3>
+<p>If a refund is granted for a Stripe-processed purchase:</p>
+<ul><li>Any associated virtual items or currency provided as part of that purchase will be removed from your account.</li><li>This may also include: Items obtained using the refunded currency, Progress or advantages directly derived from the refunded purchase, where technically possible.</li></ul>
+<p>Attempting to:</p>
+<ul><li>Use,</li><li>Transfer, or</li><li>Retain access to refunded items</li></ul>
+<p>is considered a misuse of the system and may result in account restrictions, reversal of benefits, or other enforcement actions .</p>
+<h3>7. Changes to This Policy</h3>
+<p>We may update this Refund Policy from time to time. When we make material changes, we will:</p>
+<ul><li>Update the “Last updated” date at the top of this document, and</li><li>Where appropriate, provide a notice in the game and/or on our website.</li></ul>
+<p>Your continued use of our services after an updated Policy becomes effective will constitute your acceptance of the revised Policy .</p>
+<h3>8. Contact Us</h3>
+<p>If you have questions about this Refund Policy or need help with a Stripe-related purchase:</p>
+<ul><li>Please contact us via the in-game support system as described above, or</li><li>Reach out to us at: ???? contact@factorialstudio.com</li></ul>
+</main>
+
+<footer class="policy-foot">
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; NTN: 9232454</p>
+  <div class="links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="purchase.html">Purchase</a>
+    <a href="refund.html">Refund</a>
+    <a href="user-tcs.html">User T&amp;Cs</a>
+    <a href="developer-tcs.html">Developer T&amp;Cs</a>
+    <a href="hr-privacy.html">HR Privacy</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
