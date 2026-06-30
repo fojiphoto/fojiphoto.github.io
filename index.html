@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Factorial Studio | Premier Global Gaming Studio & QA Agency</title>
+<title>Factorial Studio | Game QA & Testing Agency — Find Bugs Before Players Do</title>
+<meta name="description" content="Factorial Studio is a specialist game QA & testing agency. Real-device lab, 24-hour bug reports, 98% test coverage. We find the bugs before your players do. Free QA teardown available.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://factorialstudio.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Factorial Studio | Game QA & Testing Agency">
+<meta property="og:description" content="Specialist game QA & testing. Real-device lab, 24-hour bug reports, 98% test coverage. We find the bugs before your players do.">
+<meta property="og:url" content="https://factorialstudio.com/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta property="og:site_name" content="Factorial Studio">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Factorial Studio | Game QA & Testing Agency">
+<meta name="twitter:description" content="Specialist game QA & testing. We find the bugs before your players do.">
+<meta name="twitter:image" content="https://factorialstudio.com/images/logo.png">
+<link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Syne:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -229,6 +245,16 @@ body::after {
 .nav-btn:hover {
   box-shadow: 0 0 30px rgba(0,255,224,0.5);
   transform: translateY(-1px);
+}
+.nav-cta-group { display: flex; align-items: center; gap: 12px; }
+.nav-btn-alt {
+  color: var(--neon);
+  background: transparent;
+  border: 1px solid var(--neon);
+}
+.nav-btn-alt:hover {
+  background: rgba(0,255,224,0.08);
+  box-shadow: 0 0 22px rgba(0,255,224,0.25);
 }
 
 .nav-hamburger {
@@ -728,26 +754,34 @@ body::after {
 .svc-card:hover::after { color: rgba(0,255,224,0.06); bottom: -10px; }
 
 .svc-icon {
-  width: 52px; height: 52px;
+  width: 84px; height: 84px;
   border: 1px solid var(--border2);
+  border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 24px;
-  background: rgba(0,255,224,0.04);
+  margin-bottom: 28px;
+  background: linear-gradient(145deg, rgba(0,255,224,0.07), rgba(0,153,255,0.03));
   position: relative; z-index: 1;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
+.svc-icon svg {
+  width: 46px; height: 46px;
+  stroke: var(--neon);
+  filter: drop-shadow(0 0 6px rgba(0,255,224,0.4));
+}
+.svc-card:hover .svc-icon { transform: translateY(-2px); }
 .svc-card:hover .svc-icon { box-shadow: 0 0 20px rgba(0,255,224,0.15); }
 
 .svc-name {
   font-family: var(--f-head);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   position: relative; z-index: 1;
 }
+.svc-name em { color: var(--neon); font-style: normal; }
 
 .svc-desc {
   font-size: 0.88rem;
@@ -770,6 +804,140 @@ body::after {
   padding: 3px 8px;
   border-radius: 2px;
   background: rgba(0,255,224,0.04);
+}
+
+/* Featured QA service card */
+.svc-card-feature {
+  background: var(--dark2);
+  box-shadow: inset 0 0 0 1px rgba(0,255,224,0.18);
+}
+.svc-card-feature::before { transform: scaleX(1); }
+.svc-card-feature .svc-icon {
+  box-shadow: 0 0 20px rgba(0,255,224,0.18);
+  border-color: var(--neon);
+}
+.svc-badge {
+  position: absolute; top: 18px; right: 18px;
+  font-family: var(--f-mono);
+  font-size: 0.56rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--black);
+  background: var(--svc, var(--neon));
+  padding: 4px 9px; border-radius: 2px;
+  font-weight: 700; z-index: 2;
+}
+
+/* ══════════════════════════════════════════
+   PER-DEPARTMENT SERVICE THEMING
+══════════════════════════════════════════ */
+.svc-card[data-num="01"] { --svc:#00ffe0; --svcA:rgba(0,255,224,0.12); --svcB:rgba(0,255,224,0.04); --d:0s; }
+.svc-card[data-num="02"] { --svc:#b06bff; --svcA:rgba(176,107,255,0.14); --svcB:rgba(176,107,255,0.05); --d:0.5s; }
+.svc-card[data-num="03"] { --svc:#3aa0ff; --svcA:rgba(58,160,255,0.14);  --svcB:rgba(58,160,255,0.05); --d:1s; }
+.svc-card[data-num="04"] { --svc:#ff5ea8; --svcA:rgba(255,94,168,0.14);  --svcB:rgba(255,94,168,0.05); --d:0.75s; }
+.svc-card[data-num="05"] { --svc:#ffd166; --svcA:rgba(255,209,102,0.14); --svcB:rgba(255,209,102,0.05); --d:1.25s; }
+.svc-card[data-num="06"] { --svc:#10e08a; --svcA:rgba(16,224,138,0.14);  --svcB:rgba(16,224,138,0.05); --d:0.25s; }
+
+.svc-card {
+  background:
+    radial-gradient(130% 90% at 88% 0%, var(--svcA), transparent 58%),
+    var(--dark1);
+}
+.svc-card:hover {
+  background:
+    radial-gradient(130% 90% at 88% 0%, var(--svcA), transparent 52%),
+    var(--dark2);
+}
+.svc-card::before { background: linear-gradient(90deg, transparent, var(--svc), transparent); }
+.svc-card::after { color: var(--svcB); }
+
+.svc-icon {
+  background: linear-gradient(145deg, var(--svcA), var(--svcB));
+  border-color: var(--svc);
+}
+.svc-icon svg { stroke: var(--svc); filter: drop-shadow(0 0 7px var(--svc)); }
+.svc-card:hover .svc-icon { box-shadow: 0 0 22px var(--svcA); }
+
+.svc-tag {
+  color: var(--svc);
+  border-color: var(--svc);
+  background: var(--svcB);
+}
+.svc-card-feature { box-shadow: inset 0 0 0 1px var(--svcA); }
+
+/* clickable service card link */
+.svc-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 22px;
+  font-family: var(--f-mono);
+  font-size: 0.66rem; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 700;
+  color: var(--svc);
+  position: relative; z-index: 1;
+  transition: gap 0.25s, text-shadow 0.25s;
+}
+a.svc-card:hover .svc-link { gap: 12px; text-shadow: 0 0 12px var(--svc); }
+a.svc-card { cursor: pointer; }
+
+/* ── Service box "alive" animations — unique per department ── */
+.svc-icon { position: relative; }
+/* universal gentle glow-breathe on the icon stroke */
+.svc-icon svg {
+  animation: svcPulse 3s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes svcPulse {
+  0%, 100% { filter: drop-shadow(0 0 5px var(--svc)); }
+  50%      { filter: drop-shadow(0 0 16px var(--svc)); }
+}
+
+/* 01 · QA — magnifier "scans" side to side + a sweeping scan line */
+.svc-card[data-num="01"] .svc-icon { animation: svcScanSway 3.4s ease-in-out infinite; }
+.svc-card[data-num="01"] .svc-icon::after {
+  content: ''; position: absolute; left: 6px; right: 6px; top: 0;
+  height: 2px; border-radius: 2px; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--svc), transparent);
+  animation: svcScan 3.6s linear infinite;
+}
+@keyframes svcScanSway { 0%,100% { transform: translateX(-4px); } 50% { transform: translateX(4px); } }
+@keyframes svcScan {
+  0% { top: 4px; opacity: 0; } 12% { opacity: 0.85; }
+  88% { opacity: 0.85; } 100% { top: calc(100% - 6px); opacity: 0; }
+}
+
+/* 02 · Game Dev — controller "button press" bounce */
+.svc-card[data-num="02"] .svc-icon { animation: svcPress 2.6s ease-in-out infinite; }
+@keyframes svcPress {
+  0%,68%,100% { transform: scale(1); }
+  78% { transform: scale(0.86) rotate(-2deg); }
+  88% { transform: scale(1.07); }
+}
+
+/* 03 · Mobile Publishing — "launch / upload" lift */
+.svc-card[data-num="03"] .svc-icon { animation: svcLaunch 3s ease-in-out infinite; }
+@keyframes svcLaunch {
+  0%,55%,100% { transform: translateY(0); }
+  72% { transform: translateY(-11px); }
+}
+
+/* 04 · Art & Animation — creative sway / rotate */
+.svc-card[data-num="04"] .svc-icon { animation: svcSway 4s ease-in-out infinite; }
+@keyframes svcSway { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+
+/* 05 · Console Porting — "transfer" slide left↔right */
+.svc-card[data-num="05"] .svc-icon { animation: svcShift 3s ease-in-out infinite; }
+@keyframes svcShift { 0%,100% { transform: translateX(-7px); } 50% { transform: translateX(7px); } }
+
+/* 06 · Live Ops — broadcast "ping" pulse */
+.svc-card[data-num="06"] .svc-icon { animation: svcPing 2.2s ease-in-out infinite; }
+@keyframes svcPing {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.13); }
+}
+
+/* livelier on hover */
+.svc-card:hover .svc-icon { animation-duration: 1.6s; }
+.svc-card:hover .svc-icon svg { animation-duration: 1.3s; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-icon, .svc-icon svg, .svc-icon::after { animation: none; }
 }
 
 /* ══════════════════════════════════════════
@@ -1313,6 +1481,15 @@ body::after {
 .form-select option { background: var(--dark2); }
 .form-textarea { resize: none; min-height: 120px; }
 ::placeholder { color: var(--muted); opacity: 0.5; font-size: 0.85rem; }
+.form-status {
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  margin-top: 14px;
+  min-height: 1em;
+}
+.form-status.ok  { color: #10b981; }
+.form-status.err { color: var(--fire); }
 
 /* ══════════════════════════════════════════
    CTA BANNER
@@ -1706,6 +1883,152 @@ footer {
   .engage-grid { grid-template-columns: 1fr; }
   .trust-strip { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Hero top-right publish CTA */
+.hero-publish {
+  position: absolute;
+  top: 150px; right: 60px;
+  z-index: 3;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s forwards;
+}
+.hero-publish-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 0.65rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: #ff4d2e;
+}
+/* WebGL CTA buttons — match the WebGL page's red-orange brand */
+.hero-publish .btn-neon, #webgl .btn-neon { background: #ff4d2e; }
+.hero-publish .btn-neon:hover, #webgl .btn-neon:hover { box-shadow: 0 0 40px rgba(255,77,46,0.55), 0 8px 30px rgba(0,0,0,0.4); }
+@media (max-width: 1100px) { .hero-publish { display: none; } }
+
+/* ══════════════════════════════════════════
+   WEBGL / WEB PUBLISHING
+══════════════════════════════════════════ */
+#webgl {
+  background:
+    radial-gradient(120% 95% at 88% -15%, rgba(124,58,237,0.22), transparent 55%),
+    radial-gradient(100% 85% at 0% 115%, rgba(0,255,224,0.06), transparent 55%),
+    #0b0720;
+  border-top: 1px solid rgba(124,58,237,0.20);
+  border-bottom: 1px solid rgba(124,58,237,0.20);
+}
+#webgl .platform-card { background: rgba(255,255,255,0.025); }
+#webgl .platform-card:hover { background: rgba(124,58,237,0.07); }
+.webgl-lead {
+  display: flex; flex-wrap: wrap; gap: 40px;
+  align-items: flex-end; justify-content: space-between;
+}
+.platform-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 14px; margin-top: 50px;
+}
+.platform-card {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--dark1); border: 1px solid var(--border);
+  border-radius: 4px; padding: 18px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+.platform-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: var(--neon); transform: scaleY(0); transform-origin: top;
+  transition: transform 0.35s;
+}
+.platform-card:hover { transform: translateY(-4px); border-color: var(--border2); box-shadow: 0 18px 40px rgba(0,0,0,0.45); }
+.platform-card:hover::before { transform: scaleY(1); }
+.platform-mark {
+  width: 52px; height: 52px; border-radius: 11px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 6px;
+  background: #fff;
+  box-shadow: 0 0 16px rgba(0,255,224,0.12);
+  font-family: var(--f-head); font-weight: 900; font-size: 0.82rem; color: var(--black);
+}
+.platform-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.platform-info { min-width: 0; }
+.platform-name { font-family: var(--f-head); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.platform-tag { font-family: var(--f-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+@media (max-width: 1100px) { .platform-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px)  { .platform-grid { grid-template-columns: repeat(2, 1fr); } .webgl-lead { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 440px)  { .platform-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════
+   CEO VISION
+══════════════════════════════════════════ */
+.ceo-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 50px;
+}
+.ceo-photo-col { display: flex; flex-direction: column; gap: 22px; }
+.ceo-photo-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  border: 1px solid var(--border2);
+  background: var(--dark3);
+  overflow: hidden;
+}
+.ceo-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  filter: saturate(1.02) contrast(1.04);
+  transition: transform 0.6s ease;
+}
+.ceo-photo-frame:hover .ceo-photo { transform: scale(1.03); }
+.ceo-photo-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8,11,18,0) 55%, rgba(8,11,18,0.65) 100%),
+    radial-gradient(ellipse at 30% 20%, rgba(0,255,224,0.10), transparent 60%);
+}
+.ceo-identity { text-align: left; }
+.ceo-name {
+  font-family: var(--f-head);
+  font-size: 1.35rem; font-weight: 900;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.ceo-role {
+  font-family: var(--f-mono);
+  font-size: 0.7rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--neon);
+  margin-top: 6px;
+}
+.ceo-content { position: relative; }
+.ceo-quote-mark {
+  font-family: var(--f-head);
+  font-size: 5rem; line-height: 0.6;
+  color: var(--neon); opacity: 0.18;
+}
+.ceo-statement {
+  font-family: var(--f-head);
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  font-weight: 800; line-height: 1.25;
+  letter-spacing: 0.01em;
+  margin: 10px 0 26px;
+}
+.ceo-statement em { color: var(--neon); font-style: normal; }
+.ceo-body { color: var(--muted); font-size: 0.98rem; line-height: 1.85; margin-bottom: 16px; }
+.ceo-body strong { color: var(--text); font-weight: 600; }
+.ceo-divider { width: 40px; height: 1px; background: var(--border2); margin: 26px 0 22px; }
+.ceo-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.ceo-pill {
+  font-family: var(--f-mono);
+  font-size: 0.62rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--neon);
+  padding: 7px 13px;
+  border: 1px solid var(--border2); border-radius: 2px;
+  background: rgba(0,255,224,0.03);
+}
+@media (max-width: 900px) {
+  .ceo-split { grid-template-columns: 1fr; gap: 36px; }
+  .ceo-photo-frame { max-width: 360px; }
+}
 </style>
 </head>
 <body>
@@ -1735,7 +2058,7 @@ footer {
   <a href="#services" onclick="closeMobileNav()">Services</a>
   <a href="#about" onclick="closeMobileNav()">About</a>
   <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
-  <a href="#team" onclick="closeMobileNav()">Team</a>
+  <a href="#team" onclick="closeMobileNav()">Leadership</a>
   <a href="#process" onclick="closeMobileNav()">Process</a>
   <a href="#faq" onclick="closeMobileNav()">FAQ</a>
   <a href="privacy.html">Privacy</a>
@@ -1746,6 +2069,7 @@ footer {
   <a href="hr-privacy.html">HR Privacy</a>
   <a href="purchase.html">Purchase Terms</a>
   <a href="refund.html">Refund Policy</a>
+  <a href="fsa.io/index.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
   <a href="#contact" onclick="closeMobileNav()" style="color:var(--neon)">Get in Touch</a>
 </div>
 
@@ -1759,7 +2083,7 @@ footer {
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
-    <a href="#team">Team</a>
+    <a href="#team">Leadership</a>
     <a href="#process">Process</a>
     <a href="#faq">FAQ</a>
     <a href="privacy.html">Privacy</a>
@@ -1776,7 +2100,10 @@ footer {
       </div>
     </div>
   </div>
-  <a href="#contact" class="nav-btn">Get in Touch</a>
+  <div class="nav-cta-group">
+    <a href="fsa.io/index.html" class="nav-btn nav-btn-alt" target="_blank" rel="noopener">FSA Workspace ↗</a>
+    <a href="#contact" class="nav-btn">Get in Touch</a>
+  </div>
   <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </div>
@@ -1793,22 +2120,22 @@ footer {
   <div class="hero-content">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
-      Premier Global Gaming Studio &amp; QA Agency
+      Specialist Game QA &amp; Testing Studio
     </div>
     <h1 class="hero-h1">
-      We Craft<br>
-      <span class="line-neon">Worlds That</span>
-      <span class="line-neon">Inspire</span>
-      <span class="line-dim">// Full-Cycle Development · Quality Assurance · Live Ops</span>
+      We Break Games<br>
+      <span class="line-neon">So Your Players</span>
+      <span class="line-neon">Never Do</span>
+      <span class="line-dim">// Game QA &amp; Testing · Real-Device Lab · 24h Bug Reports</span>
     </h1>
     <p class="hero-desc">
-      <strong>Factorial Studio</strong> is a global gaming studio and elite QA agency.
-      From raw concept to post-launch support — we ship immersive experiences
-      that resonate across every platform.
+      <strong>Factorial Studio</strong> is a dedicated game QA &amp; testing agency.
+      Functional, performance, and compatibility testing on a <strong>50+ real-device lab</strong> —
+      delivering polished, ship-ready builds with bug reports in your inbox within 24 hours.
     </p>
     <div class="hero-actions">
-      <a href="#portfolio" class="btn-neon">Explore Our Work</a>
-      <a href="#contact" class="btn-outline">Start a Project →</a>
+      <a href="#contact" class="btn-neon">Get a Free QA Teardown</a>
+      <a href="#services" class="btn-outline">How We Test →</a>
     </div>
     <div class="hero-metrics">
       <div>
@@ -1828,6 +2155,12 @@ footer {
         <div class="metric-label">Test Coverage Avg</div>
       </div>
     </div>
+  </div>
+
+  <!-- Hero top-right CTA -->
+  <div class="hero-publish">
+    <span class="hero-publish-eyebrow">// WebGL · HTML5 Publishing</span>
+    <a href="webgl-publishing.html" class="btn-neon">Publish My Web Game →</a>
   </div>
 
   <!-- Floating QA terminal — animated 3-slide carousel -->
@@ -1905,13 +2238,28 @@ footer {
   <div class="services-header">
     <div>
       <div class="s-eyebrow reveal">What We Do</div>
-      <h2 class="s-title reveal delay-1">End-to-End<br><em>Gaming Services</em></h2>
+      <h2 class="s-title reveal delay-1">Game QA &amp;<br><em>Quality Assurance</em></h2>
     </div>
-    <p class="s-desc reveal delay-2">From first pixel to post-launch support, our multidisciplinary teams deliver results at every stage of the game development lifecycle.</p>
+    <p class="s-desc reveal delay-2">QA is our craft. Functional, performance, compatibility, and compliance testing on a 50+ real-device lab — with bug reports in your inbox within 24 hours. Need more? We're a full studio too.</p>
   </div>
   <div class="services-grid">
-    <div class="svc-card reveal" data-num="01">
-      <div class="svc-icon">🎮</div>
+    <a href="qa-testing.html" class="svc-card svc-card-feature reveal" data-num="01">
+      <div class="svc-badge">Our Specialty</div>
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="9"/><path d="M20.5 20.5 27 27"/><path d="m10 14 3 3 5-6"/></svg></div>
+      <div class="svc-name">QA &amp; Testing</div>
+      <div class="svc-desc">Rigorous functional, performance, compatibility, and compliance testing by specialist QA engineers — on a 50+ real-device lab. Detailed bug reports with repro steps and screenshots, delivered within 24 hours.</div>
+      <div class="svc-tags">
+        <span class="svc-tag">Functional</span>
+        <span class="svc-tag">Performance</span>
+        <span class="svc-tag">Compatibility</span>
+        <span class="svc-tag">Compliance</span>
+        <span class="svc-tag">Real Devices</span>
+      </div>
+      <span class="svc-link">Explore QA &amp; Testing →</span>
+    </a>
+    <a href="game-development.html" class="svc-card reveal delay-1" data-num="02">
+      <div class="svc-badge">Full Studio</div>
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12h10a6 6 0 0 1 6 6v1a4 4 0 0 1-7.3 2.2L18 19h-4l-1.7 2.2A4 4 0 0 1 5 19v-1a6 6 0 0 1 6-6Z"/><path d="M9 16v4M7 18h4"/><circle cx="21" cy="16.5" r=".9" fill="var(--svc)" stroke="none"/><circle cx="23.5" cy="19" r=".9" fill="var(--svc)" stroke="none"/></svg></div>
       <div class="svc-name">Game Development</div>
       <div class="svc-desc">Full-cycle game development from concept and design through engineering, art, audio, and live deployment across all major platforms.</div>
       <div class="svc-tags">
@@ -1920,19 +2268,11 @@ footer {
         <span class="svc-tag">PC</span>
         <span class="svc-tag">Console</span>
       </div>
-    </div>
-    <div class="svc-card reveal delay-1" data-num="02">
-      <div class="svc-icon">🔬</div>
-      <div class="svc-name">QA & Testing</div>
-      <div class="svc-desc">Rigorous functional, performance, and compatibility testing by specialist QA engineers. Ship polished, bug-free experiences every time.</div>
-      <div class="svc-tags">
-        <span class="svc-tag">Functional</span>
-        <span class="svc-tag">Perf</span>
-        <span class="svc-tag">Compliance</span>
-      </div>
-    </div>
-    <div class="svc-card reveal delay-2" data-num="03">
-      <div class="svc-icon">📱</div>
+      <span class="svc-link">Explore Game Development →</span>
+    </a>
+    <a href="mobile-publishing.html" class="svc-card reveal delay-2" data-num="03">
+      <div class="svc-badge">Growth Engine</div>
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="4" width="14" height="24" rx="3"/><path d="M14 24h4"/><path d="M16 9v8M13 12l3-3 3 3"/></svg></div>
       <div class="svc-name">Mobile Publishing</div>
       <div class="svc-desc">Strategic mobile publishing with UA, ASO, monetization optimization, and live ops support to scale your player base globally.</div>
       <div class="svc-tags">
@@ -1941,9 +2281,11 @@ footer {
         <span class="svc-tag">UA</span>
         <span class="svc-tag">ASO</span>
       </div>
-    </div>
-    <div class="svc-card reveal delay-1" data-num="04">
-      <div class="svc-icon">🎨</div>
+      <span class="svc-link">Explore Mobile Publishing →</span>
+    </a>
+    <a href="art-animation.html" class="svc-card reveal delay-1" data-num="04">
+      <div class="svc-badge">In-House</div>
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5C9.9 5 5 9.5 5 15c0 4.7 3.8 8 8.5 8 1.4 0 2.5-1.1 2.5-2.5 0-.6-.3-1.2-.7-1.7-.4-.5-.6-1-.6-1.6 0-1.2 1-2.2 2.3-2.2H21c3.3 0 6-2.5 6-5.8C27 8.3 22 5 16 5Z"/><circle cx="11" cy="13" r="1.1" fill="var(--svc)" stroke="none"/><circle cx="16" cy="10.5" r="1.1" fill="var(--svc)" stroke="none"/><circle cx="21" cy="13" r="1.1" fill="var(--svc)" stroke="none"/></svg></div>
       <div class="svc-name">Art & Animation</div>
       <div class="svc-desc">World-class 2D/3D art, character design, environment art, VFX, and cinematic animation — for any visual style or genre.</div>
       <div class="svc-tags">
@@ -1952,9 +2294,10 @@ footer {
         <span class="svc-tag">VFX</span>
         <span class="svc-tag">Rigging</span>
       </div>
-    </div>
-    <div class="svc-card reveal delay-2" data-num="05">
-      <div class="svc-icon">⚙️</div>
+      <span class="svc-link">Explore Art &amp; Animation →</span>
+    </a>
+    <a href="console-porting.html" class="svc-card reveal delay-2" data-num="05">
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h16l-4-4M26 20H10l4 4"/></svg></div>
       <div class="svc-name">Console Porting</div>
       <div class="svc-desc">Expert porting and optimization for PS5, Xbox Series X|S, and Nintendo Switch with dedicated first-party certification support.</div>
       <div class="svc-tags">
@@ -1963,9 +2306,10 @@ footer {
         <span class="svc-tag">Switch</span>
         <span class="svc-tag">Cert</span>
       </div>
-    </div>
-    <div class="svc-card reveal delay-3" data-num="06">
-      <div class="svc-icon">📡</div>
+      <span class="svc-link">Explore Console Porting →</span>
+    </a>
+    <a href="live-operations.html" class="svc-card reveal delay-3" data-num="06">
+      <div class="svc-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="2.5" fill="var(--svc)" stroke="none"/><path d="M11 11a7 7 0 0 0 0 10M21 11a7 7 0 0 1 0 10"/><path d="M8 8a11 11 0 0 0 0 16M24 8a11 11 0 0 1 0 16"/></svg></div>
       <div class="svc-name">Live Operations</div>
       <div class="svc-desc">Ongoing live ops management, seasonal event design, economy balancing, and player retention strategy for live service titles.</div>
       <div class="svc-tags">
@@ -1973,7 +2317,8 @@ footer {
         <span class="svc-tag">Economy</span>
         <span class="svc-tag">Retention</span>
       </div>
-    </div>
+      <span class="svc-link">Explore Live Operations →</span>
+    </a>
   </div>
 </section>
 
@@ -2079,7 +2424,7 @@ footer {
       <img class="proj-icon" src="images/icon4.png" alt="">
       <div class="proj-info">
         <div class="proj-genre">Puzzle · PC / Mobile / Web / Console · Full Dev / QA / Published</div>
-        <div class="proj-name">Guess The Quize</div>
+        <div class="proj-name">Guess The Quiz</div>
       </div>
       <div class="proj-hover">↗</div>
     </a>
@@ -2106,54 +2451,79 @@ footer {
   </div>
 </section>
 
-<!-- ══ TEAM ══ -->
+<!-- ══ WEBGL / WEB PUBLISHING ══ -->
+<section id="webgl" class="section section-dark">
+  <div class="webgl-lead">
+    <div>
+      <div class="s-eyebrow reveal">Web &amp; HTML5 Publishing</div>
+      <h2 class="s-title reveal delay-1">Build Once.<br><em>Publish Everywhere.</em></h2>
+    </div>
+    <p class="s-desc reveal delay-2" style="margin-bottom:0;">We build and optimize instant-play <strong style="color:var(--text)">WebGL / HTML5</strong> games — then distribute them across the world's biggest web and social gaming platforms, putting your title in front of players on every channel.</p>
+  </div>
+  <div class="platform-grid reveal delay-3">
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/CrazyGames.png" alt="CrazyGames" loading="lazy"></div><div class="platform-info"><div class="platform-name">CrazyGames</div><div class="platform-tag">Web Games Portal</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/GameDistribution.jpg" alt="GameDistribution" loading="lazy"></div><div class="platform-info"><div class="platform-name">GameDistribution</div><div class="platform-tag">HTML5 Distribution</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/MSN%20Play.png" alt="MSN Play" loading="lazy"></div><div class="platform-info"><div class="platform-name">MSN Play</div><div class="platform-tag">Microsoft Casual</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/Pley.png" alt="Pley" loading="lazy"></div><div class="platform-info"><div class="platform-name">Pley</div><div class="platform-tag">Web Game Platform</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/Youtube%20Playable.webp" alt="YouTube Playables" loading="lazy"></div><div class="platform-info"><div class="platform-name">YouTube Playables</div><div class="platform-tag">In-App Games</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/TickTok.webp" alt="TikTok Mini Games" loading="lazy"></div><div class="platform-info"><div class="platform-name">TikTok Mini Games</div><div class="platform-tag">Social Mini-Games</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/Poki.jpg" alt="Poki" loading="lazy"></div><div class="platform-info"><div class="platform-name">Poki</div><div class="platform-tag">Web Games Platform</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/GameSnacks.png" alt="GameSnacks" loading="lazy"></div><div class="platform-info"><div class="platform-name">GameSnacks</div><div class="platform-tag">Google HTML5</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/Yandex.webp" alt="Yandex Games" loading="lazy"></div><div class="platform-info"><div class="platform-name">Yandex Games</div><div class="platform-tag">CIS / Global Portal</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/PlayGama.webp" alt="PlayGama" loading="lazy"></div><div class="platform-info"><div class="platform-name">PlayGama</div><div class="platform-tag">Game Aggregator</div></div></div>
+    <div class="platform-card"><div class="platform-mark"><img src="WebGL/Epic%20Games.png" alt="Epic Mobile Store" loading="lazy"></div><div class="platform-info"><div class="platform-name">Epic Mobile Store</div><div class="platform-tag">Epic Games (Mobile)</div></div></div>
+    <div class="platform-card" style="border-style:dashed;"><div class="platform-mark" style="background:transparent;border:1px dashed var(--neon);color:var(--neon);box-shadow:none;">+</div><div class="platform-info"><div class="platform-name">&amp; More</div><div class="platform-tag">New channels added</div></div></div>
+  </div>
+  <div class="reveal delay-4" style="text-align:center;margin-top:46px;">
+    <a href="webgl-publishing.html" class="btn-neon">Publish My Web Game</a>
+  </div>
+</section>
+
+<!-- ══ CEO VISION ══ -->
 <section id="team" class="section section-alt">
-  <div class="s-eyebrow reveal">The People</div>
-  <h2 class="s-title reveal delay-1">Core <em>Leadership</em></h2>
-  <p class="s-desc reveal delay-2">Veterans from AAA, indie, and mobile gaming across three continents — united by a single obsession: shipping great games.</p>
-  <div class="team-grid">
-    <div class="team-card reveal">
-      <div class="team-avatar-wrap">
-        <img class="team-photo" src="coreleadership/qasim.png" alt="Muhammad Qasim">
-        <div class="team-scan-line"></div>
+  <div class="s-eyebrow reveal">Leadership</div>
+  <h2 class="s-title reveal delay-1">The <em>Vision</em></h2>
+  <div class="ceo-split">
+    <div class="ceo-photo-col reveal delay-1">
+      <div class="ceo-photo-frame">
+        <img class="ceo-photo" src="coreleadership/qasim.png" alt="Muhammad Qasim — CEO & Founder, Factorial Studio">
+        <div class="ceo-photo-overlay"></div>
+        <div class="about-corner ac-tl"></div>
+        <div class="about-corner ac-tr"></div>
+        <div class="about-corner ac-bl"></div>
+        <div class="about-corner ac-br"></div>
       </div>
-      <div class="team-body">
-        <div class="team-name">Muhammad Qasim</div>
-        <div class="team-role">CEO & Studio Director</div>
-        <div class="team-bio">Visionary founder leading Factorial Studio's overall strategy. Drives studio direction across game development, publishing, and global partnerships.</div>
-      </div>
-    </div>
-    <div class="team-card reveal delay-1">
-      <div class="team-avatar-wrap">
-        <img class="team-photo" src="coreleadership/anam.png" alt="Anam Shraf">
-        <div class="team-scan-line"></div>
-      </div>
-      <div class="team-body">
-        <div class="team-name">Anam Shraf</div>
-        <div class="team-role">Head of QA</div>
-        <div class="team-bio">Leads the QA division with a focus on automated test pipelines, performance benchmarking, and first-party certification workflows.</div>
+      <div class="ceo-identity">
+        <div class="ceo-name">Muhammad Qasim</div>
+        <div class="ceo-role">CEO &amp; Founder</div>
       </div>
     </div>
-    <div class="team-card reveal delay-2">
-      <div class="team-avatar-wrap">
-        <img class="team-photo" src="coreleadership/ali.png" alt="Ali Javid">
-        <div class="team-scan-line"></div>
-      </div>
-      <div class="team-body">
-        <div class="team-name">Ali Javid</div>
-        <div class="team-role">Lead Game Designer</div>
-        <div class="team-bio">Designs core gameplay systems and player experiences. Expert in player psychology, systemic design, and live content strategy across genres.</div>
-      </div>
-    </div>
-    <div class="team-card reveal delay-3">
-      <div class="team-avatar-wrap">
-        <img class="team-photo" src="coreleadership/sana.png" alt="Sana Yousaf">
-        <div class="team-scan-line"></div>
-      </div>
-      <div class="team-body">
-        <div class="team-name">Sana Yousaf</div>
-        <div class="team-role">Art Director</div>
-        <div class="team-bio">Owns the visual direction across all titles. Concept to production pipeline specialist — fluent across realism, stylized, and pixel art workflows.</div>
+    <div class="ceo-content reveal delay-2">
+      <div class="ceo-quote-mark">"</div>
+      <blockquote class="ceo-statement">
+        I've been a gamer my whole life. I'm here to help build a healthier
+        gaming industry — <em>one great studio at a time.</em>
+      </blockquote>
+      <p class="ceo-body">
+        Factorial Studio was founded on a simple belief: the next generation of
+        <strong>AA and AAA games</strong> deserves a quality partner that genuinely
+        cares about the craft. Coming from a gaming background — and being a player
+        first — our founder knows that behind every great title is a team battling
+        deadlines, bugs, and burnout.
+      </p>
+      <p class="ceo-body">
+        That's why we exist. We take the QA burden off studios' shoulders so they can
+        focus on what matters: making games people love. Our mission is a healthier,
+        more collaborative gaming ecosystem — where studios of every size have access
+        to world-class testing, and where we help as many of them ship with confidence
+        as we possibly can.
+      </p>
+      <div class="ceo-divider"></div>
+      <div class="ceo-pills">
+        <span class="ceo-pill">AA / AAA Quality</span>
+        <span class="ceo-pill">Studio-First</span>
+        <span class="ceo-pill">Built by Gamers</span>
+        <span class="ceo-pill">Healthy Ecosystem</span>
       </div>
     </div>
   </div>
@@ -2299,7 +2669,7 @@ footer {
     <div class="testi-card reveal">
       <div class="testi-quote-mark">"</div>
       <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">Factorial Studio' QA team caught critical issues our own testers missed. Their systematic approach and rapid turnaround saved our launch timeline. They're absolutely indispensable as a partner.</div>
+      <div class="testi-text">Factorial Studio's QA team caught critical issues our own testers missed. Their systematic approach and rapid turnaround saved our launch timeline. They're absolutely indispensable as a partner.</div>
       <div class="testi-divider"></div>
       <div class="testi-author">
         <div class="testi-avi">JP</div>
@@ -2382,38 +2752,46 @@ footer {
     </div>
     <div class="contact-form-wrap reveal delay-2">
       <div class="form-title">// Send a Message</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input class="form-input" type="text" placeholder="Muhammad">
+      <form id="contact-form" onsubmit="return handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-first">First Name</label>
+            <input class="form-input" id="cf-first" name="First Name" type="text" placeholder="Muhammad" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-last">Last Name</label>
+            <input class="form-input" id="cf-last" name="Last Name" type="text" placeholder="Qasim" required>
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" placeholder="Qasim">
+          <label class="form-label" for="cf-email">Email Address</label>
+          <input class="form-input" id="cf-email" name="Email" type="email" placeholder="you@studio.com" required>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" placeholder="you@studio.com">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Service Needed</label>
-        <select class="form-select">
-          <option value="">Select a service...</option>
-          <option>Game Development</option>
-          <option>QA & Testing</option>
-          <option>Console Porting</option>
-          <option>Art & Animation</option>
-          <option>Mobile Publishing</option>
-          <option>Live Operations</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Project Details</label>
-        <textarea class="form-textarea" placeholder="Tell us about your project, timeline, platforms, and budget..."></textarea>
-      </div>
-      <button class="btn-neon" id="submit-btn" onclick="handleSubmit(this)">Send Message →</button>
+        <div class="form-group">
+          <label class="form-label" for="cf-service">Service Needed</label>
+          <select class="form-select" id="cf-service" name="Service Needed">
+            <option value="">Select a service...</option>
+            <option>QA &amp; Testing</option>
+            <option>Game Development</option>
+            <option>Console Porting</option>
+            <option>Art &amp; Animation</option>
+            <option>Mobile Publishing</option>
+            <option>Live Operations</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-details">Project Details</label>
+          <textarea class="form-textarea" id="cf-details" name="Project Details" placeholder="Tell us about your project, timeline, platforms, and budget..." required></textarea>
+        </div>
+        <!-- FormSubmit settings -->
+        <input type="hidden" name="_subject" value="New project inquiry — factorialstudio.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        <button class="btn-neon" id="submit-btn" type="submit">Send Message →</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -2640,16 +3018,48 @@ setInterval(() => {
   if (Math.random() < 0.7) quasarTalk();
 }, 32000);
 
-// ── Form submit ──
-function handleSubmit(btn) {
-  btn.textContent = '✓ Message Sent!';
-  btn.style.background = '#10b981';
-  btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.4)';
-  setTimeout(() => {
+// ── Form submit (FormSubmit.co AJAX → contact@factorialstudio.com) ──
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('form-status');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.textContent = '';
+  status.className = 'form-status';
+
+  const data = new FormData(form);
+
+  fetch('https://formsubmit.co/ajax/contact@factorialstudio.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  })
+  .then(r => r.json())
+  .then(() => {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#10b981';
+    btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.4)';
+    status.textContent = "Thanks — we'll reply within 24 hours.";
+    status.classList.add('ok');
+    form.reset();
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.boxShadow = '';
+      btn.disabled = false;
+    }, 4000);
+  })
+  .catch(() => {
+    btn.disabled = false;
     btn.textContent = 'Send Message →';
-    btn.style.background = '';
-    btn.style.boxShadow = '';
-  }, 3500);
+    status.textContent = 'Something went wrong. Email us directly at contact@factorialstudio.com';
+    status.classList.add('err');
+  });
+
+  return false;
 }
 </script>
 </body>

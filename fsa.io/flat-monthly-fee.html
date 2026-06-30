@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flat Monthly Fee Model | FSA Workspace</title>
+<meta name="description" content="FSA Workspace flat monthly fee model — one predictable payment covers salaries, office, hardware, HR, and IT. No hidden fees, complete transparency, scale up or down anytime.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-900:#040c1a;--navy-800:#070f1e;--navy-700:#0a1628;--card:rgba(255,255,255,0.04);
+  --acc:#c9a227;--accA:rgba(201,162,39,0.14);--accR:201,162,39;
+  --white:#fff;--txt:rgba(255,255,255,0.72);--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08);
+  --font:'Inter',-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--navy-800);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(7,15,30,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.04em}
+.logo img{width:34px;height:34px;object-fit:contain}.logo span{color:var(--acc)}
+.nav-actions{display:flex;align-items:center;gap:20px}
+.nav-back{font-size:0.8rem;color:var(--muted);font-weight:600}.nav-back:hover{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:0.85rem;padding:12px 22px;border-radius:10px;background:var(--acc);color:#04101f;transition:all .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--accR),0.4)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--white)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc);box-shadow:none}
+.hero{position:relative;padding:150px 0 80px;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(130px);background:rgba(var(--accR),0.10);top:-220px;right:-160px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center;position:relative;z-index:2}
+.crumbs{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:18px}
+.crumbs a{color:var(--muted)}.crumbs span{color:var(--muted);margin:0 8px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:18px;padding:6px 14px;border:1px solid rgba(var(--accR),0.3);border-radius:99px;background:rgba(var(--accR),0.08)}
+h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;line-height:1.04;letter-spacing:-0.02em;margin-bottom:22px}
+h1 em{color:var(--acc);font-style:normal}
+.hero p{font-size:1.08rem;color:var(--txt);max-width:560px;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.panel{position:relative;background:linear-gradient(160deg,var(--accA),var(--card) 65%);border:1px solid rgba(var(--accR),0.25);border-radius:20px;padding:40px 36px;box-shadow:0 30px 70px rgba(0,0,0,0.5);overflow:hidden}
+.panel-pulse{position:absolute;top:34px;left:36px;width:84px;height:84px;border-radius:18px}
+.panel-pulse::after{content:'';position:absolute;inset:0;border-radius:18px;border:2px solid var(--acc);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+.panel-icon{width:84px;height:84px;border-radius:18px;background:rgba(var(--accR),0.12);border:1px solid var(--acc);display:flex;align-items:center;justify-content:center;margin-bottom:26px;position:relative;animation:ping 2.4s ease-in-out infinite}
+@keyframes ping{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.panel-icon svg{width:46px;height:46px;stroke:var(--acc);filter:drop-shadow(0 0 8px var(--acc))}
+.panel-icon svg [fill="#c9a227"]{fill:var(--acc)}
+.panel-title{font-size:1.3rem;font-weight:800;margin-bottom:18px}
+.panel-check li{display:flex;align-items:center;gap:12px;font-family:ui-monospace,monospace;font-size:0.86rem;color:var(--txt);padding:8px 0;opacity:0;animation:reveal 4.5s ease-in-out infinite}
+.panel-check li:nth-child(1){animation-delay:0s}.panel-check li:nth-child(2){animation-delay:.6s}.panel-check li:nth-child(3){animation-delay:1.2s}
+@keyframes reveal{0%,8%{opacity:0;transform:translateX(-8px)}14%,86%{opacity:1;transform:none}100%{opacity:1}}
+.panel-check li::before{content:'✓';display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(var(--accR),0.15);border:1px solid var(--acc);color:var(--acc);font-size:0.7rem;font-weight:700;flex-shrink:0}
+.section{padding:90px 0}.section-alt{background:var(--navy-900)}
+.eyebrow{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:12px}
+.s-title{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:900;letter-spacing:-0.01em;margin-bottom:16px}
+.s-title em{color:var(--acc);font-style:normal}
+.s-lead{color:var(--txt);max-width:640px;margin-bottom:44px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 26px;transition:all .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(var(--accR),0.4);background:rgba(var(--accR),0.05)}
+.card-ico{width:42px;height:42px;border-radius:10px;background:rgba(var(--accR),0.12);border:1px solid rgba(var(--accR),0.3);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--acc);font-weight:800}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.card p{font-size:0.9rem;color:var(--txt);line-height:1.6}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--acc);padding:22px 26px;border-radius:0 12px 12px 0}
+.step-n{font-size:1.5rem;font-weight:900;color:var(--acc);opacity:0.5;min-width:42px}
+.step h4{font-size:1.05rem;font-weight:700;margin-bottom:6px}.step p{font-size:0.92rem;color:var(--txt)}
+.cta{padding:90px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border);background:var(--navy-900)}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(var(--accR),0.12),transparent 65%)}
+.cta h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;margin-bottom:16px;position:relative;z-index:1}
+.cta h2 em{color:var(--acc);font-style:normal}
+.cta p{color:var(--txt);max-width:480px;margin:0 auto 30px;position:relative;z-index:1}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+footer{padding:36px 0;border-top:1px solid var(--border);background:var(--navy-900);text-align:center}
+footer p{font-size:0.78rem;color:var(--muted)}
+footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .links a{font-size:0.78rem;color:var(--muted);font-weight:600}footer .links a:hover{color:var(--acc)}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}.panel{display:none}.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}nav{padding:14px 18px}.nav-back{display:none}}
+@media (prefers-reduced-motion:reduce){.panel-icon,.panel-pulse::after,.panel-check li{animation:none}.panel-check li{opacity:1}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="assets/logo.png" alt="FSA Workspace">FSA <span>Workspace</span></a>
+  <div class="nav-actions"><a href="index.html" class="nav-back">← Back</a><a href="index.html#contact" class="btn">Book a Meeting</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">FSA Workspace</a><span>›</span>Services<span>›</span>Flat Monthly Fee Model</div>
+      <div class="tag">Simple Pricing</div>
+      <h1>Flat Monthly <em>Fee Model</em></h1>
+      <p>One predictable monthly payment covers salaries, office, hardware, HR, and IT. No hidden fees — complete transparency, and the freedom to scale up or down anytime.</p>
+      <div class="hero-cta"><a href="index.html#contact" class="btn">Get a Custom Quote</a><a href="#included" class="btn btn-ghost">What's Included →</a></div>
+    </div>
+    <div class="panel">
+      <div class="panel-pulse"></div>
+      <div class="panel-icon"><svg viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24"/><path d="M10 18h12M10 22h8"/></svg></div>
+      <div class="panel-title">One simple invoice…</div>
+      <ul class="panel-check"><li>Salaries &amp; operations</li><li>Office, hardware, HR &amp; IT</li><li>No hidden fees, ever</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="included">
+  <div class="wrap">
+    <div class="eyebrow">What's Included</div>
+    <h2 class="s-title">One Fee. <em>Everything.</em></h2>
+    <p class="s-lead">No line-item surprises, no creeping overhead. One predictable number that covers it all.</p>
+    <div class="grid">
+      <div class="card"><div class="card-ico">01</div><h3>Everything Included</h3><p>Salaries, office, hardware, HR, and IT — all wrapped into one fee.</p></div>
+      <div class="card"><div class="card-ico">02</div><h3>No Hidden Costs</h3><p>What you're quoted is what you pay. No surprises, ever.</p></div>
+      <div class="card"><div class="card-ico">03</div><h3>Scale Up or Down</h3><p>Add or reduce team members as your roadmap shifts.</p></div>
+      <div class="card"><div class="card-ico">04</div><h3>One Invoice</h3><p>A single, simple monthly invoice — clean and easy to manage.</p></div>
+      <div class="card"><div class="card-ico">05</div><h3>Transparent Billing</h3><p>Clear breakdowns and full visibility into your spend.</p></div>
+      <div class="card"><div class="card-ico">06</div><h3>Predictable Budgeting</h3><p>Plan with confidence — your costs never balloon unexpectedly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow">How It Works</div>
+    <h2 class="s-title">Simple <em>From Day One</em></h2>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><div><h4>Define Your Team</h4><p>Tell us the roles and team size you need.</p></div></div>
+      <div class="step"><div class="step-n">02</div><div><h4>Get One Quote</h4><p>We give you a single, all-in monthly number.</p></div></div>
+      <div class="step"><div class="step-n">03</div><div><h4>One Monthly Payment</h4><p>Pay once — we handle salaries, office, HR, and IT.</p></div></div>
+      <div class="step"><div class="step-n">04</div><div><h4>Scale Anytime</h4><p>Adjust your team as you grow, with no penalties.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>One Fee. <em>Everything Handled.</em></h2>
+    <p>Get a custom, all-inclusive monthly quote tailored to your team — no commitment required.</p>
+    <div class="cta-row"><a href="index.html#contact" class="btn">Get a Custom Quote</a><a href="index.html" class="btn btn-ghost">Back to FSA</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#contact">Book a Meeting</a></div>
+    <p>© 2026 FSA Workspace. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
