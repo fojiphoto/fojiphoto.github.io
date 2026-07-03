@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factorial Studio — Game QA, Development &amp; Distribution</title>
+<meta name="description" content="Factorial Studio is your end-to-end game partner — specialist QA &amp; testing, full game development, art, console porting, live-ops, and getting your game onto every web platform and app store.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#06281c;
+  --g900:#064e3b; --g800:#0a5a42; --g700:#11704f; --g600:#15803d;
+  --leaf:#7cb342; --leaf2:#a3d977;
+  --teal:#115e59;
+  --gold:#fbbf24; --gold2:#f59e0b; --orange:#ff7043;
+  --cream:#f6f3e7; --cream2:#fffdf6;
+  --text:#eaf5ee; --muted:#a9c6b5;
+  --ink-text:#123a2a; --ink-muted:#5f7d6c;
+  --f-disp:'Bungee',cursive; --f-body:'Fredoka',sans-serif;
+  --r:22px; --r-lg:30px;
+  --shadow:0 18px 44px rgba(3,30,20,.35);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--f-body);font-weight:400;color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.disp{font-family:var(--f-disp);font-weight:400;letter-spacing:.01em;line-height:1.04;text-transform:uppercase}
+
+/* dotted leaf texture overlay */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:
+   radial-gradient(circle at 12% 18%, rgba(124,179,66,.10), transparent 40%),
+   radial-gradient(circle at 88% 12%, rgba(251,191,36,.08), transparent 38%),
+   radial-gradient(circle at 70% 85%, rgba(17,112,79,.18), transparent 45%);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;background:rgba(6,40,28,.78);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.logo b{font-family:var(--f-disp);font-size:1.15rem;color:#fff}
+.logo b em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-weight:500;font-size:.95rem;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-body);font-weight:600;font-size:.95rem;
+  padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:transform .2s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn.btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;box-shadow:0 6px 16px rgba(245,158,11,.26)}
+.btn.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(245,158,11,.38)}
+.btn.btn-leaf{background:linear-gradient(180deg,var(--leaf),#5f9e2e);color:#0f2e09;box-shadow:0 6px 16px rgba(124,179,66,.26)}
+.btn.btn-leaf:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(124,179,66,.38)}
+.btn.btn-ghost{background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.4);color:var(--text)}
+.btn.btn-ghost:hover{border-color:var(--leaf);color:#fff;transform:translateY(-2px)}
+.nav-toggle{display:none}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:150px 0 90px;
+  background:radial-gradient(120% 100% at 80% -10%, #0c5a3f 0%, var(--g900) 45%, var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#3a1405;font-weight:600;
+  font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:8px 16px;border-radius:999px;
+  box-shadow:0 8px 18px rgba(255,112,67,.4);margin-bottom:22px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--f-disp);font-size:clamp(2.6rem,5.6vw,4.6rem);color:#fff;line-height:1.02;text-transform:uppercase;margin-bottom:22px;text-shadow:0 4px 0 rgba(0,0,0,.18)}
+.hero h1 em{color:var(--gold);font-style:normal;display:block}
+.hero p{font-size:1.12rem;color:var(--muted);max-width:540px;margin-bottom:32px}
+.hero p b{color:#eaf5ee;font-weight:600}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.trust{display:flex;gap:22px;flex-wrap:wrap}
+.trust span{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);font-weight:500}
+.trust svg{width:18px;height:18px;color:var(--leaf2)}
+/* hero card */
+.hero-card{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);
+  border-radius:var(--r-lg);padding:30px;box-shadow:var(--shadow);position:relative}
+.hero-card::after{content:"";position:absolute;inset:0;border-radius:var(--r-lg);box-shadow:inset 0 2px 0 rgba(255,255,255,.08);pointer-events:none}
+.hc-top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.hc-dot{width:13px;height:13px;border-radius:50%}
+.hc-r{background:#ff6b5e}.hc-y{background:var(--gold)}.hc-g{background:var(--leaf2)}
+.hc-title{font-family:var(--f-body);font-weight:600;font-size:.82rem;color:var(--muted);margin-left:6px}
+.hc-line{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:14px;background:rgba(255,255,255,.05);margin-bottom:10px;font-weight:500;font-size:.92rem}
+.hc-line svg{width:22px;height:22px;flex-shrink:0;color:var(--leaf2)}
+.hc-line.crit svg{color:var(--orange)}
+.hc-game{display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:14px;background:rgba(255,255,255,.05);margin-bottom:10px}
+.hc-game img{width:42px;height:42px;border-radius:11px;object-fit:cover;flex-shrink:0;background:#0a4d38;box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.hc-g-info{flex:1;min-width:0}
+.hc-g-info b{display:block;font-family:var(--f-disp);font-size:.74rem;color:#fff;letter-spacing:.01em}
+.hc-g-info span{font-size:.78rem;color:var(--muted);font-weight:500}
+.hc-game>svg{width:20px;height:20px;flex-shrink:0;color:var(--leaf2)}
+.hc-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:16px}
+.hc-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--leaf),var(--gold));animation:fill 2.8s ease-in-out infinite}
+@keyframes fill{0%{width:8%}70%,100%{width:96%}}
+.hc-stat{text-align:right;font-family:var(--f-disp);font-size:.78rem;color:var(--gold);margin-top:10px}
+
+/* SECTION */
+.section{position:relative;z-index:1;padding:90px 0}
+.section.cream{background:var(--cream);color:var(--ink-text)}
+.section.cream .eyebrow{color:var(--g600)}
+.section.cream h2{color:var(--g900)}
+.section.cream .lead{color:var(--ink-muted)}
+.eyebrow{font-family:var(--f-body);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+h2.disp{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:16px}
+h2.disp em{color:var(--gold2);font-style:normal}
+.section:not(.cream) h2.disp em{color:var(--gold)}
+.lead{font-size:1.05rem;color:var(--muted);max-width:640px;margin-bottom:50px}
+
+/* SERVICES */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:30px 28px;
+  box-shadow:0 10px 24px rgba(6,40,28,.08);transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(6,40,28,.16);border-color:var(--leaf)}
+.card-ico{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
+.card-ico svg{width:32px;height:32px;color:var(--g700);stroke-width:2}
+.card.feat{background:linear-gradient(165deg,#14633f,#0c4e31);border-color:rgba(163,217,119,.3);color:var(--text)}
+.card.feat .card-ico{background:rgba(251,191,36,.16)}
+.card.feat .card-ico svg{color:var(--gold)}
+.card.feat h3{color:#fff}.card.feat p{color:var(--muted)}
+.card-tag{position:absolute;top:18px;right:18px;background:var(--gold);color:#3a2a06;font-weight:600;font-size:.62rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.card h3{font-family:var(--f-disp);font-size:1.15rem;color:var(--g900);margin-bottom:10px}
+.card p{font-size:.94rem;color:var(--ink-muted);line-height:1.6}
+.card.feat h3{color:#fff}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:var(--r);padding:28px 20px;text-align:center}
+.stat b{font-family:var(--f-disp);font-size:2.1rem;color:var(--gold);display:block;line-height:1}
+.stat span{font-weight:500;font-size:.82rem;color:var(--muted);margin-top:8px;display:block}
+
+/* DISTRIBUTION logos */
+.logos{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:14px}
+.logo-tile{background:#fff;border-radius:20px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:14px;
+  box-shadow:0 8px 18px rgba(6,40,28,.18);transition:transform .25s}
+.logo-tile:hover{transform:translateY(-5px) rotate(-2deg)}
+.logo-tile img{width:100%;height:100%;object-fit:contain}
+.logo-cap{text-align:center;font-weight:600;font-size:.95rem;color:var(--muted);margin-top:28px}
+.logo-cap b{color:var(--gold)}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:28px 24px;text-align:center;position:relative}
+.step-n{font-family:var(--f-disp);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  background:linear-gradient(160deg,var(--leaf),#5f9e2e);color:#0f2e09;font-size:1.1rem}
+.step h4{font-family:var(--f-disp);font-size:1rem;color:var(--g900);margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--ink-muted)}
+
+/* CEO */
+.ceo{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+.ceo-photo{border-radius:var(--r-lg);overflow:hidden;border:3px solid rgba(163,217,119,.3);box-shadow:var(--shadow);aspect-ratio:4/5;background:#0a4d38}
+.ceo-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.ceo-quote{font-family:var(--f-disp);font-size:clamp(1.4rem,2.6vw,2.1rem);color:#fff;line-height:1.25;margin:14px 0 22px}
+.ceo-quote em{color:var(--gold);font-style:normal}
+.ceo p{color:var(--muted);margin-bottom:14px}
+.ceo-name{font-family:var(--f-disp);color:var(--leaf2);font-size:1rem;margin-top:18px}
+.ceo-role{font-weight:500;color:var(--muted);font-size:.85rem}
+
+/* CTA */
+.cta{position:relative;z-index:1;text-align:center;padding:96px 0;
+  background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
+.cta h2{font-family:var(--f-disp);font-size:clamp(2.2rem,5vw,3.6rem);color:#fff;margin-bottom:16px}
+.cta h2 em{color:var(--gold);font-style:normal}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px;font-size:1.05rem}
+.cta .hero-cta{justify-content:center}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}
+footer p{color:var(--muted);font-size:.85rem}
+footer .flinks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+footer .flinks a{color:var(--muted);font-weight:500;font-size:.85rem}
+footer .flinks a:hover{color:var(--gold)}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.feat-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-top:2px solid #e7e2cf}
+.feat-row:first-of-type{margin-top:8px}
+.feat-ico{width:48px;height:48px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
+.feat-ico svg{width:24px;height:24px;color:var(--g700);stroke-width:2}
+.feat-row h4{font-family:var(--f-disp);font-size:.92rem;color:var(--g900);margin-bottom:5px}
+.feat-row p{font-size:.9rem;color:var(--ink-muted);line-height:1.55}
+.about-vis{position:relative}
+.about-frame{border-radius:var(--r-lg);overflow:hidden;border:3px solid rgba(21,128,61,.18);box-shadow:0 20px 50px rgba(6,40,28,.25);aspect-ratio:4/3;background:#0a4d38}
+.about-frame img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;background:linear-gradient(165deg,#14633f,#0c4e31);color:#fff;border:2px solid rgba(163,217,119,.3);
+  border-radius:18px;padding:14px 20px;box-shadow:var(--shadow);text-align:center}
+.about-badge b{font-family:var(--f-disp);font-size:1.5rem;color:var(--gold);display:block;line-height:1}
+.about-badge span{font-weight:500;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.about-badge.ab1{bottom:-22px;left:-22px}
+.about-badge.ab2{top:-22px;right:-22px}
+
+/* PORTFOLIO */
+.pf-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.pf-pill{font-family:var(--f-body);font-weight:600;font-size:.8rem;padding:9px 20px;border-radius:999px;
+  border:2px solid rgba(163,217,119,.3);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.pf-pill.active,.pf-pill:hover{background:var(--leaf);color:#0f2e09;border-color:var(--leaf)}
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pf-card{position:relative;display:block;border-radius:var(--r);overflow:hidden;background:#0a4d38;
+  border:2px solid rgba(163,217,119,.18);box-shadow:0 12px 30px rgba(3,30,20,.3);transition:transform .25s,border-color .25s,box-shadow .25s}
+.pf-card:hover{transform:translateY(-7px);border-color:var(--leaf);box-shadow:0 24px 50px rgba(3,30,20,.45)}
+.pf-shot{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.pf-icon{position:absolute;top:14px;left:14px;width:54px;height:54px;border-radius:15px;object-fit:cover;
+  border:2px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.4);background:#0a4d38}
+.pf-arrow{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--gold);color:#3a2a06;opacity:0;transform:scale(.7);transition:all .25s}
+.pf-card:hover .pf-arrow{opacity:1;transform:scale(1)}
+.pf-arrow svg{width:18px;height:18px}
+.pf-info{padding:18px 20px 20px}
+.pf-genre{font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--leaf2);font-weight:600}
+.pf-name{font-family:var(--f-disp);font-size:1.05rem;color:#fff;margin-top:7px;text-transform:uppercase}
+
+/* service card as link */
+a.card{text-decoration:none;color:inherit;display:block}
+.card-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-weight:600;font-size:.8rem;color:var(--g600);text-transform:uppercase;letter-spacing:.04em}
+.card-link svg{width:16px;height:16px}
+.card.feat .card-link{color:var(--gold)}
+a.card:hover .card-link{gap:12px}
+
+/* ENGAGEMENT */
+.engage{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.eng-card{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.2);border-radius:var(--r);padding:30px 28px}
+.eng-card .num{font-family:var(--f-disp);font-size:.68rem;color:var(--gold);letter-spacing:.12em;margin-bottom:14px}
+.eng-card h3{font-family:var(--f-disp);font-size:1.05rem;color:#fff;margin-bottom:10px}
+.eng-card p{font-size:.92rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.eng-tag{display:inline-block;font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--leaf2);border:2px solid rgba(163,217,119,.3);padding:6px 14px;border-radius:999px}
+.regions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:42px}
+.region{font-weight:600;font-size:.76rem;color:var(--muted);border:2px solid rgba(163,217,119,.25);padding:8px 16px;border-radius:999px;display:flex;align-items:center;gap:8px}
+.region::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--leaf)}
+
+/* FAQ */
+.faq{max-width:860px;margin:0 auto}
+.faq-item{background:var(--cream2);border:2px solid #e7e2cf;border-radius:18px;margin-bottom:14px;overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;
+  padding:22px 24px;font-family:var(--f-body);font-weight:600;font-size:1.02rem;color:var(--g900);text-align:left}
+.faq-q .plus{width:30px;height:30px;border-radius:50%;background:#eaf6dd;color:var(--g700);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:transform .3s,background .25s}
+.faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--leaf);color:#0f2e09}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:320px}
+.faq-a p{padding:0 24px 22px;color:var(--ink-muted);line-height:1.65;font-size:.95rem}
+
+/* TESTIMONIALS */
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:var(--r);padding:28px}
+.testi-stars{color:var(--gold);font-size:.9rem;margin-bottom:14px;letter-spacing:2px}
+.testi-card>p{font-size:.95rem;color:var(--text);line-height:1.7;margin-bottom:20px}
+.testi-who{display:flex;align-items:center;gap:12px}
+.testi-avi{width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,var(--leaf),#5f9e2e);display:flex;align-items:center;justify-content:center;font-family:var(--f-disp);font-size:.78rem;color:#0f2e09;flex-shrink:0}
+.testi-who b{display:block;font-family:var(--f-disp);font-size:.76rem;color:#fff}
+.testi-who span{font-size:.72rem;color:var(--leaf2);font-weight:500}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:start}
+.contact-info .ci{display:flex;gap:14px;padding:18px 0;border-bottom:2px solid #e7e2cf}
+.ci-ico{width:46px;height:46px;border-radius:14px;background:linear-gradient(160deg,#eaf6dd,#d6edc0);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-ico svg{width:22px;height:22px;color:var(--g700)}
+.ci b{display:block;font-family:var(--f-disp);font-size:.72rem;color:var(--g900)}
+.ci span{font-size:.95rem;color:var(--ink-muted)}
+.cform{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r-lg);padding:34px}
+.cform .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cform label{display:block;font-weight:600;font-size:.72rem;color:var(--g700);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px}
+.cform input,.cform select,.cform textarea{width:100%;font-family:var(--f-body);font-size:.95rem;color:var(--ink-text);background:#fff;border:2px solid #e2dcc6;border-radius:12px;padding:12px 14px;outline:none;transition:border-color .2s}
+.cform input:focus,.cform select:focus,.cform textarea:focus{border-color:var(--leaf)}
+.cform textarea{min-height:110px;resize:vertical}
+.cform .btn{margin-top:22px;width:100%;justify-content:center}
+.form-msg{margin-top:14px;font-weight:600;font-size:.86rem;min-height:1em}
+.form-msg.ok{color:var(--g600)}.form-msg.err{color:var(--orange)}
+@media (max-width:900px){.engage,.testi{grid-template-columns:1fr}.contact{grid-template-columns:1fr;gap:32px}}
+@media (max-width:560px){.cform .row{grid-template-columns:1fr}}
+
+@media (max-width:980px){
+  .about{grid-template-columns:1fr;gap:44px}
+  .pf-grid{grid-template-columns:1fr 1fr}
+  .hero-grid,.ceo{grid-template-columns:1fr;gap:36px}
+  .hero-card{display:none}.ceo-photo{max-width:340px}
+  .cards{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}
+  .logos{grid-template-columns:repeat(4,1fr)}.steps{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:560px){
+  .cards,.logos{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
+  .hero{padding-top:120px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#distribution">Distribution</a>
+    <a href="#faq">FAQ</a>
+    <a href="fsa.io/index-v2.html" target="_blank" rel="noopener" class="btn btn-ghost">FSA Workspace ↗</a>
+    <a href="#contact" class="btn btn-gold">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">Free QA Teardown Available</div>
+      <h1>We Guard<em>Your Game</em></h1>
+      <p>From <b>bug-free QA</b> to full development, art, and getting your title onto <b>every store</b> — Factorial Studio is your cozy, end-to-end game partner. Polished builds, happy players.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-gold">Get a Free Teardown
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="webgl-publishing-v2.html" class="btn btn-leaf">Publish My Web Game</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+      </div>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>50+ real devices</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>24h bug reports</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unity &amp; Unreal</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">factorial-qa.report</span></div>
+      <!-- Game thumbnails: swap files in /v2-screens/ (game1, game2, game3) -->
+      <div class="hc-game"><img src="v2-screens/game1.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Fortress Merge</b><span>1,420 tests · 0 blockers</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-game"><img src="v2-screens/game2.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Golf Orbit</b><span>60 FPS · 50+ devices</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-game"><img src="v2-screens/game3.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Spider Gangster</b><span>7 bugs found &amp; fixed</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-bar"><i></i></div>
+      <div class="hc-stat">AVG COVERAGE 98% · SHIP-READY ✓</div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="section cream" id="services">
+  <div class="wrap">
+    <div class="eyebrow">What We Do</div>
+    <h2 class="disp">Everything Your Game<br><em>Needs to Shine</em></h2>
+    <p class="lead">One cozy studio, end to end — QA is our craft, and we build, polish, and ship across every platform.</p>
+    <div class="cards">
+
+      <a class="card feat" href="qa-testing-v2.html">
+        <div class="card-tag">Our Specialty</div>
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1H8V6a4 4 0 0 1 4-4Z"/><rect x="6" y="7" width="12" height="13" rx="6"/><path d="M3 11h3M18 11h3M3 16h3M18 16h3M12 11v7"/></svg></div>
+        <h3>QA &amp; Testing</h3>
+        <p>Functional, performance, compatibility &amp; compliance testing on a 50+ real-device lab. Detailed bug reports within 24 hours.</p>
+        <span class="card-link">Explore QA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="card" href="game-development-v2.html">
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 12h3M8.5 10.5v3"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg></div>
+        <h3>Game Development</h3>
+        <p>Full-cycle development on Unity &amp; Unreal — gameplay, multiplayer, backend, and cross-platform launch.</p>
+        <span class="card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="card" href="mobile-publishing-v2.html">
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M11 18h2"/><path d="M12 7v6M9.5 9.5 12 7l2.5 2.5"/></svg></div>
+        <h3>Mobile Publishing</h3>
+        <p>ASO, UA, monetization &amp; live-ops to scale your player base across iOS and Android.</p>
+        <span class="card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="card" href="art-animation-v2.html">
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2.2-1 2.2-2.2 0-.6-.2-1-.6-1.5-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2H17a4 4 0 0 0 4-4c0-3.9-4-7-9-7Z"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="15.5" cy="10.5" r="1"/></svg></div>
+        <h3>Art &amp; Animation</h3>
+        <p>Concept, 2D/3D, characters, environments, rigging &amp; VFX — engine-ready, in any style.</p>
+        <span class="card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="card" href="console-porting-v2.html">
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9 2 12l4 3M18 9l4 3-4 3"/><path d="M14 4 10 20"/></svg></div>
+        <h3>Console Porting</h3>
+        <p>PS5, Xbox Series X|S &amp; Switch porting, optimization &amp; first-party certification support.</p>
+        <span class="card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="card" href="live-operations-v2.html">
+        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M6 6a9 9 0 0 0 0 12M18 6a9 9 0 0 1 0 12"/></svg></div>
+        <h3>Live Operations</h3>
+        <p>Events, economy balancing, retention &amp; A/B testing to keep players coming back.</p>
+        <span class="card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>50+</b><span>Real Test Devices</span></div>
+      <div class="stat"><b>24h</b><span>Bug Report Turnaround</span></div>
+      <div class="stat"><b>98%</b><span>Avg Test Coverage</span></div>
+      <div class="stat"><b>20+</b><span>Stores We Publish To</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section cream" id="about">
+  <div class="wrap about">
+    <div>
+      <div class="eyebrow">About Factorial Studio</div>
+      <h2 class="disp">Built by Gamers.<br><em>Trusted by Studios.</em></h2>
+      <p class="lead" style="margin-bottom:26px">Founded in 2016, Factorial Studio emerged from a shared obsession with crafting games that leave lasting impressions. Today we operate across three continents with 200+ developers, artists, and QA specialists — united by one mission: shipping great games.</p>
+      <div class="feat-row">
+        <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
+        <div><h4>Global Studio Network</h4><p>Development hubs in Lahore, Warsaw, and Austin ensure around-the-clock production and diverse creative perspectives.</p></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><h4>Certified QA Pipeline</h4><p>ISO-aligned QA with 500+ test cases per title and automated regression frameworks built entirely in-house.</p></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></div>
+        <div><h4>Platform Expertise</h4><p>First-party certified teams for Sony, Microsoft, and Nintendo — plus deep iOS, Android, Steam, and Epic expertise.</p></div>
+      </div>
+    </div>
+    <div class="about-vis">
+      <div class="about-frame"><img src="images/qa-lab.png" alt="Factorial Studio QA Lab" loading="lazy"></div>
+      <div class="about-badge ab1"><b>200+</b><span>Professionals</span></div>
+      <div class="about-badge ab2"><b>3</b><span>Global Offices</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <div class="wrap">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="disp">Games &amp; <em>Projects</em></h2>
+    <p class="lead">Titles developed, co-developed, or QA-serviced by Factorial Studio — across platforms, genres, and scales.</p>
+    <div class="pf-filters">
+      <button class="pf-pill active">All</button>
+      <button class="pf-pill">Action</button>
+      <button class="pf-pill">Mobile</button>
+      <button class="pf-pill">Console</button>
+      <button class="pf-pill">QA</button>
+    </div>
+    <div class="pf-grid">
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.ttt.fortressmerge" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game1.jpg" alt="Fortress Merge" loading="lazy">
+        <img class="pf-icon" src="images/icon1.jpg" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Survival · PC / Mobile / Web / Console · Full Development</div><div class="pf-name">Fortress Merge</div></div>
+      </a>
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.derwinstudio.golforbit" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game2.jpg" alt="Golf Orbit" loading="lazy">
+        <img class="pf-icon" src="images/icon2.jpg" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Sport · PC / Mobile / Web / Console · Published</div><div class="pf-name">Golf Orbit</div></div>
+      </a>
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.superfunsoft.thelegendoffireball" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game3.jpg" alt="The Legend of Fireball" loading="lazy">
+        <img class="pf-icon" src="images/icon3.jpg" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Simulation · WebGL · Web / Console · QA Services</div><div class="pf-name">The Legend of Fireball</div></div>
+      </a>
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.qoni.guesstheiranswer" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game4.jpg" alt="Guess The Quiz" loading="lazy">
+        <img class="pf-icon" src="images/icon4.png" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Puzzle · Mobile / Web · Full Dev / QA / Published</div><div class="pf-name">Guess The Quiz</div></div>
+      </a>
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.thg.battleops.shooting.game" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game5.png" alt="Verdant Collapse" loading="lazy">
+        <img class="pf-icon" src="images/icon5.jpg" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Survival · Console · Co-Development</div><div class="pf-name">Verdant Collapse</div></div>
+      </a>
+      <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.fs.gunhero.superhero" target="_blank" rel="noopener">
+        <img class="pf-shot" src="images/game6.jpg" alt="Spider Gangster" loading="lazy">
+        <img class="pf-icon" src="images/icon6.png" alt="" loading="lazy">
+        <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <div class="pf-info"><div class="pf-genre">Simulation · PC / Mobile / Web / Console · Full Development</div><div class="pf-name">Spider Gangster</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION -->
+<section class="section" id="distribution" style="background:linear-gradient(180deg,var(--ink),#072e1f)">
+  <div class="wrap">
+    <div class="eyebrow">Build Once · Publish Everywhere</div>
+    <h2 class="disp">Your Game, On<br><em>Every Platform</em></h2>
+    <p class="lead">We convert games to instant-play WebGL/HTML5 and distribute across the world's biggest web platforms and alternative app stores — far beyond the big two.</p>
+    <div class="logos">
+      <div class="logo-tile"><img src="weblogos/CrazyGames.png" alt="CrazyGames" loading="lazy"></div>
+      <div class="logo-tile"><img src="weblogos/Poki.jpg" alt="Poki" loading="lazy"></div>
+      <div class="logo-tile"><img src="weblogos/GameDistribution.jpg" alt="GameDistribution" loading="lazy"></div>
+      <div class="logo-tile"><img src="weblogos/MSNPlay.png" alt="MSN Play" loading="lazy"></div>
+      <div class="logo-tile"><img src="weblogos/Yandex.webp" alt="Yandex Games" loading="lazy"></div>
+      <div class="logo-tile"><img src="weblogos/TickTok.webp" alt="TikTok Mini Games" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/HuaweiStores.jpg" alt="Huawei AppGallery" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/GalaxyStore.jpg" alt="Samsung Galaxy Store" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/Amazon.jpg" alt="Amazon Appstore" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/Xiaomi.svg" alt="Xiaomi GetApps" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/Transsion.webp" alt="Transsion aha Games" loading="lazy"></div>
+      <div class="logo-tile"><img src="Alterstores/Aptoide.png" alt="Aptoide" loading="lazy"></div>
+    </div>
+    <p class="logo-cap">CrazyGames · Poki · YouTube Playables · Huawei · Samsung · Xiaomi · Transsion <b>&amp; many more</b></p>
+    <div style="text-align:center;margin-top:34px"><a href="webgl-publishing-v2.html" class="btn btn-leaf">See Full Distribution Network</a></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section cream" id="process">
+  <div class="wrap">
+    <div class="eyebrow">How We Work</div>
+    <h2 class="disp">A Cozy, <em>Reliable</em> Process</h2>
+    <p class="lead">Clear milestones, friendly communication, and QA woven in from day one.</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><h4>Discover</h4><p>We learn your game, goals, platforms, and what "done" looks like.</p></div>
+      <div class="step"><div class="step-n">2</div><h4>Build &amp; Test</h4><p>Development and QA run together — weekly playable builds, no surprises.</p></div>
+      <div class="step"><div class="step-n">3</div><h4>Polish</h4><p>Performance, game-feel, and a dedicated QA pass until it shines.</p></div>
+      <div class="step"><div class="step-n">4</div><h4>Launch Everywhere</h4><p>We ship and distribute across web platforms and every app store.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section" id="leadership">
+  <div class="wrap ceo">
+    <div class="ceo-photo"><img src="coreleadership/qasim.png" alt="Muhammad Qasim — CEO &amp; Founder"></div>
+    <div>
+      <div class="eyebrow">The Studio</div>
+      <div class="ceo-quote">"I've been a gamer my whole life — I'm here to help build a healthier gaming industry, <em>one great studio at a time.</em>"</div>
+      <p>Factorial Studio was founded on a simple belief: the next generation of AA and AAA games deserves a quality partner that genuinely cares about the craft.</p>
+      <p>We take the QA and production burden off studios' shoulders — so they can focus on what matters: making games people love.</p>
+      <div class="ceo-name">Muhammad Qasim</div>
+      <div class="ceo-role">CEO &amp; Founder, Factorial Studio</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<!-- ENGAGEMENT -->
+<section class="section" id="engagement">
+  <div class="wrap">
+    <div class="eyebrow">Work With Us</div>
+    <h2 class="disp">Flexible <em>Engagement Models</em></h2>
+    <p class="lead">Partnership structures that adapt to your project scale, timeline, and budget — with offshore rates that deliver real savings vs US/UK agencies.</p>
+    <div class="engage">
+      <div class="eng-card"><div class="num">01 · Fixed Scope</div><h3>Project-Based</h3><p>Defined scope, defined cost. Best for one-off games, console ports, or specific QA cycles with clear deliverables.</p><span class="eng-tag">Fixed Cost</span></div>
+      <div class="eng-card"><div class="num">02 · Dedicated Team</div><h3>Staff Augmentation</h3><p>Monthly dedicated developers, artists, or QA engineers fully integrated into your sprints. Scale up or down anytime.</p><span class="eng-tag">Monthly Retainer</span></div>
+      <div class="eng-card"><div class="num">03 · Hourly T&amp;M</div><h3>Time &amp; Materials</h3><p>Pay for what you use. Ideal for evolving requirements, bug-fix sprints, or live-ops support where flexibility matters.</p><span class="eng-tag">Hourly Billing</span></div>
+    </div>
+    <div class="regions">
+      <span class="region">United Kingdom</span><span class="region">United States</span><span class="region">Canada</span>
+      <span class="region">UAE</span><span class="region">Qatar</span><span class="region">Europe</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section cream" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Common Questions</div>
+    <h2 class="disp" style="text-align:center">Outsourcing <em>Simplified</em></h2>
+    <p class="lead" style="text-align:center;margin:0 auto 44px">Everything you need to know about partnering with Factorial Studio.</p>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Do you sign NDAs for game projects?<span class="plus">+</span></button><div class="faq-a"><p>Yes, absolutely. We sign strict NDAs with all clients and employees. Your IP security is our top priority, and we follow GDPR / ISO-aligned data standards.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you test on real devices?<span class="plus">+</span></button><div class="faq-a"><p>Yes — we don't rely on emulators. We maintain a 50+ device lab of real iOS and Android hardware for accurate performance, battery, thermal, and touch testing.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can you handle Unity and Unreal projects?<span class="plus">+</span></button><div class="faq-a"><p>Our team includes specialized Unity and Unreal engineers and QA. We debug inside the engine, provide optimization logs, and handle source-level analysis.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How does your pricing work?<span class="plus">+</span></button><div class="faq-a"><p>Three flexible models: Project-Based (fixed cost), Staff Augmentation (monthly dedicated resources), and Hourly T&amp;M — with offshore rates that save significantly vs US/UK agencies.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What's your bug-report turnaround?<span class="plus">+</span></button><div class="faq-a"><p>24-hour turnaround for critical bugs. We work across time zones so fresh reports are waiting at the start of your day.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Where is Factorial Studio based?<span class="plus">+</span></button><div class="faq-a"><p>Our HQ is at 306 Tariq Business Center, Lahore, Pakistan. We serve clients globally — UK, USA, Canada, UAE, Qatar, and across Europe.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="eyebrow">Client Voices</div>
+    <h2 class="disp">What Studios <em>Say</em></h2>
+    <div class="testi">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Factorial Studio's QA team caught critical issues our own testers missed. Their systematic approach and rapid turnaround saved our launch. Indispensable partners."</p><div class="testi-who"><div class="testi-avi">JP</div><div><b>James Park</b><span>NexGen Studios · CTO</span></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"From day one they understood our creative vision. Their art and engineering teams felt like a true extension of our studio. We shipped on time and above expectations."</p><div class="testi-who"><div class="testi-avi">LM</div><div><b>Lisa Müller</b><span>ArcLight Games · Producer</span></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Co-developing our console port was completely seamless. Their first-party certification expertise meant zero delays. We'll partner with them on every future title."</p><div class="testi-who"><div class="testi-avi">RC</div><div><b>Ryan Chen</b><span>VaultSoft · Studio Lead</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to Ship Something <em>Players Love?</em></h2>
+    <p>Whether you need a full dev partner or a QA team that never misses a bug — Factorial Studio delivers.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-gold">Get a Free QA Teardown</a>
+      <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section cream" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Get in Touch</div>
+    <h2 class="disp">Start Your <em>Project</em></h2>
+    <p class="lead">Tell us about your game — we'll respond within 24 hours.</p>
+    <div class="contact">
+      <div class="contact-info">
+        <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b>Headquarters</b><span>306 Tariq Business Center, Lahore, Pakistan</span></div></div>
+        <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><b>General Inquiries</b><span>contact@factorialstudio.com</span></div></div>
+        <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M11 18h2"/></svg></div><div><b>ASO &amp; Apps</b><span>aso@factorialstudio.com</span></div></div>
+        <div class="ci" style="border-bottom:none"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Response Time</b><span>Within 24 hours</span></div></div>
+      </div>
+      <form class="cform" id="cozy-form" onsubmit="return cozySubmit(event)">
+        <div class="row">
+          <div><label for="cf-first">First Name</label><input id="cf-first" name="First Name" type="text" placeholder="Muhammad" required></div>
+          <div><label for="cf-last">Last Name</label><input id="cf-last" name="Last Name" type="text" placeholder="Qasim" required></div>
+        </div>
+        <label for="cf-email">Email</label><input id="cf-email" name="Email" type="email" placeholder="you@studio.com" required>
+        <label for="cf-svc">Service Needed</label>
+        <select id="cf-svc" name="Service Needed"><option value="">Select a service…</option><option>QA &amp; Testing</option><option>Game Development</option><option>Mobile Publishing</option><option>Art &amp; Animation</option><option>Console Porting</option><option>Live Operations</option><option>WebGL / Distribution</option><option>Other</option></select>
+        <label for="cf-msg">Project Details</label><textarea id="cf-msg" name="Project Details" placeholder="Tell us about your project, timeline, platforms, and budget…" required></textarea>
+        <input type="hidden" name="_subject" value="New project inquiry — factorialstudio.com"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none">
+        <button type="submit" class="btn btn-gold" id="cf-btn">Send Message →</button>
+        <div class="form-msg" id="cf-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flinks">
+      <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="webgl-publishing-v2.html">WebGL</a><a href="fsa.io/index-v2.html" target="_blank" rel="noopener">FSA Workspace</a>
+      <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a><a href="purchase.html">Purchase</a>
+      <a href="user-tcs.html">User T&amp;Cs</a><a href="developer-tcs.html">Developer T&amp;Cs</a><a href="hr-privacy.html">HR Privacy</a><a href="casual-publishing.html">Casual Publishing</a>
+    </div>
+    <p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan · NTN: 9232454</p>
+  </div>
+</footer>
+
+<script>
+// portfolio filter pills (visual toggle)
+document.querySelectorAll('.pf-pill').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.pf-pill').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+  });
+});
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.faq-item'); var open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open')});
+    if(!open) item.classList.add('open');
+  });
+});
+// contact form → FormSubmit
+function cozySubmit(e){
+  e.preventDefault();
+  var form=e.target, btn=document.getElementById('cf-btn'), st=document.getElementById('cf-status');
+  btn.disabled=true; btn.textContent='Sending…'; st.textContent=''; st.className='form-msg';
+  fetch('https://formsubmit.co/ajax/contact@factorialstudio.com',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)})
+    .then(function(r){return r.json()})
+    .then(function(){btn.textContent='✓ Message Sent!';st.textContent="Thanks — we'll reply within 24 hours.";st.classList.add('ok');form.reset();
+      setTimeout(function(){btn.textContent='Send Message →';btn.disabled=false;},4000);})
+    .catch(function(){btn.disabled=false;btn.textContent='Send Message →';st.textContent='Something went wrong. Email contact@factorialstudio.com';st.classList.add('err');});
+  return false;
+}
+</script>
+</body>
+</html>

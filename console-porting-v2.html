@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Console Porting Services | Factorial Studio</title>
+<meta name="description" content="Expert console porting for PS5, Xbox Series X|S &amp; Nintendo Switch — performance optimization, controller remap, trophies/achievements, and first-party certification support.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;--gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;--f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
+html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--f-body);color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.wrap{max-width:1200px;margin:0 auto;padding:0 28px}.disp{font-family:var(--f-disp);text-transform:uppercase;line-height:1.04}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(6,40,28,.82);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
+.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;object-fit:contain}.logo b{font-family:var(--f-disp);font-size:1.1rem;color:#fff}.logo b em{color:var(--gold);font-style:normal}
+.nav-actions{display:flex;align-items:center;gap:20px}.nav-back{font-weight:500;font-size:.9rem;color:var(--muted)}.nav-back:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.95rem;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:transform .2s,box-shadow .25s}
+.btn.btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;box-shadow:0 6px 16px rgba(245,158,11,.28)}.btn.btn-gold:hover{transform:translateY(-2px)}
+.btn.btn-ghost{background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.4);color:var(--text)}.btn.btn-ghost:hover{border-color:var(--leaf);color:#fff;transform:translateY(-2px)}
+.hero{position:relative;padding:150px 0 84px;background:radial-gradient(120% 100% at 80% -10%, #0c5a3f 0%, var(--g900) 45%, var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.crumbs{font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}.crumbs a{color:var(--muted)}.crumbs span{color:var(--muted);margin:0 8px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#3a1405;background:var(--gold);padding:7px 15px;border-radius:999px;margin-bottom:20px}
+.hero h1{font-family:var(--f-disp);font-size:clamp(2.4rem,5.6vw,4.4rem);color:#fff;line-height:1.02;margin-bottom:22px}.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:560px;margin-bottom:30px}.hero p b{color:#eaf5ee;font-weight:600}.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.report{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.rp-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:2px solid rgba(163,217,119,.15);background:rgba(0,0,0,.2)}
+.rp-bar i{width:12px;height:12px;border-radius:50%}.rr{background:#ff6b5e}.ry{background:var(--gold)}.rg{background:var(--leaf2)}.rp-bar span{font-weight:600;font-size:.76rem;color:var(--muted);margin-left:6px}
+.rp-body{padding:26px 26px 30px}.rp-row{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;padding:7px 0;color:var(--muted)}.rp-row b{color:#fff;font-weight:600}.rp-ok{color:var(--leaf2);font-weight:600}
+.rp-tags{margin-top:8px}.rp-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf2);border:2px solid rgba(163,217,119,.3);padding:3px 9px;border-radius:999px;margin-right:6px}
+.rp-repro{margin-top:14px;padding-top:14px;border-top:2px dashed rgba(163,217,119,.2);font-size:.78rem;color:var(--muted);line-height:1.8}.rp-repro b{color:#fff}
+.section{padding:88px 0;position:relative}.section.cream{background:var(--cream);color:var(--ink-text)}
+.eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}.section.cream .eyebrow{color:var(--g600)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+h2.disp{font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;margin-bottom:16px}.section.cream h2.disp{color:var(--g900)}h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:var(--gold2)}
+.lead{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:46px}.section.cream .lead{color:var(--ink-muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.stat{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:var(--r);padding:26px 18px;text-align:center}
+.stat b{font-family:var(--f-disp);font-size:1.9rem;color:var(--gold);display:block;line-height:1}.stat span{font-weight:500;font-size:.78rem;color:var(--muted);margin-top:8px;display:block}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.tc{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px;transition:transform .25s,border-color .25s}.tc:hover{transform:translateY(-5px);border-color:var(--leaf)}
+.tc-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}.tc-ico svg{width:26px;height:26px;color:var(--g700);stroke-width:2;fill:none}
+.tc h3{font-family:var(--f-disp);font-size:.92rem;color:var(--g900);margin-bottom:8px}.tc p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}
+.steps{display:flex;flex-direction:column;gap:14px}.step{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-left:4px solid var(--leaf);padding:22px 26px;border-radius:0 var(--r) var(--r) 0}
+.step .n{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold);min-width:44px}.step h4{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:6px}.step p{font-size:.92rem;color:var(--muted)}.step p b{color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:10px}.pill{font-weight:600;font-size:.76rem;color:var(--g700);border:2px solid rgba(21,112,79,.3);padding:9px 18px;border-radius:999px}
+.cta{text-align:center;padding:92px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}.cta h2{font-family:var(--f-disp);font-size:clamp(2rem,4.6vw,3.4rem);color:#fff;margin-bottom:16px}.cta h2 em{color:var(--gold);font-style:normal}.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px}.cta .hero-cta{justify-content:center}
+footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}footer p{color:var(--muted);font-size:.82rem}
+@media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:40px}.cards3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.nav-back{display:none}}
+@media (max-width:600px){.cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="factorial-v2.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-actions"><a href="factorial-v2.html" class="nav-back">← Back to Home</a><a href="factorial-v2.html#contact" class="btn btn-gold">Port My Game</a></div>
+</nav>
+<header class="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="crumbs"><a href="factorial-v2.html">Factorial Studio</a><span>›</span>Services<span>›</span>Console Porting</div>
+    <div class="tag">Platform Engineering</div>
+    <h1>Console<br><em>Porting</em></h1>
+    <p>Bring your game to <b>PS5, Xbox Series X|S &amp; Nintendo Switch</b> — optimized, controller-ready, and built to pass first-party certification the first time. We handle the hard platform engineering so you don't have to.</p>
+    <div class="hero-cta"><a href="factorial-v2.html#contact" class="btn btn-gold">Port My Game</a><a href="#how" class="btn btn-ghost">How We Port →</a></div>
+  </div>
+  <div class="report">
+    <div class="rp-bar"><i class="rr"></i><i class="ry"></i><i class="rg"></i><span>cert_report_PS5.log</span></div>
+    <div class="rp-body">
+      <div class="rp-row"><span>Status</span><b class="rp-ok">● CERT PASSED</b></div>
+      <div class="rp-row"><span>Platform</span><b>PlayStation 5</b></div>
+      <div class="rp-row"><span>Frame Rate</span><b>60 FPS locked · 4K</b></div>
+      <div class="rp-row"><span>TRC Items</span><b>142 / 142 cleared</b></div>
+      <div class="rp-tags"><span class="rp-tag">TRC</span><span class="rp-tag">trophies</span><span class="rp-tag">haptics</span></div>
+      <div class="rp-repro"><b>Submission:</b> 0 blockers · Trophies + adaptive triggers · Day-one patch staged → <span class="rp-ok">Submitted to first-party</span></div>
+    </div>
+  </div>
+</div></header>
+
+<section class="section" style="padding-top:56px;padding-bottom:56px"><div class="wrap"><div class="stats">
+  <div class="stat"><b>3</b><span>Consoles Supported</span></div>
+  <div class="stat"><b>1st</b><span>Time Cert Pass Goal</span></div>
+  <div class="stat"><b>60</b><span>FPS Optimization Target</span></div>
+  <div class="stat"><b>TRC</b><span>XR / Lotcheck Ready</span></div>
+</div></div></section>
+
+<section class="section cream"><div class="wrap">
+  <div class="eyebrow">Capabilities</div><h2 class="disp">What We <em>Do</em></h2>
+  <p class="lead">Everything required to take a PC or mobile build to console — engineering, optimization, platform features &amp; certification.</p>
+  <div class="cards3">
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12l-3-3M18 12l-3 3"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><h3>Platform Porting</h3><p>Adapting your codebase, rendering &amp; systems to each console's architecture &amp; SDK.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5M3 21h18"/></svg></div><h3>Performance Optimization</h3><p>Locking target frame-rates &amp; resolutions with CPU/GPU profiling per platform.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h3M8.5 10.5v3"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg></div><h3>Controller / Input Remap</h3><p>Native gamepad support, prompts, haptics &amp; adaptive triggers.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg></div><h3>Memory &amp; Load</h3><p>Fitting within console budgets, streaming &amp; fast loads via each platform's I/O.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>First-Party Certification</h3><p>TRC (Sony), XR (Microsoft) &amp; Lotcheck (Nintendo) — we prepare &amp; shepherd cert.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg></div><h3>Trophies / Achievements</h3><p>Full trophies, achievements, leaderboards &amp; rich-presence integration.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Platform SDK</h3><p>Save data, profiles, store/IAP, cloud &amp; online services wired correctly.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l5 5v11H6z"/><path d="M15 4v5h5M9 13h6"/></svg></div><h3>Build &amp; Submission</h3><p>Master builds, packaging, ratings &amp; the full submission process.</p></div>
+    <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg></div><h3>Patch &amp; Update Support</h3><p>Post-launch patches, day-one updates &amp; ongoing maintenance across platforms.</p></div>
+  </div>
+</div></section>
+
+<section class="section" id="how"><div class="wrap">
+  <div class="eyebrow">Process</div><h2 class="disp">How We <em>Port</em></h2>
+  <p class="lead">A structured path from your existing build to a certified, shipping console title — with no surprises at cert.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Code &amp; Tech Audit</h4><p>We map exactly what's needed for each target console.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Platform Adaptation</h4><p>SDK integration, rendering &amp; system changes — <b>memory, input &amp; storage</b> per platform.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Optimization</h4><p>Profiling &amp; tuning to hit <b>locked frame-rate &amp; resolution</b> targets.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Platform Features</h4><p>Trophies, saves, presence, store &amp; online services integrated to spec.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Certification Prep</h4><p>We run the full <b>TRC / XR / Lotcheck</b> checklist and fix every blocker first.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Submission &amp; Launch</h4><p>Master build, submission &amp; day-one patch readiness through approval.</p></div></div>
+  </div>
+</div></section>
+
+<section class="section cream"><div class="wrap">
+  <div class="eyebrow">Platforms</div><h2 class="disp">Where We <em>Ship</em></h2>
+  <p class="lead">Certified-team experience across current and previous-gen consoles, plus PC storefronts.</p>
+  <div class="pills"><span class="pill">PlayStation 5</span><span class="pill">Xbox Series X|S</span><span class="pill">Nintendo Switch</span><span class="pill">PlayStation 4</span><span class="pill">Xbox One</span><span class="pill">Steam</span><span class="pill">Epic Games Store</span><span class="pill">Unity</span><span class="pill">Unreal</span></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Ready for <em>Console?</em></h2>
+  <p>Tell us your game, engine &amp; target platforms — we'll scope the port and map the fastest path to a certified launch.</p>
+  <div class="hero-cta"><a href="factorial-v2.html#contact" class="btn btn-gold">Port My Game</a><a href="factorial-v2.html#portfolio" class="btn btn-ghost">See Our Work</a></div>
+</div></section>
+
+<footer><div class="wrap"><div class="fl"><a href="factorial-v2.html">Home</a><a href="factorial-v2.html#services">Services</a><a href="factorial-v2.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan</p></div></footer>
+</body>
+</html>
