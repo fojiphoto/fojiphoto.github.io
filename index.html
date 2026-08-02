@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Factorial Studio — Game QA, Development &amp; Distribution</title>
-<meta name="description" content="Factorial Studio is your end-to-end game partner — specialist QA &amp; testing, full game development, art, console porting, live-ops, and getting your game onto every web platform and app store.">
+<title>Factorial Studio — AI Infrastructure for Game &amp; App Publishers</title>
+<meta name="description" content="Factorial Studio is building the AI-powered operating system for game studios and app publishers — WebGL cloud hosting, app intelligence, UA analytics and monetization in one platform. Backed by a studio that ships QA, development and distribution today.">
+<meta property="og:title" content="Factorial Studio — AI Infrastructure for Game &amp; App Publishers">
+<meta property="og:description" content="One platform for publishing, analytics, monetization and growth — built by the team that runs QA, porting and distribution for game studios.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://factorialstudio.com/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -286,6 +292,52 @@ a.card:hover .card-link{gap:12px}
   .cards,.logos{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
   .hero{padding-top:120px}
 }
+
+/* ===== PLATFORM ===== */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:26px}
+.pillar{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);
+  border-radius:var(--r);padding:30px 28px;position:relative;overflow:hidden}
+.pillar::after{content:"";position:absolute;inset:0;border-radius:var(--r);box-shadow:inset 0 2px 0 rgba(255,255,255,.08);pointer-events:none}
+.pillar-ico{width:60px;height:60px;border-radius:18px;background:rgba(251,191,36,.16);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.pillar-ico svg{width:30px;height:30px;color:var(--gold);stroke-width:2}
+.pillar h3{font-family:var(--f-disp);font-size:1.05rem;color:#fff;margin-bottom:10px}
+.pillar p{font-size:.92rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.pillar ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pillar li{font-size:.86rem;color:var(--muted);display:flex;align-items:flex-start;gap:9px;font-weight:500}
+.pillar li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--leaf2);margin-top:8px}
+
+.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.module{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:16px;
+  padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.module b{font-weight:600;font-size:.93rem;color:var(--text)}
+.mstat{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 10px;border-radius:999px;white-space:nowrap}
+.mstat.live{background:rgba(124,179,66,.22);color:var(--leaf2);border:1px solid rgba(124,179,66,.45)}
+.mstat.build{background:rgba(251,191,36,.16);color:var(--gold);border:1px solid rgba(251,191,36,.4)}
+.mstat.next{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid rgba(169,198,181,.28)}
+.plat-note{margin-top:26px;font-size:.88rem;color:var(--muted);text-align:center;font-weight:500}
+
+/* ===== THESIS ===== */
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.thesis-q{font-family:var(--f-disp);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--g900);line-height:1.2;
+  text-transform:uppercase;margin-bottom:20px}
+.thesis-q em{color:var(--g600);font-style:normal}
+.thesis p{color:var(--ink-muted);margin-bottom:14px;font-size:1rem}
+.thesis p b{color:var(--ink-text);font-weight:600}
+.tline{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px}
+.tstep{display:flex;gap:16px;padding:14px 0;border-bottom:1px dashed #ded8c2}
+.tstep:last-child{border-bottom:none;padding-bottom:0}
+.tstep:first-child{padding-top:0}
+.tnum{flex:none;width:34px;height:34px;border-radius:11px;background:var(--g700);color:#fff;
+  font-family:var(--f-disp);font-size:.82rem;display:flex;align-items:center;justify-content:center}
+.tstep h4{font-size:.98rem;color:var(--g900);margin-bottom:3px;font-weight:600}
+.tstep p{font-size:.88rem;color:var(--ink-muted);margin:0}
+
+@media (max-width:900px){
+  .pillars,.modules{grid-template-columns:1fr}
+  .thesis{grid-template-columns:1fr;gap:32px}
+}
 </style>
 </head>
 <body>
@@ -293,11 +345,11 @@ a.card:hover .card-link{gap:12px}
 <nav>
   <a href="#" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
   <div class="nav-links">
+    <a href="#platform">Platform</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#distribution">Distribution</a>
-    <a href="#faq">FAQ</a>
     <a href="fsa-live.html" target="_blank" rel="noopener" class="btn btn-ghost">FSA Workspace ↗</a>
     <a href="#contact" class="btn btn-gold">Get in Touch</a>
   </div>
@@ -307,39 +359,144 @@ a.card:hover .card-link{gap:12px}
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="badge">Free QA Teardown Available</div>
-      <h1>We Guard<em>Your Game</em></h1>
-      <p>From <b>bug-free QA</b> to full development, art, and getting your title onto <b>every store</b> — Factorial Studio is your cozy, end-to-end game partner. Polished builds, happy players.</p>
+      <div class="badge">Building Factorial AI Platform</div>
+      <h1>The Operating System<em>For Game Publishers</em></h1>
+      <p>Publishing, analytics, user acquisition and monetization — <b>one AI-powered platform</b> instead of six dashboards and a spreadsheet. Built by the studio that already runs <b>QA, porting and distribution</b> for game teams today.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-gold">Get a Free Teardown
+        <a href="#platform" class="btn btn-gold">See the Platform
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="webgl-publishing.html" class="btn btn-leaf">Publish My Web Game</a>
-        <a href="#services" class="btn btn-ghost">Explore Services</a>
+        <a href="#contact" class="btn btn-leaf">Get a Free QA Teardown</a>
+        <a href="#services" class="btn btn-ghost">Studio Services</a>
       </div>
       <div class="trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>50+ real devices</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>24h bug reports</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unity &amp; Unreal</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>WebGL &amp; console</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Registered in Pakistan · expanding to US</span>
       </div>
     </div>
     <div class="hero-card">
-      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">factorial-qa.report</span></div>
-      <!-- Game thumbnails: swap files in /v2-screens/ (game1, game2, game3) -->
-      <div class="hc-game"><img src="v2-screens/game1.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Fortress Merge</b><span>1,420 tests · 0 blockers</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <div class="hc-game"><img src="v2-screens/game2.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Golf Orbit</b><span>60 FPS · 50+ devices</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <div class="hc-game"><img src="v2-screens/game3.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Spider Gangster</b><span>7 bugs found &amp; fixed</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">factorial-cloud · deploy</span></div>
+      <!-- Product UI preview. Game thumbnails: swap files in /v2-screens/ (game1, game2, game3) -->
+      <div class="hc-game"><img src="v2-screens/game1.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Fortress Merge</b><span>Live · WebGL · ads on</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-game"><img src="v2-screens/game2.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Golf Orbit</b><span>Live · WebGL · 12 channels</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="hc-game"><img src="v2-screens/game3.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Spider Gangster</b><span>Building from GitHub…</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/></svg></div>
       <div class="hc-bar"><i></i></div>
-      <div class="hc-stat">AVG COVERAGE 98% · SHIP-READY ✓</div>
+      <div class="hc-stat">WEBGL CLOUD · BETA</div>
     </div>
   </div>
 </header>
 
+<!-- PLATFORM -->
+<!--
+  ⚠️ NAWAZ — module status chips below are my best guess. Correct them before this goes live.
+     Classes: mstat live = "Beta" · mstat build = "In Build" · mstat next = "Roadmap"
+     Never mark something "Beta" that a reviewer can't actually be shown.
+-->
+<section class="section" id="platform">
+  <div class="wrap">
+    <div class="eyebrow">The Product</div>
+    <h2 class="disp">Factorial <em>AI Platform</em></h2>
+    <p class="lead">Game teams run their business across six disconnected tools — a host here, an analytics dashboard there, ad networks that each report differently. We're collapsing that into one system, with AI doing the parts that are pure mechanics.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a5 5 0 0 0-9.6-1.9A4 4 0 1 0 7 18h10.5a3.5 3.5 0 0 0 .5-6.96Z"/><path d="M12 12v5M9.5 14.5 12 12l2.5 2.5"/></svg></div>
+        <h3>WebGL Cloud</h3>
+        <p>Upload a Unity build, get a playable URL. Hosting, distribution and ad monetization without touching a server.</p>
+        <ul>
+          <li>Unity WebGL hosting</li>
+          <li>GitHub integration &amp; ZIP upload</li>
+          <li>One-click publishing</li>
+          <li>Google Ads &amp; AdSense monetization</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></div>
+        <h3>App Intelligence</h3>
+        <p>Market data that usually costs four figures a month — keyword research, category movement, and what's actually trending.</p>
+        <ul>
+          <li>Store &amp; category analytics</li>
+          <li>Keyword research</li>
+          <li>Trending app discovery</li>
+          <li>Competitive market intelligence</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 3.5-4 3 2.5L20 7"/></svg></div>
+        <h3>Revenue Intelligence</h3>
+        <p>Every ad network reports in its own format. We normalise them into one number you can actually make decisions on.</p>
+        <ul>
+          <li>AppLovin · Mintegral · AdMob · Google Ads</li>
+          <li>ROAS, CPI and ROI in one view</li>
+          <li>Cross-network attribution</li>
+          <li>Spend vs. return dashboards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules">
+      <div class="module"><b>WebGL Cloud</b><span class="mstat live">Beta</span></div>
+      <div class="module"><b>App Intelligence</b><span class="mstat build">In Build</span></div>
+      <div class="module"><b>UA Analytics</b><span class="mstat build">In Build</span></div>
+      <div class="module"><b>Revenue Dashboard</b><span class="mstat build">In Build</span></div>
+      <div class="module"><b>AI Recommendations</b><span class="mstat next">Roadmap</span></div>
+      <div class="module"><b>AI ASO</b><span class="mstat next">Roadmap</span></div>
+      <div class="module"><b>AI Creative Generator</b><span class="mstat next">Roadmap</span></div>
+      <div class="module"><b>AI LiveOps</b><span class="mstat next">Roadmap</span></div>
+      <div class="module"><b>AI Monetization</b><span class="mstat next">Roadmap</span></div>
+    </div>
+    <p class="plat-note">Nine modules, one login, one data model. We publish real status — no module is listed as shipped before you can use it.</p>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="section cream" id="thesis">
+  <div class="wrap thesis">
+    <div>
+      <div class="eyebrow">Why Us</div>
+      <div class="thesis-q">We didn't start with a platform.<br><em>We started with the work.</em></div>
+      <p>Most tools for game publishers are built by people who have never shipped a game, certified a console build, or argued with an ad network about a discrepancy.</p>
+      <p><b>We do that work every week.</b> Studios hire our team for QA, porting, art and distribution — and doing it by hand is exactly how we learned which parts are craft and which parts are pure mechanics.</p>
+      <p>The mechanical parts are becoming the platform. <b>The services fund the product, and the product makes the services faster.</b> That's the whole strategy.</p>
+    </div>
+    <div class="tline">
+      <div class="tstep"><div class="tnum">01</div><div><h4>Do the work manually</h4><p>QA passes, WebGL ports, store launches, UA reporting — for real studios, on real deadlines.</p></div></div>
+      <div class="tstep"><div class="tnum">02</div><div><h4>Find the repetition</h4><p>The same build pipeline. The same store checklist. The same five dashboards, reconciled by hand every Monday.</p></div></div>
+      <div class="tstep"><div class="tnum">03</div><div><h4>Automate it</h4><p>Each repeated task becomes a module. Tested against our own client work before anyone else touches it.</p></div></div>
+      <div class="tstep"><div class="tnum">04</div><div><h4>Open it up</h4><p>What works internally ships to every studio — so a two-person team gets the infrastructure of a publisher.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<!--
+  ⚠️ NAWAZ — this section replaced the three testimonials.
+     Those quoted "James Park / NexGen Studios", "Lisa Müller / ArcLight Games" and "Ryan Chen / VaultSoft".
+     I searched: none of those people exist at any matching game studio, and VaultSoft returns nothing at all.
+     Fabricated testimonials are an advertising-law problem in the US/EU and would be fatal in a visa file.
+     Put them back ONLY as real named clients who have given written permission.
+     Set the real quarters below before publishing.
+-->
+<section class="section" id="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">Build in Public</div>
+    <h2 class="disp">What We're <em>Shipping Next</em></h2>
+    <p class="lead">We publish our roadmap because we'd rather be judged on what we deliver than what we claim. Status here matches status in the product.</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><h4>WebGL Cloud Beta</h4><p><b>Q3 2026</b> — Unity build upload, hosted play URLs, GitHub sync, and AdSense monetization for early users.</p></div>
+      <div class="step"><div class="step-n">2</div><h4>Intelligence Modules</h4><p><b>Q4 2026</b> — App Intelligence and UA Analytics enter build: store data, keyword research, cross-network spend.</p></div>
+      <div class="step"><div class="step-n">3</div><h4>Unified Dashboard</h4><p><b>Q1 2027</b> — One data model behind all modules: revenue, acquisition and performance in a single view.</p></div>
+      <div class="step"><div class="step-n">4</div><h4>AI Layer</h4><p><b>Q2 2027</b> — Recommendations, ASO and creative generation on top of the data the platform already holds.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="section cream" id="services">
   <div class="wrap">
-    <div class="eyebrow">What We Do</div>
-    <h2 class="disp">Everything Your Game<br><em>Needs to Shine</em></h2>
-    <p class="lead">One cozy studio, end to end — QA is our craft, and we build, polish, and ship across every platform.</p>
+    <div class="eyebrow">The Studio</div>
+    <h2 class="disp">Services That Ship<br><em>Games Today</em></h2>
+    <p class="lead">The platform is being built. The team is already here. Studios hire us directly for the work below — and every engagement teaches us what to automate next.</p>
     <div class="cards">
 
       <a class="card feat" href="qa-testing.html">
@@ -392,11 +549,12 @@ a.card:hover .card-link{gap:12px}
 <!-- STATS -->
 <section class="section">
   <div class="wrap">
+    <!-- ⚠️ NAWAZ: every number here must be one you can defend in a due-diligence call. Replace any you can't. -->
     <div class="stats">
-      <div class="stat"><b>50+</b><span>Real Test Devices</span></div>
+      <div class="stat"><b>9</b><span>Platform Modules</span></div>
+      <div class="stat"><b>12+</b><span>Distribution Channels</span></div>
       <div class="stat"><b>24h</b><span>Bug Report Turnaround</span></div>
-      <div class="stat"><b>98%</b><span>Avg Test Coverage</span></div>
-      <div class="stat"><b>20+</b><span>Stores We Publish To</span></div>
+      <div class="stat"><b>6</b><span>Titles Shipped</span></div>
     </div>
   </div>
 </section>
@@ -406,25 +564,27 @@ a.card:hover .card-link{gap:12px}
   <div class="wrap about">
     <div>
       <div class="eyebrow">About Factorial Studio</div>
-      <h2 class="disp">Built by Gamers.<br><em>Trusted by Studios.</em></h2>
-      <p class="lead" style="margin-bottom:26px">Founded in 2016, Factorial Studio emerged from a shared obsession with crafting games that leave lasting impressions. Today we operate across three continents with 200+ developers, artists, and QA specialists — united by one mission: shipping great games.</p>
+      <h2 class="disp">Built by the People<br><em>Doing the Work.</em></h2>
+      <!-- ⚠️ NAWAZ: confirm founding year + headcount below. I removed "200+ staff across three continents"
+           and the Warsaw/Austin offices — those don't survive a due-diligence check and would sink a visa file. -->
+      <p class="lead" style="margin-bottom:26px">Factorial Studio is a registered Pakistani company headquartered in Lahore, working with game studios and app publishers internationally. We're a small, senior team — engineers, QA specialists and artists who ship, and who are now building the platform that automates the repetitive half of the job.</p>
       <div class="feat-row">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
-        <div><h4>Global Studio Network</h4><p>Development hubs in Lahore, Warsaw, and Austin ensure around-the-clock production and diverse creative perspectives.</p></div>
+        <div><h4>Lahore HQ, Global Clients</h4><p>A single senior team in Pakistan serving studios across the US, UK, Europe and the Gulf — with US incorporation underway.</p></div>
       </div>
       <div class="feat-row">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div><h4>Certified QA Pipeline</h4><p>ISO-aligned QA with 500+ test cases per title and automated regression frameworks built entirely in-house.</p></div>
+        <div><h4>Structured QA, Not Ad-Hoc</h4><p>Written test plans, severity-ranked reports with reproduction steps, and regression passes on every build — the same discipline we're encoding into the platform.</p></div>
       </div>
       <div class="feat-row">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></div>
-        <div><h4>Platform Expertise</h4><p>First-party certified teams for Sony, Microsoft, and Nintendo — plus deep iOS, Android, Steam, and Epic expertise.</p></div>
+        <div><h4>Engine &amp; Platform Depth</h4><p>Unity and Unreal in production, WebGL/HTML5 porting and distribution, plus iOS, Android and Steam release experience.</p></div>
       </div>
     </div>
     <div class="about-vis">
       <div class="about-frame"><img src="images/qa-lab.png" alt="Factorial Studio QA Lab" loading="lazy"></div>
-      <div class="about-badge ab1"><b>200+</b><span>Professionals</span></div>
-      <div class="about-badge ab2"><b>3</b><span>Global Offices</span></div>
+      <div class="about-badge ab1"><b>9</b><span>Modules Building</span></div>
+      <div class="about-badge ab2"><b>LHR</b><span>Headquarters</span></div>
     </div>
   </div>
 </section>
@@ -564,8 +724,9 @@ a.card:hover .card-link{gap:12px}
     <h2 class="disp" style="text-align:center">Outsourcing <em>Simplified</em></h2>
     <p class="lead" style="text-align:center;margin:0 auto 44px">Everything you need to know about partnering with Factorial Studio.</p>
     <div class="faq">
-      <div class="faq-item"><button class="faq-q">Do you sign NDAs for game projects?<span class="plus">+</span></button><div class="faq-a"><p>Yes, absolutely. We sign strict NDAs with all clients and employees. Your IP security is our top priority, and we follow GDPR / ISO-aligned data standards.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Do you test on real devices?<span class="plus">+</span></button><div class="faq-a"><p>Yes — we don't rely on emulators. We maintain a 50+ device lab of real iOS and Android hardware for accurate performance, battery, thermal, and touch testing.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is the platform available today?<span class="plus">+</span></button><div class="faq-a"><p>Partly. WebGL Cloud is in beta and the intelligence modules are in active build — the status shown on each module is the real one. Studio services are fully available now, and early platform access goes to clients first.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you sign NDAs for game projects?<span class="plus">+</span></button><div class="faq-a"><p>Yes, absolutely. We sign strict NDAs with all clients and employees, and your build and data stay confidential.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you test on real devices?<span class="plus">+</span></button><div class="faq-a"><p>Yes — we test on real iOS and Android hardware rather than relying on emulators, so performance, battery, thermal and touch behaviour reflect what players actually get.</p></div></div>
       <div class="faq-item"><button class="faq-q">Can you handle Unity and Unreal projects?<span class="plus">+</span></button><div class="faq-a"><p>Our team includes specialized Unity and Unreal engineers and QA. We debug inside the engine, provide optimization logs, and handle source-level analysis.</p></div></div>
       <div class="faq-item"><button class="faq-q">How does your pricing work?<span class="plus">+</span></button><div class="faq-a"><p>Three flexible models: Project-Based (fixed cost), Staff Augmentation (monthly dedicated resources), and Hourly T&amp;M — with offshore rates that save significantly vs US/UK agencies.</p></div></div>
       <div class="faq-item"><button class="faq-q">What's your bug-report turnaround?<span class="plus">+</span></button><div class="faq-a"><p>24-hour turnaround for critical bugs. We work across time zones so fresh reports are waiting at the start of your day.</p></div></div>
@@ -574,27 +735,14 @@ a.card:hover .card-link{gap:12px}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section" id="testimonials">
-  <div class="wrap">
-    <div class="eyebrow">Client Voices</div>
-    <h2 class="disp">What Studios <em>Say</em></h2>
-    <div class="testi">
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Factorial Studio's QA team caught critical issues our own testers missed. Their systematic approach and rapid turnaround saved our launch. Indispensable partners."</p><div class="testi-who"><div class="testi-avi">JP</div><div><b>James Park</b><span>NexGen Studios · CTO</span></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"From day one they understood our creative vision. Their art and engineering teams felt like a true extension of our studio. We shipped on time and above expectations."</p><div class="testi-who"><div class="testi-avi">LM</div><div><b>Lisa Müller</b><span>ArcLight Games · Producer</span></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Co-developing our console port was completely seamless. Their first-party certification expertise meant zero delays. We'll partner with them on every future title."</p><div class="testi-who"><div class="testi-avi">RC</div><div><b>Ryan Chen</b><span>VaultSoft · Studio Lead</span></div></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA BANNER -->
 <section class="cta">
   <div class="wrap">
-    <h2>Ready to Ship Something <em>Players Love?</em></h2>
-    <p>Whether you need a full dev partner or a QA team that never misses a bug — Factorial Studio delivers.</p>
+    <h2>Ship Faster. <em>Guess Less.</em></h2>
+    <p>Hire the studio today, get the platform as it ships. Start with a free QA teardown — we'll test your live build and send a real bug report, no charge.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-gold">Get a Free QA Teardown</a>
-      <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+      <a href="#platform" class="btn btn-ghost">See the Platform</a>
     </div>
   </div>
 </section>
@@ -632,7 +780,7 @@ a.card:hover .card-link{gap:12px}
 <footer>
   <div class="wrap">
     <div class="flinks">
-      <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="webgl-publishing.html">WebGL</a><a href="fsa-live.html" target="_blank" rel="noopener">FSA Workspace</a>
+      <a href="#platform">Platform</a><a href="#services">Services</a><a href="#roadmap">Roadmap</a><a href="#portfolio">Portfolio</a><a href="webgl-publishing.html">WebGL</a><a href="fsa-live.html" target="_blank" rel="noopener">FSA Workspace</a>
       <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a><a href="purchase.html">Purchase</a>
       <a href="user-tcs.html">User T&amp;Cs</a><a href="developer-tcs.html">Developer T&amp;Cs</a><a href="hr-privacy.html">HR Privacy</a><a href="casual-publishing.html">Casual Publishing</a>
     </div>
