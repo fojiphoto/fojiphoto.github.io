@@ -4,256 +4,159 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WebGL Publishing &amp; Alternative App Store Distribution | Factorial Studio</title>
-<meta name="description" content="Get your game everywhere. We convert games to instant-play weblogos/HTML5 and distribute across web platforms (CrazyGames, Poki, YouTube Playables, TikTok) and alternative app stores (Huawei AppGallery, Samsung, Amazon, Xiaomi, Transsion/aha, Aptoide) — far beyond Google Play and the App Store.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://factorialstudio.com/webgl-publishing.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WebGL Publishing &amp; Alternative App Store Distribution | Factorial Studio">
-<meta property="og:description" content="One game, every store. Instant-play WebGL distribution + alternative app stores (Huawei, Samsung, Amazon, Xiaomi, Transsion) beyond the big two.">
-<meta property="og:url" content="https://factorialstudio.com/webgl-publishing.html">
-<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="description" content="One game, every store. We convert games to instant-play WebGL/HTML5 and distribute across web platforms and alternative app stores — Huawei, Samsung, Amazon, Xiaomi, Transsion and more.">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Syne:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;
-  --neon:#ff4d2e;--purple:#ff6347;--purple2:#b5300f;--fire:#ff4d2e;--gold:#ffd166;
-  --text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
-  --border:rgba(255,77,46,0.16);--border2:rgba(255,77,46,0.30);
-  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
+  --ink:#06281c;--g900:#064e3b;--g800:#0a5a42;--g700:#11704f;--g600:#15803d;
+  --leaf:#7cb342;--leaf2:#a3d977;--teal:#115e59;
+  --gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;
+  --cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;
+  --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35);
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{background:#130a09;color:var(--text);font-family:var(--f-body);line-height:1.7;overflow-x:hidden}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.022;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(11,7,32,0.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--f-head);font-size:1.2rem;font-weight:800;letter-spacing:0.08em;display:flex;align-items:center;gap:10px;color:var(--text)}
-.nav-logo-mark{width:40px;height:40px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 8px rgba(255,77,46,0.35))}
-.nav-logo-mark img{width:100%;height:100%;object-fit:contain}
-.nav-logo em{color:var(--neon);font-style:normal}
-.nav-actions{display:flex;align-items:center;gap:22px}
-.nav-back{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);transition:color 0.25s}
-.nav-back:hover{color:var(--neon)}
-.nav-btn{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);background:var(--neon);padding:10px 20px;border-radius:2px;font-weight:700;transition:box-shadow 0.3s,transform 0.2s}
-.nav-btn:hover{box-shadow:0 0 26px rgba(255,77,46,0.5);transform:translateY(-1px)}
-/* HERO */
-.hero{position:relative;padding:150px 48px 80px;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero-grid-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,77,46,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,77,46,0.05) 1px,transparent 1px);background-size:80px 80px}
-.hero-glow{position:absolute;width:680px;height:680px;border-radius:50%;filter:blur(130px);pointer-events:none}
-.hero-glow-p{background:rgba(255,77,46,0.20);top:-240px;right:-160px}
-.hero-glow-c{background:rgba(255,77,46,0.08);bottom:-260px;left:-120px}
-.hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center}
-.hero-text{min-width:0}
-.crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--neon);margin-bottom:22px}
-.crumbs a{color:var(--muted)}.crumbs span{color:var(--muted);margin:0 10px}
-.tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:0.66rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--neon);margin-bottom:22px;padding:6px 14px;border:1px solid var(--border2);border-radius:99px;background:rgba(255,77,46,0.08)}
-.tag-dot{width:7px;height:7px;background:var(--neon);border-radius:50%;box-shadow:0 0 10px var(--neon)}
-.hero h1{font-family:var(--f-head);font-size:clamp(2.4rem,5.6vw,4.6rem);font-weight:900;line-height:1;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:24px}
-.hero h1 em{color:var(--neon);font-style:normal;text-shadow:0 0 40px rgba(255,77,46,0.3)}
-.hero p{font-size:1.08rem;color:var(--muted);max-width:600px;line-height:1.85;margin-bottom:34px}
-.hero p strong{color:var(--text);font-weight:600}
+body{font-family:var(--f-body);color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.disp{font-family:var(--f-disp);text-transform:uppercase;line-height:1.04}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(6,40,28,.82);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
+.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;object-fit:contain}
+.logo b{font-family:var(--f-disp);font-size:1.1rem;color:#fff}.logo b em{color:var(--gold);font-style:normal}
+.nav-actions{display:flex;align-items:center;gap:20px}
+.nav-back{font-weight:500;font-size:.9rem;color:var(--muted)}.nav-back:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-body);font-weight:600;font-size:.95rem;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:transform .2s,box-shadow .25s}
+.btn.btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;box-shadow:0 6px 16px rgba(245,158,11,.28)}
+.btn.btn-gold:hover{transform:translateY(-2px)}
+.btn.btn-leaf{background:linear-gradient(180deg,var(--leaf),#5f9e2e);color:#0f2e09}
+.btn.btn-leaf:hover{transform:translateY(-2px)}
+.btn.btn-ghost{background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.4);color:var(--text)}
+.btn.btn-ghost:hover{border-color:var(--leaf);color:#fff;transform:translateY(-2px)}
+.hero{position:relative;padding:150px 0 84px;background:radial-gradient(120% 100% at 80% -10%, #0c5a3f 0%, var(--g900) 45%, var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.crumbs{font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.crumbs a{color:var(--muted)}.crumbs span{color:var(--muted);margin:0 8px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#3a1405;background:var(--gold);padding:7px 15px;border-radius:999px;margin-bottom:20px}
+.hero h1{font-family:var(--f-disp);font-size:clamp(2.4rem,5.6vw,4.4rem);color:#fff;line-height:1.02;margin-bottom:22px;text-transform:uppercase}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:560px;margin-bottom:30px}
+.hero p b{color:#eaf5ee;font-weight:600}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.btn-neon{font-family:var(--f-mono);font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;padding:15px 34px;background:var(--neon);color:var(--black);border-radius:2px;display:inline-block;transition:box-shadow 0.3s,transform 0.2s}
-.btn-neon:hover{box-shadow:0 0 36px rgba(255,77,46,0.5);transform:translateY(-2px)}
-.btn-outline{font-family:var(--f-mono);font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;padding:15px 34px;border:1px solid var(--border2);color:var(--text);border-radius:2px;display:inline-block;transition:border-color 0.3s,color 0.3s}
-.btn-outline:hover{border-color:var(--neon);color:var(--neon)}
-/* hero terminal */
-.hero-visual{display:flex;align-items:center;justify-content:center}
-.screen{width:100%;max-width:480px;height:340px;background:linear-gradient(180deg,#1d0e0b,#0d0605);border:1px solid var(--border2);border-radius:12px;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 60px rgba(255,77,46,0.22);transform:perspective(900px) rotateY(-9deg) rotateX(4deg)}
-.screen::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.05) 0,rgba(0,0,0,0.05) 1px,transparent 1px,transparent 3px)}
-.bar{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.3)}
-.dots{display:flex;gap:6px}.dots span{width:11px;height:11px;border-radius:50%;display:block}
-.dr{background:#ff5f57}.dy{background:#febc2e}.dg{background:#28c840}
-.bar-t{font-family:var(--f-mono);font-size:0.66rem;color:rgba(232,237,245,0.55)}
-.stage{position:relative;height:calc(100% - 38px)}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px 26px;text-align:center;opacity:0;transform:translateX(110%);animation:slide 9s infinite ease-in-out}
-.slide-1{animation-delay:0s}.slide-2{animation-delay:3s}.slide-3{animation-delay:6s}
-@keyframes slide{0%{transform:translateX(110%);opacity:0}6%{opacity:0}11%{transform:translateX(0);opacity:1}30%{transform:translateX(0);opacity:1}35%{opacity:0}40%{transform:translateX(-110%);opacity:0}100%{transform:translateX(-110%);opacity:0}}
-.s-ic{font-size:2.6rem;filter:drop-shadow(0 0 16px currentColor)}
-.s-ic-c{color:var(--neon);animation:pg 1.6s infinite}.s-ic-p{color:var(--purple);animation:pg 1.4s infinite}.s-ic-g{color:#28c840}
-@keyframes pg{0%,100%{filter:drop-shadow(0 0 10px currentColor)}50%{filter:drop-shadow(0 0 22px currentColor)}}
-.s-h{font-family:var(--f-mono);font-size:1rem;font-weight:500}
-.s-h-c{color:var(--neon)}.s-h-p{color:var(--purple)}.s-h-g{color:#28c840}
-.s-sub{font-family:var(--f-mono);font-size:0.72rem;color:rgba(232,237,245,0.7);margin-top:-4px}
-.s-box{width:100%;border:1px solid var(--border2);background:rgba(0,0,0,0.3);padding:10px 14px;border-radius:4px;font-family:var(--f-mono);font-size:0.66rem;text-align:left;line-height:1.8;color:rgba(206,180,255,0.95)}
-.s-box .ok{color:#28c840}
-.spinner{width:54px;height:54px;border:2px dashed var(--purple);border-radius:12px;animation:spin 3.5s linear infinite;filter:drop-shadow(0 0 14px var(--purple))}
-@keyframes spin{to{transform:rotate(360deg)}}
-.prog{width:100%;height:4px;background:rgba(255,77,46,0.16);border-radius:2px;overflow:hidden}
-.prog-bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--neon));width:0;animation:pb 2.6s ease-in-out infinite}
-@keyframes pb{0%{width:0}90%{width:82%}100%{width:82%}}
-.scr-tag{position:absolute;bottom:14px;right:14px;font-family:var(--f-mono);font-size:0.6rem;color:var(--neon);letter-spacing:0.15em;text-transform:uppercase}
-/* store showcase carousel */
-.showcase{position:absolute;inset:0;display:flex;flex-direction:column}
-.sc-screen{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,77,46,0.16),rgba(255,77,46,0.05))}
-.sc-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
-.sc-screen.has-shot .sc-shot{opacity:1}
-.sc-screen.has-shot .sc-bigicon{opacity:0;transform:scale(.7)}
-.sc-bigicon{width:94px;height:94px;border-radius:20px;background:#fff;padding:12px;box-shadow:0 0 34px rgba(255,77,46,0.5);transition:opacity .4s,transform .4s;animation:scFloat 3s ease-in-out infinite}
-.sc-bigicon img{width:100%;height:100%;object-fit:contain}
-@keyframes scFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.sc-live{position:absolute;top:12px;right:14px;z-index:3;font-family:var(--f-mono);font-size:0.56rem;letter-spacing:0.16em;color:#28c840}
-.sc-bar{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,0.4);position:relative;z-index:3}
-.sc-logo{width:42px;height:42px;border-radius:9px;background:#fff;padding:5px;flex-shrink:0}
-.sc-logo img{width:100%;height:100%;object-fit:contain;display:block}
-.sc-name{font-family:var(--f-head);font-weight:700;font-size:0.86rem;text-transform:uppercase;letter-spacing:0.03em}
-.sc-tag{font-family:var(--f-mono);font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
-.sc-count{margin-left:auto;font-family:var(--f-mono);font-size:0.62rem;color:var(--neon)}
-.sc-anim{animation:scIn .45s ease}
-@keyframes scIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.sc-bigicon{animation:none}}
-/* SECTIONS */
-.section{padding:90px 48px;position:relative;z-index:2}
-.section-alt{background:#1a0d0b}
-.wrap{max-width:1240px;margin:0 auto}
-.eyebrow{font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--neon);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:'';width:28px;height:1px;background:var(--neon);opacity:0.6}
-.s-title{font-family:var(--f-head);font-size:clamp(1.8rem,3.6vw,3rem);font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:18px}
-.s-title em{color:var(--neon);font-style:normal}
-.s-title em.p{color:var(--purple)}
-.s-lead{color:var(--muted);font-size:1.02rem;line-height:1.85;max-width:700px;margin-bottom:50px}
-/* stat strip */
-.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:10px}
-.stat-cell{background:#1a0d0b;padding:30px 24px;text-align:center}
-.stat-v{font-family:var(--f-head);font-size:2.2rem;font-weight:900;color:var(--neon);line-height:1;text-shadow:0 0 26px rgba(255,77,46,0.25)}
-.stat-l{font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:8px}
-/* problem points */
-.miss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.miss-card{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:8px;padding:26px 28px}
-.miss-ico{width:44px;height:44px;flex-shrink:0;border-radius:10px;border:1px solid var(--border2);background:rgba(255,77,46,0.10);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
-.miss-card h3{font-family:var(--f-head);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:8px}
-.miss-card p{font-size:0.92rem;color:var(--muted);line-height:1.7}
-/* two arms */
+/* showcase card */
+.showcase{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.sc-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:2px solid rgba(163,217,119,.15);background:rgba(0,0,0,.2)}
+.sc-bar i{width:12px;height:12px;border-radius:50%}.sc-r{background:#ff6b5e}.sc-y{background:var(--gold)}.sc-g{background:var(--leaf2)}
+.sc-bar span{font-weight:600;font-size:.76rem;color:var(--muted);margin-left:6px}
+.sc-body{padding:34px 30px;text-align:center;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.sc-logo{width:88px;height:88px;border-radius:22px;background:#fff;padding:12px;box-shadow:0 8px 22px rgba(0,0,0,.3);animation:float 3s ease-in-out infinite}
+.sc-logo img{width:100%;height:100%;object-fit:contain}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.sc-name{font-family:var(--f-disp);font-size:1.15rem;color:#fff}
+.sc-tag{font-weight:500;font-size:.82rem;color:var(--leaf2);text-transform:uppercase;letter-spacing:.06em;margin-top:-8px}
+.sc-count{font-family:var(--f-disp);font-size:.72rem;color:var(--gold)}
+.section{padding:88px 0;position:relative}
+.section.cream{background:var(--cream);color:var(--ink-text)}
+.eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section.cream .eyebrow{color:var(--g600)}
+.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+h2.disp{font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;margin-bottom:16px}
+.section.cream h2.disp{color:var(--g900)}
+h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:var(--gold2)}
+.lead{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:46px}.section.cream .lead{color:var(--ink-muted)}
+/* miss grid */
+.miss{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.miss-card{display:flex;gap:16px;background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px 28px}
+.miss-ico{width:52px;height:52px;border-radius:15px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
+.miss-card h3{font-family:var(--f-disp);font-size:1rem;color:var(--g900);margin-bottom:7px}
+.miss-card p{font-size:.92rem;color:var(--ink-muted);line-height:1.55}.miss-card p b{color:var(--g700)}
+/* arms */
 .arms{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.arm{background:rgba(255,255,255,0.025);border:1px solid var(--border2);border-radius:12px;padding:36px 34px;position:relative;overflow:hidden}
-.arm::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.arm-web::before{background:linear-gradient(90deg,transparent,var(--neon),transparent)}
-.arm-store::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
-.arm-k{font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px}
-.arm-web .arm-k{color:var(--neon)}.arm-store .arm-k{color:var(--purple)}
-.arm h3{font-family:var(--f-head);font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:12px}
-.arm p{font-size:0.95rem;color:var(--muted);line-height:1.7}
-/* platform grid */
-.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
-.platform-card{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:8px;padding:24px;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
-.platform-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--neon);transform:scaleY(0);transform-origin:top;transition:transform .35s}
-.platform-card.pp::before{background:var(--purple)}
-.platform-card:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:0 18px 40px rgba(0,0,0,0.5)}
-.platform-card:hover::before{transform:scaleY(1)}
-.pm{width:78px;height:78px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:9px;background:#fff;box-shadow:0 0 16px rgba(255,77,46,0.18)}
-.pm img{width:100%;height:100%;object-fit:contain;display:block}
-.pm.mono{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-family:var(--f-head);font-weight:900;font-size:1.2rem;padding:0}
-.pi{min-width:0}
-.pn{font-family:var(--f-head);font-size:1.15rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.15}
-.pt{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
-/* what we handle */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.test-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);padding:28px 26px;border-radius:8px;transition:transform .3s,border-color .3s,box-shadow .3s}
-.test-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 22px 48px rgba(0,0,0,0.45)}
-.test-ico{width:46px;height:46px;border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:rgba(255,77,46,0.10)}
-.test-ico svg{width:24px;height:24px;stroke:var(--neon);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.test-card h3{font-family:var(--f-head);font-size:1rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:10px}
-.test-card p{font-size:0.89rem;color:var(--muted);line-height:1.65}
-/* method */
-.method-list{display:flex;flex-direction:column;gap:14px}
-.method{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-left:2px solid var(--purple);padding:22px 26px;border-radius:0 8px 8px 0}
-.method-num{font-family:var(--f-head);font-size:1.5rem;font-weight:900;color:var(--purple);opacity:0.6;min-width:46px}
-.method h4{font-family:var(--f-head);font-size:1.02rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:7px}
-.method p{font-size:0.92rem;color:var(--muted);line-height:1.7}.method p strong{color:var(--text)}
-/* cta */
-.cta{padding:90px 48px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border)}
-.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(255,77,46,0.18),transparent 65%)}
-.cta h2{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:900;text-transform:uppercase;margin-bottom:18px;position:relative;z-index:1}
-.cta h2 em{color:var(--neon);font-style:normal}
-.cta p{color:var(--muted);max-width:520px;margin:0 auto 32px;line-height:1.8;position:relative;z-index:1}
-.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-footer{background:#1a0d0b;border-top:1px solid var(--border);padding:40px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;position:relative;z-index:2}
-.f-copy{font-family:var(--f-mono);font-size:0.66rem;letter-spacing:0.1em;color:var(--muted)}.f-copy span{color:var(--neon)}
-.f-links{display:flex;gap:20px;flex-wrap:wrap}
-.f-links a{font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
-.f-links a:hover{color:var(--neon)}
-@media (prefers-reduced-motion:reduce){.slide,.spinner,.prog-bar,.s-ic-c,.s-ic-p{animation:none}.slide-1{opacity:1;transform:none}}
-@media (max-width:1000px){.hero-inner{grid-template-columns:1fr;gap:40px}.hero-visual{display:none}.platform-grid{grid-template-columns:repeat(3,1fr)}.test-grid{grid-template-columns:1fr 1fr}.arms{grid-template-columns:1fr}}
-@media (max-width:900px){#nav{padding:0 22px}.nav-back{display:none}.section,.hero,.cta{padding-left:22px;padding-right:22px}.hero{padding-top:120px}.miss-grid{grid-template-columns:1fr}}
-@media (max-width:640px){.platform-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.stat-strip{grid-template-columns:1fr 1fr}.method{flex-direction:column;gap:8px}}
-@media (max-width:420px){.platform-grid{grid-template-columns:1fr}}
+.arm{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.22);border-radius:var(--r);padding:32px}
+.arm .k{font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.arm-web .k{color:var(--gold)}.arm-store .k{color:var(--leaf2)}
+.arm h3{font-family:var(--f-disp);font-size:1.3rem;color:#fff;margin-bottom:12px}
+.arm p{font-size:.95rem;color:var(--muted);line-height:1.65}.arm p b{color:#fff}
+/* logos */
+.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.logo-card{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:18px;padding:18px;transition:transform .25s,border-color .25s}
+.logo-card:hover{transform:translateY(-5px);border-color:var(--leaf)}
+.logo-card .tile{width:62px;height:62px;border-radius:16px;background:#fff;padding:9px;flex-shrink:0}
+.logo-card .tile img{width:100%;height:100%;object-fit:contain}
+.logo-card b{font-family:var(--f-disp);font-size:.82rem;color:#fff;display:block}
+.logo-card span{font-weight:500;font-size:.66rem;color:var(--leaf2);text-transform:uppercase;letter-spacing:.05em;margin-top:4px;display:block}
+.tile.more{background:rgba(251,191,36,.14);border:2px dashed var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.6rem;padding:0}
+/* handle cards */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.h-card{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px 26px;transition:transform .25s,border-color .25s}
+.h-card:hover{transform:translateY(-5px);border-color:var(--leaf)}
+.h-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
+.h-ico svg{width:26px;height:26px;color:var(--g700);stroke-width:2;fill:none}
+.h-card h3{font-family:var(--f-disp);font-size:.95rem;color:var(--g900);margin-bottom:8px}
+.h-card p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}
+/* steps */
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-left:4px solid var(--leaf);padding:22px 26px;border-radius:0 var(--r) var(--r) 0}
+.step .n{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold);min-width:44px}
+.step h4{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:6px}
+.step p{font-size:.92rem;color:var(--muted)}.step p b{color:#fff}
+.cta{text-align:center;padding:92px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
+.cta h2{font-family:var(--f-disp);font-size:clamp(2rem,4.6vw,3.4rem);color:#fff;margin-bottom:16px}
+.cta h2 em{color:var(--gold);font-style:normal}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+.cta .hero-cta{justify-content:center}
+footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}
+footer p{color:var(--muted);font-size:.82rem}
+@media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:40px}.showcase{max-width:460px}.logos{grid-template-columns:repeat(3,1fr)}.cards3{grid-template-columns:1fr 1fr}.arms{grid-template-columns:1fr}.nav-back{display:none}}
+@media (max-width:640px){.miss{grid-template-columns:1fr}.logos{grid-template-columns:1fr 1fr}.cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}}
+@media (prefers-reduced-motion:reduce){.sc-logo{animation:none}}
 </style>
 </head>
 <body>
-<nav id="nav">
-  <a href="index.html" class="nav-logo"><span class="nav-logo-mark"><img src="images/logo.png" alt="Factorial Studio"></span>Factorial<em>Studio</em></a>
-  <div class="nav-actions">
-    <a href="index.html" class="nav-back">&larr; Back to Home</a>
-    <a href="index.html#contact" class="nav-btn">Publish My Game</a>
-  </div>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-actions"><a href="index.html" class="nav-back">← Back to Home</a><a href="index.html#contact" class="btn btn-gold">Publish My Game</a></div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow hero-glow-p"></div>
-  <div class="hero-glow hero-glow-c"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="crumbs"><a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Services<span>&rsaquo;</span>WebGL &amp; Distribution</div>
-      <div class="tag"><span class="tag-dot"></span>Web Publishing &amp; Alternative Stores</div>
-      <h1>One Game.<br>Every Store. <em>Everywhere.</em></h1>
-      <p>Your game is probably on just <strong>two stores</strong> — and missing the hundreds of millions of players beyond them. We take your existing title and ship it across <strong>instant-play web platforms</strong> and the world's biggest <strong>alternative app stores</strong>.</p>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">Factorial Studio</a><span>›</span>Services<span>›</span>WebGL &amp; Distribution</div>
+      <div class="tag">Web Publishing &amp; Alternative Stores</div>
+      <h1>One Game.<br><em>Every Store.</em></h1>
+      <p>Your game is probably on just <b>two stores</b> — missing hundreds of millions of players beyond them. We ship your title across <b>instant-play web platforms</b> and the world's biggest <b>alternative app stores</b>.</p>
       <div class="hero-cta">
-        <a href="index.html#contact" class="btn-neon">Get My Game Everywhere</a>
-        <a href="#reach" class="btn-outline">Where We Publish →</a>
+        <a href="index.html#contact" class="btn btn-gold">Get My Game Everywhere</a>
+        <a href="#reach" class="btn btn-ghost">Where We Publish →</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="screen">
-        <div class="bar"><div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div><div class="bar-t">&gt;_ factorial-distribution</div></div>
-        <div class="stage">
-          <div class="showcase">
-            <div class="sc-screen" id="scScreen">
-              <img class="sc-shot" id="scShot" alt="">
-              <div class="sc-bigicon" id="scBig"><img id="scBigImg" src="" alt=""></div>
-              <div class="sc-live">● PUBLISHED</div>
-            </div>
-            <div class="sc-bar" id="scBar">
-              <div class="sc-logo"><img id="scLogo" src="" alt=""></div>
-              <div><div class="sc-name" id="scName"></div><div class="sc-tag" id="scTag"></div></div>
-              <div class="sc-count" id="scCount"></div>
-            </div>
-          </div>
-        </div>
-        <div class="scr-tag">// Distribution</div>
+    <div class="showcase">
+      <div class="sc-bar"><i class="sc-r"></i><i class="sc-y"></i><i class="sc-g"></i><span>factorial-distribution</span></div>
+      <div class="sc-body">
+        <div class="sc-logo"><img id="scLogo" src="weblogos/CrazyGames.png" alt=""></div>
+        <div class="sc-name" id="scName">CrazyGames</div>
+        <div class="sc-tag" id="scTag">Web Games Portal</div>
+        <div class="sc-count" id="scCount">1 / 11 · PUBLISHED ✓</div>
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<!-- STATS -->
-<section class="section" style="padding-top:60px;padding-bottom:60px">
-  <div class="wrap">
-    <div class="stat-strip">
-      <div class="stat-cell"><div class="stat-v">2 → 20+</div><div class="stat-l">Stores, Not Just Two</div></div>
-      <div class="stat-cell"><div class="stat-v">Web + Native</div><div class="stat-l">Every Format</div></div>
-      <div class="stat-cell"><div class="stat-v">Instant</div><div class="stat-l">Play · No Install</div></div>
-      <div class="stat-cell"><div class="stat-v">Global</div><div class="stat-l">Untapped Reach</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM / HOOK -->
-<section class="section section-alt">
+<!-- PROBLEM -->
+<section class="section cream">
   <div class="wrap">
     <div class="eyebrow">The Missed Opportunity</div>
-    <h2 class="s-title">Two Stores Leave<br>Millions of Players <em class="p">Behind</em></h2>
-    <p class="s-lead">Google Play and the App Store are just the beginning. Entire ecosystems — hundreds of millions of players — never see your game because it was only built for the big two.</p>
-    <div class="miss-grid">
-      <div class="miss-card"><div class="miss-ico">📵</div><div><h3>The GMS-Free World</h3><p>Huge markets run Android <strong>without Google services</strong> — Huawei alone reaches a massive audience that Google Play simply can't.</p></div></div>
-      <div class="miss-card"><div class="miss-ico">🏪</div><div><h3>OEM &amp; Regional Stores</h3><p>Samsung, Xiaomi, Oppo, Vivo, Transsion and others ship their own stores pre-installed on millions of devices worldwide.</p></div></div>
-      <div class="miss-card"><div class="miss-ico">⚡</div><div><h3>Instant-Play Web</h3><p>Billions of players want to play <strong>without installing anything</strong> — on web portals, search, and social feeds. Native-only games miss them entirely.</p></div></div>
-      <div class="miss-card"><div class="miss-ico">📲</div><div><h3>Social &amp; In-App Games</h3><p>TikTok, YouTube, and messaging platforms now host games inside the apps people already live in — a channel your APK can't reach.</p></div></div>
+    <h2 class="disp">Two Stores Leave<br><em>Players Behind</em></h2>
+    <p class="lead">Google Play and the App Store are just the beginning. Entire ecosystems — hundreds of millions of players — never see your game because it was only built for the big two.</p>
+    <div class="miss">
+      <div class="miss-card"><div class="miss-ico">📵</div><div><h3>The GMS-Free World</h3><p>Huge markets run Android <b>without Google services</b> — Huawei alone reaches a massive audience Google Play can't.</p></div></div>
+      <div class="miss-card"><div class="miss-ico">🏪</div><div><h3>OEM &amp; Regional Stores</h3><p>Samsung, Xiaomi, Oppo, Vivo &amp; Transsion ship their own stores pre-installed on millions of devices.</p></div></div>
+      <div class="miss-card"><div class="miss-ico">⚡</div><div><h3>Instant-Play Web</h3><p>Billions want to play <b>without installing</b> — on web portals, search, and social feeds. Native-only games miss them.</p></div></div>
+      <div class="miss-card"><div class="miss-ico">📲</div><div><h3>Social &amp; In-App Games</h3><p>TikTok &amp; YouTube now host games inside the apps people already live in — a channel your APK can't reach.</p></div></div>
     </div>
   </div>
 </section>
@@ -262,42 +165,34 @@ footer{background:#1a0d0b;border-top:1px solid var(--border);padding:40px 48px;d
 <section class="section" id="reach">
   <div class="wrap">
     <div class="eyebrow">How We Expand Your Reach</div>
-    <h2 class="s-title">Two Channels.<br><em>One Game.</em></h2>
-    <p class="s-lead">We take what you've already built and get it everywhere — through instant-play web platforms and native alternative app stores.</p>
+    <h2 class="disp">Two Channels. <em>One Game.</em></h2>
+    <p class="lead">We take what you've already built and get it everywhere — through instant-play web platforms and native alternative app stores.</p>
     <div class="arms">
-      <div class="arm arm-web">
-        <div class="arm-k">// Channel 01</div>
-        <h3>Web &amp; Instant Play</h3>
-        <p>We convert and optimize your game to <strong style="color:var(--text)">WebGL / HTML5</strong> for instant, no-install play — then publish across the biggest web and social gaming platforms on the planet.</p>
-      </div>
-      <div class="arm arm-store">
-        <div class="arm-k">// Channel 02</div>
-        <h3>Alternative App Stores</h3>
-        <p>We package, localize, and certify your native build for the world's leading <strong style="color:var(--text)">alternative app stores</strong> — unlocking the GMS-free and OEM ecosystems beyond Google Play.</p>
-      </div>
+      <div class="arm arm-web"><div class="k">// Channel 01</div><h3>Web &amp; Instant Play</h3><p>We convert and optimize your game to <b>WebGL / HTML5</b> for instant, no-install play — then publish across the biggest web and social gaming platforms.</p></div>
+      <div class="arm arm-store"><div class="k">// Channel 02</div><h3>Alternative App Stores</h3><p>We package, localize &amp; certify your native build for the leading <b>alternative app stores</b> — unlocking GMS-free and OEM ecosystems beyond Google Play.</p></div>
     </div>
   </div>
 </section>
 
 <!-- WEB PLATFORMS -->
-<section class="section section-alt">
+<section class="section cream">
   <div class="wrap">
     <div class="eyebrow">Channel 01 · Web &amp; Instant Play</div>
-    <h2 class="s-title">Published Across the <em>Web</em></h2>
-    <p class="s-lead">Instant-play WebGL / HTML5 distribution across the world's biggest web and social gaming platforms.</p>
-    <div class="platform-grid">
-      <div class="platform-card"><div class="pm"><img src="weblogos/CrazyGames.png" alt="CrazyGames" loading="lazy"></div><div class="pi"><div class="pn">CrazyGames</div><div class="pt">Web Games Portal</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/GameDistribution.jpg" alt="GameDistribution" loading="lazy"></div><div class="pi"><div class="pn">GameDistribution</div><div class="pt">HTML5 Distribution</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/MSNPlay.png" alt="MSN Play" loading="lazy"></div><div class="pi"><div class="pn">MSN Play</div><div class="pt">Microsoft Casual</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/Pley.png" alt="Pley" loading="lazy"></div><div class="pi"><div class="pn">Pley</div><div class="pt">Web Game Platform</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/YoutubePlayable.webp" alt="YouTube Playables" loading="lazy"></div><div class="pi"><div class="pn">YouTube Playables</div><div class="pt">In-App Games</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/TickTok.webp" alt="TikTok Mini Games" loading="lazy"></div><div class="pi"><div class="pn">TikTok Mini Games</div><div class="pt">Social Mini-Games</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/Poki.jpg" alt="Poki" loading="lazy"></div><div class="pi"><div class="pn">Poki</div><div class="pt">Web Games Platform</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/GameSnacks.png" alt="GameSnacks" loading="lazy"></div><div class="pi"><div class="pn">GameSnacks</div><div class="pt">Google HTML5</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/Yandex.webp" alt="Yandex Games" loading="lazy"></div><div class="pi"><div class="pn">Yandex Games</div><div class="pt">CIS / Global Portal</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/PlayGama.webp" alt="PlayGama" loading="lazy"></div><div class="pi"><div class="pn">PlayGama</div><div class="pt">Game Aggregator</div></div></div>
-      <div class="platform-card"><div class="pm"><img src="weblogos/EpicGames.png" alt="Epic Mobile Store" loading="lazy"></div><div class="pi"><div class="pn">Epic Mobile Store</div><div class="pt">Epic Games (Mobile)</div></div></div>
-      <div class="platform-card"><div class="pm mono">+</div><div class="pi"><div class="pn">&amp; More</div><div class="pt">New channels added</div></div></div>
+    <h2 class="disp">Published Across the <em>Web</em></h2>
+    <p class="lead">Instant-play WebGL / HTML5 distribution across the world's biggest web and social gaming platforms.</p>
+    <div class="logos" style="--x:0">
+      <div class="logo-card"><span class="tile"><img src="weblogos/CrazyGames.png" alt="CrazyGames" loading="lazy"></span><div><b>CrazyGames</b><span>Web Games Portal</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/GameDistribution.jpg" alt="GameDistribution" loading="lazy"></span><div><b>GameDistribution</b><span>HTML5 Network</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/MSNPlay.png" alt="MSN Play" loading="lazy"></span><div><b>MSN Play</b><span>Microsoft Casual</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/Pley.png" alt="Pley" loading="lazy"></span><div><b>Pley</b><span>Web Platform</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/YoutubePlayable.webp" alt="YouTube Playables" loading="lazy"></span><div><b>YouTube Playables</b><span>In-App Games</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/TickTok.webp" alt="TikTok Mini Games" loading="lazy"></span><div><b>TikTok Mini Games</b><span>Social Games</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/Poki.jpg" alt="Poki" loading="lazy"></span><div><b>Poki</b><span>Web Platform</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/GameSnacks.png" alt="GameSnacks" loading="lazy"></span><div><b>GameSnacks</b><span>Google HTML5</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/Yandex.webp" alt="Yandex Games" loading="lazy"></span><div><b>Yandex Games</b><span>CIS / Global</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/PlayGama.webp" alt="PlayGama" loading="lazy"></span><div><b>PlayGama</b><span>Aggregator</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="weblogos/EpicGames.png" alt="Epic" loading="lazy"></span><div><b>Epic Mobile Store</b><span>Epic Games</span></div></div>
+      <div class="logo-card"><span class="tile more">+</span><div><b>&amp; More</b><span>New Channels</span></div></div>
     </div>
   </div>
 </section>
@@ -305,42 +200,39 @@ footer{background:#1a0d0b;border-top:1px solid var(--border);padding:40px 48px;d
 <!-- ALT STORES -->
 <section class="section">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--purple)">Channel 02 · Alternative App Stores</div>
-    <h2 class="s-title">Beyond the <em class="p">Big Two</em></h2>
-    <p class="s-lead">Native distribution across the alternative app stores that reach the GMS-free, OEM, and regional audiences Google Play can't.</p>
-    <div class="platform-grid">
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/HuaweiStores.jpg" alt="Huawei AppGallery" loading="lazy"></div><div class="pi"><div class="pn">Huawei AppGallery</div><div class="pt">GMS-Free Android</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/GalaxyStore.jpg" alt="Samsung Galaxy Store" loading="lazy"></div><div class="pi"><div class="pn">Samsung Galaxy Store</div><div class="pt">Pre-installed on Galaxy</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Amazon.jpg" alt="Amazon Appstore" loading="lazy"></div><div class="pi"><div class="pn">Amazon Appstore</div><div class="pt">Fire &amp; Android</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Xiaomi.svg" alt="Xiaomi GetApps" loading="lazy"></div><div class="pi"><div class="pn">Xiaomi GetApps</div><div class="pt">Xiaomi Devices</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Oppo.png" alt="Oppo App Market" loading="lazy"></div><div class="pi"><div class="pn">Oppo App Market</div><div class="pt">ColorOS Store</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Vivo.png" alt="Vivo App Store" loading="lazy"></div><div class="pi"><div class="pn">Vivo App Store</div><div class="pt">Vivo Devices</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Transsion.webp" alt="Transsion aha Games" loading="lazy"></div><div class="pi"><div class="pn">Transsion · aha Games</div><div class="pt">Tecno · Infinix · itel</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Aha.png" alt="aha Games" loading="lazy"></div><div class="pi"><div class="pn">aha Games</div><div class="pt">Instant Games Platform</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Aptoide.png" alt="Aptoide" loading="lazy"></div><div class="pi"><div class="pn">Aptoide</div><div class="pt">Open Android Market</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/Onestore.png" alt="ONE Store" loading="lazy"></div><div class="pi"><div class="pn">ONE Store</div><div class="pt">Korea's Top Alt Store</div></div></div>
-      <div class="platform-card pp"><div class="pm"><img src="Alterstores/GameCenter.jpg" alt="GameCenter Cloud" loading="lazy"></div><div class="pi"><div class="pn">GameCenter / Cloud</div><div class="pt">Cloud &amp; OEM Hubs</div></div></div>
-      <div class="platform-card pp"><div class="pm mono">+</div><div class="pi"><div class="pn">&amp; More</div><div class="pt">New stores added</div></div></div>
+    <div class="eyebrow">Channel 02 · Alternative App Stores</div>
+    <h2 class="disp">Beyond the <em>Big Two</em></h2>
+    <p class="lead">Native distribution across the alternative app stores that reach the GMS-free, OEM, and regional audiences Google Play can't.</p>
+    <div class="logos">
+      <div class="logo-card"><span class="tile"><img src="Alterstores/HuaweiStores.jpg" alt="Huawei" loading="lazy"></span><div><b>Huawei AppGallery</b><span>GMS-Free Android</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/GalaxyStore.jpg" alt="Samsung" loading="lazy"></span><div><b>Samsung Galaxy Store</b><span>Pre-installed</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Amazon.jpg" alt="Amazon" loading="lazy"></span><div><b>Amazon Appstore</b><span>Fire &amp; Android</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Xiaomi.svg" alt="Xiaomi" loading="lazy"></span><div><b>Xiaomi GetApps</b><span>Xiaomi Devices</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Oppo.png" alt="Oppo" loading="lazy"></span><div><b>Oppo App Market</b><span>ColorOS</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Vivo.png" alt="Vivo" loading="lazy"></span><div><b>Vivo App Store</b><span>Vivo Devices</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Transsion.webp" alt="Transsion" loading="lazy"></span><div><b>Transsion · aha</b><span>Tecno · Infinix</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Aha.png" alt="aha Games" loading="lazy"></span><div><b>aha Games</b><span>Instant Games</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Aptoide.png" alt="Aptoide" loading="lazy"></span><div><b>Aptoide</b><span>Open Market</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/Onestore.png" alt="ONE Store" loading="lazy"></span><div><b>ONE Store</b><span>Korea Top Alt</span></div></div>
+      <div class="logo-card"><span class="tile"><img src="Alterstores/GameCenter.jpg" alt="GameCenter" loading="lazy"></span><div><b>GameCenter / Cloud</b><span>Cloud Hubs</span></div></div>
+      <div class="logo-card"><span class="tile more">+</span><div><b>&amp; More</b><span>New Stores</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- WHAT WE HANDLE -->
-<section class="section section-alt">
+<section class="section cream">
   <div class="wrap">
     <div class="eyebrow">End to End</div>
-    <h2 class="s-title">What We <em>Handle</em></h2>
-    <p class="s-lead">You hand us the game you already have. We do everything needed to get it live, compliant, and earning on every channel.</p>
-    <div class="test-grid">
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg></div><h3>WebGL Conversion</h3><p>We port and optimize your game to instant-play WebGL / HTML5 — fast loads, small footprint, smooth on the web.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div><h3>Store-Specific Packaging</h3><p>Each store has its own build, format, and asset rules. We package and configure your game correctly for every one.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/></svg></div><h3>SDK &amp; IAP Integration</h3><p>Per-store ads, in-app purchase, login, and analytics SDKs integrated so monetization works natively on each platform.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Compliance &amp; Certification</h3><p>We meet each store's content, privacy, and technical requirements — and shepherd your title through review and approval.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Localization</h3><p>Store listings, metadata, and in-game text localized for each region so your game lands like a local release.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div><h3>Performance Optimization</h3><p>Tuned for low-end devices and instant-play constraints — fast first frame, low memory, no janky loads.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-4M12 16V8M16 16v-7"/></svg></div><h3>Unified Analytics</h3><p>Performance and revenue from every store and platform consolidated into one clear view, not a dozen dashboards.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg></div><h3>Updates &amp; Maintenance</h3><p>One update from you, rolled out across every store and platform — versioning and resubmission handled.</p></div>
-      <div class="test-card"><div class="test-ico"><svg viewBox="0 0 24 24"><path d="M3 7h18v13H3z"/><path d="M3 7l3-4h12l3 4M9 12h6"/></svg></div><h3>Store Listing &amp; ASO</h3><p>Optimized icons, screenshots, and descriptions per store to lift visibility and install conversion.</p></div>
+    <h2 class="disp">What We <em>Handle</em></h2>
+    <p class="lead">You hand us the game you already have. We do everything needed to get it live, compliant, and earning on every channel.</p>
+    <div class="cards3">
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg></div><h3>WebGL Conversion</h3><p>Port &amp; optimize to instant-play WebGL / HTML5 — fast loads, small footprint.</p></div>
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div><h3>Store Packaging</h3><p>Each store's build, format &amp; asset rules handled correctly, per platform.</p></div>
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>SDK &amp; IAP</h3><p>Per-store ads, IAP, login &amp; analytics SDKs so monetization works natively.</p></div>
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Compliance &amp; Cert</h3><p>We meet each store's content, privacy &amp; technical rules and shepherd approval.</p></div>
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Localization</h3><p>Store listings, metadata &amp; in-game text localized per region.</p></div>
+      <div class="h-card"><div class="h-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16v-4M12 16V8M16 16v-7"/></svg></div><h3>Unified Analytics</h3><p>Performance &amp; revenue from every store in one clear view.</p></div>
     </div>
   </div>
 </section>
@@ -349,80 +241,51 @@ footer{background:#1a0d0b;border-top:1px solid var(--border);padding:40px 48px;d
 <section class="section">
   <div class="wrap">
     <div class="eyebrow">Process</div>
-    <h2 class="s-title">From One Build to <em>Everywhere</em></h2>
-    <p class="s-lead">A clear path from your existing game to live listings across web and native stores — with no rework on your side.</p>
-    <div class="method-list">
-      <div class="method"><div class="method-num">01</div><div><h4>Audit Your Build</h4><p>We review your engine, assets, and dependencies to map exactly what's needed for web and each target store.</p></div></div>
-      <div class="method"><div class="method-num">02</div><div><h4>Convert &amp; Adapt</h4><p>We produce an <strong>instant-play WebGL build</strong> and the store-specific native variants — without disrupting your main project.</p></div></div>
-      <div class="method"><div class="method-num">03</div><div><h4>Integrate &amp; Package</h4><p>Per-store SDKs, IAP, ads, and assets integrated and packaged to each platform's spec.</p></div></div>
-      <div class="method"><div class="method-num">04</div><div><h4>Submit &amp; Certify</h4><p>We handle submission, compliance, and the review process for every store and platform.</p></div></div>
-      <div class="method"><div class="method-num">05</div><div><h4>Go Live Everywhere</h4><p>Your game goes live across web portals and alternative app stores — reaching audiences it never could before.</p></div></div>
-      <div class="method"><div class="method-num">06</div><div><h4>Track &amp; Optimize</h4><p>Consolidated analytics, ongoing updates, and optimization to keep every channel growing.</p></div></div>
+    <h2 class="disp">From One Build to <em>Everywhere</em></h2>
+    <p class="lead">A clear path from your existing game to live listings across web and native stores — no rework on your side.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h4>Audit Your Build</h4><p>We review your engine, assets &amp; dependencies to map what each target needs.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h4>Convert &amp; Adapt</h4><p>An <b>instant-play WebGL build</b> plus store-specific native variants — without disrupting your main project.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h4>Integrate &amp; Package</h4><p>Per-store SDKs, IAP, ads &amp; assets integrated to each platform's spec.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h4>Submit &amp; Certify</h4><p>We handle submission, compliance &amp; review for every store.</p></div></div>
+      <div class="step"><div class="n">05</div><div><h4>Go Live &amp; Track</h4><p>Live across web &amp; app stores — with consolidated analytics and updates.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
-  <h2>Your Game Deserves <em>More Than Two Stores.</em></h2>
-  <p>Send us your existing game — we'll map every web platform and app store it should be on, and get it there.</p>
-  <div class="cta-row">
-    <a href="index.html#contact" class="btn-neon">Get My Game Everywhere</a>
-    <a href="index.html#portfolio" class="btn-outline">See Our Work</a>
+  <div class="wrap">
+    <h2>Your Game Deserves <em>More Than Two Stores.</em></h2>
+    <p>Send us your game — we'll map every web platform and app store it should be on, and get it there.</p>
+    <div class="hero-cta"><a href="index.html#contact" class="btn btn-gold">Get My Game Everywhere</a><a href="index.html#portfolio" class="btn btn-ghost">See Our Work</a></div>
   </div>
 </section>
 
 <footer>
-  <p class="f-copy">© 2026 <span>Factorial Studio Private Limited</span>. All rights reserved.</p>
-  <div class="f-links"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  <div class="wrap">
+    <div class="fl"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    <p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan</p>
+  </div>
 </footer>
 
 <script>
 (function(){
-  var stores=[
-    {key:'crazygames',     name:'CrazyGames',       tag:'Web Games Portal',   logo:'weblogos/CrazyGames.png'},
-    {key:'gamedistribution',name:'GameDistribution',tag:'HTML5 Distribution', logo:'weblogos/GameDistribution.jpg'},
-    {key:'msn',            name:'MSN Play',         tag:'Microsoft Casual',   logo:'weblogos/MSNPlay.png'},
-    {key:'pley',           name:'Pley',             tag:'Web Game Platform',  logo:'weblogos/Pley.png'},
-    {key:'youtube',        name:'YouTube Playables',tag:'In-App Games',       logo:'weblogos/YoutubePlayable.webp'},
-    {key:'tiktok',         name:'TikTok Mini Games',tag:'Social Mini-Games',  logo:'weblogos/TickTok.webp'},
-    {key:'poki',           name:'Poki',             tag:'Web Games Platform', logo:'weblogos/Poki.jpg'},
-    {key:'gamesnacks',     name:'GameSnacks',       tag:'Google HTML5',       logo:'weblogos/GameSnacks.png'},
-    {key:'yandex',         name:'Yandex Games',     tag:'CIS / Global',       logo:'weblogos/Yandex.webp'},
-    {key:'playgama',       name:'PlayGama',         tag:'Game Aggregator',    logo:'weblogos/PlayGama.webp'},
-    {key:'epic',           name:'Epic Mobile Store',tag:'Epic Games',         logo:'weblogos/EpicGames.png'}
+  var s=[
+    ['weblogos/CrazyGames.png','CrazyGames','Web Games Portal'],
+    ['weblogos/GameDistribution.jpg','GameDistribution','HTML5 Network'],
+    ['weblogos/MSNPlay.png','MSN Play','Microsoft Casual'],
+    ['weblogos/Pley.png','Pley','Web Platform'],
+    ['weblogos/YoutubePlayable.webp','YouTube Playables','In-App Games'],
+    ['weblogos/TickTok.webp','TikTok Mini Games','Social Games'],
+    ['weblogos/Poki.jpg','Poki','Web Platform'],
+    ['weblogos/GameSnacks.png','GameSnacks','Google HTML5'],
+    ['weblogos/Yandex.webp','Yandex Games','CIS / Global'],
+    ['weblogos/PlayGama.webp','PlayGama','Aggregator'],
+    ['weblogos/EpicGames.png','Epic Mobile Store','Epic Games']
   ];
-  var i=0, n=stores.length;
-  var screen=document.getElementById('scScreen'),
-      shot=document.getElementById('scShot'),
-      big=document.getElementById('scBigImg'),
-      logo=document.getElementById('scLogo'),
-      name=document.getElementById('scName'),
-      tag=document.getElementById('scTag'),
-      count=document.getElementById('scCount'),
-      bar=document.getElementById('scBar');
-  if(!screen) return;
-  function loadShot(key){
-    var exts=['.jpg','.png','.webp','.jpeg'], k=0;
-    screen.classList.remove('has-shot');
-    (function next(){
-      if(k>=exts.length){ shot.removeAttribute('src'); return; }
-      var im=new Image();
-      im.onload=function(){ shot.src=im.src; screen.classList.add('has-shot'); };
-      im.onerror=function(){ k++; next(); };
-      im.src='weblogos/screens/'+key+exts[k];
-    })();
-  }
-  function show(idx){
-    var s=stores[idx];
-    big.src=s.logo; logo.src=s.logo;
-    name.textContent=s.name; tag.textContent=s.tag;
-    count.textContent=(idx+1)+' / '+n;
-    bar.classList.remove('sc-anim'); void bar.offsetWidth; bar.classList.add('sc-anim');
-    loadShot(s.key);
-  }
-  show(0);
-  setInterval(function(){ i=(i+1)%n; show(i); }, 2400);
+  var i=0,n=s.length,L=document.getElementById('scLogo'),N=document.getElementById('scName'),T=document.getElementById('scTag'),C=document.getElementById('scCount');
+  if(!L)return;
+  setInterval(function(){i=(i+1)%n;L.src=s[i][0];N.textContent=s[i][1];T.textContent=s[i][2];C.textContent=(i+1)+' / '+n+' · PUBLISHED ✓';},2400);
 })();
 </script>
 </body>

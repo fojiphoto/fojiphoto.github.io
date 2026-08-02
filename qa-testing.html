@@ -4,522 +4,182 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game QA &amp; Testing Services | Factorial Studio</title>
-<meta name="description" content="Comprehensive game QA &amp; testing: live testing on Unity/Unreal with consoles attached, log verification, ANR &amp; crash analysis, low-end device + thermal/heating tests, aggressive edge-case testing, and 24-hour bug reports on a 50+ real-device lab.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://factorialstudio.com/qa-testing.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Game QA &amp; Testing Services | Factorial Studio">
-<meta property="og:description" content="Live engine testing, crash/ANR analysis, thermal &amp; low-end device testing, aggressive edge-case coverage, 24h bug reports. We find the bugs before your players do.">
-<meta property="og:url" content="https://factorialstudio.com/qa-testing.html">
-<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="description" content="Comprehensive game QA &amp; testing — live Unity/Unreal testing, real-device lab, crash &amp; ANR analysis, thermal &amp; low-end testing, aggressive edge-cases, and 24-hour bug reports.">
 <link rel="icon" type="image/png" href="images/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Syne:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#040508;--dark1:#080b12;--dark2:#0c1020;--dark3:#111626;--dark4:#161d32;
-  --neon:#00ffe0;--neon2:#0099ff;--fire:#ff4d2e;--gold:#ffd166;
-  --text:#e8edf5;--muted:#8a93ad;--subtle:#2a3354;
-  --border:rgba(0,255,224,0.10);--border2:rgba(0,255,224,0.18);
-  --f-head:'Orbitron',sans-serif;--f-body:'Syne',sans-serif;--f-mono:'JetBrains Mono',monospace;
-}
+:root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;
+  --gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;
+  --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--black);color:var(--text);font-family:var(--f-body);line-height:1.7;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:72px;display:flex;align-items:center;
-  justify-content:space-between;padding:0 48px;background:rgba(4,5,8,0.8);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--f-head);font-size:1.2rem;font-weight:800;letter-spacing:0.08em;
-  display:flex;align-items:center;gap:10px;color:var(--text)}
-.nav-logo-mark{width:40px;height:40px;display:flex;align-items:center;justify-content:center;
-  filter:drop-shadow(0 0 8px rgba(0,255,224,0.35))}
-.nav-logo-mark img{width:100%;height:100%;object-fit:contain}
-.nav-logo em{color:var(--neon);font-style:normal}
-.nav-actions{display:flex;align-items:center;gap:22px}
-.nav-back{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);transition:color 0.25s}
-.nav-back:hover{color:var(--neon)}
-.nav-btn{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--black);background:var(--neon);padding:10px 20px;border-radius:2px;font-weight:700;transition:box-shadow 0.3s,transform 0.2s}
-.nav-btn:hover{box-shadow:0 0 26px rgba(0,255,224,0.5);transform:translateY(-1px)}
-
-/* HERO */
-.qa-hero{position:relative;padding:150px 48px 80px;overflow:hidden;border-bottom:1px solid var(--border)}
-.qa-hero-grid{position:absolute;inset:0;z-index:0;
-  background-image:linear-gradient(rgba(0,255,224,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,224,0.035) 1px,transparent 1px);
-  background-size:80px 80px}
-.qa-hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);
-  background:rgba(0,255,224,0.06);top:-200px;right:-150px;pointer-events:none}
-.qa-hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto}
-.crumbs{font-family:var(--f-mono);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--neon);margin-bottom:22px}
-.crumbs span{color:var(--muted);margin:0 10px}
-.qa-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:0.66rem;
-  letter-spacing:0.28em;text-transform:uppercase;color:var(--neon);margin-bottom:22px}
-.qa-tag-dot{width:7px;height:7px;background:var(--neon);border-radius:50%;box-shadow:0 0 10px var(--neon)}
-.qa-hero h1{font-family:var(--f-head);font-size:clamp(2.4rem,6vw,5rem);font-weight:900;line-height:0.98;
-  text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:26px}
-.qa-hero h1 em{color:var(--neon);font-style:normal;text-shadow:0 0 40px rgba(0,255,224,0.3)}
-.qa-hero p{font-size:1.08rem;color:var(--muted);max-width:640px;line-height:1.85;margin-bottom:36px}
-.qa-hero p strong{color:var(--text);font-weight:600}
+body{font-family:var(--f-body);color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}.disp{font-family:var(--f-disp);text-transform:uppercase;line-height:1.04}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(6,40,28,.82);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
+.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;object-fit:contain}
+.logo b{font-family:var(--f-disp);font-size:1.1rem;color:#fff}.logo b em{color:var(--gold);font-style:normal}
+.nav-actions{display:flex;align-items:center;gap:20px}.nav-back{font-weight:500;font-size:.9rem;color:var(--muted)}.nav-back:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.95rem;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:transform .2s,box-shadow .25s}
+.btn.btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;box-shadow:0 6px 16px rgba(245,158,11,.28)}
+.btn.btn-gold:hover{transform:translateY(-2px)}
+.btn.btn-ghost{background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.4);color:var(--text)}.btn.btn-ghost:hover{border-color:var(--leaf);color:#fff;transform:translateY(-2px)}
+.hero{position:relative;padding:150px 0 84px;background:radial-gradient(120% 100% at 80% -10%, #0c5a3f 0%, var(--g900) 45%, var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.crumbs{font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.crumbs a{color:var(--muted)}.crumbs span{color:var(--muted);margin:0 8px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#3a1405;background:var(--gold);padding:7px 15px;border-radius:999px;margin-bottom:20px}
+.hero h1{font-family:var(--f-disp);font-size:clamp(2.4rem,5.6vw,4.4rem);color:#fff;line-height:1.02;margin-bottom:22px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:560px;margin-bottom:30px}.hero p b{color:#eaf5ee;font-weight:600}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.btn-neon{font-family:var(--f-mono);font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
-  padding:15px 34px;background:var(--neon);color:var(--black);border-radius:2px;display:inline-block;transition:box-shadow 0.3s,transform 0.2s}
-.btn-neon:hover{box-shadow:0 0 36px rgba(0,255,224,0.5);transform:translateY(-2px)}
-.btn-outline{font-family:var(--f-mono);font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;
-  padding:15px 34px;border:1px solid var(--subtle);color:var(--text);border-radius:2px;display:inline-block;transition:border-color 0.3s,color 0.3s}
-.btn-outline:hover{border-color:var(--neon);color:var(--neon)}
-
-/* SECTION */
-.section{padding:90px 48px;position:relative;z-index:2}
-.section-alt{background:var(--dark1)}
-.wrap{max-width:1240px;margin:0 auto}
-.eyebrow{font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--neon);
-  margin-bottom:14px;display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:'';width:28px;height:1px;background:var(--neon);opacity:0.6}
-.s-title{font-family:var(--f-head);font-size:clamp(1.8rem,3.6vw,3rem);font-weight:900;line-height:1.05;
-  text-transform:uppercase;letter-spacing:0.02em;margin-bottom:18px}
-.s-title em{color:var(--neon);font-style:normal}
-.s-lead{color:var(--muted);font-size:1.02rem;line-height:1.85;max-width:680px;margin-bottom:50px}
-
-/* WHAT WE TEST GRID */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.test-card{background:var(--dark2);border:1px solid var(--border);padding:30px 28px;border-radius:4px;
-  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
-.test-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 24px 50px rgba(0,0,0,0.45)}
-.test-ico{width:46px;height:46px;border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;background:rgba(0,255,224,0.05)}
-.test-ico svg{width:24px;height:24px;stroke:var(--neon);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.test-card h3{font-family:var(--f-head);font-size:1.02rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px}
-.test-card p{font-size:0.9rem;color:var(--muted);line-height:1.7}
-
-/* METHOD LIST */
-.method-list{display:flex;flex-direction:column;gap:14px;margin-top:10px}
-.method{display:flex;gap:20px;align-items:flex-start;background:var(--dark2);border:1px solid var(--border);
-  border-left:2px solid var(--neon);padding:24px 28px;border-radius:0 4px 4px 0;transition:background 0.3s}
-.method:hover{background:var(--dark3)}
-.method-num{font-family:var(--f-head);font-size:1.5rem;font-weight:900;color:var(--neon);opacity:0.5;flex-shrink:0;min-width:46px}
-.method h4{font-family:var(--f-head);font-size:1.05rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:8px}
-.method p{font-size:0.94rem;color:var(--muted);line-height:1.75}
-.method p strong{color:var(--text);font-weight:600}
-
-/* STATS STRIP */
-.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:10px}
-.stat-cell{background:var(--dark2);padding:30px 24px;text-align:center}
-.stat-v{font-family:var(--f-head);font-size:2.4rem;font-weight:900;color:var(--neon);line-height:1;text-shadow:0 0 26px rgba(0,255,224,0.25)}
-.stat-l{font-family:var(--f-mono);font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:8px}
-
-/* DELIVERABLE / REPORT */
-.deliver{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.deliver-points{list-style:none;display:flex;flex-direction:column;gap:14px}
-.deliver-points li{display:flex;gap:14px;align-items:flex-start;font-size:0.96rem;color:var(--muted);line-height:1.6}
-.deliver-points li::before{content:'';width:18px;height:18px;flex-shrink:0;margin-top:3px;border-radius:50%;
-  background:rgba(0,255,224,0.12);border:1px solid var(--neon);
-  box-shadow:0 0 10px rgba(0,255,224,0.3)}
-.deliver-points strong{color:var(--text);font-weight:600}
-.report-card{background:var(--dark2);border:1px solid var(--border2);border-radius:6px;overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,0.5)}
-.report-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.35)}
-.report-bar .dots{display:flex;gap:6px}
-.report-bar .dots span{width:10px;height:10px;border-radius:50%}
-.dr{background:#ff5f57}.dy{background:#febc2e}.dg{background:#28c840}
-.report-bar .title{font-family:var(--f-mono);font-size:0.64rem;color:rgba(232,237,245,0.55)}
-.report-body{padding:22px;font-family:var(--f-mono);font-size:0.72rem;line-height:1.9}
-.rb-row{display:flex;gap:10px;margin-bottom:6px}
-.rb-key{color:var(--muted);min-width:88px}
-.rb-val{color:var(--text)}
-.rb-crit{color:var(--fire);font-weight:600}
-.rb-tag{display:inline-block;color:var(--neon);border:1px solid var(--border2);padding:1px 7px;border-radius:2px;font-size:0.62rem}
-.report-steps{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border2);color:var(--muted)}
-.report-steps b{color:var(--text)}
-
-/* PLATFORM PILLS */
-.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-.pill{font-family:var(--f-mono);font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--neon);
-  border:1px solid var(--border2);background:rgba(0,255,224,0.03);padding:9px 16px;border-radius:2px}
-
-/* CTA */
-.cta{padding:90px 48px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border);background:var(--dark1)}
-.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(0,255,224,0.08),transparent 65%)}
-.cta h2{font-family:var(--f-head);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:900;text-transform:uppercase;margin-bottom:18px;position:relative;z-index:1}
-.cta h2 em{color:var(--neon);font-style:normal}
-.cta p{color:var(--muted);max-width:520px;margin:0 auto 34px;line-height:1.8;position:relative;z-index:1}
-.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-
-/* FOOTER */
-footer{background:var(--dark2);border-top:1px solid var(--border);padding:40px 48px;
-  display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;position:relative;z-index:2}
-.footer-copy{font-family:var(--f-mono);font-size:0.66rem;letter-spacing:0.1em;color:var(--muted)}
-.footer-copy span{color:var(--neon)}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
-.footer-links a:hover{color:var(--neon)}
-
-/* HERO TWO-COLUMN + ANIMATED TERMINAL */
-.qa-hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center}
-.qa-hero-text{min-width:0}
-.qa-hero-text p{margin-bottom:36px}
-.qa-hero-visual{display:flex;align-items:center;justify-content:center}
-.hero-screen{width:100%;max-width:480px;height:330px;background:linear-gradient(180deg,#0a0e1a,#050811);
-  border:1px solid rgba(0,255,224,0.18);border-radius:12px;position:relative;overflow:hidden;
-  box-shadow:0 40px 100px rgba(0,0,0,0.65),0 0 0 1px rgba(0,255,224,0.06),0 0 60px rgba(0,255,224,0.18),inset 0 1px 0 rgba(255,255,255,0.04);
-  transform:perspective(900px) rotateY(-9deg) rotateX(4deg)}
-.hero-screen::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:linear-gradient(135deg,rgba(0,255,224,0.05) 0%,transparent 40%,rgba(0,153,255,0.05) 100%)}
-.hero-screen::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,0.05) 0px,rgba(0,0,0,0.05) 1px,transparent 1px,transparent 3px)}
-.qa-titlebar{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid rgba(0,255,224,0.08);background:rgba(0,0,0,0.35);position:relative;z-index:3}
-.qa-dots{display:flex;gap:6px}
-.qa-dots span{width:11px;height:11px;border-radius:50%;display:block}
-.qa-dot-r{background:#ff5f57}.qa-dot-y{background:#febc2e}.qa-dot-g{background:#28c840}
-.qa-title{font-family:var(--f-mono);font-size:0.66rem;color:rgba(232,237,245,0.55);letter-spacing:0.05em}
-.qa-stage{position:relative;height:calc(100% - 38px);overflow:hidden;z-index:3}
-.qa-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px 26px;text-align:center;opacity:0;transform:translateX(110%);animation:qaSlide 9s infinite ease-in-out}
-.qa-slide-1{animation-delay:0s}.qa-slide-2{animation-delay:3s}.qa-slide-3{animation-delay:6s}
-@keyframes qaSlide{0%{transform:translateX(110%);opacity:0}6%{opacity:0}11%{transform:translateX(0);opacity:1}30%{transform:translateX(0);opacity:1}35%{opacity:0}40%{transform:translateX(-110%);opacity:0}100%{transform:translateX(-110%);opacity:0}}
-.qa-icon{font-size:2.6rem;line-height:1;filter:drop-shadow(0 0 18px currentColor)}
-.qa-icon-yellow{color:#ffd166}.qa-icon-red{color:#ff4d2e;animation:pulseGlow 1s ease-in-out infinite}
-@keyframes pulseGlow{0%,100%{filter:drop-shadow(0 0 12px currentColor) drop-shadow(0 0 4px currentColor)}50%{filter:drop-shadow(0 0 24px currentColor) drop-shadow(0 0 8px currentColor)}}
-.qa-h{font-family:var(--f-mono);font-size:1rem;font-weight:500;letter-spacing:0.06em}
-.qa-h-yellow{color:#ffd166}.qa-h-cyan{color:var(--neon)}.qa-h-red{color:#ff4d2e}
-.qa-sub{font-family:var(--f-mono);font-size:0.72rem;color:rgba(232,237,245,0.7);margin-top:-4px}
-.qa-box{width:100%;border:1px solid;background:rgba(0,0,0,0.35);padding:10px 14px;border-radius:4px;font-family:var(--f-mono);font-size:0.66rem;text-align:left;line-height:1.7;letter-spacing:0.02em}
-.qa-box-yellow{border-color:rgba(255,209,102,0.35);color:rgba(255,209,102,0.92)}
-.qa-box-red{border-color:rgba(255,77,46,0.35);color:rgba(255,160,140,1)}
-.qa-box-yellow .qa-strong{color:#ffd166}.qa-box-red strong{color:#ff4d2e}
-.qa-progress{width:100%;height:4px;background:rgba(0,255,224,0.12);border-radius:2px;overflow:hidden}
-.qa-progress-bar{height:100%;background:linear-gradient(90deg,var(--neon),#0099ff);width:0;animation:qaProgress 2.6s ease-in-out infinite}
-@keyframes qaProgress{0%{width:0}90%{width:70%}100%{width:70%}}
-.qa-stats{font-family:var(--f-mono);font-size:0.62rem;color:rgba(0,255,224,0.75);letter-spacing:0.08em}
-.qa-spinner{width:56px;height:56px;border:2px dashed var(--neon);border-radius:12px;animation:qaSpin 3.5s linear infinite;filter:drop-shadow(0 0 14px var(--neon))}
-@keyframes qaSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.screen-tag{position:absolute;bottom:16px;right:16px;font-family:var(--f-mono);font-size:0.6rem;color:var(--neon);letter-spacing:0.15em;text-transform:uppercase;z-index:3}
-@media (prefers-reduced-motion: reduce){
-  .qa-slide,.qa-spinner,.qa-progress-bar,.qa-icon-red{animation:none}
-  .qa-slide-1{opacity:1;transform:none}
-}
-
-@media (max-width:1000px){
-  .qa-hero-inner{grid-template-columns:1fr;gap:40px}
-  .qa-hero-visual{display:none}
-}
-@media (max-width:900px){
-  #nav{padding:0 22px}
-  .nav-back{display:none}
-  .section,.qa-hero,.cta{padding-left:22px;padding-right:22px}
-  .qa-hero{padding-top:120px}
-  .test-grid{grid-template-columns:1fr 1fr}
-  .deliver{grid-template-columns:1fr;gap:32px}
-  .stat-strip{grid-template-columns:1fr 1fr}
-}
-@media (max-width:600px){
-  .test-grid{grid-template-columns:1fr}
-  .method{flex-direction:column;gap:8px}
-}
+.report{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.rp-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:2px solid rgba(163,217,119,.15);background:rgba(0,0,0,.2)}
+.rp-bar i{width:12px;height:12px;border-radius:50%}.rr{background:#ff6b5e}.ry{background:var(--gold)}.rg{background:var(--leaf2)}
+.rp-bar span{font-weight:600;font-size:.76rem;color:var(--muted);margin-left:6px}
+.rp-body{padding:26px 26px 30px;font-family:var(--f-body)}
+.rp-row{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;padding:7px 0;color:var(--muted)}
+.rp-row b{color:#fff;font-weight:600}
+.rp-crit{color:var(--orange);font-weight:600}
+.rp-tags{margin-top:8px}.rp-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf2);border:2px solid rgba(163,217,119,.3);padding:3px 9px;border-radius:999px;margin-right:6px}
+.rp-repro{margin-top:14px;padding-top:14px;border-top:2px dashed rgba(163,217,119,.2);font-size:.78rem;color:var(--muted);line-height:1.8}.rp-repro b{color:#fff}
+.section{padding:88px 0;position:relative}.section.cream{background:var(--cream);color:var(--ink-text)}
+.eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section.cream .eyebrow{color:var(--g600)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+h2.disp{font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;margin-bottom:16px}.section.cream h2.disp{color:var(--g900)}
+h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:var(--gold2)}
+.lead{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:46px}.section.cream .lead{color:var(--ink-muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:var(--r);padding:26px 18px;text-align:center}
+.stat b{font-family:var(--f-disp);font-size:1.9rem;color:var(--gold);display:block;line-height:1}
+.stat span{font-weight:500;font-size:.78rem;color:var(--muted);margin-top:8px;display:block}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tc{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px 26px;transition:transform .25s,border-color .25s}
+.tc:hover{transform:translateY(-5px);border-color:var(--leaf)}
+.tc-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
+.tc-ico svg{width:26px;height:26px;color:var(--g700);stroke-width:2;fill:none}
+.tc h3{font-family:var(--f-disp);font-size:.92rem;color:var(--g900);margin-bottom:8px}
+.tc p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}.tc p b{color:var(--g700)}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-left:4px solid var(--leaf);padding:22px 26px;border-radius:0 var(--r) var(--r) 0}
+.step .n{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold);min-width:44px}
+.step h4{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:6px}.step p{font-size:.92rem;color:var(--muted)}.step p b{color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{font-weight:600;font-size:.76rem;color:var(--muted);border:2px solid rgba(163,217,119,.25);padding:9px 18px;border-radius:999px}
+.cta{text-align:center;padding:92px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
+.cta h2{font-family:var(--f-disp);font-size:clamp(2rem,4.6vw,3.4rem);color:#fff;margin-bottom:16px}.cta h2 em{color:var(--gold);font-style:normal}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px}.cta .hero-cta{justify-content:center}
+footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}footer p{color:var(--muted);font-size:.82rem}
+@media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:40px}.cards3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.nav-back{display:none}}
+@media (max-width:600px){.cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="nav-logo">
-    <span class="nav-logo-mark"><img src="images/logo.png" alt="Factorial Studio"></span>
-    Factorial<em>Studio</em>
-  </a>
-  <div class="nav-actions">
-    <a href="index.html" class="nav-back">&larr; Back to Home</a>
-    <a href="index.html#contact" class="nav-btn">Free QA Teardown</a>
-  </div>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-actions"><a href="index.html" class="nav-back">← Back to Home</a><a href="index.html#contact" class="btn btn-gold">Free QA Teardown</a></div>
 </nav>
 
-<!-- HERO -->
-<section class="qa-hero">
-  <div class="qa-hero-grid"></div>
-  <div class="qa-hero-glow"></div>
-  <div class="qa-hero-inner">
-    <div class="qa-hero-text">
-      <div class="crumbs"><a href="index.html">Factorial Studio</a><span>&rsaquo;</span>Services<span>&rsaquo;</span>QA &amp; Testing</div>
-      <div class="qa-tag"><span class="qa-tag-dot"></span>Our Specialty</div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">Factorial Studio</a><span>›</span>Services<span>›</span>QA &amp; Testing</div>
+      <div class="tag">Our Specialty</div>
       <h1>Game QA &amp;<br><em>Quality Assurance</em></h1>
-      <p>
-        QA is our craft — not a side service. We test your game the way real players (and edge cases) will break it:
-        <strong>live on the engine, on real devices, under stress</strong>. From functional coverage to crash analysis,
-        thermal behaviour, and low-end performance — you get detailed, reproducible bug reports within 24 hours.
-      </p>
-      <div class="hero-cta">
-        <a href="index.html#contact" class="btn-neon">Get a Free QA Teardown</a>
-        <a href="#how" class="btn-outline">See How We Test →</a>
-      </div>
+      <p>QA is our craft — not a side service. We test your game the way real players (and edge cases) will break it: <b>live on the engine, on real devices, under stress</b> — with detailed bug reports within 24 hours.</p>
+      <div class="hero-cta"><a href="index.html#contact" class="btn btn-gold">Get a Free QA Teardown</a><a href="#how" class="btn btn-ghost">How We Test →</a></div>
     </div>
-
-    <!-- Animated QA terminal — live issue detection -->
-    <div class="qa-hero-visual">
-      <div class="hero-screen">
-        <div class="qa-titlebar">
-          <div class="qa-dots"><span class="qa-dot-r"></span><span class="qa-dot-y"></span><span class="qa-dot-g"></span></div>
-          <div class="qa-title">&gt;_ factorial-qa-system.exe</div>
-        </div>
-        <div class="qa-stage">
-          <!-- Slide 1: Scanning -->
-          <div class="qa-slide qa-slide-1">
-            <div class="qa-spinner"></div>
-            <div class="qa-h qa-h-cyan">System Scanning…</div>
-            <div class="qa-sub">Executing test cases across all modules &amp; devices.</div>
-            <div class="qa-progress"><div class="qa-progress-bar"></div></div>
-            <div class="qa-stats">Test Cases: 1,420 &nbsp;·&nbsp; Coverage: 98%</div>
-          </div>
-          <!-- Slide 2: Issue Detected -->
-          <div class="qa-slide qa-slide-2">
-            <div class="qa-icon qa-icon-red">🐞</div>
-            <div class="qa-h qa-h-red">Issue Detected</div>
-            <div class="qa-box qa-box-red">
-              <strong>⚠ Crash · Low-Memory State</strong><br>
-              &nbsp;&nbsp;&nbsp;Device: Redmi 9A · 2GB RAM<br>
-              &nbsp;&nbsp;&nbsp;Impact: Critical (OutOfMemoryError)
-            </div>
-          </div>
-          <!-- Slide 3: Report Sent -->
-          <div class="qa-slide qa-slide-3">
-            <div class="qa-icon qa-icon-yellow">📄</div>
-            <div class="qa-h qa-h-yellow">Report Generated</div>
-            <div class="qa-box qa-box-yellow">
-              &gt; Logs captured…<br>
-              &gt; Screenshots attached…<br>
-              &gt; Repro steps documented…<br>
-              <span class="qa-strong">&gt; SENT TO DEV TEAM [ID: #FS-0427]</span>
-            </div>
-          </div>
-        </div>
-        <div class="screen-tag">// Live QA</div>
+    <div class="report">
+      <div class="rp-bar"><i class="rr"></i><i class="ry"></i><i class="rg"></i><span>bug-report_#FS-0427</span></div>
+      <div class="rp-body">
+        <div class="rp-row"><span>Severity</span><b class="rp-crit">● CRITICAL</b></div>
+        <div class="rp-row"><span>Issue</span><b>Crash on inventory · low memory</b></div>
+        <div class="rp-row"><span>Device</span><b>Redmi 9A · Android 10 · 2GB</b></div>
+        <div class="rp-row"><span>Build</span><b>v1.4.2-rc3 · Unity 2022.3</b></div>
+        <div class="rp-tags"><span class="rp-tag">crash</span><span class="rp-tag">low-end</span><span class="rp-tag">memory</span></div>
+        <div class="rp-repro"><b>Repro:</b> Launch on low-RAM device → enter level 3 → open inventory while ad loads → <span class="rp-crit">OutOfMemoryError</span></div>
       </div>
     </div>
   </div>
+</header>
+
+<section class="section" style="padding-top:56px;padding-bottom:56px">
+  <div class="wrap"><div class="stats">
+    <div class="stat"><b>50+</b><span>Real Test Devices</span></div>
+    <div class="stat"><b>24h</b><span>Bug Report Turnaround</span></div>
+    <div class="stat"><b>98%</b><span>Avg Test Coverage</span></div>
+    <div class="stat"><b>1,420</b><span>Test Cases / Title</span></div>
+  </div></div>
 </section>
 
-<!-- STATS -->
-<section class="section" style="padding-top:60px;padding-bottom:60px">
-  <div class="wrap">
-    <div class="stat-strip">
-      <div class="stat-cell"><div class="stat-v">50+</div><div class="stat-l">Real Test Devices</div></div>
-      <div class="stat-cell"><div class="stat-v">24h</div><div class="stat-l">Bug Report Turnaround</div></div>
-      <div class="stat-cell"><div class="stat-v">98%</div><div class="stat-l">Avg Test Coverage</div></div>
-      <div class="stat-cell"><div class="stat-v">1,420</div><div class="stat-l">Test Cases / Title</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE TEST -->
-<section class="section section-alt">
+<section class="section cream">
   <div class="wrap">
     <div class="eyebrow">Coverage</div>
-    <h2 class="s-title">What We <em>Test</em></h2>
-    <p class="s-lead">Every build is put through a full battery of test disciplines — far beyond "does it launch". Here's what we check, on every pass.</p>
-    <div class="test-grid">
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M3 18h12"/></svg></div>
-        <h3>Functional Testing</h3>
-        <p>Every mechanic, menu, transition, and edge case verified against the design spec — making sure the game does exactly what it should, everywhere it should.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div>
-        <h3>Performance &amp; FPS</h3>
-        <p>Frame-rate stability, load times, memory usage, and frame drops profiled across device tiers — from flagship to budget hardware.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Crash &amp; ANR Analysis</h3>
-        <p>We hunt crashes and ANRs (Application Not Responding), capture full stack traces and logs, and pinpoint the exact reproduction path so devs can fix fast.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/><path d="M2 9v6M22 9v6"/></svg></div>
-        <h3>Low-End Device Testing</h3>
-        <p>If your game struggles on a low-RAM, older-chipset phone, you lose players. We test on genuine low-end devices to expose lag, stutter, and memory crashes.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M12 8a5 5 0 1 0 5 5"/><path d="M12 13l3-3"/></svg></div>
-        <h3>Thermal / Heating Tests</h3>
-        <p>We measure how hot each device runs during extended play, identify <strong>which devices overheat and throttle</strong>, and flag the scenarios that drain battery or trigger thermal cut-offs.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <h3>Aggressive / Stress Testing</h3>
-        <p>Rapid input spamming, rotation abuse, interruptions (calls, notifications), connection drops, and impossible state combinations — we deliberately try to break it.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
-        <h3>Compatibility Testing</h3>
-        <p>Across OS versions, screen sizes, aspect ratios, resolutions, and hardware combinations — making sure the experience holds on every target device.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="19" cy="17" r="2"/></svg></div>
-        <h3>Log Verification</h3>
-        <p>We capture and read engine &amp; device logs (logcat, console output, crash dumps) to verify behaviour, catch silent errors, and confirm fixes actually landed.</p>
-      </div>
-
-      <div class="test-card">
-        <div class="test-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"/><path d="M8 20h8M12 16v4"/><path d="M7 10l2 2 3-4"/></svg></div>
-        <h3>Compliance / Cert</h3>
-        <p>Platform submission checks for the App Store, Google Play, and console first-party (Sony, Microsoft, Nintendo) requirements — so you pass cert the first time.</p>
-      </div>
-
+    <h2 class="disp">What We <em>Test</em></h2>
+    <p class="lead">Every build goes through a full battery of test disciplines — far beyond "does it launch".</p>
+    <div class="cards3">
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></div><h3>Functional Testing</h3><p>Every mechanic, menu &amp; edge case verified against the design spec.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5M3 21h18"/></svg></div><h3>Performance &amp; FPS</h3><p>Frame-rate, load times &amp; memory profiled across device tiers.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Crash &amp; ANR Analysis</h3><p>We hunt crashes/ANRs, capture stack traces, and pinpoint repro paths.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M2 9v6M22 9v6"/></svg></div><h3>Low-End Devices</h3><p>Real budget hardware to expose lag, stutter &amp; memory crashes.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 8a5 5 0 1 0 5 5"/></svg></div><h3>Thermal / Heating</h3><p>We measure device heat over long sessions and flag <b>which devices overheat</b>.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>Aggressive / Stress</h3><p>Input spamming, interruptions, drops — we deliberately try to break it.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Compatibility</h3><p>Across OS versions, screen sizes, aspect ratios &amp; hardware.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Log Verification</h3><p>We read engine &amp; device logs to confirm behaviour and fixes.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v10H4z"/><path d="M8 20h8M12 16v4M7 10l2 2 3-4"/></svg></div><h3>Compliance / Cert</h3><p>App Store, Google Play &amp; console first-party submission checks.</p></div>
     </div>
   </div>
 </section>
 
-<!-- HOW WE TEST -->
 <section class="section" id="how">
   <div class="wrap">
     <div class="eyebrow">Methodology</div>
-    <h2 class="s-title">How We <em>Test</em></h2>
-    <p class="s-lead">No emulator-only guesswork. Our QA engineers test live, on the engine and on real hardware — the same conditions your players are in.</p>
-    <div class="method-list">
-
-      <div class="method">
-        <div class="method-num">01</div>
-        <div>
-          <h4>Live Testing on Unity &amp; Unreal</h4>
-          <p>We test <strong>live inside the engine</strong> with the build connected — and for console titles, with the <strong>devkit/console physically attached</strong>. This lets us watch behaviour, profiler data, and errors in real time as they happen, not after the fact.</p>
-        </div>
-      </div>
-
-      <div class="method">
-        <div class="method-num">02</div>
-        <div>
-          <h4>Real-Device Lab — Not Emulators</h4>
-          <p>A lab of <strong>50+ real iOS &amp; Android devices</strong> spanning flagship to genuine low-end hardware. Touch response, sensors, battery, and thermal behaviour can only be trusted on real devices.</p>
-        </div>
-      </div>
-
-      <div class="method">
-        <div class="method-num">03</div>
-        <div>
-          <h4>Crash, ANR &amp; Log Verification</h4>
-          <p>We reproduce crashes and ANRs, pull the <strong>full logs and stack traces</strong>, and verify them against the build. Every reported issue is confirmed in logs before it reaches your dev team — no noise, no false positives.</p>
-        </div>
-      </div>
-
-      <div class="method">
-        <div class="method-num">04</div>
-        <div>
-          <h4>Thermal &amp; Low-End Profiling</h4>
-          <p>We run extended sessions to track <strong>device heating, thermal throttling, and battery drain</strong> — and identify exactly which devices overheat. Low-end devices are tested separately to catch the lag and memory crashes flagships hide.</p>
-        </div>
-      </div>
-
-      <div class="method">
-        <div class="method-num">05</div>
-        <div>
-          <h4>Aggressive &amp; Edge-Case Passes</h4>
-          <p>Beyond the happy path: input spamming, rapid scene switching, interruptions, network drops, and impossible state combinations. We test the way a determined player — or an exploit — would <strong>deliberately try to break it</strong>.</p>
-        </div>
-      </div>
-
-      <div class="method">
-        <div class="method-num">06</div>
-        <div>
-          <h4>Detailed Reporting &amp; Retest</h4>
-          <p>Each issue is logged with severity, repro steps, screenshots/video, device info, and logs — delivered within <strong>24 hours</strong>. Once fixed, we retest and confirm closure so nothing slips back in.</p>
-        </div>
-      </div>
-
+    <h2 class="disp">How We <em>Test</em></h2>
+    <p class="lead">No emulator-only guesswork. We test live, on the engine and on real hardware — the same conditions your players are in.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h4>Live Unity &amp; Unreal Testing</h4><p>We test <b>live inside the engine</b> — and for console titles, with the devkit physically attached — watching profiler data and errors in real time.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h4>Real-Device Lab</h4><p><b>50+ real iOS &amp; Android devices</b>, flagship to genuine low-end. Touch, battery &amp; thermal only trust real hardware.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h4>Crash, ANR &amp; Logs</h4><p>We reproduce issues, pull <b>full logs &amp; stack traces</b>, and confirm each in logs before it reaches your team.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h4>Thermal &amp; Low-End Profiling</h4><p>Extended sessions track <b>heating, throttling &amp; battery drain</b>; low-end devices tested separately.</p></div></div>
+      <div class="step"><div class="n">05</div><div><h4>Aggressive &amp; Edge-Case</h4><p>Input spamming, interruptions, network drops &amp; impossible states — we test the way an exploit would.</p></div></div>
+      <div class="step"><div class="n">06</div><div><h4>Reporting &amp; Retest</h4><p>Severity, repro, screenshots, device &amp; logs — delivered in <b>24 hours</b>. We retest fixes to confirm closure.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- DELIVERABLE -->
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="eyebrow">Deliverables</div>
-    <h2 class="s-title">Bug Reports You Can <em>Act On</em></h2>
-    <div class="deliver">
-      <div>
-        <ul class="deliver-points">
-          <li><span><strong>Severity &amp; priority</strong> — every issue triaged (Critical / High / Medium / Low) so you fix what matters first.</span></li>
-          <li><span><strong>Exact reproduction steps</strong> — clear, numbered, repeatable. No "it sometimes happens".</span></li>
-          <li><span><strong>Screenshots &amp; video</strong> — visual proof attached to every report.</span></li>
-          <li><span><strong>Device &amp; build info</strong> — model, OS, build number, and conditions captured automatically.</span></li>
-          <li><span><strong>Logs &amp; stack traces</strong> — the data your engineers actually need to debug.</span></li>
-          <li><span><strong>24-hour turnaround</strong> — fresh reports in your inbox by the start of your day.</span></li>
-        </ul>
-      </div>
-      <div class="report-card">
-        <div class="report-bar">
-          <div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
-          <div class="title">&gt;_ bug-report_#FS-0427.log</div>
-        </div>
-        <div class="report-body">
-          <div class="rb-row"><span class="rb-key">ID</span><span class="rb-val">#FS-0427</span></div>
-          <div class="rb-row"><span class="rb-key">Severity</span><span class="rb-val rb-crit">● CRITICAL</span></div>
-          <div class="rb-row"><span class="rb-key">Title</span><span class="rb-val">Crash on inventory open during low-memory state</span></div>
-          <div class="rb-row"><span class="rb-key">Device</span><span class="rb-val">Redmi 9A · Android 10 · 2GB RAM</span></div>
-          <div class="rb-row"><span class="rb-key">Build</span><span class="rb-val">v1.4.2-rc3 (Unity 2022.3)</span></div>
-          <div class="rb-row"><span class="rb-key">Tags</span><span class="rb-val"><span class="rb-tag">crash</span> <span class="rb-tag">low-end</span> <span class="rb-tag">memory</span></span></div>
-          <div class="report-steps">
-            <b>Repro:</b><br>
-            1. Launch on low-RAM device<br>
-            2. Enter level 3, fill inventory<br>
-            3. Open inventory while ad loads<br>
-            → <span class="rb-crit">Hard crash · logcat: OutOfMemoryError</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORMS -->
-<section class="section">
+<section class="section cream">
   <div class="wrap">
     <div class="eyebrow">Engines &amp; Platforms</div>
-    <h2 class="s-title">Where We <em>Test</em></h2>
-    <p class="s-lead">Source-level access on the major engines, and coverage across every shipping platform.</p>
-    <div class="pills">
-      <span class="pill">Unity</span>
-      <span class="pill">Unreal Engine</span>
-      <span class="pill">iOS</span>
-      <span class="pill">Android</span>
-      <span class="pill">PC / Steam</span>
-      <span class="pill">WebGL</span>
-      <span class="pill">PlayStation 5</span>
-      <span class="pill">Xbox Series X|S</span>
-      <span class="pill">Nintendo Switch</span>
+    <h2 class="disp">Where We <em>Test</em></h2>
+    <p class="lead">Source-level access on the major engines, coverage across every shipping platform.</p>
+    <div class="pills" style="--c:var(--g700)">
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">Unity</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">Unreal Engine</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">iOS</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">Android</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">PC / Steam</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">WebGL</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">PlayStation 5</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">Xbox Series X|S</span>
+      <span class="pill" style="color:var(--g700);border-color:rgba(21,112,79,.3)">Nintendo Switch</span>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
-  <h2>Want Proof? <em>We'll Test It Free.</em></h2>
-  <p>Send us your game. We'll play it, find real issues, and send you a sample bug report — no cost, no commitment. See exactly how we work before you decide.</p>
-  <div class="cta-row">
-    <a href="index.html#contact" class="btn-neon">Get a Free QA Teardown</a>
-    <a href="index.html#portfolio" class="btn-outline">See Our Work</a>
+  <div class="wrap">
+    <h2>Want Proof? <em>We'll Test It Free.</em></h2>
+    <p>Send us your game. We'll play it, find real issues, and send a sample bug report — no cost, no commitment.</p>
+    <div class="hero-cta"><a href="index.html#contact" class="btn btn-gold">Get a Free QA Teardown</a><a href="index.html#portfolio" class="btn btn-ghost">See Our Work</a></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p class="footer-copy">© 2026 <span>Factorial Studio Private Limited</span>. All rights reserved.</p>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-  </div>
+  <div class="wrap"><div class="fl"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  <p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan</p></div>
 </footer>
-
 </body>
 </html>
