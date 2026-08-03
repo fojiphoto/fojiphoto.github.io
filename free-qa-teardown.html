@@ -97,7 +97,12 @@ footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:4
 footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
 footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}footer p{color:var(--muted);font-size:.82rem}
 @media (max-width:1000px){.hero-grid,.split{grid-template-columns:1fr;gap:38px}.cards3{grid-template-columns:1fr 1fr}.nav-back{display:none}}
-@media (max-width:600px){.cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}.hero{padding-top:118px}}
+@media (max-width:600px){
+  .cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}.hero{padding-top:118px}
+  nav{padding:12px 16px}
+  .logo img{width:34px;height:34px}.logo b{font-size:.9rem}
+  .nav-actions{gap:10px}.nav-actions .btn{padding:10px 15px;font-size:.8rem}
+}
 </style>
 </head>
 <body>

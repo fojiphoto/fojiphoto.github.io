@@ -652,11 +652,11 @@ a.card:hover .card-link{gap:12px}
     <h2 class="disp">Games &amp; <em>Projects</em></h2>
     <p class="lead">Titles developed, co-developed, or QA-serviced by Factorial Studio — across platforms, genres, and scales.</p>
     <div class="pf-filters">
-      <button class="pf-pill active">All</button>
-      <button class="pf-pill">Action</button>
-      <button class="pf-pill">Mobile</button>
-      <button class="pf-pill">Console</button>
-      <button class="pf-pill">QA</button>
+      <a class="pf-pill" href="portfolio.html">All Projects</a>
+      <a class="pf-pill" href="portfolio.html#dev">Development</a>
+      <a class="pf-pill" href="portfolio.html#qa">QA &amp; Testing</a>
+      <a class="pf-pill" href="portfolio.html#web">Web / WebGL</a>
+      <a class="pf-pill" href="portfolio.html#console">Console</a>
     </div>
     <div class="pf-grid">
       <a class="pf-card" href="https://play.google.com/store/apps/details?id=com.ttt.fortressmerge" target="_blank" rel="noopener">
@@ -695,6 +695,10 @@ a.card:hover .card-link{gap:12px}
         <span class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         <div class="pf-info"><div class="pf-genre">Simulation · PC / Mobile / Web / Console · Full Development</div><div class="pf-name">Spider Gangster</div></div>
       </a>
+    </div>
+    <div style="text-align:center;margin-top:38px">
+      <a href="portfolio.html" class="btn btn-gold">Show More Projects
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -846,12 +850,6 @@ a.card:hover .card-link{gap:12px}
 
 <script>
 // portfolio filter pills (visual toggle)
-document.querySelectorAll('.pf-pill').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('.pf-pill').forEach(function(x){x.classList.remove('active')});
-    b.classList.add('active');
-  });
-});
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click',function(){

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games &amp; Projects — Full Portfolio | Factorial Studio</title>
+<meta name="description" content="Every title Factorial Studio has developed, co-developed, ported, QA-tested or published — across mobile, web, PC and console. Filter by what we actually did.">
+<link rel="canonical" href="https://factorialstudio.com/portfolio.html">
+<meta property="og:title" content="Games &amp; Projects — Full Portfolio | Factorial Studio">
+<meta property="og:description" content="Every title we've developed, ported, QA-tested or published — filter by platform and by our role.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;
+  --gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;
+  --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--f-body);color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}.disp{font-family:var(--f-disp);text-transform:uppercase;line-height:1.04}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(6,40,28,.82);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
+.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;object-fit:contain}
+.logo b{font-family:var(--f-disp);font-size:1.1rem;color:#fff}.logo b em{color:var(--gold);font-style:normal}
+.nav-actions{display:flex;align-items:center;gap:20px}.nav-back{font-weight:500;font-size:.9rem;color:var(--muted)}.nav-back:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.95rem;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:transform .2s,box-shadow .25s}
+.btn.btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;box-shadow:0 6px 16px rgba(245,158,11,.28)}
+.btn.btn-gold:hover{transform:translateY(-2px)}
+.btn.btn-ghost{background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.4);color:var(--text)}.btn.btn-ghost:hover{border-color:var(--leaf);color:#fff;transform:translateY(-2px)}
+
+.phero{padding:140px 0 44px;background:radial-gradient(120% 100% at 75% -10%, #0c5a3f 0%, var(--g900) 48%, var(--ink) 100%)}
+.crumbs{font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.crumbs a{color:var(--muted)}.crumbs a:hover{color:var(--gold)}.crumbs span{color:var(--muted);margin:0 9px}
+.phero h1{font-family:var(--f-disp);font-size:clamp(2.1rem,5vw,3.6rem);color:#fff;line-height:1.04;margin-bottom:18px}
+.phero h1 em{color:var(--gold);font-style:normal}
+.phero p{font-size:1.06rem;color:var(--muted);max-width:660px}.phero p b{color:#eaf5ee;font-weight:600}
+
+/* filters */
+.fbar{padding:34px 0 0;position:sticky;top:74px;z-index:50;background:linear-gradient(180deg,var(--ink) 70%,rgba(6,40,28,0));padding-bottom:22px}
+.fgroup{margin-bottom:14px}
+.flabel{font-weight:600;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.pills{display:flex;flex-wrap:wrap;gap:9px}
+.pill{font-family:var(--f-body);font-weight:600;font-size:.8rem;color:var(--muted);background:rgba(255,255,255,.05);
+  border:2px solid rgba(163,217,119,.22);padding:9px 17px;border-radius:999px;cursor:pointer;transition:all .2s}
+.pill:hover{border-color:var(--leaf);color:#fff}
+.pill.active{background:linear-gradient(180deg,var(--gold),var(--gold2));border-color:transparent;color:#3a2a06}
+.fcount{margin-top:6px;font-size:.82rem;color:var(--muted);font-weight:500}
+.fcount b{color:var(--gold)}
+
+/* grid */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:12px 0 90px}
+.pcard{position:relative;background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.22);
+  border-radius:var(--r-lg);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;display:block}
+.pcard:hover{transform:translateY(-7px);box-shadow:0 26px 52px rgba(3,30,20,.45);border-color:var(--leaf)}
+.pshot{aspect-ratio:16/10;object-fit:cover;width:100%}
+.picon{position:absolute;top:14px;left:14px;width:52px;height:52px;border-radius:14px;object-fit:cover;
+  border:2px solid rgba(255,255,255,.5);box-shadow:0 6px 16px rgba(0,0,0,.42)}
+.parrow{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(6,40,28,.72);
+  backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
+.pcard:hover .parrow{opacity:1}
+.parrow svg{width:16px;height:16px;color:var(--gold);stroke-width:2.6;fill:none}
+.pbody{padding:20px 22px 24px}
+.pname{font-family:var(--f-disp);font-size:1.02rem;color:#fff;margin-bottom:9px;line-height:1.2}
+.prole{display:inline-block;font-weight:700;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(251,191,36,.16);color:var(--gold);border:1px solid rgba(251,191,36,.36);
+  padding:4px 10px;border-radius:999px;margin-bottom:11px}
+.pmeta{font-size:.83rem;color:var(--muted);font-weight:500;line-height:1.5}
+.pplat{margin-top:11px;display:flex;flex-wrap:wrap;gap:6px}
+.pplat span{font-size:.62rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--leaf2);
+  border:1px solid rgba(163,217,119,.3);padding:3px 9px;border-radius:999px}
+.pcard.hidden{display:none}
+.empty{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--muted)}
+.empty b{display:block;font-family:var(--f-disp);font-size:1.1rem;color:#fff;margin-bottom:8px}
+
+.cta{text-align:center;padding:88px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
+.cta h2{font-family:var(--f-disp);font-size:clamp(1.8rem,4.2vw,3rem);color:#fff;margin-bottom:16px}.cta h2 em{color:var(--gold);font-style:normal}
+.cta p{color:var(--muted);max-width:540px;margin:0 auto 30px}
+.cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}footer p{color:var(--muted);font-size:.82rem}
+
+@media (max-width:1000px){.pgrid{grid-template-columns:1fr 1fr}.fbar{position:static}}
+@media (max-width:620px){
+  .pgrid{grid-template-columns:1fr}.phero{padding-top:118px}
+  nav{padding:12px 16px}
+  .logo img{width:34px;height:34px}.logo b{font-size:.9rem}
+  .nav-actions{gap:10px}.nav-actions .btn{padding:10px 15px;font-size:.8rem}
+  .pill{padding:11px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-actions">
+    <a href="index.html" class="nav-back">← Factorial Studio</a>
+    <a href="free-qa-teardown.html" class="btn btn-gold">Free QA Teardown</a>
+  </div>
+</nav>
+
+<header class="phero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Factorial Studio</a><span>›</span>Portfolio</div>
+    <h1>Games &amp; <em>Projects</em></h1>
+    <p>Titles we've built, co-developed, ported, tested or published. <b>Filter by what we actually did</b> — not every game here was ours end to end, and we say which was which.</p>
+  </div>
+</header>
+
+<!--
+  ADDING A GAME — copy one <a class="pcard"> block and edit:
+
+  data-role   : dev | qa | port | publish   (one or more, space-separated)
+  data-plat   : mobile | web | pc | console (one or more, space-separated)
+  These drive the filters. Keep the words exactly as listed above.
+
+  Artwork: put the screenshot + icon in /images/ and point src at them.
+  Screenshots look best at 16:10. Icons square.
+-->
+
+<section class="fbar">
+  <div class="wrap">
+    <div class="fgroup">
+      <div class="flabel">Our role</div>
+      <div class="pills" id="role-pills">
+        <button class="pill active" data-filter="role" data-value="all">All</button>
+        <button class="pill" data-filter="role" data-value="dev">Development</button>
+        <button class="pill" data-filter="role" data-value="qa">QA &amp; Testing</button>
+        <button class="pill" data-filter="role" data-value="port">Porting</button>
+        <button class="pill" data-filter="role" data-value="publish">Publishing</button>
+      </div>
+    </div>
+    <div class="fgroup">
+      <div class="flabel">Platform</div>
+      <div class="pills" id="plat-pills">
+        <button class="pill active" data-filter="plat" data-value="all">All</button>
+        <button class="pill" data-filter="plat" data-value="mobile">Mobile</button>
+        <button class="pill" data-filter="plat" data-value="web">Web / WebGL</button>
+        <button class="pill" data-filter="plat" data-value="pc">PC</button>
+        <button class="pill" data-filter="plat" data-value="console">Console</button>
+      </div>
+    </div>
+    <div class="fcount" id="fcount"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="pgrid" id="pgrid">
+
+    <a class="pcard" data-role="dev" data-plat="mobile web pc console" href="https://play.google.com/store/apps/details?id=com.ttt.fortressmerge" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game1.jpg" alt="Fortress Merge" loading="lazy">
+      <img class="picon" src="images/icon1.jpg" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">Full Development</span>
+        <div class="pname">Fortress Merge</div>
+        <div class="pmeta">Survival / merge hybrid built end to end.</div>
+        <div class="pplat"><span>Mobile</span><span>Web</span><span>PC</span><span>Console</span></div>
+      </div>
+    </a>
+
+    <a class="pcard" data-role="publish" data-plat="mobile web pc console" href="https://play.google.com/store/apps/details?id=com.derwinstudio.golforbit" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game2.jpg" alt="Golf Orbit" loading="lazy">
+      <img class="picon" src="images/icon2.jpg" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">Published</span>
+        <div class="pname">Golf Orbit</div>
+        <div class="pmeta">Sports title taken to store release.</div>
+        <div class="pplat"><span>Mobile</span><span>Web</span><span>PC</span><span>Console</span></div>
+      </div>
+    </a>
+
+    <a class="pcard" data-role="qa" data-plat="web console" href="https://play.google.com/store/apps/details?id=com.superfunsoft.thelegendoffireball" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game3.jpg" alt="The Legend of Fireball" loading="lazy">
+      <img class="picon" src="images/icon3.jpg" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">QA Services</span>
+        <div class="pname">The Legend of Fireball</div>
+        <div class="pmeta">WebGL simulation — QA pass across web and console builds.</div>
+        <div class="pplat"><span>Web / WebGL</span><span>Console</span></div>
+      </div>
+    </a>
+
+    <a class="pcard" data-role="dev qa publish" data-plat="mobile web" href="https://play.google.com/store/apps/details?id=com.qoni.guesstheiranswer" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game4.jpg" alt="Guess The Quiz" loading="lazy">
+      <img class="picon" src="images/icon4.png" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">Dev · QA · Published</span>
+        <div class="pname">Guess The Quiz</div>
+        <div class="pmeta">Puzzle title handled from build through QA to release.</div>
+        <div class="pplat"><span>Mobile</span><span>Web</span></div>
+      </div>
+    </a>
+
+    <a class="pcard" data-role="dev" data-plat="console" href="https://play.google.com/store/apps/details?id=com.thg.battleops.shooting.game" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game5.png" alt="Verdant Collapse" loading="lazy">
+      <img class="picon" src="images/icon5.jpg" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">Co-Development</span>
+        <div class="pname">Verdant Collapse</div>
+        <div class="pmeta">Console survival title built alongside the client's team.</div>
+        <div class="pplat"><span>Console</span></div>
+      </div>
+    </a>
+
+    <a class="pcard" data-role="dev" data-plat="mobile web pc console" href="https://play.google.com/store/apps/details?id=com.fs.gunhero.superhero" target="_blank" rel="noopener">
+      <img class="pshot" src="images/game6.jpg" alt="Spider Gangster" loading="lazy">
+      <img class="picon" src="images/icon6.png" alt="" loading="lazy">
+      <span class="parrow"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="pbody">
+        <span class="prole">Full Development</span>
+        <div class="pname">Spider Gangster</div>
+        <div class="pmeta">Open-world style action sim, built in-house.</div>
+        <div class="pplat"><span>Mobile</span><span>Web</span><span>PC</span><span>Console</span></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Want Your Game <em>On This Page?</em></h2>
+    <p>Start with a free QA teardown — we'll test your live build and send a real bug report. No call, no contract.</p>
+    <div class="row">
+      <a href="free-qa-teardown.html" class="btn btn-gold">Get a Free QA Teardown →</a>
+      <a href="webgl-publishing.html" class="btn btn-ghost">Port My Game to Web</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">
+      <a href="index.html">Home</a><a href="index.html#platform">Platform</a><a href="index.html#services">Services</a>
+      <a href="free-qa-teardown.html">Free Teardown</a><a href="webgl-publishing.html">WebGL</a>
+      <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </div>
+    <p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan · NTN: 9232454</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var state={role:'all',plat:'all'};
+  var cards=[].slice.call(document.querySelectorAll('.pcard'));
+  var grid=document.getElementById('pgrid');
+  var countEl=document.getElementById('fcount');
+
+  var empty=document.createElement('div');
+  empty.className='empty';
+  empty.innerHTML='<b>Nothing matches that combination</b><span>Try a different role or platform.</span>';
+  empty.style.display='none';
+  grid.appendChild(empty);
+
+  function matches(card,key,value){
+    if(value==='all') return true;
+    var attr=card.getAttribute('data-'+key)||'';
+    return attr.split(/\s+/).indexOf(value)!==-1;
+  }
+
+  function apply(){
+    var shown=0;
+    cards.forEach(function(c){
+      var ok=matches(c,'role',state.role)&&matches(c,'plat',state.plat);
+      c.classList.toggle('hidden',!ok);
+      if(ok) shown++;
+    });
+    empty.style.display=shown?'none':'block';
+    countEl.innerHTML='Showing <b>'+shown+'</b> of '+cards.length+' project'+(cards.length===1?'':'s');
+  }
+
+  function select(key,value){
+    var btn=document.querySelector('.pill[data-filter="'+key+'"][data-value="'+value+'"]');
+    if(!btn) return false;
+    state[key]=value;
+    document.querySelectorAll('.pill[data-filter="'+key+'"]').forEach(function(b){
+      b.classList.toggle('active',b===btn);
+    });
+    return true;
+  }
+
+  document.querySelectorAll('.pill').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      select(btn.getAttribute('data-filter'),btn.getAttribute('data-value'));
+      apply();
+    });
+  });
+
+  // deep links from the homepage pills, e.g. portfolio.html#qa
+  var ROLES=['dev','qa','port','publish'], PLATS=['mobile','web','pc','console'];
+  function fromHash(){
+    var h=(location.hash||'').replace('#','').toLowerCase();
+    if(!h) return;
+    if(ROLES.indexOf(h)!==-1) select('role',h);
+    else if(PLATS.indexOf(h)!==-1) select('plat',h);
+    apply();
+  }
+  window.addEventListener('hashchange',fromHash);
+
+  apply();
+  fromHash();
+})();
+</script>
+</body>
+</html>
