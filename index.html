@@ -310,6 +310,17 @@ a.card:hover .card-link{gap:12px}
 @media (max-width:900px){.engage,.testi{grid-template-columns:1fr}.contact{grid-template-columns:1fr;gap:32px}}
 @media (max-width:560px){.cform .row{grid-template-columns:1fr}}
 
+/* between 981px and ~1040px the full nav needed more room than it had and the
+   logo ended up jammed against the links — tighten it rather than hide nav early */
+@media (max-width:1100px){
+  nav{padding:14px 20px}
+  .nav-links{gap:15px}
+  .nav-links a{font-size:.86rem}
+  .nav-links .btn{padding:11px 16px;font-size:.84rem}
+  .logo b{font-size:1rem}
+  /* longest label, and the section is reachable by scrolling anyway */
+  .nav-links a[href="#distribution"]{display:none}
+}
 @media (max-width:980px){
   .about{grid-template-columns:1fr;gap:44px}
   .pf-grid{grid-template-columns:1fr 1fr}
@@ -394,6 +405,120 @@ a.card:hover .card-link{gap:12px}
 @media (max-width:900px){
   .card-wide{grid-template-columns:1fr;gap:24px;padding:30px 26px}
   .cw-points{grid-template-columns:1fr}
+}
+
+/* ===== PIPELINE (scroll-driven) ===== */
+#pipeline{background:var(--cream);color:var(--ink-text);position:relative}
+.pl-track{height:340vh}                       /* scroll runway; JS reads progress against this */
+.pl-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.pl-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;width:100%}
+
+.pl-head{margin-bottom:26px}
+.pl-head h2{font-family:var(--f-disp);font-size:clamp(1.6rem,3.2vw,2.5rem);color:var(--g900);
+  text-transform:uppercase;line-height:1.08;margin-bottom:12px}
+.pl-head h2 em{color:var(--gold2);font-style:normal}
+.pl-head p{font-size:.98rem;color:var(--ink-muted)}
+
+/* stage list */
+.pl-stages{list-style:none;display:flex;flex-direction:column;gap:4px}
+.pl-stage{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;
+  padding:13px 16px;border-radius:16px;opacity:.34;transition:opacity .35s,background .35s,transform .35s}
+.pl-stage.on{opacity:1;background:var(--cream2);transform:translateX(4px);
+  box-shadow:0 10px 26px rgba(6,40,28,.09)}
+.pl-stage.done{opacity:.62}
+.pl-n{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-disp);font-size:.86rem;letter-spacing:.03em;
+  background:#e6e0cc;color:#8a9a8d;transition:background .35s,color .35s,box-shadow .35s}
+.pl-stage.on .pl-n{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#3a2a06;
+  box-shadow:0 8px 20px rgba(245,158,11,.3)}
+.pl-stage.done .pl-n{background:var(--g700);color:#fff}
+.pl-stage h4{font-family:var(--f-disp);font-size:.98rem;letter-spacing:.03em;color:var(--g900);margin-bottom:3px}
+.pl-stage p{font-size:.88rem;color:var(--ink-muted);line-height:1.5}
+.pl-tag{display:inline-block;margin-top:6px;font-size:.6rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--g600);border:1px solid rgba(21,128,61,.3);
+  background:rgba(21,128,61,.07);padding:3px 9px;border-radius:999px}
+
+/* progress rail */
+.pl-rail{position:absolute;left:37px;top:0;bottom:0;width:3px;background:#e6e0cc;border-radius:3px}
+.pl-rail i{display:block;width:100%;background:linear-gradient(180deg,var(--leaf),var(--g600));
+  border-radius:3px;height:0;transition:height .25s linear}
+.pl-list-wrap{position:relative}
+
+/* the artifact that transforms */
+.pl-art{position:relative;aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;
+  background:linear-gradient(158deg,#0e6347,#072e1f);border:2px solid rgba(163,217,119,.28);
+  box-shadow:0 26px 60px rgba(3,30,20,.34)}
+.pl-bar{display:flex;align-items:center;gap:7px;padding:12px 15px;background:rgba(0,0,0,.26);
+  border-bottom:2px solid rgba(163,217,119,.14)}
+.pl-bar i{width:11px;height:11px;border-radius:50%}
+.pl-bar i:nth-child(1){background:#ff6b5e}.pl-bar i:nth-child(2){background:var(--gold)}.pl-bar i:nth-child(3){background:var(--leaf2)}
+.pl-bar span{margin-left:6px;font-size:.74rem;font-weight:600;color:var(--muted)}
+.pl-canvas{position:absolute;inset:44px 0 0;display:flex;align-items:center;justify-content:center;padding:26px}
+
+/* bottom inset leaves room for the caption so the two never collide */
+.pl-layer{position:absolute;inset:26px 26px 46px;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.94);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+.pl-layer.show{opacity:1;transform:scale(1)}
+
+/* L1 concept wireframe */
+.wf{width:74%;aspect-ratio:16/10;border:2px dashed rgba(163,217,119,.6);border-radius:14px;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:9px;padding:11px}
+.wf span{border:2px dashed rgba(163,217,119,.34);border-radius:8px}
+/* L2 build blocks */
+.bk{width:74%;aspect-ratio:16/10;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:6px}
+.bk span{background:rgba(163,217,119,.26);border-radius:6px;animation:bkin .5s backwards}
+/* L3 art */
+.art-orb{width:56%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%, #a3d977, #7cb342 42%, #15803d 78%);
+  box-shadow:0 0 60px rgba(124,179,66,.45)}
+/* L4 QA checks */
+.qa{display:flex;flex-direction:column;gap:10px;width:76%}
+.qa div{display:flex;align-items:center;gap:11px;font-size:.84rem;font-weight:600;color:#dff0e4;
+  background:rgba(255,255,255,.07);border:2px solid rgba(163,217,119,.24);border-radius:12px;padding:10px 14px}
+.qa svg{width:17px;height:17px;color:var(--leaf2);flex:none}
+/* L5 platform chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;width:88%}
+.chips span{font-size:.76rem;font-weight:600;color:#eaf5ee;background:rgba(255,255,255,.09);
+  border:2px solid rgba(163,217,119,.3);padding:8px 15px;border-radius:999px}
+/* L6 revenue bars */
+.rev{display:flex;align-items:flex-end;gap:11px;height:62%;width:78%}
+.rev span{flex:1;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:7px 7px 0 0;
+  box-shadow:0 -4px 20px rgba(251,191,36,.4)}
+.pl-cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-family:var(--f-disp);
+  font-size:.76rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;
+  opacity:0;transition:opacity .4s}
+.pl-cap.show{opacity:1}
+
+@keyframes bkin{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* mobile / reduced-motion: no pinning, plain timeline */
+@media (max-width:900px){
+  .pl-track{height:auto}
+  /* overflow:hidden on an ancestor silently disables position:sticky on the
+     artifact below — it must be cleared here */
+  .pl-pin{position:static;height:auto;padding:64px 0;overflow:visible}
+  /* flex, not grid: a sticky grid item is trapped in its own grid area, so it
+     has nowhere to travel. As a flex item its containing block is the whole
+     column, which lets it stay on screen while the stage list scrolls under. */
+  .pl-grid{display:flex;flex-direction:column;gap:26px;align-items:stretch}
+  .pl-art{order:-1;aspect-ratio:4/3;position:sticky;top:72px;z-index:5;flex:none}
+  .pl-canvas{inset:44px 0 0;padding:12px}
+  .pl-layer{inset:12px 12px 40px}
+  .chips{gap:7px}
+  .chips span{font-size:.68rem;padding:6px 11px}
+  .qa div{font-size:.76rem;padding:8px 11px}
+  .qa{gap:8px;width:94%}
+  /* size these by the height available, not width — otherwise the 16:10 box
+     grows taller than the card and runs into the caption */
+  .wf,.bk{height:100%;width:auto;max-width:92%}
+  .pl-stage{opacity:1}
+  .pl-stage.on{transform:none}
+  .pl-head{margin-bottom:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pl-track{height:auto}
+  .pl-pin{position:static;height:auto;padding:64px 0}
+  .pl-stage,.pl-layer{transition:none;opacity:1}
 }
 
 /* ===== THESIS ===== */
@@ -758,17 +883,64 @@ a.card:hover .card-link{gap:12px}
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section cream" id="process">
-  <div class="wrap">
-    <div class="eyebrow">How We Work</div>
-    <h2 class="disp">A Cozy, <em>Reliable</em> Process</h2>
-    <p class="lead">Clear milestones, friendly communication, and QA woven in from day one.</p>
-    <div class="steps">
-      <div class="step"><div class="step-n">1</div><h4>Discover</h4><p>We learn your game, goals, platforms, and what "done" looks like.</p></div>
-      <div class="step"><div class="step-n">2</div><h4>Build &amp; Test</h4><p>Development and QA run together — weekly playable builds, no surprises.</p></div>
-      <div class="step"><div class="step-n">3</div><h4>Polish</h4><p>Performance, game-feel, and a dedicated QA pass until it shines.</p></div>
-      <div class="step"><div class="step-n">4</div><h4>Launch Everywhere</h4><p>We ship and distribute across web platforms and every app store.</p></div>
+<!-- PIPELINE — scroll-driven; replaced the old static 4-step "Process" section -->
+<section id="pipeline">
+  <div class="pl-track">
+    <div class="pl-pin">
+      <div class="wrap pl-grid">
+
+        <div>
+          <div class="pl-head">
+            <div class="eyebrow">Idea to Income</div>
+            <h2>One Pipeline.<br><em>Six Stages.</em></h2>
+            <p>Studios usually stitch this together from five vendors and hope the handoffs hold. We run the whole line — and the last three stages are where the money actually shows up.</p>
+          </div>
+
+          <div class="pl-list-wrap">
+            <div class="pl-rail"><i id="pl-fill"></i></div>
+            <ul class="pl-stages" id="pl-stages">
+              <li class="pl-stage"><div class="pl-n">01</div><div>
+                <h4>Concept</h4><p>Scope, platforms, and what "done" actually means — agreed before anyone writes code.</p></div></li>
+              <li class="pl-stage"><div class="pl-n">02</div><div>
+                <h4>Build</h4><p>Unity or Unreal, weekly playable builds. You see it moving, not a status report.</p></div></li>
+              <li class="pl-stage"><div class="pl-n">03</div><div>
+                <h4>Art &amp; Polish</h4><p>Characters, environments, VFX — engine-ready, in your game's style.</p></div></li>
+              <li class="pl-stage"><div class="pl-n">04</div><div>
+                <h4>QA</h4><p>Real devices, written repro steps, severity ranked. Bugs found before players find them.</p>
+                <span class="pl-tag">Core service</span></div></li>
+              <li class="pl-stage"><div class="pl-n">05</div><div>
+                <h4>Port &amp; Publish</h4><p>Unity → WebGL, console builds, and onto 12+ web platforms and every app store.</p>
+                <span class="pl-tag">Flagship service</span></div></li>
+              <li class="pl-stage"><div class="pl-n">06</div><div>
+                <h4>Grow &amp; Earn</h4><p>User acquisition, live events, ad and IAP monetization — measured on ROAS, not vibes.</p>
+                <span class="pl-tag">Core service</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pl-art">
+          <div class="pl-bar"><i></i><i></i><i></i><span id="pl-file">concept.draft</span></div>
+          <div class="pl-canvas">
+            <div class="pl-layer" data-stage="0"><div class="wf"><span></span><span></span><span></span><span></span></div></div>
+            <div class="pl-layer" data-stage="1"><div class="bk">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+            <div class="pl-layer" data-stage="2"><div class="art-orb"></div></div>
+            <div class="pl-layer" data-stage="3"><div class="qa">
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Crash on low-RAM device — fixed</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Progression softlock — fixed</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>60 FPS held on target hardware</div></div></div>
+            <div class="pl-layer" data-stage="4"><div class="chips">
+              <span>WebGL</span><span>CrazyGames</span><span>Poki</span><span>Yandex</span>
+              <span>Play Store</span><span>App Store</span><span>Steam</span><span>Console</span></div></div>
+            <div class="pl-layer" data-stage="5"><div class="rev">
+              <span style="height:26%"></span><span style="height:41%"></span><span style="height:36%"></span>
+              <span style="height:58%"></span><span style="height:74%"></span><span style="height:100%"></span></div></div>
+          </div>
+          <div class="pl-cap" id="pl-cap"></div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -880,6 +1052,78 @@ a.card:hover .card-link{gap:12px}
 
 <script>
 // portfolio filter pills (visual toggle)
+// ---- scroll-driven pipeline ----
+(function(){
+  var section = document.getElementById('pipeline');
+  if(!section) return;
+  var track   = section.querySelector('.pl-track');
+  var stages  = [].slice.call(document.querySelectorAll('#pl-stages .pl-stage'));
+  var layers  = [].slice.call(section.querySelectorAll('.pl-layer'));
+  var fill    = document.getElementById('pl-fill');
+  var fileEl  = document.getElementById('pl-file');
+  var capEl   = document.getElementById('pl-cap');
+  if(!stages.length) return;
+
+  var FILES = ['concept.draft','build_v0.3.unity','art_pass.psd','qa-report_#FS-0427','ship_targets.json','revenue_dashboard'];
+  var CAPS  = ['SCOPED','BUILDING','POLISHED','SHIP-READY','LIVE ON 12+ CHANNELS','EARNING'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var current = -1;
+
+  function paint(i, progress){
+    if(i !== current){
+      current = i;
+      stages.forEach(function(s,n){
+        s.classList.toggle('on', n === i);
+        s.classList.toggle('done', n < i);
+      });
+      layers.forEach(function(l){
+        l.classList.toggle('show', +l.getAttribute('data-stage') === i);
+      });
+      if(fileEl) fileEl.textContent = FILES[i] || FILES[0];
+      if(capEl){ capEl.textContent = CAPS[i] || ''; capEl.classList.add('show'); }
+    }
+    if(fill) fill.style.height = Math.round(progress * 100) + '%';
+  }
+
+  // mobile / reduced-motion: activate each stage as it scrolls into view
+  function observeMode(){
+    stages.forEach(function(s,n){ s.classList.remove('done'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) paint(stages.indexOf(e.target), (stages.indexOf(e.target)+1)/stages.length);
+      });
+    },{rootMargin:'-45% 0px -45% 0px'});
+    stages.forEach(function(s){ io.observe(s); });
+    paint(0, 1/stages.length);
+  }
+
+  // desktop: map scroll position through the tall track onto the six stages
+  function scrollMode(){
+    var raf = null;
+    function update(){
+      raf = null;
+      var rect  = track.getBoundingClientRect();
+      var total = track.offsetHeight - window.innerHeight;
+      if(total <= 0){ paint(0, 1); return; }
+      var p = Math.min(Math.max(-rect.top / total, 0), 1);
+      // hold the last stage a little instead of racing past it
+      var idx = Math.min(stages.length - 1, Math.floor(p * stages.length * 1.04));
+      paint(idx, p);
+    }
+    window.addEventListener('scroll', function(){
+      if(raf === null) raf = requestAnimationFrame(update);
+    }, {passive:true});
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  function start(){
+    var pinned = window.matchMedia('(min-width: 901px)').matches && !reduce;
+    if(pinned) scrollMode(); else observeMode();
+  }
+  start();
+})();
+
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click',function(){
