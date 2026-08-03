@@ -11,6 +11,31 @@
 <meta property="og:url" content="https://factorialstudio.com/">
 <meta property="og:image" content="https://factorialstudio.com/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://factorialstudio.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Factorial Studio",
+  "legalName": "Factorial Studio Private Limited",
+  "url": "https://factorialstudio.com/",
+  "logo": "https://factorialstudio.com/images/logo.png",
+  "description": "Factorial Studio builds AI infrastructure for game and app publishers — WebGL cloud hosting, app intelligence, UA analytics and monetization — and provides game QA, development, porting and distribution services.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "306 Tariq Business Center",
+    "addressLocality": "Lahore",
+    "addressCountry": "PK",
+    "postalCode": "54000"
+  },
+  "email": "contact@factorialstudio.com",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unity to WebGL porting and web distribution" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Game QA and testing" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "User acquisition, publishing and live operations" } }
+  ]
+}
+</script>
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,6 +343,29 @@ a.card:hover .card-link{gap:12px}
 .mstat.next{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid rgba(169,198,181,.28)}
 .plat-note{margin-top:26px;font-size:.88rem;color:var(--muted);text-align:center;font-weight:500}
 
+/* ===== FLAGSHIP SERVICE CARD ===== */
+.card-wide{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;
+  background:linear-gradient(150deg,#14633f,#0b4a2f);border:2px solid rgba(251,191,36,.34);
+  border-radius:var(--r-lg);padding:38px 40px;margin-bottom:20px;position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .25s}
+.card-wide:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(6,40,28,.4)}
+.card-wide::after{content:"";position:absolute;inset:0;border-radius:var(--r-lg);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.09);pointer-events:none}
+.cw-tag{display:inline-block;background:var(--gold);color:#3a2a06;font-family:var(--f-body);font-weight:700;
+  font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:15px}
+.card-wide h3{font-family:var(--f-disp);font-size:1.55rem;color:#fff;margin-bottom:12px;line-height:1.15}
+.card-wide h3 em{color:var(--gold);font-style:normal}
+.card-wide p{font-size:1rem;color:var(--muted);line-height:1.65;margin-bottom:20px}
+.card-wide p b{color:#eaf5ee;font-weight:600}
+.cw-points{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.cw-points li{font-size:.88rem;color:var(--muted);font-weight:500;display:flex;align-items:flex-start;gap:9px}
+.cw-points li svg{flex:none;width:16px;height:16px;color:var(--leaf2);margin-top:3px}
+.cw-cta{margin-top:24px}
+@media (max-width:900px){
+  .card-wide{grid-template-columns:1fr;gap:24px;padding:30px 26px}
+  .cw-points{grid-template-columns:1fr}
+}
+
 /* ===== THESIS ===== */
 .thesis{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 .thesis-q{font-family:var(--f-disp);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--g900);line-height:1.2;
@@ -363,10 +411,9 @@ a.card:hover .card-link{gap:12px}
       <h1>The Operating System<em>For Game Publishers</em></h1>
       <p>Publishing, analytics, user acquisition and monetization — <b>one AI-powered platform</b> instead of six dashboards and a spreadsheet. Built by the studio that already runs <b>QA, porting and distribution</b> for game teams today.</p>
       <div class="hero-cta">
-        <a href="#platform" class="btn btn-gold">See the Platform
+        <a href="free-qa-teardown.html" class="btn btn-gold">Get a Free QA Teardown
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#contact" class="btn btn-leaf">Get a Free QA Teardown</a>
-        <a href="#services" class="btn btn-ghost">Studio Services</a>
+        <a href="#platform" class="btn btn-ghost">See the Platform</a>
       </div>
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unity &amp; Unreal</span>
@@ -484,6 +531,31 @@ a.card:hover .card-link{gap:12px}
     <div class="eyebrow">The Studio</div>
     <h2 class="disp">Services That Ship<br><em>Games Today</em></h2>
     <p class="lead">The platform is being built. The team is already here. Studios hire us directly for the work below — and every engagement teaches us what to automate next.</p>
+
+    <a class="card-wide" href="webgl-publishing.html">
+      <div>
+        <span class="cw-tag">Flagship Service</span>
+        <h3>Your Mobile Game,<br><em>Earning on the Web</em></h3>
+        <p>Your game already exists. The web is a <b>second revenue channel sitting empty</b> — and the hard part isn't knowing that, it's the port: build size, memory ceilings, mobile browser performance, a different SDK for every platform. <b>That part is our job.</b></p>
+        <ul class="cw-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unity → WebGL porting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Build-size &amp; load-time work</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>12+ distribution channels</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ad &amp; IAP monetization setup</li>
+        </ul>
+        <div class="cw-cta"><span class="btn btn-gold">Explore WebGL &amp; Distribution
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </div>
+      <div class="logos" style="grid-template-columns:repeat(3,1fr);gap:10px">
+        <div class="logo-tile"><img src="weblogos/CrazyGames.png" alt="CrazyGames" loading="lazy"></div>
+        <div class="logo-tile"><img src="weblogos/Poki.jpg" alt="Poki" loading="lazy"></div>
+        <div class="logo-tile"><img src="weblogos/GameDistribution.jpg" alt="GameDistribution" loading="lazy"></div>
+        <div class="logo-tile"><img src="weblogos/MSNPlay.png" alt="MSN Play" loading="lazy"></div>
+        <div class="logo-tile"><img src="weblogos/Yandex.webp" alt="Yandex Games" loading="lazy"></div>
+        <div class="logo-tile"><img src="weblogos/TickTok.webp" alt="TikTok Mini Games" loading="lazy"></div>
+      </div>
+    </a>
+
     <div class="cards">
 
       <a class="card feat" href="qa-testing.html">
@@ -725,7 +797,7 @@ a.card:hover .card-link{gap:12px}
     <h2>Ship Faster. <em>Guess Less.</em></h2>
     <p>Hire the studio today, get the platform as it ships. Start with a free QA teardown — we'll test your live build and send a real bug report, no charge.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-gold">Get a Free QA Teardown</a>
+      <a href="free-qa-teardown.html" class="btn btn-gold">Get a Free QA Teardown</a>
       <a href="#platform" class="btn btn-ghost">See the Platform</a>
     </div>
   </div>
