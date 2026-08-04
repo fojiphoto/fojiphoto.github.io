@@ -284,6 +284,7 @@ function tdSubmit(e){
     form.reset();
     msg.className='fmsg ok';
     msg.textContent='Got it — we’ll be in touch with your report.';
+    document.dispatchEvent(new CustomEvent('fs:lead',{detail:{form:'qa-teardown'}}));
     btn.innerHTML=original; btn.disabled=false;
   })
   .catch(function(){
@@ -294,5 +295,6 @@ function tdSubmit(e){
   return false;
 }
 </script>
+<script src="analytics.js" defer></script>
 </body>
 </html>
