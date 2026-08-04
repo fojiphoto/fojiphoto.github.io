@@ -12,7 +12,7 @@
    never have to touch the HTML again.
    ───────────────────────────────────────────────────────────── */
 
-var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';   // ← paste it here
+var GA_MEASUREMENT_ID = 'G-DEGDESVT7E';   // ← paste it here
 
 (function () {
   'use strict';
