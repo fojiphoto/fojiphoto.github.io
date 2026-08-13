@@ -167,6 +167,16 @@ h2.disp em{color:var(--gold);font-style:normal}
   display:flex;align-items:center;justify-content:space-between;gap:10px}
 .rel a:hover{border-color:var(--gold);color:#fff;transform:translateY(-3px)}
 .rel a svg{width:15px;height:15px;color:var(--gold);flex:none}
+/* on a cream section the default light text is invisible — these panels appear
+   on both backgrounds, so both need a defined treatment */
+.section.cream .rel a{background:var(--cream2);border-color:#e7e2cf;color:var(--ink-text)}
+.section.cream .rel a:hover{border-color:var(--g600);color:var(--g900);background:#fff}
+.section.cream .rel a svg{color:var(--g600)}
+
+/* same latent problem on the comparison block, in case it ever moves to cream */
+.section.cream .vs-a{background:var(--cream2);border-color:#e7e2cf}
+.section.cream .vs-a h3{color:var(--ink-muted)}
+.section.cream .vs-a li{color:var(--ink-muted)}
 
 /* ── closing CTA ── */
 .cta{text-align:center;padding:86px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
@@ -200,5 +210,14 @@ footer p{color:var(--muted);font-size:.82rem}
   .logo img{width:34px;height:34px}
   .logo b{font-size:.9rem}
   .nav-actions{gap:10px}
-  .nav-actions .btn{padding:10px 15px;font-size:.8rem}
+  /* nowrap matters: several pages carry 20-character CTAs ("Free Project
+     Estimate", "Get Results Like These") which otherwise break onto a second
+     line and push the button into the logo */
+  .nav-actions .btn{padding:10px 14px;font-size:.78rem;white-space:nowrap}
+}
+@media (max-width:430px){
+  /* below this the wordmark and the CTA cannot both fit — the emblem alone
+     still identifies the brand, and the CTA is the thing being paid for */
+  .logo b{display:none}
+  .logo{gap:0}
 }
