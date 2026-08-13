@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- core -->
   <url><loc>https://factorialstudio.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- conversion landing pages -->
   <url><loc>https://factorialstudio.com/free-qa-teardown.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://factorialstudio.com/webgl-publishing.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://factorialstudio.com/webgl-port.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- service pages -->
+  <url><loc>https://factorialstudio.com/qa/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/development/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/development/game-development/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/development/app-development/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/development/web-development/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/development/webgl-game-development/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/design/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/publishing/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/marketing/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/seo/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/aso-services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/ua-services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/monetization-services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- portfolio + legacy service pages -->
   <url><loc>https://factorialstudio.com/portfolio.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://factorialstudio.com/webgl-publishing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://factorialstudio.com/qa-testing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/game-development.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/mobile-publishing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/art-animation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/console-porting.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/live-operations.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/casual-publishing.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
-  <url><loc>https://factorialstudio.com/qa-testing.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://factorialstudio.com/game-development.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://factorialstudio.com/mobile-publishing.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://factorialstudio.com/art-animation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://factorialstudio.com/console-porting.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://factorialstudio.com/live-operations.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://factorialstudio.com/casual-publishing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-
+  <!-- legal -->
   <url><loc>https://factorialstudio.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://factorialstudio.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://factorialstudio.com/refund.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
