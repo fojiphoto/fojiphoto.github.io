@@ -51,7 +51,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .tag{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.72rem;letter-spacing:.06em;
   text-transform:uppercase;color:#3a1405;background:var(--gold);padding:7px 15px;border-radius:999px;margin-bottom:20px}
 .hero h1{font-family:var(--f-disp);font-size:clamp(2rem,4.4vw,3.3rem);color:#fff;line-height:1.06;margin-bottom:20px;letter-spacing:.01em}
-.hero h1 em{color:var(--gold);font-style:normal}
+/* the gold half of the headline is always its own line — without this the two
+   halves run together ("PUBLISHA PRICE LIST") since the markup has no <br> */
+.hero h1 em{color:var(--gold);font-style:normal;display:block}
 .hero p{font-size:1.05rem;color:var(--muted);margin-bottom:22px}
 .hero p b{color:#eaf5ee;font-weight:600}
 .checks{list-style:none;display:flex;flex-direction:column;gap:11px}
