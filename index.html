@@ -335,6 +335,40 @@ a.card:hover .card-link{gap:12px}
   .hero{padding-top:120px}
 }
 
+/* ===== NAV DROPDOWN (desktop only — nav-links is hidden under 980px) ===== */
+.navdrop{position:relative}
+.navdrop-t{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-body);font-weight:500;
+  font-size:.95rem;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;transition:color .2s}
+.navdrop-t:hover,.navdrop.open .navdrop-t{color:var(--gold)}
+.navdrop-t svg{width:13px;height:13px;transition:transform .25s}
+.navdrop.open .navdrop-t svg{transform:rotate(180deg)}
+/* invisible bridge so the menu doesn't close crossing the gap */
+.navdrop::after{content:"";position:absolute;top:100%;left:0;right:0;height:16px}
+.navdrop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-8px);
+  display:grid;grid-template-columns:repeat(3,minmax(178px,1fr));gap:8px 26px;
+  background:rgba(8,48,33,.97);backdrop-filter:blur(16px);
+  border:2px solid rgba(163,217,119,.28);border-radius:var(--r);padding:24px 28px;
+  box-shadow:0 26px 60px rgba(3,30,20,.55);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s,transform .22s,visibility .22s;z-index:120}
+.navdrop.open .navdrop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.ndm-group{display:flex;flex-direction:column;gap:2px}
+.ndm-h{font-family:var(--f-body);font-weight:700;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);padding:0 10px 8px;border-bottom:1px solid rgba(163,217,119,.2);margin-bottom:6px}
+.navdrop-menu a{display:block;font-size:.88rem;font-weight:500;color:var(--muted);
+  padding:8px 10px;border-radius:10px;white-space:nowrap;transition:all .18s}
+.navdrop-menu a:hover{background:rgba(163,217,119,.12);color:#fff}
+
+/* ===== HOMEPAGE SITE DIRECTORY ===== */
+.dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
+.dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.dir-col h4{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
+  margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(163,217,119,.18)}
+.dir-col a{display:block;font-size:.9rem;font-weight:500;color:var(--muted);padding:7px 0;transition:color .18s}
+.dir-col a:hover{color:#fff}
+.dir-col a em{font-style:normal;color:var(--leaf2);font-size:.72rem;font-weight:600;margin-left:6px}
+@media (max-width:900px){.dir-grid{grid-template-columns:1fr 1fr;gap:26px}}
+@media (max-width:560px){.dir-grid{grid-template-columns:1fr}.dir{padding:48px 0 40px}}
+
 /* ===== PLATFORM ===== */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:30px}
 .pillar{background:linear-gradient(158deg,#126b46,#083f29);border:2px solid rgba(163,217,119,.3);
@@ -549,7 +583,37 @@ a.card:hover .card-link{gap:12px}
   <a href="#" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
   <div class="nav-links">
     <a href="#platform">Platform</a>
-    <a href="#services">Services</a>
+    <div class="navdrop" id="svc-drop">
+      <button class="navdrop-t" type="button" aria-expanded="false" aria-controls="svc-menu">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="navdrop-menu" id="svc-menu">
+        <div class="ndm-group">
+          <span class="ndm-h">Development</span>
+          <a href="development/">All Development</a>
+          <a href="development/game-development/">Game Development</a>
+          <a href="development/app-development/">App Development</a>
+          <a href="development/web-development/">Web Development</a>
+          <a href="development/webgl-game-development/">WebGL Games</a>
+        </div>
+        <div class="ndm-group">
+          <span class="ndm-h">Production</span>
+          <a href="qa/">QA &amp; Testing</a>
+          <a href="design/">Design &amp; Art</a>
+          <a href="publishing/">Publishing</a>
+          <a href="webgl-port.html">Port to Web</a>
+          <a href="free-qa-teardown.html">Free QA Teardown</a>
+        </div>
+        <div class="ndm-group">
+          <span class="ndm-h">Growth</span>
+          <a href="marketing/">Marketing</a>
+          <a href="ua-services/">User Acquisition</a>
+          <a href="aso-services/">ASO</a>
+          <a href="monetization-services/">Monetization</a>
+          <a href="seo/">SEO</a>
+        </div>
+      </div>
+    </div>
     <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#distribution">Distribution</a>
@@ -1039,6 +1103,48 @@ a.card:hover .card-link{gap:12px}
   </div>
 </section>
 
+<!-- SITE DIRECTORY — every service page, reachable from the homepage.
+     Also the only route to them on mobile, where .nav-links is hidden under 980px. -->
+<section class="dir">
+  <div class="wrap">
+    <div class="dir-grid">
+      <div class="dir-col">
+        <h4>Development</h4>
+        <a href="development/">All Development</a>
+        <a href="development/game-development/">Game Development</a>
+        <a href="development/app-development/">App Development</a>
+        <a href="development/web-development/">Web Development</a>
+        <a href="development/webgl-game-development/">WebGL Game Development</a>
+      </div>
+      <div class="dir-col">
+        <h4>Production</h4>
+        <a href="qa/">QA &amp; Testing</a>
+        <a href="design/">Design &amp; Game Art</a>
+        <a href="publishing/">App &amp; Game Publishing</a>
+        <a href="webgl-port.html">Port My Game to Web <em>FREE</em></a>
+        <a href="free-qa-teardown.html">Free QA Teardown <em>FREE</em></a>
+      </div>
+      <div class="dir-col">
+        <h4>Growth</h4>
+        <a href="marketing/">Marketing — Google &amp; Meta</a>
+        <a href="ua-services/">User Acquisition</a>
+        <a href="aso-services/">ASO</a>
+        <a href="monetization-services/">Monetization</a>
+        <a href="seo/">SEO</a>
+      </div>
+      <div class="dir-col">
+        <h4>Company</h4>
+        <a href="#platform">Factorial AI Platform</a>
+        <a href="#pipeline">How We Work</a>
+        <a href="portfolio.html">Games &amp; Projects</a>
+        <a href="#about">About Us</a>
+        <a href="fsa-live.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="flinks">
@@ -1052,6 +1158,40 @@ a.card:hover .card-link{gap:12px}
 
 <script>
 // portfolio filter pills (visual toggle)
+// ---- services nav dropdown ----
+(function(){
+  var drop = document.getElementById('svc-drop');
+  if(!drop) return;
+  var toggle = drop.querySelector('.navdrop-t');
+  var closeTimer = null;
+  var pinned = false;   // opened by click — must not close just because the pointer left
+
+  function open(){ clearTimeout(closeTimer); drop.classList.add('open'); toggle.setAttribute('aria-expanded','true'); }
+  function close(){ pinned = false; drop.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+  function closeSoon(){
+    if (pinned) return;                       // click-opened menus stay put
+    closeTimer = setTimeout(close, 180);      // grace period crossing the gap
+  }
+
+  drop.addEventListener('mouseenter', function(){ clearTimeout(closeTimer); open(); });
+  drop.addEventListener('mouseleave', closeSoon);
+
+  // click works too, for touch and for keyboard users
+  toggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    if (drop.classList.contains('open') && pinned) { close(); }
+    else { open(); pinned = true; }
+  });
+
+  document.addEventListener('click', function(e){ if(!drop.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && drop.classList.contains('open')){ close(); toggle.focus(); }
+  });
+  // following a link should not leave the menu hanging open
+  drop.querySelectorAll('.navdrop-menu a').forEach(function(a){ a.addEventListener('click', close); });
+})();
+
 // ---- scroll-driven pipeline ----
 (function(){
   var section = document.getElementById('pipeline');
