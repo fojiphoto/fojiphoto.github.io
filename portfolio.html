@@ -92,6 +92,17 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
   .nav-actions{gap:10px}.nav-actions .btn{padding:10px 15px;font-size:.8rem}
   .pill{padding:11px 16px}
 }
+
+/* ===== SITE DIRECTORY ===== */
+.dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
+.dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.dir-col h4{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
+  margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(163,217,119,.18)}
+.dir-col a{display:block;font-size:.9rem;font-weight:500;color:var(--muted);padding:7px 0;transition:color .18s}
+.dir-col a:hover{color:#fff}
+.dir-col a em{font-style:normal;color:var(--leaf2);font-size:.72rem;font-weight:600;margin-left:6px}
+@media (max-width:900px){.dir-grid{grid-template-columns:1fr 1fr;gap:26px}}
+@media (max-width:560px){.dir-grid{grid-template-columns:1fr}.dir{padding:48px 0 40px}}
 </style>
 </head>
 <body>
@@ -234,6 +245,49 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <div class="row">
       <a href="free-qa-teardown.html" class="btn btn-gold">Get a Free QA Teardown →</a>
       <a href="webgl-publishing.html" class="btn btn-ghost">Port My Game to Web</a>
+    </div>
+  </div>
+</section>
+
+<!-- SITE DIRECTORY — identical on every page. Root-absolute paths so the same
+     block works at any depth (/qa/, /development/game-development/, root). -->
+<section class="dir">
+  <div class="wrap">
+    <div class="dir-grid">
+      <div class="dir-col">
+        <h4>Development</h4>
+        <a href="/development/">All Development</a>
+        <a href="/development/game-development/">Game Development</a>
+        <a href="/development/app-development/">App Development</a>
+        <a href="/development/web-development/">Web Development</a>
+        <a href="/development/webgl-game-development/">WebGL Game Development</a>
+      </div>
+      <div class="dir-col">
+        <h4>Production</h4>
+        <a href="/qa/">QA &amp; Testing</a>
+        <a href="/design/">Design &amp; Game Art</a>
+        <a href="/publishing/">App &amp; Game Publishing</a>
+        <a href="/webgl-port.html">Port My Game to Web <em>FREE</em></a>
+        <a href="/free-qa-teardown.html">Free QA Teardown <em>FREE</em></a>
+      </div>
+      <div class="dir-col">
+        <h4>Growth</h4>
+        <a href="/marketing/">Marketing — Google &amp; Meta</a>
+        <a href="/ua-services/">User Acquisition</a>
+        <a href="/aso-services/">ASO</a>
+        <a href="/monetization-services/">Monetization</a>
+        <a href="/seo/">SEO</a>
+      </div>
+      <div class="dir-col">
+        <h4>Company</h4>
+        <a href="/index.html#platform">Factorial AI Platform</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/pricing/">Pricing &amp; Engagement</a>
+        <a href="/portfolio.html">Games &amp; Projects</a>
+        <a href="/index.html#about">About Us</a>
+        <a href="/fsa-live.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
+        <a href="/index.html#contact">Contact</a>
+      </div>
     </div>
   </div>
 </section>

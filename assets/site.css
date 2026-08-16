@@ -185,6 +185,19 @@ h2.disp em{color:var(--gold);font-style:normal}
 .cta p{color:var(--muted);max-width:540px;margin:0 auto 30px}
 .cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
+/* ── site directory (same block on every page, above the footer) ── */
+.dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
+.dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.dir-col h4{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
+  margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(163,217,119,.18)}
+.dir-col a{display:block;font-size:.9rem;font-weight:500;color:var(--muted);padding:7px 0;transition:color .18s}
+.dir-col a:hover{color:#fff}
+.dir-col a em{font-style:normal;color:var(--leaf2);font-size:.72rem;font-weight:600;margin-left:6px}
+/* the page you're already on shouldn't look like somewhere to go */
+.dir-col a[aria-current="page"]{color:var(--gold);cursor:default}
+@media (max-width:900px){.dir-grid{grid-template-columns:1fr 1fr;gap:26px}}
+@media (max-width:560px){.dir-grid{grid-template-columns:1fr}.dir{padding:48px 0 40px}}
+
 /* ── footer ── */
 footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:40px 0;text-align:center}
 footer .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
