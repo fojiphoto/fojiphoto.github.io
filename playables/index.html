@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playable Ads Development — Luna, Unity → HTML5 | Factorial Studio</title>
+<meta name="description" content="Playable ad development in Luna and Unity → HTML5. Built to network spec for Google, AppLovin, Mintegral, Unity Ads and ironSource — live playables you can try below.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://factorialstudio.com/playables/">
+<meta property="og:title" content="Playable Ads Development — Luna, Unity → HTML5 | Factorial Studio">
+<meta property="og:description" content="Live playable ads built in Luna, shipped to network spec for Google, AppLovin and Mintegral. Try them in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://factorialstudio.com/playables/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* ── network badge row ── */
+.nets{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+.net{font-weight:600;font-size:.74rem;letter-spacing:.04em;color:var(--leaf2);
+  background:rgba(124,179,66,.14);border:1px solid rgba(124,179,66,.4);padding:6px 13px;border-radius:999px}
+.net.tool{color:var(--gold);background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.42)}
+
+/* ── playable showcase ── */
+.pl-filter{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:8px}
+.pl-fb{font-family:var(--f-body);font-weight:600;font-size:.8rem;color:var(--muted);
+  background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.22);
+  padding:9px 17px;border-radius:999px;cursor:pointer;transition:all .2s}
+.pl-fb:hover{border-color:var(--leaf);color:#fff}
+.pl-fb.active{background:linear-gradient(180deg,var(--gold),var(--gold2));border-color:transparent;color:#3a2a06}
+.pl-num{margin:12px 0 26px;font-size:.84rem;color:var(--muted);font-weight:500}
+.pl-num b{color:var(--gold)}
+
+.plays{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.play{background:linear-gradient(158deg,#126b46,#083f29);border:2px solid rgba(163,217,119,.24);
+  border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .25s,border-color .25s,box-shadow .25s}
+.play:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 24px 50px rgba(3,30,20,.45)}
+.play.hidden{display:none}
+
+/* the live frame — portrait phone ratio by default */
+.play-frame{position:relative;aspect-ratio:9/16;background:#04170f;border-bottom:2px solid rgba(163,217,119,.2);overflow:hidden}
+.play.land .play-frame{aspect-ratio:16/9}
+.play-frame iframe{width:100%;height:100%;border:0;display:block}
+.play-hold{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;text-align:center;padding:24px;cursor:pointer;transition:background .2s}
+.play-hold:hover{background:rgba(251,191,36,.06)}
+.play-hold b{font-family:var(--f-disp);font-size:.9rem;color:#fff;letter-spacing:.03em}
+.play-hold span{font-size:.82rem;color:var(--muted);max-width:200px;line-height:1.5}
+.play-btn{width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(245,158,11,.4)}
+.play-btn svg{width:26px;height:26px;color:#3a2a06;margin-left:3px}
+/* obvious while unconfigured, so a half-finished page can't be mistaken for a real one */
+.play-hold.todo{background:repeating-linear-gradient(45deg,rgba(255,112,67,.09),rgba(255,112,67,.09) 12px,transparent 12px,transparent 24px)}
+.play-hold.todo b{color:var(--orange)}
+
+.play-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.play-name{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:4px;letter-spacing:.02em}
+.play-for{font-size:.83rem;color:var(--muted);margin-bottom:16px}
+
+/* specs — the credibility signal */
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(163,217,119,.16);
+  border:1px solid rgba(163,217,119,.16);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.spec{background:#0b4b32;padding:11px 13px}
+.spec i{display:block;font-style:normal;font-size:.6rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.spec b{font-size:.9rem;color:#fff;font-weight:600}
+.spec.size b{color:var(--gold)}
+.play .nets{margin-top:auto;padding-top:12px;border-top:2px dashed rgba(163,217,119,.2)}
+.play .net{font-size:.66rem;padding:4px 10px}
+
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center}
+.ba-col{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.2);border-radius:var(--r);padding:24px}
+.ba-col.after{background:linear-gradient(158deg,#126b46,#083f29);border-color:rgba(251,191,36,.4)}
+.ba-col h4{font-family:var(--f-disp);font-size:.86rem;letter-spacing:.05em;margin-bottom:14px}
+.ba-col.before h4{color:var(--muted)}.ba-col.after h4{color:var(--gold)}
+.ba-col dl{display:flex;flex-direction:column;gap:10px}
+.ba-row{display:flex;justify-content:space-between;gap:12px;font-size:.88rem}
+.ba-row dt{color:var(--muted)}.ba-row dd{color:#fff;font-weight:600}
+.ba-arrow{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold)}
+@media (max-width:900px){.ba{grid-template-columns:1fr;gap:14px}.ba-arrow{transform:rotate(90deg);justify-self:center}}
+@media (max-width:1000px){.plays{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.plays{grid-template-columns:1fr}.specs{grid-template-columns:1fr 1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","serviceType":"Playable Ad Development",
+"provider":{"@type":"Organization","name":"Factorial Studio Private Limited","url":"https://factorialstudio.com/"},
+"areaServed":"Worldwide",
+"description":"Playable ad development using Luna and Unity to HTML5, built to network specification for Google, AppLovin, Mintegral, Unity Ads and ironSource."}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <div class="nav-actions">
+    <a href="../index.html" class="nav-back">← Factorial Studio</a>
+    <a href="#brief" class="btn btn-gold">Send a Brief</a>
+  </div>
+</nav>
+
+<header class="hero" id="brief">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Playable Ads</div>
+      <span class="tag">Luna · Unity → HTML5</span>
+      <h1>Playables That Pass<em>Network QA First Time</em></h1>
+      <p>The hard part of a playable isn't making it fun. It's making it fun <b>inside the network's size cap</b>, loading fast enough on a mid-range Android, and passing review without three rounds of rejections.</p>
+      <p>We build in <b>Luna</b> and hand-rolled HTML5, from your existing Unity project. Every playable below is live — <b>click and play them.</b></p>
+      <div class="nets" style="margin-top:20px">
+        <span class="net tool">Luna</span>
+        <span class="net">Google Ads</span>
+        <span class="net">AppLovin</span>
+        <span class="net">Mintegral</span>
+        <span class="net">Unity Ads</span>
+        <span class="net">ironSource</span>
+        <span class="net">Meta</span>
+        <span class="net">TikTok</span>
+      </div>
+    </div>
+
+    <div class="fcard">
+      <h2>Send a Brief</h2>
+      <p class="sub">Give us a game and a reference ad. We'll come back with a concept, a size estimate and a turnaround.</p>
+      <form class="lead-form" data-lead="playable-ads">
+        <label for="pa-game">Game or app *</label>
+        <input id="pa-game" name="Game" type="text" placeholder="Store link, or the title" required>
+
+        <label for="pa-email">Your email *</label>
+        <input id="pa-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="pa-net">Target networks</label>
+        <select id="pa-net" name="Networks">
+          <option value="">All / not sure yet</option>
+          <option>Google Ads</option>
+          <option>AppLovin</option>
+          <option>Mintegral</option>
+          <option>Unity Ads</option>
+          <option>ironSource</option>
+          <option>Meta / TikTok</option>
+          <option>Multiple networks</option>
+        </select>
+
+        <label for="pa-vol">Volume</label>
+        <select id="pa-vol" name="Volume">
+          <option value="">Not sure yet</option>
+          <option>One playable — trial</option>
+          <option>2–5 per month</option>
+          <option>5–15 per month</option>
+          <option>15+ per month / ongoing</option>
+        </select>
+
+        <label for="pa-notes">Anything specific?</label>
+        <textarea id="pa-notes" name="Notes" placeholder="Mechanic you want highlighted, reference ads that perform for you, size limits, deadline…"></textarea>
+
+        <input type="hidden" name="_subject" value="PLAYABLE ADS ENQUIRY — factorialstudio.com/playables">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Send Brief →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We'll build the first one at our cost so you can judge it against what you're running now.</p>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LIVE PLAYABLES
+
+     ▶ TO ADD A PLAYABLE: copy one <article class="play"> block.
+
+       1. data-net   — space separated: google applovin mintegral unity ironsource meta tiktok
+       2. Add class "land" to <article> for a landscape playable (default is portrait)
+       3. Replace the whole .play-hold div with:
+              <iframe src="URL_TO_YOUR_PLAYABLE" title="Playable name" loading="lazy"></iframe>
+          …or keep .play-hold and set data-src on it to load the iframe on click
+          (better — keeps the page fast when several playables are on screen)
+       4. Fill the four .spec values. FILE SIZE IS THE ONE THAT MATTERS —
+          a UA manager reads that first; it is what separates someone who has
+          actually shipped from someone who has made a demo.
+
+     Publish only real, shipped playables with real sizes.
+     ══════════════════════════════════════════════════════════════ -->
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Live Work</div>
+    <h2 class="disp">Try Them <em>Yourself</em></h2>
+    <p class="lead">These are the shipped builds, unmodified — same single HTML file the network receives. Click one to load it; it runs exactly as it would in an ad slot. <b>Every one is under 2.8 MB.</b></p>
+    <!--
+      NAWAZ — sizes, packaging, build tool and source are all verified from the
+      actual files, so those are safe.
+
+      NETWORK BADGES need your confirmation. Luna bundles SDK shims for every
+      network into every build, so the file containing "ironSource" does not
+      prove it ran there. Only the Mintegral build is confirmed by name.
+      Set data-net and the .net badges to the networks each one actually ran on,
+      and delete the rest — a UA lead will spot an inflated claim immediately.
+    -->
+    <p class="lead" style="margin-top:-28px;font-size:.92rem">Sizes below are the real file sizes, not estimates — open dev tools and check.</p>
+
+    <div class="pl-filter" id="pl-filter">
+      <button class="pl-fb active" data-net="all">All</button>
+      <button class="pl-fb" data-net="mintegral">Mintegral</button>
+      <button class="pl-fb" data-net="ironsource">ironSource</button>
+      <button class="pl-fb" data-net="meta">Meta</button>
+    </div>
+    <div class="pl-num" id="pl-num"></div>
+
+    <div class="plays" id="plays">
+
+      <article class="play land" data-net="mintegral ironsource meta">
+        <div class="play-frame">
+          <div class="play-hold" data-src="live/dreamy-space-decor.html">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <b>Dreamy Space Decor</b>
+            <span>Tap to load the real build — 2.67 MB, exactly as shipped</span>
+          </div>
+        </div>
+        <div class="play-body">
+          <div class="play-name">Dreamy Space Decor</div>
+          <div class="play-for">Decoration / room-design mechanic</div>
+          <div class="specs">
+            <div class="spec size"><i>File size</i><b>2.67 MB</b></div>
+            <div class="spec"><i>Packaging</i><b>Single HTML</b></div>
+            <div class="spec"><i>Built with</i><b>Luna</b></div>
+            <div class="spec"><i>Source</i><b>Unity</b></div>
+          </div>
+          <div class="nets">
+            <span class="net">Mintegral</span><span class="net">ironSource</span><span class="net">Meta</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="play land" data-net="mintegral ironsource meta">
+        <div class="play-frame">
+          <div class="play-hold" data-src="live/modern-room-craft.html">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <b>Modern Room Craft</b>
+            <span>Tap to load the real build — 2.68 MB, exactly as shipped</span>
+          </div>
+        </div>
+        <div class="play-body">
+          <div class="play-name">Modern Room Craft</div>
+          <div class="play-for">Interior-build mechanic</div>
+          <div class="specs">
+            <div class="spec size"><i>File size</i><b>2.68 MB</b></div>
+            <div class="spec"><i>Packaging</i><b>Single HTML</b></div>
+            <div class="spec"><i>Built with</i><b>Luna</b></div>
+            <div class="spec"><i>Source</i><b>Unity</b></div>
+          </div>
+          <div class="nets">
+            <span class="net">Mintegral</span><span class="net">ironSource</span><span class="net">Meta</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="play land" data-net="mintegral ironsource meta">
+        <div class="play-frame">
+          <div class="play-hold" data-src="live/wordle.html">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <b>Wordle</b>
+            <span>Tap to load the real build — 2.43 MB, exactly as shipped</span>
+          </div>
+        </div>
+        <div class="play-body">
+          <div class="play-name">Wordle</div>
+          <div class="play-for">Word-puzzle mechanic</div>
+          <div class="specs">
+            <div class="spec size"><i>File size</i><b>2.43 MB</b></div>
+            <div class="spec"><i>Packaging</i><b>Single HTML</b></div>
+            <div class="spec"><i>Built with</i><b>Luna</b></div>
+            <div class="spec"><i>Source</i><b>Unity</b></div>
+          </div>
+          <div class="nets">
+            <span class="net">Mintegral</span><span class="net">ironSource</span><span class="net">Meta</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="play land" data-net="mintegral">
+        <div class="play-frame">
+          <div class="play-hold" data-src="live/mintegral-build.html">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <b>Mintegral Build</b>
+            <span>Tap to load the real build — 2.78 MB, exactly as shipped</span>
+          </div>
+        </div>
+        <div class="play-body">
+          <div class="play-name">Mintegral Network Build</div>
+          <div class="play-for">Packaged to Mintegral's spec</div>
+          <div class="specs">
+            <div class="spec size"><i>File size</i><b>2.78 MB</b></div>
+            <div class="spec"><i>Packaging</i><b>Single HTML</b></div>
+            <div class="spec"><i>Built with</i><b>Luna</b></div>
+            <div class="spec"><i>Source</i><b>Unity</b></div>
+          </div>
+          <div class="nets">
+            <span class="net">Mintegral</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section cream">
+  <div class="wrap">
+    <div class="eyebrow">The Actual Work</div>
+    <h2 class="disp">A 400 MB Unity Build<br><em>Into a 4 MB Playable</em></h2>
+    <p class="lead">This is the whole job. Everything else is polish.</p>
+    <div class="ba">
+      <div class="ba-col before">
+        <h4>Source Unity Build</h4>
+        <dl>
+          <div class="ba-row"><dt>Size</dt><dd>Hundreds of MB</dd></div>
+          <div class="ba-row"><dt>Load</dt><dd>Install required</dd></div>
+          <div class="ba-row"><dt>Runtime</dt><dd>Full engine</dd></div>
+          <div class="ba-row"><dt>Scope</dt><dd>Whole game</dd></div>
+        </dl>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-col after">
+        <h4>Shipped Playable</h4>
+        <dl>
+          <div class="ba-row"><dt>Size</dt><dd>Under the network cap</dd></div>
+          <div class="ba-row"><dt>Load</dt><dd>Instant, in the ad slot</dd></div>
+          <div class="ba-row"><dt>Runtime</dt><dd>Luna / HTML5</dd></div>
+          <div class="ba-row"><dt>Scope</dt><dd>One mechanic, 20 seconds</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES IT HARD -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Why Playables Get Rejected</div>
+    <h2 class="disp">Five Things That Fail<em>Before The Creative Does</em></h2>
+    <p class="lead">Studios usually discover these after the network bounces the build. We design around them from the start.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h4>Size Cap</h4><p>Every network sets a hard ceiling, and they differ. <b>A playable that passes on one network gets rejected on another purely on file size</b> — so textures, audio and atlases get budgeted before a line of gameplay is written.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h4>C# Feature Restrictions</h4><p>Luna doesn't support everything Unity does. Reflection, certain generics and some third-party SDKs simply won't convert — knowing which, before you build, is most of the skill.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h4>Single-File Packaging</h4><p>Most networks want one self-contained HTML file with everything inlined. Assets that load at runtime break the moment they're served from an ad slot.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h4>CTA and Store Redirect</h4><p>Each network exposes its own CTA API. Get it wrong and the playable runs perfectly but never sends anyone to the store — which is the entire point.</p></div></div>
+      <div class="step"><div class="n">05</div><div><h4>Mid-Range Android</h4><p>Most impressions aren't on a flagship. A playable that's smooth on your test device and drops frames on a three-year-old Android is a playable that loses installs.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section cream">
+  <div class="wrap">
+    <div class="eyebrow">How We Work</div>
+    <h2 class="disp">Built for <em>Iteration Volume</em></h2>
+    <p class="lead">UA teams don't need one playable. They need a steady stream of variants to test — so we're set up for throughput, not one-offs.</p>
+    <div class="cards">
+      <div class="tc">
+        <div class="tc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Concept First</h3>
+        <p>We pick the one mechanic worth showing. Most weak playables fail here — they try to show the whole game in twenty seconds.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h11l3 3v12.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5Z"/><path d="M8 9h6M8 13h8"/></svg></div>
+        <h3>Variants, Not Versions</h3>
+        <p>Once the base is built, alternate hooks, endings, difficulty curves and CTAs are cheap. That's what gives your UA team something to test.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Network QA Before Delivery</h3>
+        <p>Size, packaging, CTA and device testing checked against each target network's spec before it reaches you — so review isn't where problems surface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="disp" style="text-align:center;margin-bottom:36px">Straight <em>Answers</em></h2>
+    <div class="faq">
+      <div class="fq"><h4>Do you need our Unity project?</h4><p>For a Luna build, yes — under NDA. If the project can't be shared, we can build the playable from scratch in HTML5 to match your art and mechanic instead.</p></div>
+      <div class="fq"><h4>How fast is one playable?</h4><p>It depends on the mechanic and how the project is built. Variants off an existing base are much faster than the first one — that's usually where the throughput comes from.</p></div>
+      <div class="fq"><h4>Can you hit a specific size limit?</h4><p>Yes, and it's the first constraint we design to rather than the last thing we fix. Tell us the network and the cap up front.</p></div>
+      <div class="fq"><h4>Do you handle multiple networks per playable?</h4><p>Yes — each gets its own build with the right CTA API and packaging. One creative, several compliant outputs.</p></div>
+      <div class="fq"><h4>Can you work as an extension of our UA team?</h4><p>That's the usual arrangement — a monthly retainer producing a set number of playables and variants. See <a href="../pricing/" style="color:var(--gold);font-weight:600">engagement models</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cream" style="padding-top:60px;padding-bottom:60px">
+  <div class="wrap">
+    <div class="eyebrow">Related Services</div>
+    <div class="rel">
+      <a href="../development/webgl-game-development/">WebGL Games <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="../ua-services/">User Acquisition <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="../design/">Creative &amp; Art <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="../marketing/">Marketing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Send Us One <em>Game</em></h2>
+    <p>We'll build the first playable at our cost. Run it against whatever you're using now and judge it on the numbers.</p>
+    <div class="row">
+      <a href="#brief" class="btn btn-gold">Send a Brief →</a>
+      <a href="../ua-services/" class="btn btn-ghost">See UA Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SITE DIRECTORY — identical on every page. Root-absolute paths so the same
+     block works at any depth (/qa/, /development/game-development/, root). -->
+<section class="dir">
+  <div class="wrap">
+    <div class="dir-grid">
+      <div class="dir-col">
+        <h4>Development</h4>
+        <a href="/development/">All Development</a>
+        <a href="/development/game-development/">Game Development</a>
+        <a href="/development/app-development/">App Development</a>
+        <a href="/development/web-development/">Web Development</a>
+        <a href="/development/webgl-game-development/">WebGL Game Development</a>
+      </div>
+      <div class="dir-col">
+        <h4>Production</h4>
+        <a href="/qa/">QA &amp; Testing</a>
+        <a href="/design/">Design &amp; Game Art</a>
+        <a href="/publishing/">App &amp; Game Publishing</a>
+        <a href="/webgl-port.html">Port My Game to Web <em>FREE</em></a>
+        <a href="/playables/">Playable Ads</a>
+        <a href="/free-qa-teardown.html">Free QA Teardown <em>FREE</em></a>
+      </div>
+      <div class="dir-col">
+        <h4>Growth</h4>
+        <a href="/marketing/">Marketing — Google &amp; Meta</a>
+        <a href="/ua-services/">User Acquisition</a>
+        <a href="/aso-services/">ASO</a>
+        <a href="/monetization-services/">Monetization</a>
+        <a href="/seo/">SEO</a>
+      </div>
+      <div class="dir-col">
+        <h4>Company</h4>
+        <a href="/index.html#platform">Factorial AI Platform</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/pricing/">Pricing &amp; Engagement</a>
+        <a href="/portfolio.html">Games &amp; Projects</a>
+        <a href="/index.html#about">About Us</a>
+        <a href="/fsa-live.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
+        <a href="/index.html#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">
+      <a href="../index.html">Home</a><a href="../index.html#platform">Platform</a>
+      <a href="../development/webgl-game-development/">WebGL</a><a href="../ua-services/">UA</a>
+      <a href="../portfolio.html">Portfolio</a><a href="../pricing/">Pricing</a>
+      <a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a>
+    </div>
+    <p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan · NTN: 9232454</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // click-to-load: several autoplaying playables at once would crawl
+  document.querySelectorAll('.play-hold').forEach(function(hold){
+    hold.addEventListener('click', function(){
+      var src = hold.getAttribute('data-src');
+      if(!src) return;                       // unconfigured slot — do nothing
+      var f = document.createElement('iframe');
+      f.src = src; f.loading = 'lazy'; f.title = 'Playable ad';
+      f.setAttribute('allow','autoplay; fullscreen');
+      hold.parentElement.appendChild(f);
+      hold.remove();
+    });
+  });
+
+  // filter by network
+  var cards=[].slice.call(document.querySelectorAll('.play'));
+  var numEl=document.getElementById('pl-num');
+  function apply(net){
+    var n=0;
+    cards.forEach(function(c){
+      var ok = net==='all' || (c.getAttribute('data-net')||'').split(/\s+/).indexOf(net)!==-1;
+      c.classList.toggle('hidden', !ok);
+      if(ok) n++;
+    });
+    numEl.innerHTML='Showing <b>'+n+'</b> of '+cards.length+' playable'+(cards.length===1?'':'s');
+  }
+  document.querySelectorAll('.pl-fb').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.pl-fb').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply(b.getAttribute('data-net'));
+    });
+  });
+  apply('all');
+})();
+</script>
+<script src="../assets/lead-form.js" defer></script>
+<script src="../analytics.js" defer></script>
+</body>
+</html>

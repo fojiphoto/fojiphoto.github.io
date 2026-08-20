@@ -7,6 +7,7 @@
   <!-- conversion landing pages -->
   <url><loc>https://factorialstudio.com/free-qa-teardown.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://factorialstudio.com/webgl-port.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://factorialstudio.com/playables/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- service pages -->
   <url><loc>https://factorialstudio.com/qa/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
