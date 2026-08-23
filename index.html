@@ -534,10 +534,157 @@ a.card:hover .card-link{gap:12px}
   background:radial-gradient(circle at 34% 30%, #a3d977, #7cb342 42%, #15803d 78%);
   box-shadow:0 0 60px rgba(124,179,66,.45)}
 /* L4 QA checks */
-.qa{display:flex;flex-direction:column;gap:10px;width:76%}
-.qa div{display:flex;align-items:center;gap:11px;font-size:.84rem;font-weight:600;color:#dff0e4;
-  background:rgba(255,255,255,.07);border:2px solid rgba(163,217,119,.24);border-radius:12px;padding:10px 14px}
-.qa svg{width:17px;height:17px;color:var(--leaf2);flex:none}
+/* -- QA stage: bugs found, bugs smashed -----------------------------
+   Original line art, animated in CSS. One 9s cycle = four bugs, each
+   taking 2.25s: the hammer parks over a bug, swings, connects, and the
+   bug flattens into a tick. Gated on .show so the loop restarts at bug
+   one every time the stage scrolls back in, rather than resuming
+   mid-swing on a bug that is already ticked. */
+.qa{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.qa-svg{width:100%;height:100%}
+.qa-svg text{font-family:var(--f-disp);text-anchor:middle;fill:var(--gold);letter-spacing:.09em}
+.qa-count{font-size:19px}
+/* .qa-svg text sets text-anchor:middle and outranks a bare class, so these
+   need the extra qualifier or the label and the digit land on top of each other */
+.qa-svg .qa-lab{text-anchor:end}
+.qa-svg .qa-num{text-anchor:start}
+.qa-num{opacity:0}
+.qa-clean{font-size:17px;fill:var(--leaf2);opacity:0}
+
+.qb use{fill:none;stroke:var(--orange);stroke-width:2.6;stroke-linecap:round}
+.qb{transform-box:fill-box;transform-origin:center bottom}
+.qt{fill:none;stroke:var(--leaf2);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;
+  opacity:0;stroke-dasharray:62;stroke-dashoffset:62}
+.qr{fill:none;stroke:var(--gold);stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.qh-shaft{stroke:var(--leaf2);stroke-width:6;stroke-linecap:round;fill:none}
+.qh-head{fill:none;stroke:var(--gold);stroke-width:3.4;stroke-linejoin:round}
+.qh-line{stroke:var(--gold);stroke-width:2;opacity:.5}
+.qa-swing{transform-box:view-box;transform-origin:0 0}
+
+.pl-layer.show .qa-hammer{animation:qmove 9s steps(1,end) infinite}
+.pl-layer.show .qa-swing{animation:qswing 9s ease-in-out infinite}
+.pl-layer.show .qb1{animation:qsquash1 9s ease-out infinite}
+.pl-layer.show .qb2{animation:qsquash2 9s ease-out infinite}
+.pl-layer.show .qb3{animation:qsquash3 9s ease-out infinite}
+.pl-layer.show .qb4{animation:qsquash4 9s ease-out infinite}
+.pl-layer.show .qt1{animation:qtick1 9s ease-out infinite}
+.pl-layer.show .qt2{animation:qtick2 9s ease-out infinite}
+.pl-layer.show .qt3{animation:qtick3 9s ease-out infinite}
+.pl-layer.show .qt4{animation:qtick4 9s ease-out infinite}
+.pl-layer.show .qr1{animation:qring1 9s ease-out infinite}
+.pl-layer.show .qr2{animation:qring2 9s ease-out infinite}
+.pl-layer.show .qr3{animation:qring3 9s ease-out infinite}
+.pl-layer.show .qr4{animation:qring4 9s ease-out infinite}
+.pl-layer.show .qa-n0{animation:qn0 9s steps(1,end) infinite}
+.pl-layer.show .qa-n1{animation:qn1 9s steps(1,end) infinite}
+.pl-layer.show .qa-n2{animation:qn2 9s steps(1,end) infinite}
+.pl-layer.show .qa-n3{animation:qn3 9s steps(1,end) infinite}
+.pl-layer.show .qa-n4{animation:qn4 9s steps(1,end) infinite}
+.pl-layer.show .qa-clean{animation:qclean 9s ease-out infinite}
+
+/* the hammer parks over each bug in turn - 116px apart, handle top at y=78 */
+@keyframes qmove{
+  0%,24.9%  {transform:translate(96px,78px)}
+  25%,49.9% {transform:translate(212px,78px)}
+  50%,74.9% {transform:translate(328px,78px)}
+  75%,100%  {transform:translate(444px,78px)}
+}
+/* cocked back, down hard on the beat, then back up */
+@keyframes qswing{
+  0%,3%   {transform:rotate(-46deg)}
+  7%      {transform:rotate(-54deg)}
+  11%     {transform:rotate(5deg)}
+  18%,28% {transform:rotate(-46deg)}
+  32%     {transform:rotate(-54deg)}
+  36%     {transform:rotate(5deg)}
+  43%,53% {transform:rotate(-46deg)}
+  57%     {transform:rotate(-54deg)}
+  61%     {transform:rotate(5deg)}
+  68%,78% {transform:rotate(-46deg)}
+  82%     {transform:rotate(-54deg)}
+  86%     {transform:rotate(5deg)}
+  93%,100%{transform:rotate(-46deg)}
+}
+/* struck: flattened for a beat, then gone */
+@keyframes qsquash1{
+  0%,10.4%  {opacity:1;transform:scale(1,1)}
+  11.4%     {opacity:1;transform:scale(1.3,.4)}
+  14.0%,100% {opacity:0;transform:scale(1.3,.4)}
+}
+@keyframes qsquash2{
+  0%,35.4%  {opacity:1;transform:scale(1,1)}
+  36.4%     {opacity:1;transform:scale(1.3,.4)}
+  39.0%,100% {opacity:0;transform:scale(1.3,.4)}
+}
+@keyframes qsquash3{
+  0%,60.4%  {opacity:1;transform:scale(1,1)}
+  61.4%     {opacity:1;transform:scale(1.3,.4)}
+  64.0%,100% {opacity:0;transform:scale(1.3,.4)}
+}
+@keyframes qsquash4{
+  0%,85.4%  {opacity:1;transform:scale(1,1)}
+  86.4%     {opacity:1;transform:scale(1.3,.4)}
+  89.0%,100% {opacity:0;transform:scale(1.3,.4)}
+}
+@keyframes qtick1{
+  0%,11.0%   {opacity:0;stroke-dashoffset:62}
+  12.0%      {opacity:1;stroke-dashoffset:62}
+  18.0%,100% {opacity:1;stroke-dashoffset:0}
+}
+@keyframes qtick2{
+  0%,36.0%   {opacity:0;stroke-dashoffset:62}
+  37.0%      {opacity:1;stroke-dashoffset:62}
+  43.0%,100% {opacity:1;stroke-dashoffset:0}
+}
+@keyframes qtick3{
+  0%,61.0%   {opacity:0;stroke-dashoffset:62}
+  62.0%      {opacity:1;stroke-dashoffset:62}
+  68.0%,100% {opacity:1;stroke-dashoffset:0}
+}
+@keyframes qtick4{
+  0%,86.0%   {opacity:0;stroke-dashoffset:62}
+  87.0%      {opacity:1;stroke-dashoffset:62}
+  93.0%,100% {opacity:1;stroke-dashoffset:0}
+}
+@keyframes qring1{
+  0%,10.8% {opacity:0;transform:scale(.3)}
+  11.2%    {opacity:.85;transform:scale(.3)}
+  20.0%,100% {opacity:0;transform:scale(1.7)}
+}
+@keyframes qring2{
+  0%,35.8% {opacity:0;transform:scale(.3)}
+  36.2%    {opacity:.85;transform:scale(.3)}
+  45.0%,100% {opacity:0;transform:scale(1.7)}
+}
+@keyframes qring3{
+  0%,60.8% {opacity:0;transform:scale(.3)}
+  61.2%    {opacity:.85;transform:scale(.3)}
+  70.0%,100% {opacity:0;transform:scale(1.7)}
+}
+@keyframes qring4{
+  0%,85.8% {opacity:0;transform:scale(.3)}
+  86.2%    {opacity:.85;transform:scale(.3)}
+  95.0%,100% {opacity:0;transform:scale(1.7)}
+}
+@keyframes qn4{ 0%,10.9%{opacity:1} 11.0%,100%{opacity:0} }
+@keyframes qn3{ 0%,10.9%{opacity:0} 11.0%,35.9%{opacity:1} 36.0%,100%{opacity:0} }
+@keyframes qn2{ 0%,35.9%{opacity:0} 36.0%,60.9%{opacity:1} 61.0%,100%{opacity:0} }
+@keyframes qn1{ 0%,60.9%{opacity:0} 61.0%,85.9%{opacity:1} 86.0%,100%{opacity:0} }
+@keyframes qn0{ 0%,85.9%{opacity:0} 86.0%,100%{opacity:1} }
+@keyframes qclean{ 0%,88%{opacity:0} 95%,100%{opacity:1} }
+
+/* reduced motion: the finished state, no swinging */
+@media (prefers-reduced-motion:reduce){
+  .pl-layer.show .qa-hammer,.pl-layer.show .qa-swing,.pl-layer.show .qb,
+  .pl-layer.show .qt,.pl-layer.show .qr,.pl-layer.show .qa-clean,
+  .pl-layer.show .qa-num{animation:none}
+  .qb{opacity:0}
+  .qt{opacity:1;stroke-dashoffset:0}
+  .qa-clean{opacity:1}
+  .qa-n0{opacity:1}
+  .qa-hammer{display:none}
+}
+
 /* L5 platform chips */
 .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;width:88%}
 .chips span{font-size:.76rem;font-weight:600;color:#eaf5ee;background:rgba(255,255,255,.09);
@@ -568,8 +715,7 @@ a.card:hover .card-link{gap:12px}
   .pl-layer{inset:12px 12px 40px}
   .chips{gap:7px}
   .chips span{font-size:.68rem;padding:6px 11px}
-  .qa div{font-size:.76rem;padding:8px 11px}
-  .qa{gap:8px;width:94%}
+  .qa-count{font-size:16px}.qa-clean{font-size:14px}
   /* size these by the height available, not width — otherwise the 16:10 box
      grows taller than the card and runs into the caption */
   .wf,.bk{height:100%;width:auto;max-width:92%}
@@ -1061,9 +1207,71 @@ a.card:hover .card-link{gap:12px}
               <span></span><span></span><span></span><span></span><span></span><span></span></div></div>
             <div class="pl-layer" data-stage="2"><div class="art-orb"></div></div>
             <div class="pl-layer" data-stage="3"><div class="qa">
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Crash on low-RAM device — fixed</div>
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Progression softlock — fixed</div>
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>60 FPS held on target hardware</div></div></div>
+              <!-- Original neon line-art, drawn here in SVG - nothing licensed, nothing
+                   downloaded. Four bugs get found and smashed in turn; the counter runs
+                   4 -> 0 and the build goes green. Position lives on the outer <g> and
+                   the animation only ever scales the inner one, so a single keyframe
+                   can drive all four bugs off staggered negative delays. -->
+              <svg class="qa-svg" viewBox="0 0 541 300" role="img"
+                   aria-label="Four bugs found and fixed one after another, open count falling from four to zero">
+                <defs>
+                  <filter id="qglow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur stdDeviation="3" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <g id="qbug">
+                    <ellipse cx="0" cy="4" rx="15" ry="19"/>
+                    <circle cx="0" cy="-18" r="8"/>
+                    <path d="M-5 -25 -11 -34M5 -25 11 -34"/>
+                    <path d="M0 -12 0 21"/>
+                    <path d="M-15 -4 -28 -11M-16 5 -30 5M-15 14 -28 21"/>
+                    <path d="M15 -4 28 -11M16 5 30 5M15 14 28 21"/>
+                  </g>
+                </defs>
+
+                <g filter="url(#qglow)">
+                  <g transform="translate(96,196)"><g class="qb qb1"><use href="#qbug"/></g></g>
+                  <g transform="translate(212,196)"><g class="qb qb2"><use href="#qbug"/></g></g>
+                  <g transform="translate(328,196)"><g class="qb qb3"><use href="#qbug"/></g></g>
+                  <g transform="translate(444,196)"><g class="qb qb4"><use href="#qbug"/></g></g>
+                </g>
+
+                <g filter="url(#qglow)">
+                  <path class="qt qt1" d="M82 197 94 210 112 183"/>
+                  <path class="qt qt2" d="M198 197 210 210 228 183"/>
+                  <path class="qt qt3" d="M314 197 326 210 344 183"/>
+                  <path class="qt qt4" d="M430 197 442 210 460 183"/>
+                </g>
+
+                <g>
+                  <circle class="qr qr1" cx="96" cy="192" r="30"/>
+                  <circle class="qr qr2" cx="212" cy="192" r="30"/>
+                  <circle class="qr qr3" cx="328" cy="192" r="30"/>
+                  <circle class="qr qr4" cx="444" cy="192" r="30"/>
+                </g>
+
+                <!-- pivot is the top of the handle, so rotating to 0 drops the head
+                     straight onto the bug's crown -->
+                <g class="qa-hammer" filter="url(#qglow)">
+                  <g class="qa-swing">
+                    <path class="qh-shaft" d="M0 0 0 66"/>
+                    <path class="qh-head" d="M-31 64 31 64 31 92 -31 92Z"/>
+                    <path class="qh-line" d="M-31 78 31 78"/>
+                  </g>
+                </g>
+
+                <!-- the digits are separate <text> elements stacked on the same x. As
+                     tspans inside one <text> they all took up layout width, so the
+                     visible one drifted right every time the count stepped down. -->
+                <text class="qa-count qa-lab" x="289" y="44">OPEN</text>
+                <text class="qa-count qa-num qa-n4" x="299" y="44">4</text>
+                <text class="qa-count qa-num qa-n3" x="299" y="44">3</text>
+                <text class="qa-count qa-num qa-n2" x="299" y="44">2</text>
+                <text class="qa-count qa-num qa-n1" x="299" y="44">1</text>
+                <text class="qa-count qa-num qa-n0" x="299" y="44">0</text>
+                <text class="qa-clean" x="270" y="278">BUILD CLEAN</text>
+              </svg>
+            </div></div>
             <div class="pl-layer" data-stage="4"><div class="chips">
               <span>WebGL</span><span>CrazyGames</span><span>Poki</span><span>Yandex</span>
               <span>Play Store</span><span>App Store</span><span>Steam</span><span>Console</span></div></div>
