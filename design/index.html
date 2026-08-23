@@ -24,6 +24,15 @@
 "areaServed":"Worldwide",
 "description":"2D and 3D game art, app and website UI/UX design, and ASO-ready store creative assets."}
 </script>
+<style>
+/* -- process video ------------------------------------------------- */
+.vidsec .lead{margin-bottom:34px}
+.vidwrap{max-width:620px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;
+  border:2px solid rgba(163,217,119,.28);background:#04170f;box-shadow:var(--shadow)}
+.vid{display:block;width:100%;height:auto;aspect-ratio:1/1;background:#04170f}
+@media (max-width:640px){.vidwrap{max-width:100%}}
+
+</style>
 </head>
 <body>
 
@@ -178,6 +187,23 @@
   </div>
 </section>
 
+<section class="section vidsec">
+  <div class="wrap">
+    <div class="eyebrow">Inside The Work</div>
+    <h2 class="disp">How A Game UI <em>Actually Gets Laid Out</em></h2>
+    <p class="lead">Not a finished screen dropped on you at the end &mdash; the layout being reasoned through: what the player needs in reach, what can wait, and where the eye lands first.</p>
+    <!-- No re-encode available on this machine, so the first two seconds are
+         skipped at playback instead: #t=2 sets the start, and the loop is
+         driven by hand because a native loop would rewind to 0 and put the
+         cut back in. -->
+    <div class="vidwrap">
+      <video class="vid" src="/media/game-ui-design.mp4#t=2" preload="metadata"
+             muted playsinline controls controlslist="nodownload"
+             data-start="2" aria-label="A game UI layout being designed step by step"></video>
+    </div>
+  </div>
+</section>
+
 <section class="section cream">
   <div class="wrap">
     <div class="eyebrow">FAQ</div>
@@ -273,5 +299,24 @@
 
 <script src="../assets/lead-form.js" defer></script>
 <script src="../analytics.js" defer></script>
+
+<script>
+// The clip opens on two seconds of nothing, so playback starts past it and
+// the loop returns to the same mark rather than to zero.
+(function(){
+  var v = document.querySelector('.vid');
+  if(!v) return;
+  var start = parseFloat(v.dataset.start || 0);
+  function toStart(){ try { v.currentTime = start; } catch(e){} }
+  v.addEventListener('loadedmetadata', toStart);
+  v.addEventListener('ended', function(){ toStart(); v.play(); });
+  // only autoplay once it is actually on screen, and only muted
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.isIntersecting ? v.play().catch(function(){}) : v.pause(); });
+    }, {threshold: .4}).observe(v);
+  }
+})();
+</script>
 </body>
 </html>

@@ -534,6 +534,10 @@ a.card:hover .card-link{gap:12px}
   background:radial-gradient(circle at 34% 30%, #a3d977, #7cb342 42%, #15803d 78%);
   box-shadow:0 0 60px rgba(124,179,66,.45)}
 /* L4 QA checks */
+/* stage art fills the canvas; cover rather than contain so a stage never
+   shows letterbox bars, and the art was pre-cropped to the canvas 3:2 */
+.pl-img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
+
 /* -- QA stage: bugs found, bugs smashed -----------------------------
    Original line art, animated in CSS. One 9s cycle = four bugs, each
    taking 2.25s: the hammer parks over a bug, swings, connects, and the
@@ -1201,11 +1205,9 @@ a.card:hover .card-link{gap:12px}
         <div class="pl-art">
           <div class="pl-bar"><i></i><i></i><i></i><span id="pl-file">concept.draft</span></div>
           <div class="pl-canvas">
-            <div class="pl-layer" data-stage="0"><div class="wf"><span></span><span></span><span></span><span></span></div></div>
-            <div class="pl-layer" data-stage="1"><div class="bk">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span><span></span></div></div>
-            <div class="pl-layer" data-stage="2"><div class="art-orb"></div></div>
+            <div class="pl-layer" data-stage="0"><img class="pl-img" src="/images/stages/concept.jpg" alt="Concept map: problem, evidence, interpretation, scope"></div>
+            <div class="pl-layer" data-stage="1"><img class="pl-img" src="/images/stages/build.jpg" alt="Greybox level blockout, wireframe over untextured geometry"></div>
+            <div class="pl-layer" data-stage="2"><img class="pl-img" src="/images/stages/art.jpg" alt="The same buildings as greybox and as finished coloured art"></div>
             <div class="pl-layer" data-stage="3"><div class="qa">
               <!-- Original neon line-art, drawn here in SVG - nothing licensed, nothing
                    downloaded. Four bugs get found and smashed in turn; the counter runs
@@ -1272,12 +1274,8 @@ a.card:hover .card-link{gap:12px}
                 <text class="qa-clean" x="270" y="278">BUILD CLEAN</text>
               </svg>
             </div></div>
-            <div class="pl-layer" data-stage="4"><div class="chips">
-              <span>WebGL</span><span>CrazyGames</span><span>Poki</span><span>Yandex</span>
-              <span>Play Store</span><span>App Store</span><span>Steam</span><span>Console</span></div></div>
-            <div class="pl-layer" data-stage="5"><div class="rev">
-              <span style="height:26%"></span><span style="height:41%"></span><span style="height:36%"></span>
-              <span style="height:58%"></span><span style="height:74%"></span><span style="height:100%"></span></div></div>
+            <div class="pl-layer" data-stage="4"><img class="pl-img" src="/images/stages/port.jpg" alt="Builds shipping to Epic Games Store, the App Store and Google Play"></div>
+            <div class="pl-layer" data-stage="5"><img class="pl-img" src="/images/stages/earn.jpg" alt="Monetization and revenue"></div>
           </div>
           <div class="pl-cap" id="pl-cap"></div>
         </div>
