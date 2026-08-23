@@ -209,7 +209,11 @@ h2.disp em{color:var(--gold);font-style:normal}
   filter:grayscale(1) opacity(.86);transition:filter .3s}
 .marq-vp:hover .mq img{filter:grayscale(0) opacity(1)}
 .mq b{font-family:var(--f-disp);font-size:.84rem;letter-spacing:.03em;color:var(--g900);text-align:center;line-height:1.2}
-@media (max-width:640px){.mq{flex:0 0 142px;height:76px;margin-right:14px;padding:9px 13px}.marq{padding:24px 0 26px}}
+@media (max-width:640px){.mq{flex:0 0 142px;height:76px;margin-right:14px;padding:9px 13px}
+  .marq{padding:24px 0 26px}
+  /* eight country names need the tracking back to stay on two lines */
+  .marq-lab{font-size:.68rem;letter-spacing:.1em;line-height:1.7;padding:0 4px}
+  .marq-lab b{letter-spacing:.06em}}
 /* reduced-motion: no crawl, swipe it instead */
 @media (prefers-reduced-motion:reduce){.marq-track{animation:none}.marq-vp{overflow-x:auto}}
 
