@@ -195,15 +195,15 @@ h2.disp em{color:var(--gold);font-style:normal}
 .marq-vp{position:relative;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-/* the track holds the same eleven chips twice, so translating it exactly
+/* the track holds the same ten chips twice, so translating it exactly
    half its width lands on an identical frame and the loop never seams. */
-.marq-track{display:flex;width:max-content;animation:marq 42s linear infinite}
+.marq-track{display:flex;width:max-content;animation:marq 38s linear infinite}
 .marq-vp:hover .marq-track{animation-play-state:paused}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mq{flex:0 0 178px;height:90px;margin-right:18px;background:var(--cream2);
   border:2px solid rgba(163,217,119,.18);border-radius:16px;
   display:flex;align-items:center;justify-content:center;padding:11px 16px}
-/* grey while it moves, full colour the moment you stop it — eleven brand
+/* grey while it moves, full colour the moment you stop it — ten brand
    palettes side by side are noise otherwise */
 .mq img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
   filter:grayscale(1) opacity(.86);transition:filter .3s}
