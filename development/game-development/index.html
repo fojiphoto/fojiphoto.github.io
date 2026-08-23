@@ -86,6 +86,46 @@
   </div>
 </header>
 
+<!-- CLIENT LOGOS — same block on every page, directly under the hero.
+     The chip list appears twice on purpose: the second copy is what the
+     first one scrolls into, and it is aria-hidden so a screen reader
+     reads eleven clients, not twenty-two.
+     TO ADD ONE: drop a trimmed PNG in /images/clients/ and add the same
+     chip to BOTH copies, or the halves stop matching and the loop jumps.
+-->
+<section class="marq">
+  <div class="wrap">
+    <div class="marq-lab">Teams we've worked with — <b>France · UK · USA · Iraq · Pakistan</b></div>
+  </div>
+  <div class="marq-vp">
+    <div class="marq-track">
+      <div class="mq"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
+      <div class="mq"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq"><img src="/images/clients/unicef.png" alt="UNICEF USA"></div>
+      <div class="mq"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
+      <div class="mq"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
+      <div class="mq"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
+      <div class="mq"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
+      <div class="mq"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq"><b>Tornet</b></div>
+      <div class="mq"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
+      <div class="mq"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/unicef.png" alt="UNICEF USA"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq" aria-hidden="true"><b>Tornet</b></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section cream">
   <div class="wrap">
     <div class="eyebrow">What We Offer</div>
@@ -149,33 +189,6 @@
     <div class="row">
       <a href="#start" class="btn btn-gold">Send Your Brief →</a>
       <a href="../../portfolio.html" class="btn btn-ghost">See Our Games</a>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTS — same block on every page, above the directory.
-     TO ADD A LOGO: put the file in /images/clients/ and add it as the first
-     child of the .cl div, e.g.
-        <div class="cl"><img src="/images/clients/tapnation.svg" alt="TapNation"><b>TapNation</b><span>France</span></div>
-     The <b> name hides automatically when an <img> is present, so the text
-     stays as the fallback until every logo is in.
--->
-<section class="clients">
-  <div class="wrap">
-    <div class="eyebrow">Clients</div>
-    <h2>Teams We've <em>Worked With</em></h2>
-    <p class="cl-lead">Ten studios and organisations across five countries — from mobile publishers and console porting houses to a UN agency.</p>
-    <div class="cl-grid">
-      <div class="cl"><b>TapNation</b><span>France</span></div>
-      <div class="cl"><b>Feral Interactive</b><span>United Kingdom</span></div>
-      <div class="cl"><b>Mega Cat Studios</b><span>Pittsburgh, USA</span></div>
-      <div class="cl"><b>UNICEF</b><span>USA</span></div>
-      <div class="cl"><b>YoungWilliams</b><span>USA</span></div>
-      <div class="cl"><b>Turtle Juice</b><span>USA</span></div>
-      <div class="cl"><b>Tornet</b><span>Iraq</span></div>
-      <div class="cl"><b>Mindstorm Studios</b><span>Pakistan</span></div>
-      <div class="cl"><b>GeniTeams</b><span>Pakistan</span></div>
-      <div class="cl"><b>OZI Technology</b><span>Pakistan</span></div>
     </div>
   </div>
 </section>

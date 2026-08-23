@@ -126,25 +126,33 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 }
 
 /* ===== SITE DIRECTORY ===== */
-/* ── client strip (mirrors assets/site.css so the standalone pages match) ── */
-.clients{background:var(--cream);color:var(--ink-text);padding:66px 0 60px}
-.clients .eyebrow{color:var(--g600)}
-.clients h2{font-family:var(--f-disp);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--g900);
-  text-transform:uppercase;line-height:1.1;margin-bottom:12px;letter-spacing:.02em}
-.clients h2 em{color:var(--gold2);font-style:normal}
-.clients .cl-lead{font-size:.98rem;color:var(--ink-muted);max-width:640px;margin-bottom:34px}
-.cl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.cl{background:var(--cream2);border:2px solid #e7e2cf;border-radius:16px;padding:20px 18px;
-  transition:transform .22s,border-color .22s;display:flex;flex-direction:column;justify-content:center;min-height:96px}
-.cl:hover{transform:translateY(-4px);border-color:var(--leaf)}
-.cl b{display:block;font-size:.94rem;font-weight:600;color:var(--ink-text);line-height:1.3;margin-bottom:6px}
-.cl span{display:block;font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--g600)}
-.cl img{max-width:100%;max-height:42px;object-fit:contain;margin:0 auto 8px;
-  filter:grayscale(1) opacity(.78);transition:filter .22s}
-.cl:hover img{filter:grayscale(0) opacity(1)}
-.cl img + b{display:none}
-@media (max-width:1100px){.cl-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:640px){.cl-grid{grid-template-columns:repeat(2,1fr)}.clients{padding:48px 0 44px}}
+
+/* ── client logo marquee (same block on every page, directly under the hero) ── */
+.marq{background:#052e20;border-top:2px solid rgba(124,179,66,.16);
+  border-bottom:2px solid rgba(124,179,66,.16);padding:30px 0 32px;overflow:hidden}
+.marq-lab{text-align:center;font-weight:600;font-size:.72rem;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.marq-lab b{color:var(--gold);font-weight:600;letter-spacing:.1em}
+.marq-vp{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+/* the track holds the same eleven chips twice, so translating it exactly
+   half its width lands on an identical frame and the loop never seams. */
+.marq-track{display:flex;width:max-content;animation:marq 42s linear infinite}
+.marq-vp:hover .marq-track{animation-play-state:paused}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq{flex:0 0 178px;height:90px;margin-right:18px;background:var(--cream2);
+  border:2px solid rgba(163,217,119,.18);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;padding:11px 16px}
+/* grey while it moves, full colour the moment you stop it — eleven brand
+   palettes side by side are noise otherwise */
+.mq img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
+  filter:grayscale(1) opacity(.86);transition:filter .3s}
+.marq-vp:hover .mq img{filter:grayscale(0) opacity(1)}
+.mq b{font-family:var(--f-disp);font-size:.84rem;letter-spacing:.03em;color:var(--g900);text-align:center;line-height:1.2}
+@media (max-width:640px){.mq{flex:0 0 142px;height:76px;margin-right:14px;padding:9px 13px}.marq{padding:24px 0 26px}}
+/* reduced-motion: no crawl, swipe it instead */
+@media (prefers-reduced-motion:reduce){.marq-track{animation:none}.marq-vp{overflow-x:auto}}
 
 .dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
 .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
@@ -218,6 +226,46 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     </div>
   </div>
 </header>
+
+<!-- CLIENT LOGOS — same block on every page, directly under the hero.
+     The chip list appears twice on purpose: the second copy is what the
+     first one scrolls into, and it is aria-hidden so a screen reader
+     reads eleven clients, not twenty-two.
+     TO ADD ONE: drop a trimmed PNG in /images/clients/ and add the same
+     chip to BOTH copies, or the halves stop matching and the loop jumps.
+-->
+<section class="marq">
+  <div class="wrap">
+    <div class="marq-lab">Teams we've worked with — <b>France · UK · USA · Iraq · Pakistan</b></div>
+  </div>
+  <div class="marq-vp">
+    <div class="marq-track">
+      <div class="mq"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
+      <div class="mq"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq"><img src="/images/clients/unicef.png" alt="UNICEF USA"></div>
+      <div class="mq"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
+      <div class="mq"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
+      <div class="mq"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
+      <div class="mq"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
+      <div class="mq"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq"><b>Tornet</b></div>
+      <div class="mq"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
+      <div class="mq"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/unicef.png" alt="UNICEF USA"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq" aria-hidden="true"><b>Tornet</b></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- WHY BOTHER -->
 <section class="section">
@@ -310,33 +358,6 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <h2>Send Us Your <em>Game</em></h2>
     <p>A store link and your engine. We'll tell you what the port involves — including if it isn't worth doing.</p>
     <a href="#request" class="btn btn-gold">Get My Free Assessment →</a>
-  </div>
-</section>
-
-<!-- CLIENTS — same block on every page, above the directory.
-     TO ADD A LOGO: put the file in /images/clients/ and add it as the first
-     child of the .cl div, e.g.
-        <div class="cl"><img src="/images/clients/tapnation.svg" alt="TapNation"><b>TapNation</b><span>France</span></div>
-     The <b> name hides automatically when an <img> is present, so the text
-     stays as the fallback until every logo is in.
--->
-<section class="clients">
-  <div class="wrap">
-    <div class="eyebrow">Clients</div>
-    <h2>Teams We've <em>Worked With</em></h2>
-    <p class="cl-lead">Ten studios and organisations across five countries — from mobile publishers and console porting houses to a UN agency.</p>
-    <div class="cl-grid">
-      <div class="cl"><b>TapNation</b><span>France</span></div>
-      <div class="cl"><b>Feral Interactive</b><span>United Kingdom</span></div>
-      <div class="cl"><b>Mega Cat Studios</b><span>Pittsburgh, USA</span></div>
-      <div class="cl"><b>UNICEF</b><span>USA</span></div>
-      <div class="cl"><b>YoungWilliams</b><span>USA</span></div>
-      <div class="cl"><b>Turtle Juice</b><span>USA</span></div>
-      <div class="cl"><b>Tornet</b><span>Iraq</span></div>
-      <div class="cl"><b>Mindstorm Studios</b><span>Pakistan</span></div>
-      <div class="cl"><b>GeniTeams</b><span>Pakistan</span></div>
-      <div class="cl"><b>OZI Technology</b><span>Pakistan</span></div>
-    </div>
   </div>
 </section>
 
