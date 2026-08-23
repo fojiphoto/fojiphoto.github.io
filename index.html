@@ -359,6 +359,28 @@ a.card:hover .card-link{gap:12px}
 .navdrop-menu a:hover{background:rgba(163,217,119,.12);color:#fff}
 
 /* ===== HOMEPAGE SITE DIRECTORY ===== */
+/* ── client strip (mirrors assets/site.css; the homepage has its own inline sheet) ── */
+.clients{background:var(--cream);color:var(--ink-text);padding:66px 0 60px}
+/* the contact block above is also cream — keep the two from merging */
+.section.cream + .clients{border-top:2px solid #e7e2cf}
+.clients .eyebrow{color:var(--g600)}
+.clients h2{font-family:var(--f-disp);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--g900);
+  text-transform:uppercase;line-height:1.1;margin-bottom:12px;letter-spacing:.02em}
+.clients h2 em{color:var(--gold2);font-style:normal}
+.clients .cl-lead{font-size:.98rem;color:var(--ink-muted);max-width:640px;margin-bottom:34px}
+.cl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.cl{background:var(--cream2);border:2px solid #e7e2cf;border-radius:16px;padding:20px 18px;
+  transition:transform .22s,border-color .22s;display:flex;flex-direction:column;justify-content:center;min-height:96px}
+.cl:hover{transform:translateY(-4px);border-color:var(--leaf)}
+.cl b{display:block;font-size:.94rem;font-weight:600;color:var(--ink-text);line-height:1.3;margin-bottom:6px}
+.cl span{display:block;font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--g600)}
+.cl img{max-width:100%;max-height:42px;object-fit:contain;margin:0 auto 8px;
+  filter:grayscale(1) opacity(.78);transition:filter .22s}
+.cl:hover img{filter:grayscale(0) opacity(1)}
+.cl img + b{display:none}
+@media (max-width:1100px){.cl-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.cl-grid{grid-template-columns:repeat(2,1fr)}.clients{padding:48px 0 44px}}
+
 .dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
 .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
 .dir-col h4{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
@@ -1101,6 +1123,33 @@ a.card:hover .card-link{gap:12px}
         <button type="submit" class="btn btn-gold" id="cf-btn">Send Message →</button>
         <div class="form-msg" id="cf-status"></div>
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS — same block on every page, above the directory.
+     TO ADD A LOGO: put the file in /images/clients/ and add it as the first
+     child of the .cl div, e.g.
+        <div class="cl"><img src="/images/clients/tapnation.svg" alt="TapNation"><b>TapNation</b><span>France</span></div>
+     The <b> name hides automatically when an <img> is present, so the text
+     stays as the fallback until every logo is in.
+-->
+<section class="clients">
+  <div class="wrap">
+    <div class="eyebrow">Clients</div>
+    <h2>Teams We've <em>Worked With</em></h2>
+    <p class="cl-lead">Ten studios and organisations across five countries — from mobile publishers and console porting houses to a UN agency.</p>
+    <div class="cl-grid">
+      <div class="cl"><b>TapNation</b><span>France</span></div>
+      <div class="cl"><b>Feral Interactive</b><span>United Kingdom</span></div>
+      <div class="cl"><b>Mega Cat Studios</b><span>Pittsburgh, USA</span></div>
+      <div class="cl"><b>UNICEF</b><span>USA</span></div>
+      <div class="cl"><b>YoungWilliams</b><span>USA</span></div>
+      <div class="cl"><b>Turtle Juice</b><span>USA</span></div>
+      <div class="cl"><b>Tornet</b><span>Iraq</span></div>
+      <div class="cl"><b>Mindstorm Studios</b><span>Pakistan</span></div>
+      <div class="cl"><b>GeniTeams</b><span>Pakistan</span></div>
+      <div class="cl"><b>OZI Technology</b><span>Pakistan</span></div>
     </div>
   </div>
 </section>

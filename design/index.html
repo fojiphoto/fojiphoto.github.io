@@ -175,6 +175,33 @@
   </div>
 </section>
 
+<!-- CLIENTS — same block on every page, above the directory.
+     TO ADD A LOGO: put the file in /images/clients/ and add it as the first
+     child of the .cl div, e.g.
+        <div class="cl"><img src="/images/clients/tapnation.svg" alt="TapNation"><b>TapNation</b><span>France</span></div>
+     The <b> name hides automatically when an <img> is present, so the text
+     stays as the fallback until every logo is in.
+-->
+<section class="clients">
+  <div class="wrap">
+    <div class="eyebrow">Clients</div>
+    <h2>Teams We've <em>Worked With</em></h2>
+    <p class="cl-lead">Ten studios and organisations across five countries — from mobile publishers and console porting houses to a UN agency.</p>
+    <div class="cl-grid">
+      <div class="cl"><b>TapNation</b><span>France</span></div>
+      <div class="cl"><b>Feral Interactive</b><span>United Kingdom</span></div>
+      <div class="cl"><b>Mega Cat Studios</b><span>Pittsburgh, USA</span></div>
+      <div class="cl"><b>UNICEF</b><span>USA</span></div>
+      <div class="cl"><b>YoungWilliams</b><span>USA</span></div>
+      <div class="cl"><b>Turtle Juice</b><span>USA</span></div>
+      <div class="cl"><b>Tornet</b><span>Iraq</span></div>
+      <div class="cl"><b>Mindstorm Studios</b><span>Pakistan</span></div>
+      <div class="cl"><b>GeniTeams</b><span>Pakistan</span></div>
+      <div class="cl"><b>OZI Technology</b><span>Pakistan</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- SITE DIRECTORY — identical on every page. Root-absolute paths so the same
      block works at any depth (/qa/, /development/game-development/, root). -->
 <section class="dir">
