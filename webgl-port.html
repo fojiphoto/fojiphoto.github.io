@@ -136,15 +136,15 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 .marq-vp{position:relative;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-/* the track holds the same ten chips twice, so translating it exactly
+/* the track holds the same eleven chips twice, so translating it exactly
    half its width lands on an identical frame and the loop never seams. */
-.marq-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marq-track{display:flex;width:max-content;animation:marq 41s linear infinite}
 .marq-vp:hover .marq-track{animation-play-state:paused}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mq{flex:0 0 178px;height:90px;margin-right:18px;background:var(--cream2);
   border:2px solid rgba(163,217,119,.18);border-radius:16px;
   display:flex;align-items:center;justify-content:center;padding:11px 16px}
-/* grey while it moves, full colour the moment you stop it — ten brand
+/* grey while it moves, full colour the moment you stop it — eleven brand
    palettes side by side are noise otherwise */
 .mq img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
   filter:grayscale(1) opacity(.86);transition:filter .3s}
@@ -230,7 +230,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 <!-- CLIENT LOGOS — same block on every page, directly under the hero.
      The chip list appears twice on purpose: the second copy is what the
      first one scrolls into, and it is aria-hidden so a screen reader
-     reads ten clients, not twenty.
+     reads eleven clients, not twenty-two.
      TO ADD ONE: drop a trimmed PNG in /images/clients/ and add the same
      chip to BOTH copies, or the halves stop matching and the loop jumps.
 -->
@@ -242,21 +242,23 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <div class="marq-track">
       <div class="mq"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
       <div class="mq"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq"><img src="/images/clients/torliga.png" alt="Torliga Champions"></div>
       <div class="mq"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
-      <div class="mq"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
       <div class="mq"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
       <div class="mq"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
       <div class="mq"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq"><img src="/images/clients/istikan.png" alt="Istikan Studio"></div>
       <div class="mq"><img src="/images/clients/tornet.png" alt="Tornet"></div>
       <div class="mq"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
       <div class="mq"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/tapnation.png" alt="TapNation"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/feral.png" alt="Feral Interactive"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/torliga.png" alt="Torliga Champions"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/megacat.png" alt="Mega Cat Studios"></div>
-      <div class="mq" aria-hidden="true"><img src="/images/clients/mindstorm.png" alt="Mindstorm Studios"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/youngwilliams.png" alt="YoungWilliams"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/turtlejuice.png" alt="Turtle Juice"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/geniteams.png" alt="GeniTeams"></div>
+      <div class="mq" aria-hidden="true"><img src="/images/clients/istikan.png" alt="Istikan Studio"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/tornet.png" alt="Tornet"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/ozitechnology.png" alt="OZI Technology"></div>
       <div class="mq" aria-hidden="true"><img src="/images/clients/easternleather.png" alt="Eastern Leather Company"></div>
