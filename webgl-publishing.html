@@ -20,9 +20,13 @@
   --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35);
 }
 html{scroll-behavior:smooth;font-size:16px}
+/* the roomier reading size starts where there is room for it. A flat 17px
+   pushed card headings out of their boxes at 375px. */
+@media (min-width:768px){html{font-size:17px}}
+
 body{font-family:var(--f-body);color:var(--text);background:var(--ink);line-height:1.65;overflow-x:hidden}
 a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
-.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
 .disp{font-family:var(--f-disp);text-transform:uppercase;line-height:1.04}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(6,40,28,.82);backdrop-filter:blur(14px);border-bottom:2px solid rgba(124,179,66,.18)}
 .logo{display:flex;align-items:center;gap:12px}.logo img{width:46px;height:46px;object-fit:contain}
