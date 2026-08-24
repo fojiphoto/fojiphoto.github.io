@@ -34,6 +34,25 @@
   background:rgba(255,255,255,.06);border:2px solid rgba(163,217,119,.26);
   padding:8px 15px;border-radius:999px;transition:border-color .2s,color .2s}
 .nf-links a:hover{border-color:var(--leaf);color:var(--gold)}
+
+/* -- legible small headings --------------------------------------------
+   The display face is a poster font: caps-only, heavy, tight. It carries
+   h1/h2 at clamp() sizes. Below ~1.05rem it stops being read and starts
+   being texture, so every smaller heading uses the body face instead,
+   one step larger and in its authored sentence case. */
+.tc h3,.step h4,.fq h4,.vs-col h3,.d-card h3,.c-card h3,.driver h4,.feat-row h4,
+.ba-col h4,.h-card h3,.miss-card h3,.pl-stage h4,.play-name,.pname,
+.ceo-name,.eng-card h3,.model h3,.cw-card h3,.mod h4,.pill-card h3{
+  font-family:var(--f-body);font-weight:700;font-size:1.07rem;
+  letter-spacing:.004em;line-height:1.32;text-transform:none}
+/* column labels stay caps -- they are signposts, not sentences -- but the
+   body face holds together at this size where the display face does not */
+.dir-col h4{font-family:var(--f-body);font-weight:700;font-size:.84rem;
+  letter-spacing:.1em}
+/* short all-caps labels: same swap, size kept, tracking opened up */
+.pl-cap,.hc-stat,.p-tag,.mq b,.hc-g-info b,.testi-who b,.t-who b,
+.play-hold b,.logo-card b,.sc-count,.ci b,.p-vs,.qa-count,.qa-clean{
+  font-family:var(--f-body);font-weight:600;letter-spacing:.07em}
 </style>
 </head>
 <body>
