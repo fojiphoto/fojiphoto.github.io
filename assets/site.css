@@ -179,6 +179,14 @@ h2.disp em{color:var(--gold);font-style:normal}
 .section.cream .vs-a li{color:var(--ink-muted)}
 
 /* ── closing CTA ── */
+/* the lead form moved to the bottom CTA, so the hero runs full width now */
+.hero-grid.solo{grid-template-columns:1fr}
+.hero-grid.solo>div{max-width:840px}
+/* the card is a centred block, but the fields inside it stay left-aligned
+   -- .cta centres everything, and centred form labels are unreadable */
+.cta-form{max-width:560px;margin:0 auto;text-align:left}
+.cta-form .fcard{padding:28px 28px 30px}
+.cta .row{margin-top:26px}
 .cta{text-align:center;padding:86px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
 .cta h2{font-family:var(--f-disp);font-size:clamp(1.8rem,4vw,3rem);color:#fff;margin-bottom:16px;letter-spacing:.01em}
 .cta h2 em{color:var(--gold);font-style:normal}

@@ -91,6 +91,14 @@ h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:v
 .fq:last-child{border-bottom:none}
 .fq h4{font-family:var(--f-disp);font-size:.95rem;color:var(--g900);margin-bottom:8px}
 .fq p{font-size:.94rem;color:var(--ink-muted)}.fq p b{color:var(--ink-text)}
+/* the lead form moved to the bottom CTA, so the hero runs full width now */
+.hero-grid.solo{grid-template-columns:1fr}
+.hero-grid.solo>div{max-width:840px}
+/* the card is a centred block, but the fields inside it stay left-aligned
+   -- .cta centres everything, and centred form labels are unreadable */
+.cta-form{max-width:560px;margin:0 auto;text-align:left}
+.cta-form .fcard{padding:28px 28px 30px}
+.cta .row{margin-top:26px}
 .cta{text-align:center;padding:88px 0;background:radial-gradient(120% 100% at 50% 0%, #0c5a3f, var(--g900) 70%)}
 .cta h2{font-family:var(--f-disp);font-size:clamp(1.9rem,4.2vw,3.1rem);color:#fff;margin-bottom:16px}.cta h2 em{color:var(--gold);font-style:normal}
 .cta p{color:var(--muted);max-width:540px;margin:0 auto 30px}
@@ -160,8 +168,8 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 </nav>
 
 <!-- HERO + FORM -->
-<header class="hero" id="request">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <span class="tag">Free · No obligation</span>
       <h1>We'll Test Your Game<br><em>And Send You the Bugs</em></h1>
@@ -176,39 +184,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
       <p class="nostrings">No call required. No contract. If the report is useful we can talk about covering your next release — and if it isn't, keep it anyway.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Request Your Teardown</h2>
-      <p class="sub">Three fields. We'll reply with the report, not a sales sequence.</p>
-      <form id="td-form" onsubmit="return tdSubmit(event)">
-        <label for="td-game">Link to your live game *</label>
-        <input id="td-game" name="Game Link" type="text" placeholder="App Store / Google Play / Steam / web URL" required>
-
-        <label for="td-email">Your email *</label>
-        <input id="td-email" name="Email" type="email" placeholder="you@studio.com" required>
-
-        <label for="td-platform">Where should we focus?</label>
-        <select id="td-platform" name="Focus Platform">
-          <option value="">No preference — you decide</option>
-          <option>Android phones</option>
-          <option>iOS / iPhone</option>
-          <option>PC / Steam</option>
-          <option>Web / browser build</option>
-          <option>Console</option>
-        </select>
-
-        <label for="td-notes">Anything specific worrying you?</label>
-        <textarea id="td-notes" name="Notes" placeholder="e.g. players report crashes after the last update, or low-end Android performance…"></textarea>
-
-        <input type="hidden" name="_subject" value="FREE TEARDOWN REQUEST — factorialstudio.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold" id="td-btn">Send My Game →</button>
-        <div class="fmsg" id="td-msg"></div>
-        <p class="fnote">We only test builds that are already public. Your link isn't shared with anyone.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -333,11 +309,43 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta" id="request">
   <div class="wrap">
     <h2>Send Us Your <em>Game</em></h2>
     <p>One link, one email address. You'll have a real bug report before you'd have finished scheduling a discovery call.</p>
-    <a href="#request" class="btn btn-gold">Request My Free Teardown →</a>
+    <div class="cta-form">
+      <div class="fcard">
+      <form id="td-form" onsubmit="return tdSubmit(event)">
+        <label for="td-game">Link to your live game *</label>
+        <input id="td-game" name="Game Link" type="text" placeholder="App Store / Google Play / Steam / web URL" required>
+
+        <label for="td-email">Your email *</label>
+        <input id="td-email" name="Email" type="email" placeholder="you@studio.com" required>
+
+        <label for="td-platform">Where should we focus?</label>
+        <select id="td-platform" name="Focus Platform">
+          <option value="">No preference — you decide</option>
+          <option>Android phones</option>
+          <option>iOS / iPhone</option>
+          <option>PC / Steam</option>
+          <option>Web / browser build</option>
+          <option>Console</option>
+        </select>
+
+        <label for="td-notes">Anything specific worrying you?</label>
+        <textarea id="td-notes" name="Notes" placeholder="e.g. players report crashes after the last update, or low-end Android performance…"></textarea>
+
+        <input type="hidden" name="_subject" value="FREE TEARDOWN REQUEST — factorialstudio.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold" id="td-btn">Send My Game →</button>
+        <div class="fmsg" id="td-msg"></div>
+        <p class="fnote">We only test builds that are already public. Your link isn't shared with anyone.</p>
+      </form>
+    </div>
+    </div>
   </div>
 </section>
 

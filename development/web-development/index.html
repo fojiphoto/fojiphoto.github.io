@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>›</span><a href="../">Development</a><span>›</span>Web Development</div>
       <span class="tag">SEO-ready from day one</span>
@@ -51,41 +51,7 @@
       <p class="nostrings">Retrofitting SEO onto a finished site costs more than building it in. We do it from the start — see <a href="../../seo/" style="color:var(--gold);font-weight:600">SEO Services</a>.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Get a Proposal</h2>
-      <p class="sub">Share your requirements and we'll come back with scope, timeline and cost.</p>
-      <form class="lead-form" data-lead="web-development">
-        <label for="w-type">What do you need? *</label>
-        <select id="w-type" name="Website Type" required>
-          <option value="">Choose one…</option>
-          <option>Corporate / business website</option>
-          <option>Landing page or campaign microsite</option>
-          <option>E-commerce store</option>
-          <option>Custom web app or dashboard</option>
-          <option>CMS-based site (WordPress or custom)</option>
-          <option>WebGL game portal</option>
-          <option>Redesign of an existing site</option>
-        </select>
-
-        <label for="w-email">Your email *</label>
-        <input id="w-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="w-current">Current site (if any)</label>
-        <input id="w-current" name="Current Site" type="text" placeholder="https://…">
-
-        <label for="w-notes">Requirements</label>
-        <textarea id="w-notes" name="Notes" placeholder="Pages needed, integrations, whether a design exists, timeline…"></textarea>
-
-        <input type="hidden" name="_subject" value="WEB DEV ENQUIRY — factorialstudio.com/development/web-development">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Proposal →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">No obligation. We'll tell you if you need less than you think.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -183,12 +149,46 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Ready to Build or <em>Redesign?</em></h2>
     <p>Share your requirements and we'll get back with a proposal.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="web-development">
+        <label for="w-type">What do you need? *</label>
+        <select id="w-type" name="Website Type" required>
+          <option value="">Choose one…</option>
+          <option>Corporate / business website</option>
+          <option>Landing page or campaign microsite</option>
+          <option>E-commerce store</option>
+          <option>Custom web app or dashboard</option>
+          <option>CMS-based site (WordPress or custom)</option>
+          <option>WebGL game portal</option>
+          <option>Redesign of an existing site</option>
+        </select>
+
+        <label for="w-email">Your email *</label>
+        <input id="w-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="w-current">Current site (if any)</label>
+        <input id="w-current" name="Current Site" type="text" placeholder="https://…">
+
+        <label for="w-notes">Requirements</label>
+        <textarea id="w-notes" name="Notes" placeholder="Pages needed, integrations, whether a design exists, timeline…"></textarea>
+
+        <input type="hidden" name="_subject" value="WEB DEV ENQUIRY — factorialstudio.com/development/web-development">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Proposal →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">No obligation. We'll tell you if you need less than you think.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get a Proposal →</a>
       <a href="../" class="btn btn-ghost">All Development Services</a>
     </div>
   </div>

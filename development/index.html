@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Development</div>
       <span class="tag">Free estimate · No obligation</span>
@@ -51,48 +51,7 @@
       </ul>
     </div>
 
-    <div class="fcard">
-      <h2>Free Project Estimate</h2>
-      <p class="sub">Tell us what you're building. We come back with scope, timeline and a real number.</p>
-      <form class="lead-form" data-lead="development">
-        <label for="d-what">What are you building? *</label>
-        <select id="d-what" name="Project Type" required>
-          <option value="">Choose one…</option>
-          <option>Game — mobile</option>
-          <option>Game — PC / Steam</option>
-          <option>Game — WebGL / browser</option>
-          <option>Game — console</option>
-          <option>Mobile app</option>
-          <option>Website / web app</option>
-          <option>Not sure yet</option>
-        </select>
-
-        <label for="d-email">Your email *</label>
-        <input id="d-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="d-stage">Where are you now?</label>
-        <select id="d-stage" name="Stage">
-          <option value="">Not sure</option>
-          <option>Just an idea / concept</option>
-          <option>Have a design doc or brief</option>
-          <option>Prototype exists</option>
-          <option>In development, need more capacity</option>
-          <option>Live, need updates or a port</option>
-        </select>
-
-        <label for="d-brief">Tell us about it</label>
-        <textarea id="d-brief" name="Brief" placeholder="Genre or product type, platforms, rough timeline, anything already built…"></textarea>
-
-        <input type="hidden" name="_subject" value="DEVELOPMENT ENQUIRY — factorialstudio.com/development">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Estimate →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs. Your concept stays confidential.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -242,12 +201,53 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Get a Free <em>Project Estimate</em></h2>
     <p>Tell us what you're building and we'll come back with scope, timeline and cost.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="development">
+        <label for="d-what">What are you building? *</label>
+        <select id="d-what" name="Project Type" required>
+          <option value="">Choose one…</option>
+          <option>Game — mobile</option>
+          <option>Game — PC / Steam</option>
+          <option>Game — WebGL / browser</option>
+          <option>Game — console</option>
+          <option>Mobile app</option>
+          <option>Website / web app</option>
+          <option>Not sure yet</option>
+        </select>
+
+        <label for="d-email">Your email *</label>
+        <input id="d-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="d-stage">Where are you now?</label>
+        <select id="d-stage" name="Stage">
+          <option value="">Not sure</option>
+          <option>Just an idea / concept</option>
+          <option>Have a design doc or brief</option>
+          <option>Prototype exists</option>
+          <option>In development, need more capacity</option>
+          <option>Live, need updates or a port</option>
+        </select>
+
+        <label for="d-brief">Tell us about it</label>
+        <textarea id="d-brief" name="Brief" placeholder="Genre or product type, platforms, rough timeline, anything already built…"></textarea>
+
+        <input type="hidden" name="_subject" value="DEVELOPMENT ENQUIRY — factorialstudio.com/development">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Estimate →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs. Your concept stays confidential.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get My Estimate →</a>
       <a href="../portfolio.html" class="btn btn-ghost">See Our Work</a>
     </div>
   </div>

@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>›</span><a href="../">Development</a><span>›</span>Game Development</div>
       <span class="tag">Concept to launch</span>
@@ -50,39 +50,7 @@
       </ul>
     </div>
 
-    <div class="fcard">
-      <h2>Send Us Your Brief</h2>
-      <p class="sub">We'll come back with a scope and timeline — a real one, not a placeholder range.</p>
-      <form class="lead-form" data-lead="game-development">
-        <label for="g-genre">Genre or concept *</label>
-        <input id="g-genre" name="Genre" type="text" placeholder="e.g. idle merge, puzzle, 3D sports sim" required>
-
-        <label for="g-email">Your email *</label>
-        <input id="g-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="g-platform">Target platforms</label>
-        <select id="g-platform" name="Platforms">
-          <option value="">Not decided yet</option>
-          <option>Mobile (iOS + Android)</option>
-          <option>PC / Steam</option>
-          <option>WebGL / browser</option>
-          <option>Console</option>
-          <option>Multi-platform</option>
-        </select>
-
-        <label for="g-brief">Tell us about the game</label>
-        <textarea id="g-brief" name="Brief" placeholder="Core loop, art style references, target audience, anything already built, rough timeline…"></textarea>
-
-        <input type="hidden" name="_subject" value="GAME DEV ENQUIRY — factorialstudio.com/development/game-development">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get Scope &amp; Timeline →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs before you share anything sensitive.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -182,12 +150,44 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Have a Game <em>Concept?</em></h2>
     <p>Send us your brief and we'll come back with a scope and timeline.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="game-development">
+        <label for="g-genre">Genre or concept *</label>
+        <input id="g-genre" name="Genre" type="text" placeholder="e.g. idle merge, puzzle, 3D sports sim" required>
+
+        <label for="g-email">Your email *</label>
+        <input id="g-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="g-platform">Target platforms</label>
+        <select id="g-platform" name="Platforms">
+          <option value="">Not decided yet</option>
+          <option>Mobile (iOS + Android)</option>
+          <option>PC / Steam</option>
+          <option>WebGL / browser</option>
+          <option>Console</option>
+          <option>Multi-platform</option>
+        </select>
+
+        <label for="g-brief">Tell us about the game</label>
+        <textarea id="g-brief" name="Brief" placeholder="Core loop, art style references, target audience, anything already built, rough timeline…"></textarea>
+
+        <input type="hidden" name="_subject" value="GAME DEV ENQUIRY — factorialstudio.com/development/game-development">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get Scope &amp; Timeline →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs before you share anything sensitive.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Send Your Brief →</a>
       <a href="../../portfolio.html" class="btn btn-ghost">See Our Games</a>
     </div>
   </div>

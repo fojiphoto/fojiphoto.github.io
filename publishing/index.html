@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Publishing</div>
       <span class="tag">Free policy check</span>
@@ -51,40 +51,7 @@
       <p class="nostrings">A suspended developer account is far harder to recover than a rejected build. <b>Most of this service is preventing that.</b></p>
     </div>
 
-    <div class="fcard">
-      <h2>Pre-Submission Check</h2>
-      <p class="sub">Send your build. We'll run it against current store policies and tell you what would get flagged.</p>
-      <form class="lead-form" data-lead="publishing">
-        <label for="p-product">Your app or game *</label>
-        <input id="p-product" name="Product" type="text" placeholder="Build link, or store link if already live" required>
-
-        <label for="p-email">Your email *</label>
-        <input id="p-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="p-need">What do you need?</label>
-        <select id="p-need" name="Need">
-          <option value="">Not sure — you advise</option>
-          <option>First-time publishing, start to finish</option>
-          <option>Developer account setup</option>
-          <option>Policy compliance audit before submitting</option>
-          <option>Rejected — need help getting approved</option>
-          <option>Account suspended — need an appeal</option>
-          <option>Store listing / metadata setup</option>
-        </select>
-
-        <label for="p-notes">Anything we should know?</label>
-        <textarea id="p-notes" name="Notes" placeholder="e.g. rejected twice for data safety declarations; or first app, no developer account yet…"></textarea>
-
-        <input type="hidden" name="_subject" value="PUBLISHING ENQUIRY — factorialstudio.com/publishing">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Run My Policy Check →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">Platforms: Google Play, Apple App Store, Amazon Appstore.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -187,12 +154,45 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Ready to <em>Publish?</em></h2>
     <p>Send us your build and we'll run a pre-submission policy check before anything goes to review.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="publishing">
+        <label for="p-product">Your app or game *</label>
+        <input id="p-product" name="Product" type="text" placeholder="Build link, or store link if already live" required>
+
+        <label for="p-email">Your email *</label>
+        <input id="p-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="p-need">What do you need?</label>
+        <select id="p-need" name="Need">
+          <option value="">Not sure — you advise</option>
+          <option>First-time publishing, start to finish</option>
+          <option>Developer account setup</option>
+          <option>Policy compliance audit before submitting</option>
+          <option>Rejected — need help getting approved</option>
+          <option>Account suspended — need an appeal</option>
+          <option>Store listing / metadata setup</option>
+        </select>
+
+        <label for="p-notes">Anything we should know?</label>
+        <textarea id="p-notes" name="Notes" placeholder="e.g. rejected twice for data safety declarations; or first app, no developer account yet…"></textarea>
+
+        <input type="hidden" name="_subject" value="PUBLISHING ENQUIRY — factorialstudio.com/publishing">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Run My Policy Check →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">Platforms: Google Play, Apple App Store, Amazon Appstore.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Run My Policy Check →</a>
       <a href="../qa/" class="btn btn-ghost">QA It First</a>
     </div>
   </div>

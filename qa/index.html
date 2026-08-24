@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>QA</div>
       <span class="tag">Free teardown available</span>
@@ -51,39 +51,7 @@
       <p class="nostrings">If your game is already live, start with a <a href="../free-qa-teardown.html" style="color:var(--gold);font-weight:600">free QA teardown</a> instead — we test it and send a real bug report, no charge.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Scope a QA Pass</h2>
-      <p class="sub">Send the build or URL. We come back with scope, coverage and turnaround — not a sales call.</p>
-      <form class="lead-form" data-lead="qa-service">
-        <label for="q-product">Your game, app or website *</label>
-        <input id="q-product" name="Product" type="text" placeholder="Store link, build link, or URL" required>
-
-        <label for="q-email">Your email *</label>
-        <input id="q-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="q-type">What needs testing?</label>
-        <select id="q-type" name="Test Type">
-          <option value="">Not sure — you advise</option>
-          <option>Game QA</option>
-          <option>Mobile app QA</option>
-          <option>Website QA</option>
-          <option>Console certification support</option>
-          <option>Regression / patch testing</option>
-        </select>
-
-        <label for="q-notes">Anything specific worrying you?</label>
-        <textarea id="q-notes" name="Notes" placeholder="e.g. crashes on low-end Android, players report progression bugs after the last update…"></textarea>
-
-        <input type="hidden" name="_subject" value="QA ENQUIRY — factorialstudio.com/qa">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My QA Scope →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">Your build and data stay confidential. We sign NDAs.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -222,12 +190,44 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Send Us Your <em>Build</em></h2>
     <p>We'll scope a QA pass and give you a turnaround time. Already live? Take the free teardown first.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="qa-service">
+        <label for="q-product">Your game, app or website *</label>
+        <input id="q-product" name="Product" type="text" placeholder="Store link, build link, or URL" required>
+
+        <label for="q-email">Your email *</label>
+        <input id="q-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="q-type">What needs testing?</label>
+        <select id="q-type" name="Test Type">
+          <option value="">Not sure — you advise</option>
+          <option>Game QA</option>
+          <option>Mobile app QA</option>
+          <option>Website QA</option>
+          <option>Console certification support</option>
+          <option>Regression / patch testing</option>
+        </select>
+
+        <label for="q-notes">Anything specific worrying you?</label>
+        <textarea id="q-notes" name="Notes" placeholder="e.g. crashes on low-end Android, players report progression bugs after the last update…"></textarea>
+
+        <input type="hidden" name="_subject" value="QA ENQUIRY — factorialstudio.com/qa">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My QA Scope →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">Your build and data stay confidential. We sign NDAs.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Scope a QA Pass →</a>
       <a href="../free-qa-teardown.html" class="btn btn-ghost">Get a Free Teardown</a>
     </div>
   </div>

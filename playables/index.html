@@ -104,8 +104,8 @@
   </div>
 </nav>
 
-<header class="hero" id="brief">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Playable Ads</div>
       <span class="tag">Luna · Unity → HTML5</span>
@@ -124,50 +124,7 @@
       </div>
     </div>
 
-    <div class="fcard">
-      <h2>Send a Brief</h2>
-      <p class="sub">Give us a game and a reference ad. We'll come back with a concept, a size estimate and a turnaround.</p>
-      <form class="lead-form" data-lead="playable-ads">
-        <label for="pa-game">Game or app *</label>
-        <input id="pa-game" name="Game" type="text" placeholder="Store link, or the title" required>
-
-        <label for="pa-email">Your email *</label>
-        <input id="pa-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="pa-net">Target networks</label>
-        <select id="pa-net" name="Networks">
-          <option value="">All / not sure yet</option>
-          <option>Google Ads</option>
-          <option>AppLovin</option>
-          <option>Mintegral</option>
-          <option>Unity Ads</option>
-          <option>ironSource</option>
-          <option>Meta / TikTok</option>
-          <option>Multiple networks</option>
-        </select>
-
-        <label for="pa-vol">Volume</label>
-        <select id="pa-vol" name="Volume">
-          <option value="">Not sure yet</option>
-          <option>One playable — trial</option>
-          <option>2–5 per month</option>
-          <option>5–15 per month</option>
-          <option>15+ per month / ongoing</option>
-        </select>
-
-        <label for="pa-notes">Anything specific?</label>
-        <textarea id="pa-notes" name="Notes" placeholder="Mechanic you want highlighted, reference ads that perform for you, size limits, deadline…"></textarea>
-
-        <input type="hidden" name="_subject" value="PLAYABLE ADS ENQUIRY — factorialstudio.com/playables">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Send Brief →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We'll build the first one at our cost so you can judge it against what you're running now.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -451,12 +408,55 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="brief">
   <div class="wrap">
     <h2>Send Us One <em>Game</em></h2>
     <p>We'll build the first playable at our cost. Run it against whatever you're using now and judge it on the numbers.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="playable-ads">
+        <label for="pa-game">Game or app *</label>
+        <input id="pa-game" name="Game" type="text" placeholder="Store link, or the title" required>
+
+        <label for="pa-email">Your email *</label>
+        <input id="pa-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="pa-net">Target networks</label>
+        <select id="pa-net" name="Networks">
+          <option value="">All / not sure yet</option>
+          <option>Google Ads</option>
+          <option>AppLovin</option>
+          <option>Mintegral</option>
+          <option>Unity Ads</option>
+          <option>ironSource</option>
+          <option>Meta / TikTok</option>
+          <option>Multiple networks</option>
+        </select>
+
+        <label for="pa-vol">Volume</label>
+        <select id="pa-vol" name="Volume">
+          <option value="">Not sure yet</option>
+          <option>One playable — trial</option>
+          <option>2–5 per month</option>
+          <option>5–15 per month</option>
+          <option>15+ per month / ongoing</option>
+        </select>
+
+        <label for="pa-notes">Anything specific?</label>
+        <textarea id="pa-notes" name="Notes" placeholder="Mechanic you want highlighted, reference ads that perform for you, size limits, deadline…"></textarea>
+
+        <input type="hidden" name="_subject" value="PLAYABLE ADS ENQUIRY — factorialstudio.com/playables">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Send Brief →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We'll build the first one at our cost so you can judge it against what you're running now.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#brief" class="btn btn-gold">Send a Brief →</a>
       <a href="../ua-services/" class="btn btn-ghost">See UA Services</a>
     </div>
   </div>

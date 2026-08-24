@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>›</span><a href="../">Development</a><span>›</span>App Development</div>
       <span class="tag">MVP to full product</span>
@@ -50,47 +50,7 @@
       </ul>
     </div>
 
-    <div class="fcard">
-      <h2>Scope My App</h2>
-      <p class="sub">Tell us the idea. We'll help you decide between an MVP and a full build — and price both.</p>
-      <form class="lead-form" data-lead="app-development">
-        <label for="ad-idea">What's the app? *</label>
-        <input id="ad-idea" name="App Idea" type="text" placeholder="e.g. booking app for local gyms" required>
-
-        <label for="ad-email">Your email *</label>
-        <input id="ad-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="ad-plat">Platform</label>
-        <select id="ad-plat" name="Platform">
-          <option value="">Not decided — you advise</option>
-          <option>iOS only</option>
-          <option>Android only</option>
-          <option>Both (cross-platform)</option>
-          <option>Both (native each)</option>
-        </select>
-
-        <label for="ad-scope">MVP or full build?</label>
-        <select id="ad-scope" name="Scope">
-          <option value="">Not sure yet</option>
-          <option>MVP — validate the idea first</option>
-          <option>Full production build</option>
-          <option>Add features to an existing app</option>
-          <option>Rebuild / take over existing app</option>
-        </select>
-
-        <label for="ad-notes">Anything else?</label>
-        <textarea id="ad-notes" name="Notes" placeholder="Key features, integrations needed, timeline, whether a design already exists…"></textarea>
-
-        <input type="hidden" name="_subject" value="APP DEV ENQUIRY — factorialstudio.com/development/app-development">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Scope →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs. Your idea stays yours.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -194,12 +154,52 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Tell Us Your <em>App Idea</em></h2>
     <p>We'll help you scope an MVP or a full build — and price both so you can choose.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="app-development">
+        <label for="ad-idea">What's the app? *</label>
+        <input id="ad-idea" name="App Idea" type="text" placeholder="e.g. booking app for local gyms" required>
+
+        <label for="ad-email">Your email *</label>
+        <input id="ad-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="ad-plat">Platform</label>
+        <select id="ad-plat" name="Platform">
+          <option value="">Not decided — you advise</option>
+          <option>iOS only</option>
+          <option>Android only</option>
+          <option>Both (cross-platform)</option>
+          <option>Both (native each)</option>
+        </select>
+
+        <label for="ad-scope">MVP or full build?</label>
+        <select id="ad-scope" name="Scope">
+          <option value="">Not sure yet</option>
+          <option>MVP — validate the idea first</option>
+          <option>Full production build</option>
+          <option>Add features to an existing app</option>
+          <option>Rebuild / take over existing app</option>
+        </select>
+
+        <label for="ad-notes">Anything else?</label>
+        <textarea id="ad-notes" name="Notes" placeholder="Key features, integrations needed, timeline, whether a design already exists…"></textarea>
+
+        <input type="hidden" name="_subject" value="APP DEV ENQUIRY — factorialstudio.com/development/app-development">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Scope →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs. Your idea stays yours.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Scope My App →</a>
       <a href="../" class="btn btn-ghost">All Development Services</a>
     </div>
   </div>

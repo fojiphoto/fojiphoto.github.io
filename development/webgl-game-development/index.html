@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>›</span><a href="../">Development</a><span>›</span>WebGL Game Development</div>
       <span class="tag">Up to 60% less than in-house</span>
@@ -52,38 +52,7 @@
       <p class="nostrings">Already have a mobile game? <b>Porting it is cheaper than building new</b> — see the <a href="../../webgl-port.html" style="color:var(--gold);font-weight:600">free port assessment</a>.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Free Cost Comparison</h2>
-      <p class="sub">Send your concept. We'll show you what in-house vs. Factorial Studio would cost for <em>your</em> project — not a generic table.</p>
-      <form class="lead-form" data-lead="webgl-game-development">
-        <label for="wg-concept">Your game concept *</label>
-        <input id="wg-concept" name="Concept" type="text" placeholder="e.g. multiplayer .io game, casual puzzle" required>
-
-        <label for="wg-email">Your email *</label>
-        <input id="wg-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="wg-stage">Where are you now?</label>
-        <select id="wg-stage" name="Stage">
-          <option value="">Not sure</option>
-          <option>Just an idea</option>
-          <option>Design doc ready</option>
-          <option>Existing game to port to web</option>
-          <option>WebGL build exists but performs badly</option>
-        </select>
-
-        <label for="wg-notes">Anything else?</label>
-        <textarea id="wg-notes" name="Notes" placeholder="Target portals, monetization plan, timeline…"></textarea>
-
-        <input type="hidden" name="_subject" value="WEBGL GAME DEV ENQUIRY — factorialstudio.com/development/webgl-game-development">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Cost Comparison →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs before you share the concept.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -223,12 +192,43 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Get a Free <em>Cost Comparison</em></h2>
     <p>Send us your concept and we'll show you exactly what in-house vs. Factorial Studio would cost for your project.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="webgl-game-development">
+        <label for="wg-concept">Your game concept *</label>
+        <input id="wg-concept" name="Concept" type="text" placeholder="e.g. multiplayer .io game, casual puzzle" required>
+
+        <label for="wg-email">Your email *</label>
+        <input id="wg-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="wg-stage">Where are you now?</label>
+        <select id="wg-stage" name="Stage">
+          <option value="">Not sure</option>
+          <option>Just an idea</option>
+          <option>Design doc ready</option>
+          <option>Existing game to port to web</option>
+          <option>WebGL build exists but performs badly</option>
+        </select>
+
+        <label for="wg-notes">Anything else?</label>
+        <textarea id="wg-notes" name="Notes" placeholder="Target portals, monetization plan, timeline…"></textarea>
+
+        <input type="hidden" name="_subject" value="WEBGL GAME DEV ENQUIRY — factorialstudio.com/development/webgl-game-development">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Cost Comparison →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs before you share the concept.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get My Comparison →</a>
       <a href="../../webgl-port.html" class="btn btn-ghost">I Have a Game to Port</a>
     </div>
   </div>

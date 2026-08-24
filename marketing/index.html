@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Marketing</div>
       <span class="tag">Google Ads &amp; Meta</span>
@@ -51,48 +51,7 @@
       <p class="nostrings">Transparent reporting: you see exactly what was spent, what it delivered, and what we're adjusting next. <b>No vanity metrics dressed up as results.</b></p>
     </div>
 
-    <div class="fcard">
-      <h2>Get a Campaign Plan</h2>
-      <p class="sub">Tell us the growth goal. We come back with a channel plan and a realistic budget — before you spend anything.</p>
-      <form class="lead-form" data-lead="marketing">
-        <label for="m-product">Your app, game or website *</label>
-        <input id="m-product" name="Product" type="text" placeholder="Store link or URL" required>
-
-        <label for="m-email">Your email *</label>
-        <input id="m-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="m-goal">Primary goal</label>
-        <select id="m-goal" name="Goal">
-          <option value="">Not sure — you advise</option>
-          <option>Installs / downloads</option>
-          <option>Revenue / ROAS</option>
-          <option>Lower CPI</option>
-          <option>Brand awareness</option>
-          <option>Leads / sign-ups</option>
-        </select>
-
-        <label for="m-budget">Monthly ad budget (optional)</label>
-        <select id="m-budget" name="Budget">
-          <option value="">Prefer not to say yet</option>
-          <option>Under $1,000</option>
-          <option>$1,000 – $5,000</option>
-          <option>$5,000 – $20,000</option>
-          <option>$20,000+</option>
-        </select>
-
-        <label for="m-notes">What have you already tried?</label>
-        <textarea id="m-notes" name="Notes" placeholder="e.g. ran Google App Campaigns, CPI too high; or never advertised before…"></textarea>
-
-        <input type="hidden" name="_subject" value="MARKETING ENQUIRY — factorialstudio.com/marketing">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Campaign Plan →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">No obligation. We'll tell you if paid ads aren't the right move yet.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -231,12 +190,53 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Tell Us Your <em>Growth Goal</em></h2>
     <p>Installs, revenue, or awareness — we'll propose a campaign plan built around it.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="marketing">
+        <label for="m-product">Your app, game or website *</label>
+        <input id="m-product" name="Product" type="text" placeholder="Store link or URL" required>
+
+        <label for="m-email">Your email *</label>
+        <input id="m-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="m-goal">Primary goal</label>
+        <select id="m-goal" name="Goal">
+          <option value="">Not sure — you advise</option>
+          <option>Installs / downloads</option>
+          <option>Revenue / ROAS</option>
+          <option>Lower CPI</option>
+          <option>Brand awareness</option>
+          <option>Leads / sign-ups</option>
+        </select>
+
+        <label for="m-budget">Monthly ad budget (optional)</label>
+        <select id="m-budget" name="Budget">
+          <option value="">Prefer not to say yet</option>
+          <option>Under $1,000</option>
+          <option>$1,000 – $5,000</option>
+          <option>$5,000 – $20,000</option>
+          <option>$20,000+</option>
+        </select>
+
+        <label for="m-notes">What have you already tried?</label>
+        <textarea id="m-notes" name="Notes" placeholder="e.g. ran Google App Campaigns, CPI too high; or never advertised before…"></textarea>
+
+        <input type="hidden" name="_subject" value="MARKETING ENQUIRY — factorialstudio.com/marketing">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Campaign Plan →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">No obligation. We'll tell you if paid ads aren't the right move yet.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get a Campaign Plan →</a>
       <a href="../ua-services/" class="btn btn-ghost">See UA Services</a>
     </div>
   </div>

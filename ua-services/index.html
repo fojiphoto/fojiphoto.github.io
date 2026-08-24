@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>User Acquisition</div>
       <span class="tag">Google · Meta · TikTok</span>
@@ -51,39 +51,7 @@
       <p class="nostrings">UA and ASO work best together — paid installs lift your store ranking, which lowers the cost of the next install. We run both.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Get a UA Plan</h2>
-      <p class="sub">Send your app and your target. We come back with channels, expected CPI range, and where we'd start.</p>
-      <form class="lead-form" data-lead="ua-services">
-        <label for="u-app">Your app or game *</label>
-        <input id="u-app" name="App" type="text" placeholder="App Store / Play Store link" required>
-
-        <label for="u-email">Your email *</label>
-        <input id="u-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="u-stage">Where are you now?</label>
-        <select id="u-stage" name="Stage">
-          <option value="">Not sure — you advise</option>
-          <option>Pre-launch / soft launch</option>
-          <option>Launched, no paid UA yet</option>
-          <option>Running UA, CPI too high</option>
-          <option>Running UA, want to scale</option>
-          <option>Retention / LTV problem</option>
-        </select>
-
-        <label for="u-notes">What's the main problem?</label>
-        <textarea id="u-notes" name="Notes" placeholder="e.g. CPI is $2.40 and LTV doesn't justify it; or installs fine but D7 retention collapses…"></textarea>
-
-        <input type="hidden" name="_subject" value="UA ENQUIRY — factorialstudio.com/ua-services">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My UA Plan →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We'll say so if your retention needs fixing before you spend on UA.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -203,12 +171,44 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Scale Smart, <em>Not Just Loud</em></h2>
     <p>Send us your app and your growth target. We'll come back with a channel plan and where we'd start.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="ua-services">
+        <label for="u-app">Your app or game *</label>
+        <input id="u-app" name="App" type="text" placeholder="App Store / Play Store link" required>
+
+        <label for="u-email">Your email *</label>
+        <input id="u-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="u-stage">Where are you now?</label>
+        <select id="u-stage" name="Stage">
+          <option value="">Not sure — you advise</option>
+          <option>Pre-launch / soft launch</option>
+          <option>Launched, no paid UA yet</option>
+          <option>Running UA, CPI too high</option>
+          <option>Running UA, want to scale</option>
+          <option>Retention / LTV problem</option>
+        </select>
+
+        <label for="u-notes">What's the main problem?</label>
+        <textarea id="u-notes" name="Notes" placeholder="e.g. CPI is $2.40 and LTV doesn't justify it; or installs fine but D7 retention collapses…"></textarea>
+
+        <input type="hidden" name="_subject" value="UA ENQUIRY — factorialstudio.com/ua-services">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My UA Plan →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We'll say so if your retention needs fixing before you spend on UA.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get a UA Plan →</a>
       <a href="../aso-services/" class="btn btn-ghost">See ASO Services</a>
     </div>
   </div>

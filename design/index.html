@@ -44,8 +44,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Design</div>
       <span class="tag">Games · Apps · Websites</span>
@@ -60,41 +60,7 @@
       <p class="nostrings">Design and development in the same team means <b>no "that can't be built" surprises</b> two weeks after the mockups are signed off.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Get a Design Concept</h2>
-      <p class="sub">Share your brand guidelines or references and we'll put a concept together.</p>
-      <form class="lead-form" data-lead="design">
-        <label for="de-need">What do you need designed? *</label>
-        <select id="de-need" name="Design Need" required>
-          <option value="">Choose one…</option>
-          <option>Game art — 2D</option>
-          <option>Game art — 3D</option>
-          <option>App UI/UX</option>
-          <option>Website design</option>
-          <option>Store creative assets (icon, screenshots)</option>
-          <option>Brand identity / logo</option>
-          <option>Mixed / not sure</option>
-        </select>
-
-        <label for="de-email">Your email *</label>
-        <input id="de-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="de-refs">References or brand guidelines</label>
-        <input id="de-refs" name="References" type="text" placeholder="Link to references, Figma, or your current product">
-
-        <label for="de-notes">Tell us about the project</label>
-        <textarea id="de-notes" name="Notes" placeholder="Style direction, volume of assets, deadline, what exists already…"></textarea>
-
-        <input type="hidden" name="_subject" value="DESIGN ENQUIRY — factorialstudio.com/design">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get a Concept →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs before you share unreleased work.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -230,12 +196,46 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Share Your <em>References</em></h2>
     <p>Send brand guidelines or examples you like, and we'll put together a design concept.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="design">
+        <label for="de-need">What do you need designed? *</label>
+        <select id="de-need" name="Design Need" required>
+          <option value="">Choose one…</option>
+          <option>Game art — 2D</option>
+          <option>Game art — 3D</option>
+          <option>App UI/UX</option>
+          <option>Website design</option>
+          <option>Store creative assets (icon, screenshots)</option>
+          <option>Brand identity / logo</option>
+          <option>Mixed / not sure</option>
+        </select>
+
+        <label for="de-email">Your email *</label>
+        <input id="de-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="de-refs">References or brand guidelines</label>
+        <input id="de-refs" name="References" type="text" placeholder="Link to references, Figma, or your current product">
+
+        <label for="de-notes">Tell us about the project</label>
+        <textarea id="de-notes" name="Notes" placeholder="Style direction, volume of assets, deadline, what exists already…"></textarea>
+
+        <input type="hidden" name="_subject" value="DESIGN ENQUIRY — factorialstudio.com/design">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get a Concept →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs before you share unreleased work.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get a Concept →</a>
       <a href="../portfolio.html" class="btn btn-ghost">See Our Work</a>
     </div>
   </div>

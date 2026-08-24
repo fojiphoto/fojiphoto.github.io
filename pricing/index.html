@@ -59,8 +59,8 @@
   </div>
 </nav>
 
-<header class="hero" id="quote">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Pricing</div>
       <span class="tag">Real quotes, not ranges</span>
@@ -75,49 +75,7 @@
       </ul>
     </div>
 
-    <div class="fcard">
-      <h2>Get a Real Quote</h2>
-      <p class="sub">Tell us the scope. We come back with a number and a timeline — usually within two working days.</p>
-      <form class="lead-form" data-lead="pricing">
-        <label for="pr-service">What do you need? *</label>
-        <select id="pr-service" name="Service" required>
-          <option value="">Choose one…</option>
-          <option>Game development</option>
-          <option>WebGL port or WebGL game</option>
-          <option>App development</option>
-          <option>Web development</option>
-          <option>QA &amp; testing</option>
-          <option>Design / game art</option>
-          <option>Publishing</option>
-          <option>Marketing / UA / ASO</option>
-          <option>Monetization</option>
-          <option>Dedicated team (multiple roles)</option>
-        </select>
-
-        <label for="pr-email">Your email *</label>
-        <input id="pr-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="pr-model">Preferred model</label>
-        <select id="pr-model" name="Engagement Model">
-          <option value="">Not sure — recommend one</option>
-          <option>Fixed scope (defined project)</option>
-          <option>Dedicated team (monthly)</option>
-          <option>Hourly time &amp; materials</option>
-        </select>
-
-        <label for="pr-scope">Scope</label>
-        <textarea id="pr-scope" name="Scope" placeholder="Platforms, rough size, what already exists, deadline, budget range if you have one…"></textarea>
-
-        <input type="hidden" name="_subject" value="QUOTE REQUEST — factorialstudio.com/pricing">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Quote →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We sign NDAs. If your budget doesn't fit the scope, we'll say so rather than pad the estimate.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -267,12 +225,54 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="quote">
   <div class="wrap">
     <h2>Tell Us the <em>Scope</em></h2>
     <p>We'll come back with a real number and a timeline — or tell you honestly if we're not the right fit.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="pricing">
+        <label for="pr-service">What do you need? *</label>
+        <select id="pr-service" name="Service" required>
+          <option value="">Choose one…</option>
+          <option>Game development</option>
+          <option>WebGL port or WebGL game</option>
+          <option>App development</option>
+          <option>Web development</option>
+          <option>QA &amp; testing</option>
+          <option>Design / game art</option>
+          <option>Publishing</option>
+          <option>Marketing / UA / ASO</option>
+          <option>Monetization</option>
+          <option>Dedicated team (multiple roles)</option>
+        </select>
+
+        <label for="pr-email">Your email *</label>
+        <input id="pr-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="pr-model">Preferred model</label>
+        <select id="pr-model" name="Engagement Model">
+          <option value="">Not sure — recommend one</option>
+          <option>Fixed scope (defined project)</option>
+          <option>Dedicated team (monthly)</option>
+          <option>Hourly time &amp; materials</option>
+        </select>
+
+        <label for="pr-scope">Scope</label>
+        <textarea id="pr-scope" name="Scope" placeholder="Platforms, rough size, what already exists, deadline, budget range if you have one…"></textarea>
+
+        <input type="hidden" name="_subject" value="QUOTE REQUEST — factorialstudio.com/pricing">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Quote →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We sign NDAs. If your budget doesn't fit the scope, we'll say so rather than pad the estimate.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#quote" class="btn btn-gold">Get My Quote →</a>
       <a href="../free-qa-teardown.html" class="btn btn-ghost">Try the Free Teardown First</a>
     </div>
   </div>

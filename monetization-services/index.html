@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-<header class="hero" id="start">
-  <div class="wrap hero-grid">
+<header class="hero">
+  <div class="wrap hero-grid solo">
     <div>
       <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>›</span>Monetization</div>
       <span class="tag">Ads · IAP · Subscriptions</span>
@@ -51,40 +51,7 @@
       <p class="nostrings">The trap most teams fall into: squeezing short-term ad revenue and quietly killing retention. <b>Both numbers have to move together</b> or you've just borrowed from next month.</p>
     </div>
 
-    <div class="fcard">
-      <h2>Get a Revenue Review</h2>
-      <p class="sub">Send your app. We'll look at your current setup and where revenue is being left on the table.</p>
-      <form class="lead-form" data-lead="monetization-services">
-        <label for="mo-app">Your app or game *</label>
-        <input id="mo-app" name="App" type="text" placeholder="App Store / Play Store link" required>
-
-        <label for="mo-email">Your email *</label>
-        <input id="mo-email" name="Email" type="email" placeholder="you@company.com" required>
-
-        <label for="mo-model">Current monetization</label>
-        <select id="mo-model" name="Current Model">
-          <option value="">Not sure / mixed</option>
-          <option>Ads only</option>
-          <option>IAP only</option>
-          <option>Ads + IAP</option>
-          <option>Subscription</option>
-          <option>Premium / paid upfront</option>
-          <option>Not monetized yet</option>
-        </select>
-
-        <label for="mo-notes">What's the problem?</label>
-        <textarea id="mo-notes" name="Notes" placeholder="e.g. good DAU but ARPDAU is flat; or ad revenue up but retention dropping…"></textarea>
-
-        <input type="hidden" name="_subject" value="MONETIZATION ENQUIRY — factorialstudio.com/monetization-services">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
-
-        <button type="submit" class="btn btn-gold">Get My Revenue Review →</button>
-        <div class="fmsg"></div>
-        <p class="fnote">We'll flag it if the issue is retention, not monetization.</p>
-      </form>
-    </div>
+    
   </div>
 </header>
 
@@ -231,12 +198,45 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="start">
   <div class="wrap">
     <h2>Earn More Without <em>Losing Users</em></h2>
     <p>Send us your app and we'll show you where revenue is being left on the table.</p>
+    <div class="cta-form">
+      <div class="fcard">
+      <form class="lead-form" data-lead="monetization-services">
+        <label for="mo-app">Your app or game *</label>
+        <input id="mo-app" name="App" type="text" placeholder="App Store / Play Store link" required>
+
+        <label for="mo-email">Your email *</label>
+        <input id="mo-email" name="Email" type="email" placeholder="you@company.com" required>
+
+        <label for="mo-model">Current monetization</label>
+        <select id="mo-model" name="Current Model">
+          <option value="">Not sure / mixed</option>
+          <option>Ads only</option>
+          <option>IAP only</option>
+          <option>Ads + IAP</option>
+          <option>Subscription</option>
+          <option>Premium / paid upfront</option>
+          <option>Not monetized yet</option>
+        </select>
+
+        <label for="mo-notes">What's the problem?</label>
+        <textarea id="mo-notes" name="Notes" placeholder="e.g. good DAU but ARPDAU is flat; or ad revenue up but retention dropping…"></textarea>
+
+        <input type="hidden" name="_subject" value="MONETIZATION ENQUIRY — factorialstudio.com/monetization-services">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <button type="submit" class="btn btn-gold">Get My Revenue Review →</button>
+        <div class="fmsg"></div>
+        <p class="fnote">We'll flag it if the issue is retention, not monetization.</p>
+      </form>
+    </div>
+    </div>
     <div class="row">
-      <a href="#start" class="btn btn-gold">Get a Revenue Review →</a>
       <a href="../ua-services/" class="btn btn-ghost">See UA Services</a>
     </div>
   </div>
