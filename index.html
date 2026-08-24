@@ -831,7 +831,6 @@ a.card:hover .card-link{gap:12px}
 .gz-tile img{width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .3s,filter .3s;filter:saturate(.85)}
 .lp-gz:hover .gz-tile img{filter:saturate(1.1)}
-.gz-tile:hover img{transform:scale(1.14)}
 @keyframes gzFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
 /* AppSpy: a miniature of the board, unlabelled on purpose */
@@ -871,6 +870,16 @@ a.card:hover .card-link{gap:12px}
 .lp-btn{margin-top:auto;align-self:flex-start;font-size:1.02rem;padding:15px 30px}
 .lp-btn svg{width:17px;height:17px;transition:transform .2s}
 .lp:hover .lp-btn svg{transform:translate(3px,-3px)}
+/* the card itself is the link, so every pixel of it is the click target and
+   the button is purely the visual affordance. Nothing else inside is
+   interactive, so there are no nested links to trip a screen reader. */
+.lp{cursor:pointer;text-decoration:none}
+/* the card is a big link now, so tabbing to it has to be visible */
+.lp:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-color:var(--gold)}
+/* the overlay sits above the tiles, so their individual hover can no longer
+   fire; the whole wall lifts together on card hover instead */
+.lp-gz:hover .gz-tile img{transform:scale(1.06);filter:saturate(1.1)}
+.lp:hover .lp-btn{transform:translateY(-2px);box-shadow:0 10px 22px rgba(245,158,11,.42)}
 
 @media (max-width:900px){.lp-grid{grid-template-columns:1fr}.gz-wall{grid-template-columns:repeat(6,1fr)}}
 @media (max-width:520px){.gz-wall{grid-template-columns:repeat(4,1fr)}.lp{padding:26px 22px 24px}}
@@ -1020,7 +1029,7 @@ a.card:hover .card-link{gap:12px}
 
     <div class="lp-grid">
 
-      <article class="lp lp-gz">
+      <a class="lp lp-gz" href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener" aria-label="Open Factorial GameZone in a new tab">
         <div class="lp-head">
           <span class="lp-badge"><i class="lp-dot"></i>Live</span>
           <span class="lp-kind">WebGL Distribution</span>
@@ -1049,13 +1058,13 @@ a.card:hover .card-link{gap:12px}
           <span><b>0s</b>install time</span>
         </div>
 
-        <a class="btn btn-gold lp-btn" href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener">
+        <span class="btn btn-gold lp-btn">
           Play a Game Now
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
+        </span>
+      </a>
 
-      <article class="lp lp-as">
+      <a class="lp lp-as" href="https://fsappspy.vercel.app/" target="_blank" rel="noopener" aria-label="Open AppSpy in a new tab">
         <div class="lp-head">
           <span class="lp-badge"><i class="lp-dot"></i>Live</span>
           <span class="lp-kind">App Intelligence</span>
@@ -1086,11 +1095,11 @@ a.card:hover .card-link{gap:12px}
           <span><b>Live</b>rankings</span>
         </div>
 
-        <a class="btn btn-gold lp-btn" href="https://fsappspy.vercel.app/" target="_blank" rel="noopener">
+        <span class="btn btn-gold lp-btn">
           Explore the Data
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
+        </span>
+      </a>
 
     </div>
   </div>
