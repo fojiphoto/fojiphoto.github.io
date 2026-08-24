@@ -786,6 +786,40 @@ a.card:hover .card-link{gap:12px}
 .pl-cap,.hc-stat,.p-tag,.mq b,.hc-g-info b,.testi-who b,.t-who b,
 .play-hold b,.logo-card b,.sc-count,.ci b,.p-vs,.qa-count,.qa-clean{
   font-family:var(--f-body);font-weight:600;letter-spacing:.07em}
+
+/* -- live products: the two things a visitor can actually open ---------- */
+.live-products{background:linear-gradient(168deg,#0a4630,#063222 60%,var(--ink))}
+.live-products .lead{margin-bottom:40px}
+.lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lp{display:flex;flex-direction:column;position:relative;overflow:hidden;
+  background:linear-gradient(158deg,#12704a,#083f29);
+  border:2.5px solid rgba(163,217,119,.42);border-radius:var(--r-lg);
+  padding:30px 28px 26px;box-shadow:0 5px 0 rgba(4,26,18,.9);
+  transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .2s,border-color .2s}
+.lp:hover{transform:translateY(-6px);box-shadow:0 12px 0 rgba(4,26,18,.9);border-color:var(--gold)}
+.lp-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.lp-badge{font-family:var(--f-body);font-weight:700;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#06281c;background:var(--leaf2);
+  padding:5px 11px;border-radius:999px}
+.lp-kind{font-family:var(--f-body);font-weight:600;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.lp h3{font-family:var(--f-disp);font-size:clamp(1.25rem,2.4vw,1.7rem);color:#fff;
+  letter-spacing:.02em;margin-bottom:12px}
+.lp p{font-size:.95rem;color:#cfe3d6;line-height:1.6;margin-bottom:20px}
+.lp-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.lp-facts li{font-size:.8rem;font-weight:500;color:#dff0e4;
+  background:rgba(255,255,255,.07);border:1px solid rgba(163,217,119,.26);
+  padding:7px 13px;border-radius:999px}
+.lp-facts b{color:var(--gold);font-weight:700}
+.lp-go{margin-top:auto;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--f-body);font-weight:700;font-size:.98rem;color:var(--gold)}
+.lp-go svg{width:17px;height:17px;transition:transform .2s}
+.lp:hover .lp-go svg{transform:translate(3px,-3px)}
+@media (max-width:860px){.lp-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  .lp,.lp-go svg{transition:none}
+  .lp:hover{transform:none}
+  .lp:hover .lp-go svg{transform:none}}
 </style>
 </head>
 <body>
@@ -793,6 +827,7 @@ a.card:hover .card-link{gap:12px}
 <nav>
   <a href="#" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
   <div class="nav-links">
+    <a href="#products">Products</a>
     <a href="#platform">Platform</a>
     <div class="navdrop" id="svc-drop">
       <button class="navdrop-t" type="button" aria-expanded="false" aria-controls="svc-menu">Services
@@ -905,6 +940,49 @@ a.card:hover .card-link{gap:12px}
 </section>
 
 
+<!-- LIVE PRODUCTS -->
+<section class="section live-products" id="products">
+  <div class="wrap">
+    <div class="eyebrow">Shipped &amp; Running</div>
+    <h2 class="disp">Two Products You Can<em> Open Right Now</em></h2>
+    <p class="lead">Not mockups and not a waiting list. Both are live, both are ours, and both are built on the same infrastructure we're assembling into the Factorial AI Platform.</p>
+
+    <div class="lp-grid">
+
+      <a class="lp" href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener">
+        <div class="lp-top">
+          <span class="lp-badge">Live</span>
+          <span class="lp-kind">WebGL Distribution</span>
+        </div>
+        <h3>Factorial GameZone</h3>
+        <p>A browser games portal running on our own WebGL hosting. Games load and play instantly — no download, no install, no plugin. Studios submit a build; it goes live on a URL.</p>
+        <ul class="lp-facts">
+          <li><b>26</b> games live</li>
+          <li><b>12</b> categories</li>
+          <li><b>Instant</b> play, in-browser</li>
+        </ul>
+        <span class="lp-go">Open GameZone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="lp" href="https://fsappspy.vercel.app/" target="_blank" rel="noopener">
+        <div class="lp-top">
+          <span class="lp-badge">Live</span>
+          <span class="lp-kind">App Intelligence</span>
+        </div>
+        <h3>AppSpy</h3>
+        <p>Market intelligence and ASO tooling across the App Store, Google Play and Amazon Appstore. Live charts, keyword research, competitor tracking and ad lookup — the kind of data that usually costs four figures a month.</p>
+        <ul class="lp-facts">
+          <li><b>14M+</b> apps indexed</li>
+          <li><b>3</b> app stores</li>
+          <li><b>Live</b> rankings &amp; trends</li>
+        </ul>
+        <span class="lp-go">Open AppSpy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- PLATFORM -->
 <section class="section" id="platform">
   <div class="wrap">
@@ -949,8 +1027,8 @@ a.card:hover .card-link{gap:12px}
     </div>
 
     <div class="modules">
-      <div class="module"><b>WebGL Cloud</b><span class="mstat live">Beta</span></div>
-      <div class="module"><b>App Intelligence</b><span class="mstat build">In Build</span></div>
+      <div class="module"><b>WebGL Cloud</b><span class="mstat live">Live</span></div>
+      <div class="module"><b>App Intelligence</b><span class="mstat live">Live</span></div>
       <div class="module"><b>UA Analytics</b><span class="mstat build">In Build</span></div>
       <div class="module"><b>Revenue Dashboard</b><span class="mstat build">In Build</span></div>
       <div class="module"><b>AI Recommendations</b><span class="mstat next">Roadmap</span></div>
@@ -1450,6 +1528,8 @@ a.card:hover .card-link{gap:12px}
         <a href="#pipeline">How We Work</a>
         <a href="portfolio.html">Games &amp; Projects</a>
         <a href="#about">About Us</a>
+        <a href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener">GameZone ↗</a>
+        <a href="https://fsappspy.vercel.app/" target="_blank" rel="noopener">AppSpy ↗</a>
         <a href="fsa-live.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
         <a href="#contact">Contact</a>
       </div>
