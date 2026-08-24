@@ -56,12 +56,6 @@ h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:v
 .stat b{font-family:var(--f-disp);font-size:1.9rem;color:var(--gold);display:block;line-height:1}
 .stat span{font-weight:500;font-size:.78rem;color:var(--muted);margin-top:8px;display:block}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tc{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px 26px;transition:transform .25s,border-color .25s}
-.tc:hover{transform:translateY(-5px);border-color:var(--leaf)}
-.tc-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
-.tc-ico svg{width:26px;height:26px;color:var(--g700);stroke-width:2;fill:none}
-.tc h3{font-family:var(--f-disp);font-size:.92rem;color:var(--g900);margin-bottom:8px}
-.tc p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}.tc p b{color:var(--g700)}
 .steps{display:flex;flex-direction:column;gap:14px}
 .step{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-left:4px solid var(--leaf);padding:22px 26px;border-radius:0 var(--r) var(--r) 0}
 .step .n{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold);min-width:44px}
@@ -76,6 +70,50 @@ footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bo
 footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:hover{color:var(--gold)}footer p{color:var(--muted);font-size:.82rem}
 @media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:40px}.cards3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.nav-back{display:none}}
 @media (max-width:600px){.cards3{grid-template-columns:1fr}.step{flex-direction:column;gap:8px}}
+/* -- cards -- toon pass: hard outline, flat sticker shadow, and a big
+   ghosted copy of the card's own icon bleeding out of the corner, so every
+   category carries matching background art without a single extra file */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.tc{position:relative;overflow:hidden;background:var(--cream2);
+  border:2.5px solid #1f6b4a;border-radius:22px;padding:26px;
+  box-shadow:0 4px 0 #1f6b4a;
+  transition:transform .18s cubic-bezier(.34,1.4,.64,1),box-shadow .18s}
+.tc:hover{transform:translateY(-5px);box-shadow:0 9px 0 #1f6b4a}
+.section:not(.cream) .tc{background:linear-gradient(158deg,#126b46,#083f29);
+  border-color:rgba(163,217,119,.55);box-shadow:0 4px 0 rgba(4,26,18,.9)}
+.section:not(.cream) .tc:hover{box-shadow:0 9px 0 rgba(4,26,18,.9)}
+
+.tc-ico{width:58px;height:58px;border-radius:17px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:15px;background:linear-gradient(160deg,#dcf3bd,#9fd66f);
+  border:2.5px solid #1f6b4a;box-shadow:0 3px 0 #1f6b4a;
+  transition:transform .2s cubic-bezier(.34,1.5,.64,1)}
+.tc:hover .tc-ico{transform:rotate(-7deg) scale(1.06)}
+.section:not(.cream) .tc-ico{background:linear-gradient(160deg,var(--gold),var(--gold2));
+  border-color:rgba(251,191,36,.75);box-shadow:0 3px 0 rgba(4,26,18,.75)}
+/* the icons carry no stroke attribute of their own. Without this they draw
+   nothing at all, which is exactly how they shipped. */
+.tc-ico svg{width:28px;height:28px;stroke:currentColor;stroke-width:2.2;fill:none;color:#0d4a32}
+.section:not(.cream) .tc-ico svg{color:#3a2a06}
+
+.tc-wm{position:absolute;right:-26px;bottom:-30px;width:158px;height:158px;
+  pointer-events:none;opacity:.08;color:var(--g900);
+  transition:opacity .25s,transform .25s}
+.tc-wm svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.1;fill:none}
+.tc:hover .tc-wm{opacity:.14;transform:rotate(-9deg) scale(1.07)}
+.section:not(.cream) .tc-wm{color:var(--leaf2);opacity:.12}
+.section:not(.cream) .tc:hover .tc-wm{opacity:.2}
+.tc h3,.tc p,.tc-ico{position:relative;z-index:1}
+.tc h3{font-family:var(--f-disp);font-size:.93rem;letter-spacing:.03em;color:var(--g900);margin-bottom:8px}
+.section:not(.cream) .tc h3{color:#fff}
+.tc p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}
+.section:not(.cream) .tc p{color:#cfe3d6}
+@media (prefers-reduced-motion:reduce){
+  .tc,.tc-ico,.tc-wm{transition:none}
+  .tc:hover{transform:none}
+  .tc:hover .tc-ico{transform:none}
+  .tc:hover .tc-wm{transform:none}
+}
 </style>
 </head>
 <body>
@@ -122,15 +160,15 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <h2 class="disp">What We <em>Test</em></h2>
     <p class="lead">Every build goes through a full battery of test disciplines — far beyond "does it launch".</p>
     <div class="cards3">
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></div><h3>Functional Testing</h3><p>Every mechanic, menu &amp; edge case verified against the design spec.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5M3 21h18"/></svg></div><h3>Performance &amp; FPS</h3><p>Frame-rate, load times &amp; memory profiled across device tiers.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Crash &amp; ANR Analysis</h3><p>We hunt crashes/ANRs, capture stack traces, and pinpoint repro paths.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M2 9v6M22 9v6"/></svg></div><h3>Low-End Devices</h3><p>Real budget hardware to expose lag, stutter &amp; memory crashes.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 8a5 5 0 1 0 5 5"/></svg></div><h3>Thermal / Heating</h3><p>We measure device heat over long sessions and flag <b>which devices overheat</b>.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>Aggressive / Stress</h3><p>Input spamming, interruptions, drops — we deliberately try to break it.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Compatibility</h3><p>Across OS versions, screen sizes, aspect ratios &amp; hardware.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Log Verification</h3><p>We read engine &amp; device logs to confirm behaviour and fixes.</p></div>
-      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v10H4z"/><path d="M8 20h8M12 16v4M7 10l2 2 3-4"/></svg></div><h3>Compliance / Cert</h3><p>App Store, Google Play &amp; console first-party submission checks.</p></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></div><h3>Functional Testing</h3><p>Every mechanic, menu &amp; edge case verified against the design spec.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5M3 21h18"/></svg></div><h3>Performance &amp; FPS</h3><p>Frame-rate, load times &amp; memory profiled across device tiers.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5M3 21h18"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Crash &amp; ANR Analysis</h3><p>We hunt crashes/ANRs, capture stack traces, and pinpoint repro paths.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M2 9v6M22 9v6"/></svg></div><h3>Low-End Devices</h3><p>Real budget hardware to expose lag, stutter &amp; memory crashes.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M2 9v6M22 9v6"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 8a5 5 0 1 0 5 5"/></svg></div><h3>Thermal / Heating</h3><p>We measure device heat over long sessions and flag <b>which devices overheat</b>.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 8a5 5 0 1 0 5 5"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>Aggressive / Stress</h3><p>Input spamming, interruptions, drops — we deliberately try to break it.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Compatibility</h3><p>Across OS versions, screen sizes, aspect ratios &amp; hardware.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Log Verification</h3><p>We read engine &amp; device logs to confirm behaviour and fixes.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div></div>
+      <div class="tc"><div class="tc-ico"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v10H4z"/><path d="M8 20h8M12 16v4M7 10l2 2 3-4"/></svg></div><h3>Compliance / Cert</h3><p>App Store, Google Play &amp; console first-party submission checks.</p><div class="tc-wm" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v10H4z"/><path d="M8 20h8M12 16v4M7 10l2 2 3-4"/></svg></div></div>
     </div>
   </div>
 </section>

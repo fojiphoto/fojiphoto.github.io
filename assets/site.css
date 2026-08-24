@@ -90,21 +90,50 @@ h2.disp em{color:var(--gold);font-style:normal}
 .section.cream .lead{color:var(--ink-muted)}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
 
-/* ── cards ── */
+/* -- cards -- toon pass: hard outline, flat sticker shadow, and a big
+   ghosted copy of the card's own icon bleeding out of the corner, so every
+   category carries matching background art without a single extra file */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .cards.two{grid-template-columns:repeat(2,1fr)}
-.tc{background:var(--cream2);border:2px solid #e7e2cf;border-radius:var(--r);padding:26px;transition:transform .25s,border-color .25s}
-.tc:hover{transform:translateY(-5px);border-color:var(--leaf)}
-.section:not(.cream) .tc{background:linear-gradient(158deg,#126b46,#083f29);border-color:rgba(163,217,119,.28)}
-.tc-ico{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;
-  margin-bottom:15px;background:linear-gradient(160deg,#eaf6dd,#d6edc0)}
-.section:not(.cream) .tc-ico{background:rgba(251,191,36,.18);border:2px solid rgba(251,191,36,.34)}
-.tc-ico svg{width:27px;height:27px;color:var(--g700);stroke-width:2;fill:none}
-.section:not(.cream) .tc-ico svg{color:var(--gold)}
+.tc{position:relative;overflow:hidden;background:var(--cream2);
+  border:2.5px solid #1f6b4a;border-radius:22px;padding:26px;
+  box-shadow:0 4px 0 #1f6b4a;
+  transition:transform .18s cubic-bezier(.34,1.4,.64,1),box-shadow .18s}
+.tc:hover{transform:translateY(-5px);box-shadow:0 9px 0 #1f6b4a}
+.section:not(.cream) .tc{background:linear-gradient(158deg,#126b46,#083f29);
+  border-color:rgba(163,217,119,.55);box-shadow:0 4px 0 rgba(4,26,18,.9)}
+.section:not(.cream) .tc:hover{box-shadow:0 9px 0 rgba(4,26,18,.9)}
+
+.tc-ico{width:58px;height:58px;border-radius:17px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:15px;background:linear-gradient(160deg,#dcf3bd,#9fd66f);
+  border:2.5px solid #1f6b4a;box-shadow:0 3px 0 #1f6b4a;
+  transition:transform .2s cubic-bezier(.34,1.5,.64,1)}
+.tc:hover .tc-ico{transform:rotate(-7deg) scale(1.06)}
+.section:not(.cream) .tc-ico{background:linear-gradient(160deg,var(--gold),var(--gold2));
+  border-color:rgba(251,191,36,.75);box-shadow:0 3px 0 rgba(4,26,18,.75)}
+/* the icons carry no stroke attribute of their own. Without this they draw
+   nothing at all, which is exactly how they shipped. */
+.tc-ico svg{width:28px;height:28px;stroke:currentColor;stroke-width:2.2;fill:none;color:#0d4a32}
+.section:not(.cream) .tc-ico svg{color:#3a2a06}
+
+.tc-wm{position:absolute;right:-26px;bottom:-30px;width:158px;height:158px;
+  pointer-events:none;opacity:.08;color:var(--g900);
+  transition:opacity .25s,transform .25s}
+.tc-wm svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.1;fill:none}
+.tc:hover .tc-wm{opacity:.14;transform:rotate(-9deg) scale(1.07)}
+.section:not(.cream) .tc-wm{color:var(--leaf2);opacity:.12}
+.section:not(.cream) .tc:hover .tc-wm{opacity:.2}
+.tc h3,.tc p,.tc-ico{position:relative;z-index:1}
 .tc h3{font-family:var(--f-disp);font-size:.93rem;letter-spacing:.03em;color:var(--g900);margin-bottom:8px}
 .section:not(.cream) .tc h3{color:#fff}
 .tc p{font-size:.88rem;color:var(--ink-muted);line-height:1.55}
 .section:not(.cream) .tc p{color:#cfe3d6}
+@media (prefers-reduced-motion:reduce){
+  .tc,.tc-ico,.tc-wm{transition:none}
+  .tc:hover{transform:none}
+  .tc:hover .tc-ico{transform:none}
+  .tc:hover .tc-wm{transform:none}
+}
 
 /* ── bullet list block ── */
 .blist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px}
