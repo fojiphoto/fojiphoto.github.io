@@ -787,39 +787,100 @@ a.card:hover .card-link{gap:12px}
 .play-hold b,.logo-card b,.sc-count,.ci b,.p-vs,.qa-count,.qa-clean{
   font-family:var(--f-body);font-weight:600;letter-spacing:.07em}
 
-/* -- live products: the two things a visitor can actually open ---------- */
-.live-products{background:linear-gradient(168deg,#0a4630,#063222 60%,var(--ink))}
-.live-products .lead{margin-bottom:40px}
-.lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.lp{display:flex;flex-direction:column;position:relative;overflow:hidden;
-  background:linear-gradient(158deg,#12704a,#083f29);
-  border:2.5px solid rgba(163,217,119,.42);border-radius:var(--r-lg);
-  padding:30px 28px 26px;box-shadow:0 5px 0 rgba(4,26,18,.9);
-  transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .2s,border-color .2s}
-.lp:hover{transform:translateY(-6px);box-shadow:0 12px 0 rgba(4,26,18,.9);border-color:var(--gold)}
-.lp-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.lp-badge{font-family:var(--f-body);font-weight:700;font-size:.68rem;letter-spacing:.12em;
-  text-transform:uppercase;color:#06281c;background:var(--leaf2);
-  padding:5px 11px;border-radius:999px}
-.lp-kind{font-family:var(--f-body);font-weight:600;font-size:.72rem;letter-spacing:.1em;
+/* -- live products ------------------------------------------------------
+   These two are the only things on the site a visitor can open and use, so
+   the section is built to be the heaviest thing on the page: real game art
+   in one card, a working miniature of the dashboard in the other. */
+.live-products{position:relative;overflow:hidden;
+  background:radial-gradient(120% 90% at 15% 0%,#0e7048 0%,#0a4c33 40%,#062a1d 100%)}
+.live-products .wrap{position:relative;z-index:1}
+.live-products .lead{margin-bottom:44px}
+.lp-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);opacity:.5}
+.lp-orb1{width:420px;height:420px;top:-140px;right:-110px;background:rgba(124,179,66,.42);
+  animation:lpDrift 17s ease-in-out infinite alternate}
+.lp-orb2{width:340px;height:340px;bottom:-130px;left:-90px;background:rgba(251,191,36,.24);
+  animation:lpDrift 21s ease-in-out infinite alternate-reverse}
+@keyframes lpDrift{from{transform:translate(0,0)}to{transform:translate(-46px,38px)}}
+
+.lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.lp{position:relative;display:flex;flex-direction:column;overflow:hidden;
+  background:linear-gradient(158deg,rgba(19,116,76,.96),rgba(6,52,35,.98));
+  border:2.5px solid rgba(163,217,119,.4);border-radius:var(--r-lg);
+  padding:32px 30px 30px;box-shadow:0 6px 0 rgba(3,22,15,.9);
+  transition:transform .22s cubic-bezier(.34,1.4,.64,1),box-shadow .22s,border-color .22s}
+.lp:hover{transform:translateY(-7px);border-color:var(--gold);
+  box-shadow:0 14px 0 rgba(3,22,15,.9),0 24px 60px rgba(251,191,36,.18)}
+
+.lp-head{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.lp-badge{display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--f-body);font-weight:700;font-size:.68rem;letter-spacing:.13em;
+  text-transform:uppercase;color:#06281c;background:var(--leaf2);padding:6px 13px;border-radius:999px}
+.lp-dot{width:7px;height:7px;border-radius:50%;background:#06281c;animation:lpPulse 1.8s ease-in-out infinite}
+@keyframes lpPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.lp-kind{font-family:var(--f-body);font-weight:600;font-size:.72rem;letter-spacing:.11em;
   text-transform:uppercase;color:var(--muted)}
-.lp h3{font-family:var(--f-disp);font-size:clamp(1.25rem,2.4vw,1.7rem);color:#fff;
-  letter-spacing:.02em;margin-bottom:12px}
-.lp p{font-size:.95rem;color:#cfe3d6;line-height:1.6;margin-bottom:20px}
-.lp-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.lp-facts li{font-size:.8rem;font-weight:500;color:#dff0e4;
-  background:rgba(255,255,255,.07);border:1px solid rgba(163,217,119,.26);
-  padding:7px 13px;border-radius:999px}
-.lp-facts b{color:var(--gold);font-weight:700}
-.lp-go{margin-top:auto;display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--f-body);font-weight:700;font-size:.98rem;color:var(--gold)}
-.lp-go svg{width:17px;height:17px;transition:transform .2s}
-.lp:hover .lp-go svg{transform:translate(3px,-3px)}
-@media (max-width:860px){.lp-grid{grid-template-columns:1fr}}
+.lp h3{font-family:var(--f-disp);font-size:clamp(1.4rem,2.8vw,2rem);color:#fff;
+  letter-spacing:.02em;line-height:1.08;margin-bottom:13px}
+.lp > p{font-size:.95rem;color:#d3e6da;line-height:1.62;margin-bottom:24px}
+
+/* GameZone: a wall of its own game art */
+.gz-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:24px}
+.gz-tile{display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;
+  border:2px solid rgba(163,217,119,.3);background:#05271a;
+  animation:gzFloat 4.6s ease-in-out infinite;animation-delay:var(--d)}
+.gz-tile img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .3s,filter .3s;filter:saturate(.85)}
+.lp-gz:hover .gz-tile img{filter:saturate(1.1)}
+.gz-tile:hover img{transform:scale(1.14)}
+@keyframes gzFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* AppSpy: a miniature of the board, unlabelled on purpose */
+.as-panel{border:2px solid rgba(163,217,119,.26);border-radius:16px;overflow:hidden;
+  background:#04231a;margin-bottom:24px}
+.as-bar-top{display:flex;align-items:center;gap:6px;padding:9px 13px;
+  background:rgba(0,0,0,.3);border-bottom:1px solid rgba(163,217,119,.18)}
+.as-bar-top i{width:8px;height:8px;border-radius:50%;background:rgba(163,217,119,.4)}
+.as-bar-top i:first-child{background:#ff6b5e}.as-bar-top i:nth-child(2){background:var(--gold)}
+.as-bar-top span{margin-left:8px;font-size:.66rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.as-body{padding:14px 15px 16px}
+.as-spark{height:64px;margin-bottom:12px}
+.as-spark svg{width:100%;height:100%;overflow:visible}
+.as-line{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:300;stroke-dashoffset:300;animation:asDraw 2.4s ease-out forwards}
+.as-fill{fill:rgba(251,191,36,.13);stroke:none;opacity:0;animation:asFade .8s ease-out 1.5s forwards}
+@keyframes asDraw{to{stroke-dashoffset:0}}
+@keyframes asFade{to{opacity:1}}
+.as-row{display:flex;align-items:center;gap:10px;padding:5px 0}
+.as-rank{font-style:normal;font-family:var(--f-body);font-weight:700;font-size:.72rem;
+  color:var(--muted);width:14px;flex:none}
+.as-bar{flex:1;height:9px;border-radius:999px;background:rgba(255,255,255,.07);position:relative;overflow:hidden}
+.as-bar::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:999px;
+  background:linear-gradient(90deg,var(--leaf),var(--leaf2));
+  transform:scaleX(0);transform-origin:left;animation:asGrow 1s cubic-bezier(.2,.8,.3,1) forwards;animation-delay:var(--d)}
+@keyframes asGrow{to{transform:scaleX(1)}}
+.as-mv{font-style:normal;font-size:.6rem;width:12px;flex:none;text-align:center}
+.as-mv.up{color:var(--leaf2)}.as-mv.dn{color:#ff8a7a}
+
+/* shared stats + button */
+.lp-stats{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
+.lp-stats span{display:inline-flex;align-items:baseline;gap:6px;font-size:.79rem;font-weight:500;
+  color:#dff0e4;background:rgba(255,255,255,.07);border:1px solid rgba(163,217,119,.26);
+  padding:8px 14px;border-radius:999px}
+.lp-stats b{font-family:var(--f-disp);font-size:.95rem;color:var(--gold);letter-spacing:.02em}
+.lp-btn{margin-top:auto;align-self:flex-start;font-size:1.02rem;padding:15px 30px}
+.lp-btn svg{width:17px;height:17px;transition:transform .2s}
+.lp:hover .lp-btn svg{transform:translate(3px,-3px)}
+
+@media (max-width:900px){.lp-grid{grid-template-columns:1fr}.gz-wall{grid-template-columns:repeat(6,1fr)}}
+@media (max-width:520px){.gz-wall{grid-template-columns:repeat(4,1fr)}.lp{padding:26px 22px 24px}}
 @media (prefers-reduced-motion:reduce){
-  .lp,.lp-go svg{transition:none}
-  .lp:hover{transform:none}
-  .lp:hover .lp-go svg{transform:none}}
+  .lp-orb,.gz-tile,.lp-dot{animation:none}
+  .as-line{stroke-dashoffset:0;animation:none}
+  .as-fill{opacity:1;animation:none}
+  .as-bar::after{transform:scaleX(1);animation:none}
+  .lp,.gz-tile img,.lp-btn svg{transition:none}
+  .lp:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -942,42 +1003,86 @@ a.card:hover .card-link{gap:12px}
 
 <!-- LIVE PRODUCTS -->
 <section class="section live-products" id="products">
+  <span class="lp-orb lp-orb1" aria-hidden="true"></span>
+  <span class="lp-orb lp-orb2" aria-hidden="true"></span>
   <div class="wrap">
     <div class="eyebrow">Shipped &amp; Running</div>
     <h2 class="disp">Two Products You Can<em> Open Right Now</em></h2>
-    <p class="lead">Not mockups and not a waiting list. Both are live, both are ours, and both are built on the same infrastructure we're assembling into the Factorial AI Platform.</p>
+    <p class="lead">Not mockups, not a waiting list. Both are live, both are ours, and both run on the infrastructure we're assembling into the Factorial AI Platform.</p>
 
     <div class="lp-grid">
 
-      <a class="lp" href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener">
-        <div class="lp-top">
-          <span class="lp-badge">Live</span>
+      <article class="lp lp-gz">
+        <div class="lp-head">
+          <span class="lp-badge"><i class="lp-dot"></i>Live</span>
           <span class="lp-kind">WebGL Distribution</span>
         </div>
         <h3>Factorial GameZone</h3>
-        <p>A browser games portal running on our own WebGL hosting. Games load and play instantly — no download, no install, no plugin. Studios submit a build; it goes live on a URL.</p>
-        <ul class="lp-facts">
-          <li><b>26</b> games live</li>
-          <li><b>12</b> categories</li>
-          <li><b>Instant</b> play, in-browser</li>
-        </ul>
-        <span class="lp-go">Open GameZone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-      </a>
+        <p>A browser games portal on our own WebGL hosting. Click a game and it plays &mdash; no download, no install, no plugin. Studios hand us a build; it goes live on a URL.</p>
 
-      <a class="lp" href="https://fsappspy.vercel.app/" target="_blank" rel="noopener">
-        <div class="lp-top">
-          <span class="lp-badge">Live</span>
+        <div class="gz-wall" aria-hidden="true">
+            <span class="gz-tile" style="--d:0.00s"><img src="/images/gamezone/fortress-merge.jpg" alt="Fortress Merge"></span>
+            <span class="gz-tile" style="--d:0.14s"><img src="/images/gamezone/golf-orbit.jpg" alt="Golf Orbit"></span>
+            <span class="gz-tile" style="--d:0.28s"><img src="/images/gamezone/zombie-invasion.jpg" alt="Zombie Invasion"></span>
+            <span class="gz-tile" style="--d:0.42s"><img src="/images/gamezone/turbo-race.jpg" alt="Turbo Race"></span>
+            <span class="gz-tile" style="--d:0.56s"><img src="/images/gamezone/hero-adventure.jpg" alt="Hero Adventure"></span>
+            <span class="gz-tile" style="--d:0.70s"><img src="/images/gamezone/letter-quest.jpg" alt="Letter Quest"></span>
+            <span class="gz-tile" style="--d:0.84s"><img src="/images/gamezone/kitchen-life.jpg" alt="Kitchen Life"></span>
+            <span class="gz-tile" style="--d:0.98s"><img src="/images/gamezone/thief-puzzle.jpg" alt="Thief Puzzle"></span>
+            <span class="gz-tile" style="--d:1.12s"><img src="/images/gamezone/block-blast-color-puzzle-game.jpg" alt="Block Blast"></span>
+            <span class="gz-tile" style="--d:1.26s"><img src="/images/gamezone/super-sucker.jpg" alt="Super Sucker"></span>
+            <span class="gz-tile" style="--d:1.40s"><img src="/images/gamezone/nest-align.jpg" alt="Nest Align"></span>
+            <span class="gz-tile" style="--d:1.54s"><img src="/images/gamezone/chicken-orbit.jpg" alt="Chicken Orbit"></span>
+        </div>
+
+        <div class="lp-stats">
+          <span><b>26</b>games live</span>
+          <span><b>12</b>categories</span>
+          <span><b>0s</b>install time</span>
+        </div>
+
+        <a class="btn btn-gold lp-btn" href="https://gameportal-nine.vercel.app/" target="_blank" rel="noopener">
+          Play a Game Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="lp lp-as">
+        <div class="lp-head">
+          <span class="lp-badge"><i class="lp-dot"></i>Live</span>
           <span class="lp-kind">App Intelligence</span>
         </div>
         <h3>AppSpy</h3>
-        <p>Market intelligence and ASO tooling across the App Store, Google Play and Amazon Appstore. Live charts, keyword research, competitor tracking and ad lookup — the kind of data that usually costs four figures a month.</p>
-        <ul class="lp-facts">
-          <li><b>14M+</b> apps indexed</li>
-          <li><b>3</b> app stores</li>
-          <li><b>Live</b> rankings &amp; trends</li>
-        </ul>
-        <span class="lp-go">Open AppSpy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-      </a>
+        <p>Market intelligence and ASO tooling across the App&nbsp;Store, Google&nbsp;Play and Amazon Appstore. Live charts, keyword research, competitor tracking and ad lookup &mdash; the data that usually costs four figures a month.</p>
+
+        <div class="as-panel" aria-hidden="true">
+          <div class="as-bar-top"><i></i><i></i><i></i><span>top charts &middot; live</span></div>
+          <div class="as-body">
+            <div class="as-spark">
+              <svg viewBox="0 0 260 70" preserveAspectRatio="none">
+                <polyline class="as-line" points="0,58 34,50 68,54 102,38 136,42 170,24 204,28 240,8"/>
+                <polyline class="as-fill" points="0,58 34,50 68,54 102,38 136,42 170,24 204,28 240,8 240,70 0,70"/>
+              </svg>
+            </div>
+              <span class="as-row"><i class="as-rank">1</i><i class="as-bar" style="--w:92%;--d:0.12s"></i><i class="as-mv up">▲</i></span>
+              <span class="as-row"><i class="as-rank">2</i><i class="as-bar" style="--w:78%;--d:0.24s"></i><i class="as-mv up">▲</i></span>
+              <span class="as-row"><i class="as-rank">3</i><i class="as-bar" style="--w:64%;--d:0.36s"></i><i class="as-mv dn">▼</i></span>
+              <span class="as-row"><i class="as-rank">4</i><i class="as-bar" style="--w:55%;--d:0.48s"></i><i class="as-mv up">▲</i></span>
+              <span class="as-row"><i class="as-rank">5</i><i class="as-bar" style="--w:43%;--d:0.60s"></i><i class="as-mv up">▲</i></span>
+          </div>
+        </div>
+
+        <div class="lp-stats">
+          <span><b>14M+</b>apps indexed</span>
+          <span><b>3</b>app stores</span>
+          <span><b>Live</b>rankings</span>
+        </div>
+
+        <a class="btn btn-gold lp-btn" href="https://fsappspy.vercel.app/" target="_blank" rel="noopener">
+          Explore the Data
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
 
     </div>
   </div>
