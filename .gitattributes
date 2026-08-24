@@ -1,0 +1,4 @@
+# app-ads.txt is parsed line by line by ad-network crawlers and must go out
+# exactly as the live server had it. Git would otherwise rewrite it to CRLF
+# on the next Windows checkout and quietly commit that back.
+app-ads.txt -text
