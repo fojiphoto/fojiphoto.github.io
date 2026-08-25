@@ -913,7 +913,7 @@ a.card:hover .card-link{gap:12px}
 .hero-card.fanout .hc-top{flex-wrap:wrap;padding:16px 22px 4px;row-gap:2px}
 .hero-card.fanout .hc-top .hc-dot{order:1}
 .hero-card.fanout .hc-title{order:2;flex:0 0 100%;margin-left:0;margin-top:8px;
-  font-family:var(--f-disp);font-size:2.4rem;line-height:1.06;color:#fff;
+  font-family:var(--f-disp);font-size:1.8rem;line-height:1.08;color:#fff;
   letter-spacing:.01em;text-transform:uppercase}
 /* stacked, so the size is free to grow without hitting the card's width */
 .hero-card.fanout .hc-title em{display:block;color:var(--gold);font-style:normal}
@@ -957,24 +957,24 @@ a.card:hover .card-link{gap:12px}
 /* the seven destinations — badge centred on the path end, label beside it */
 /* shift by half the badge, not half the node — the label sits to the right
    and would otherwise drag the badge off the end of its wire */
-.fo-node{position:absolute;transform:translate(-34px,-50%);display:flex;align-items:center;gap:9px;
+.fo-node{position:absolute;transform:translate(-26px,-50%);display:flex;align-items:center;gap:9px;
   opacity:0;animation:foIn .5s ease-out forwards;animation-delay:var(--d)}
-@keyframes foIn{from{opacity:0;transform:translate(-22px,-50%)}
-  to{opacity:1;transform:translate(-34px,-50%)}}
-.fo-badge{flex:none;width:69px;height:69px;border-radius:19px;display:flex;
+@keyframes foIn{from{opacity:0;transform:translate(-14px,-50%)}
+  to{opacity:1;transform:translate(-26px,-50%)}}
+.fo-badge{flex:none;width:52px;height:52px;border-radius:15px;display:flex;
   align-items:center;justify-content:center;padding:6px;
   background:var(--cream2);border:2px solid rgba(163,217,119,.42);
   box-shadow:0 0 16px rgba(124,179,66,.2)}
 .fo-badge img{max-width:100%;max-height:100%;object-fit:contain}
-.fo-badge{padding:9px}
+.fo-badge{padding:7px}
 .fo-name{font-family:var(--f-body);font-weight:600;font-size:.84rem;color:#eaf5ee;white-space:nowrap}
 
 /* between these widths the card is 488px and the labels run 3px past its
    edge — a slightly smaller badge clears it without losing the names.
    The node shift tracks the badge width, so it moves with it. */
 @media (min-width:1181px) and (max-width:1399px){
-  .fo-badge{width:60px;height:60px;border-radius:17px;padding:8px}
-  .fo-node{transform:translate(-30px,-50%);gap:8px}
+  .fo-badge{width:45px;height:45px;border-radius:13px;padding:6px}
+  .fo-node{transform:translate(-22px,-50%);gap:8px}
   .fo-name{font-size:.8rem}}
 @media (max-width:1180px){.fo-name{display:none}}
 @media (prefers-reduced-motion:reduce){
