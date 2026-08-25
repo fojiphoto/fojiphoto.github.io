@@ -908,13 +908,26 @@ a.card:hover .card-link{gap:12px}
 .hero-card.fanout{padding:0;overflow:hidden}
 /* the card has no padding any more, so these two need their own or they
    end up flush against an overflow:hidden edge and lose their last letter */
-.hero-card.fanout .hc-top{padding:14px 18px}
-.hero-card.fanout .hc-stat{padding:0 20px 16px;font-size:.8rem;text-align:right}
-.hero-card.fanout .hc-title{font-size:.86rem}
+/* dots on one line, the title on its own beneath them, so it can carry
+   real size instead of squeezing in beside three 11px circles */
+.hero-card.fanout .hc-top{flex-wrap:wrap;padding:16px 22px 4px;row-gap:2px}
+.hero-card.fanout .hc-top .hc-dot{order:1}
+.hero-card.fanout .hc-title{order:2;flex:0 0 100%;margin-left:0;margin-top:8px;
+  font-family:var(--f-disp);font-size:2.4rem;line-height:1.06;color:#fff;
+  letter-spacing:.01em;text-transform:uppercase}
+/* stacked, so the size is free to grow without hitting the card's width */
+.hero-card.fanout .hc-title em{display:block;color:var(--gold);font-style:normal}
+/* the footer label is the payoff line — it should read, not whisper */
+.hero-card.fanout .hc-stat{padding:2px 22px 18px;font-size:1rem;text-align:right;
+  color:var(--gold);font-weight:700;letter-spacing:.12em;
+  display:flex;align-items:center;justify-content:flex-end;gap:9px}
+.hero-card.fanout .hc-stat::before{content:"";width:9px;height:9px;border-radius:50%;
+  background:var(--leaf2);box-shadow:0 0 10px var(--leaf2);animation:foLive 1.9s ease-in-out infinite}
+@keyframes foLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.72)}}
 .fo-stage{position:relative;aspect-ratio:560/480;width:100%}
 .fo-svg{position:absolute;inset:0;width:100%;height:100%}
 
-.fo-wire{fill:none;stroke:url(#foGrad);stroke-width:2.4;stroke-linecap:round;
+.fo-wire{fill:none;stroke:url(#foGrad);stroke-width:3;stroke-linecap:round;
   stroke-dasharray:460;stroke-dashoffset:460;
   animation:foDraw 1.5s ease-out forwards;animation-delay:var(--d)}
 @keyframes foDraw{to{stroke-dashoffset:0}}
@@ -944,17 +957,25 @@ a.card:hover .card-link{gap:12px}
 /* the seven destinations — badge centred on the path end, label beside it */
 /* shift by half the badge, not half the node — the label sits to the right
    and would otherwise drag the badge off the end of its wire */
-.fo-node{position:absolute;transform:translate(-23px,-50%);display:flex;align-items:center;gap:9px;
+.fo-node{position:absolute;transform:translate(-34px,-50%);display:flex;align-items:center;gap:9px;
   opacity:0;animation:foIn .5s ease-out forwards;animation-delay:var(--d)}
-@keyframes foIn{from{opacity:0;transform:translate(-11px,-50%)}
-  to{opacity:1;transform:translate(-23px,-50%)}}
-.fo-badge{flex:none;width:46px;height:46px;border-radius:13px;display:flex;
+@keyframes foIn{from{opacity:0;transform:translate(-22px,-50%)}
+  to{opacity:1;transform:translate(-34px,-50%)}}
+.fo-badge{flex:none;width:69px;height:69px;border-radius:19px;display:flex;
   align-items:center;justify-content:center;padding:6px;
   background:var(--cream2);border:2px solid rgba(163,217,119,.42);
   box-shadow:0 0 16px rgba(124,179,66,.2)}
 .fo-badge img{max-width:100%;max-height:100%;object-fit:contain}
+.fo-badge{padding:9px}
 .fo-name{font-family:var(--f-body);font-weight:600;font-size:.84rem;color:#eaf5ee;white-space:nowrap}
 
+/* between these widths the card is 488px and the labels run 3px past its
+   edge — a slightly smaller badge clears it without losing the names.
+   The node shift tracks the badge width, so it moves with it. */
+@media (min-width:1181px) and (max-width:1399px){
+  .fo-badge{width:60px;height:60px;border-radius:17px;padding:8px}
+  .fo-node{transform:translate(-30px,-50%);gap:8px}
+  .fo-name{font-size:.8rem}}
 @media (max-width:1180px){.fo-name{display:none}}
 @media (prefers-reduced-motion:reduce){
   .fo-wire{stroke-dashoffset:0;animation:none}
@@ -1030,12 +1051,12 @@ a.card:hover .card-link{gap:12px}
       </div>
     </div>
     <div class="hero-card fanout" aria-label="One Unity build distributed to seven web platforms">
-      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">one build &middot; every channel</span></div>
+      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">One Build<em>Every Channel</em></span></div>
 
       <div class="fo-stage">
         <svg class="fo-svg" viewBox="0 0 560 480" preserveAspectRatio="none" aria-hidden="true">
           <defs>
-            <linearGradient id="foGrad" x1="0" y1="0" x2="1" y2="0">
+            <linearGradient id="foGrad" gradientUnits="userSpaceOnUse" x1="132" y1="0" x2="384" y2="0">
               <stop offset="0%" stop-color="#a3d977" stop-opacity=".2"/>
               <stop offset="55%" stop-color="#7cb342" stop-opacity=".7"/>
               <stop offset="100%" stop-color="#fbbf24" stop-opacity=".95"/>
@@ -1049,7 +1070,7 @@ a.card:hover .card-link{gap:12px}
           <path class="fo-wire" d="M132 240 C 252 240, 264 60, 384 60" style="--d:0.00s"/>
           <path class="fo-wire" d="M132 240 C 252 240, 264 120, 384 120" style="--d:0.09s"/>
           <path class="fo-wire" d="M132 240 C 252 240, 264 180, 384 180" style="--d:0.18s"/>
-          <path class="fo-wire" d="M132 240 C 252 240, 264 240, 384 240" style="--d:0.27s"/>
+          <path class="fo-wire" d="M132 240 C 252 238.4, 264 238.4, 384 240" style="--d:0.27s"/>
           <path class="fo-wire" d="M132 240 C 252 240, 264 300, 384 300" style="--d:0.36s"/>
           <path class="fo-wire" d="M132 240 C 252 240, 264 360, 384 360" style="--d:0.45s"/>
           <path class="fo-wire" d="M132 240 C 252 240, 264 420, 384 420" style="--d:0.54s"/>
@@ -1058,7 +1079,7 @@ a.card:hover .card-link{gap:12px}
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 60, 384 60');--d:0.00s"/>
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 120, 384 120');--d:0.48s"/>
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 180, 384 180');--d:0.96s"/>
-          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 240, 384 240');--d:1.44s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 238.4, 264 238.4, 384 240');--d:1.44s"/>
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 300, 384 300');--d:1.92s"/>
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 360, 384 360');--d:2.40s"/>
           <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 420, 384 420');--d:2.88s"/>
