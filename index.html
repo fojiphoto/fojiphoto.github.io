@@ -898,6 +898,63 @@ a.card:hover .card-link{gap:12px}
 @media (min-width:1400px){.wrap{max-width:1290px}}
 @media (min-width:1800px){.wrap{max-width:1440px}html{font-size:18px}}
 @media (min-width:2200px){.wrap{max-width:1560px}}
+
+/* -- hero: one build, every channel -------------------------------------
+   Replaces the mocked deploy dashboard. Wires and particles share identical
+   path data, and every element is placed from the same numbers, so a dot
+   can never drift off its wire and a badge can never miss its endpoint.
+   preserveAspectRatio is none on purpose: the SVG stretches with the box
+   exactly as the percentage-positioned HTML does. */
+.hero-card.fanout{padding:0;overflow:hidden}
+.fo-stage{position:relative;aspect-ratio:560/480;width:100%}
+.fo-svg{position:absolute;inset:0;width:100%;height:100%}
+
+.fo-wire{fill:none;stroke:url(#foGrad);stroke-width:2.4;stroke-linecap:round;
+  stroke-dasharray:460;stroke-dashoffset:460;
+  animation:foDraw 1.5s ease-out forwards;animation-delay:var(--d)}
+@keyframes foDraw{to{stroke-dashoffset:0}}
+
+.fo-dot{fill:var(--gold);offset-rotate:0deg;opacity:0;
+  animation:foFlow 3.2s cubic-bezier(.45,0,.55,1) infinite;animation-delay:var(--d)}
+@keyframes foFlow{
+  0%{offset-distance:0%;opacity:0;r:3}
+  10%{opacity:1;r:5}
+  85%{opacity:1;r:5}
+  100%{offset-distance:100%;opacity:0;r:3}}
+
+/* the one source — the icon itself is centred on the path start, the label
+   hangs below it without shifting the icon */
+.fo-src{position:absolute;transform:translate(-50%,-50%);
+  width:20%;display:flex;flex-direction:column;align-items:center}
+.fo-game{display:block;width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;
+  border:2.5px solid rgba(251,191,36,.55);animation:foPulse 3.2s ease-in-out infinite}
+.fo-game img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes foPulse{0%,100%{box-shadow:0 0 20px rgba(251,191,36,.2)}
+  50%{box-shadow:0 0 36px rgba(251,191,36,.45)}}
+.fo-srclab{position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-50%);
+  font-family:var(--f-body);font-weight:700;font-size:.63rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold);text-align:center;line-height:1.35;white-space:nowrap}
+
+/* the seven destinations — badge centred on the path end, label beside it */
+/* shift by half the badge, not half the node — the label sits to the right
+   and would otherwise drag the badge off the end of its wire */
+.fo-node{position:absolute;transform:translate(-19px,-50%);display:flex;align-items:center;gap:9px;
+  opacity:0;animation:foIn .5s ease-out forwards;animation-delay:var(--d)}
+@keyframes foIn{from{opacity:0;transform:translate(-7px,-50%)}
+  to{opacity:1;transform:translate(-19px,-50%)}}
+.fo-badge{flex:none;width:38px;height:38px;border-radius:11px;display:flex;
+  align-items:center;justify-content:center;padding:6px;
+  background:var(--cream2);border:2px solid rgba(163,217,119,.42);
+  box-shadow:0 0 16px rgba(124,179,66,.2)}
+.fo-badge img{max-width:100%;max-height:100%;object-fit:contain}
+.fo-name{font-family:var(--f-body);font-weight:600;font-size:.72rem;color:#dff0e4;white-space:nowrap}
+
+@media (max-width:1180px){.fo-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .fo-wire{stroke-dashoffset:0;animation:none}
+  .fo-dot{animation:none;opacity:.9;offset-distance:60%}
+  .fo-game{animation:none}
+  .fo-node{opacity:1;animation:none}}
 </style>
 </head>
 <body>
@@ -966,14 +1023,78 @@ a.card:hover .card-link{gap:12px}
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Registered in Pakistan · expanding to US</span>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">factorial-cloud · deploy</span></div>
-      <!-- Product UI preview. Game thumbnails: swap files in /v2-screens/ (game1, game2, game3) -->
-      <div class="hc-game"><img src="v2-screens/game1.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Fortress Merge</b><span>Live · WebGL · ads on</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <div class="hc-game"><img src="v2-screens/game2.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Golf Orbit</b><span>Live · WebGL · 12 channels</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <div class="hc-game"><img src="v2-screens/game3.jpg" alt="" loading="lazy"><div class="hc-g-info"><b>Spider Gangster</b><span>Building from GitHub…</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/></svg></div>
-      <div class="hc-bar"><i></i></div>
-      <div class="hc-stat">WEBGL CLOUD · BETA</div>
+    <div class="hero-card fanout" aria-label="One Unity build distributed to seven web platforms">
+      <div class="hc-top"><span class="hc-dot hc-r"></span><span class="hc-dot hc-y"></span><span class="hc-dot hc-g"></span><span class="hc-title">one build &middot; every channel</span></div>
+
+      <div class="fo-stage">
+        <svg class="fo-svg" viewBox="0 0 560 480" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="foGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#a3d977" stop-opacity=".2"/>
+              <stop offset="55%" stop-color="#7cb342" stop-opacity=".7"/>
+              <stop offset="100%" stop-color="#fbbf24" stop-opacity=".95"/>
+            </linearGradient>
+            <filter id="foGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#foGlow)">
+          <path class="fo-wire" d="M132 240 C 252 240, 264 60, 384 60" style="--d:0.00s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 120, 384 120" style="--d:0.09s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 180, 384 180" style="--d:0.18s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 240, 384 240" style="--d:0.27s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 300, 384 300" style="--d:0.36s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 360, 384 360" style="--d:0.45s"/>
+          <path class="fo-wire" d="M132 240 C 252 240, 264 420, 384 420" style="--d:0.54s"/>
+          </g>
+          <g filter="url(#foGlow)">
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 60, 384 60');--d:0.00s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 120, 384 120');--d:0.48s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 180, 384 180');--d:0.96s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 240, 384 240');--d:1.44s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 300, 384 300');--d:1.92s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 360, 384 360');--d:2.40s"/>
+          <circle class="fo-dot" r="4.5" style="offset-path:path('M132 240 C 252 240, 264 420, 384 420');--d:2.88s"/>
+          </g>
+        </svg>
+
+        <div class="fo-src" style="left:23.571%;top:50.000%">
+          <span class="fo-game"><img src="/images/gamezone/fortress-merge.jpg" alt="A Unity game"></span>
+          <span class="fo-srclab">One Unity<br>build</span>
+        </div>
+
+        <div class="fo-node" style="left:68.571%;top:12.500%;--d:0.60s">
+          <span class="fo-badge"><img src="/images/platforms/crazygames.png" alt="CrazyGames"></span>
+          <span class="fo-name">CrazyGames</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:25.000%;--d:1.08s">
+          <span class="fo-badge"><img src="/images/platforms/poki.png" alt="Poki"></span>
+          <span class="fo-name">Poki</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:37.500%;--d:1.56s">
+          <span class="fo-badge"><img src="/images/platforms/yandex.png" alt="Yandex Games"></span>
+          <span class="fo-name">Yandex Games</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:50.000%;--d:2.04s">
+          <span class="fo-badge"><img src="/images/platforms/gamedistribution.png" alt="GameDistribution"></span>
+          <span class="fo-name">GameDistribution</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:62.500%;--d:2.52s">
+          <span class="fo-badge"><img src="/images/platforms/gamesnacks.png" alt="GameSnacks"></span>
+          <span class="fo-name">GameSnacks</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:75.000%;--d:3.00s">
+          <span class="fo-badge"><img src="/images/platforms/msn.png" alt="MSN Games"></span>
+          <span class="fo-name">MSN Games</span>
+        </div>
+        <div class="fo-node" style="left:68.571%;top:87.500%;--d:3.48s">
+          <span class="fo-badge"><img src="/images/platforms/playgama.png" alt="Playgama"></span>
+          <span class="fo-name">Playgama</span>
+        </div>
+      </div>
+
+      <div class="hc-stat">WEBGL CLOUD &middot; LIVE</div>
     </div>
   </div>
 </header>
