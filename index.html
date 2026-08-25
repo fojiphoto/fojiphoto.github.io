@@ -906,6 +906,11 @@ a.card:hover .card-link{gap:12px}
    preserveAspectRatio is none on purpose: the SVG stretches with the box
    exactly as the percentage-positioned HTML does. */
 .hero-card.fanout{padding:0;overflow:hidden}
+/* the card has no padding any more, so these two need their own or they
+   end up flush against an overflow:hidden edge and lose their last letter */
+.hero-card.fanout .hc-top{padding:14px 18px}
+.hero-card.fanout .hc-stat{padding:0 20px 16px;font-size:.8rem;text-align:right}
+.hero-card.fanout .hc-title{font-size:.86rem}
 .fo-stage{position:relative;aspect-ratio:560/480;width:100%}
 .fo-svg{position:absolute;inset:0;width:100%;height:100%}
 
@@ -931,23 +936,24 @@ a.card:hover .card-link{gap:12px}
 .fo-game img{width:100%;height:100%;object-fit:cover;display:block}
 @keyframes foPulse{0%,100%{box-shadow:0 0 20px rgba(251,191,36,.2)}
   50%{box-shadow:0 0 36px rgba(251,191,36,.45)}}
-.fo-srclab{position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-50%);
-  font-family:var(--f-body);font-weight:700;font-size:.63rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--gold);text-align:center;line-height:1.35;white-space:nowrap}
+.fo-srclab{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  font-family:var(--f-body);font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold);text-align:center;line-height:1.35;white-space:nowrap;
+  font-size:.72rem}
 
 /* the seven destinations — badge centred on the path end, label beside it */
 /* shift by half the badge, not half the node — the label sits to the right
    and would otherwise drag the badge off the end of its wire */
-.fo-node{position:absolute;transform:translate(-19px,-50%);display:flex;align-items:center;gap:9px;
+.fo-node{position:absolute;transform:translate(-23px,-50%);display:flex;align-items:center;gap:9px;
   opacity:0;animation:foIn .5s ease-out forwards;animation-delay:var(--d)}
-@keyframes foIn{from{opacity:0;transform:translate(-7px,-50%)}
-  to{opacity:1;transform:translate(-19px,-50%)}}
-.fo-badge{flex:none;width:38px;height:38px;border-radius:11px;display:flex;
+@keyframes foIn{from{opacity:0;transform:translate(-11px,-50%)}
+  to{opacity:1;transform:translate(-23px,-50%)}}
+.fo-badge{flex:none;width:46px;height:46px;border-radius:13px;display:flex;
   align-items:center;justify-content:center;padding:6px;
   background:var(--cream2);border:2px solid rgba(163,217,119,.42);
   box-shadow:0 0 16px rgba(124,179,66,.2)}
 .fo-badge img{max-width:100%;max-height:100%;object-fit:contain}
-.fo-name{font-family:var(--f-body);font-weight:600;font-size:.72rem;color:#dff0e4;white-space:nowrap}
+.fo-name{font-family:var(--f-body);font-weight:600;font-size:.84rem;color:#eaf5ee;white-space:nowrap}
 
 @media (max-width:1180px){.fo-name{display:none}}
 @media (prefers-reduced-motion:reduce){
