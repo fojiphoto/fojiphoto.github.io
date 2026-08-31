@@ -166,6 +166,31 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 @media (min-width:1400px){.wrap{max-width:1290px}}
 @media (min-width:1800px){.wrap{max-width:1440px}html{font-size:18px}}
 @media (min-width:2200px){.wrap{max-width:1560px}}
+
+/* -- hero side panel ----------------------------------------------------
+   The "what is this page" card that sits in the second hero cell. Reads as
+   a report or log the service would actually produce, so the discipline is
+   obvious before a word of body copy is read. Lifted out of the seven pages
+   that each carried their own copy. */
+.report{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.rp-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:2px solid rgba(163,217,119,.15);background:rgba(0,0,0,.2)}
+.rp-bar i{width:12px;height:12px;border-radius:50%}
+.rr{background:#ff6b5e}
+.ry{background:var(--gold)}
+.rg{background:var(--leaf2)}
+.rp-bar span{font-weight:600;font-size:.76rem;color:var(--muted);margin-left:6px}
+.rp-body{padding:26px 26px 30px}
+.rp-row{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;padding:7px 0;color:var(--muted)}
+.rp-row b{color:#fff;font-weight:600;text-align:right}
+.rp-ok{color:var(--leaf2);font-weight:600}
+.rp-tags{margin-top:8px}
+.rp-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf2);border:2px solid rgba(163,217,119,.3);padding:3px 9px;border-radius:999px;margin-right:6px;margin-top:6px}
+.rp-repro{margin-top:14px;padding-top:14px;border-top:2px dashed rgba(163,217,119,.2);font-size:.78rem;color:var(--muted);line-height:1.8}
+.rp-repro b{color:#fff}
+
+/* the hero carries two cells now -- the intro and the page-type panel */
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:start}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}}
 </style>
 </head>
 <body>
@@ -179,10 +204,24 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 </nav>
 
 <header class="phero">
-  <div class="wrap">
-    <div class="crumbs"><a href="index.html">Factorial Studio</a><span>›</span>Portfolio</div>
-    <h1>Games &amp; <em>Projects</em></h1>
-    <p>Titles we've built, co-developed, ported, tested or published. <b>Filter by what we actually did</b> — not every game here was ours end to end, and we say which was which.</p>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">Factorial Studio</a><span>›</span>Portfolio</div>
+      <h1>Games &amp; <em>Projects</em></h1>
+      <p>Titles we've built, co-developed, ported, tested or published. <b>Filter by what we actually did</b> — not every game here was ours end to end, and we say which was which.</p>
+  </div>
+
+    <div class="report">
+      <div class="rp-bar"><i class="rr"></i><i class="ry"></i><i class="rg"></i><span>portfolio.log</span></div>
+      <div class="rp-body">
+        <div class="rp-row"><span>Page</span><b>Full portfolio</b></div>
+        <div class="rp-row"><span>Titles</span><b>Built, ported, tested, published</b></div>
+        <div class="rp-row"><span>Filter by</span><b>What we actually did</b></div>
+        <div class="rp-row"><span>Stated</span><b>Our exact role on each</b></div>
+        <div class="rp-tags"><span class="rp-tag">built</span><span class="rp-tag">ported</span><span class="rp-tag">tested</span></div>
+        <div class="rp-repro"><b>Not every game here was ours end to end</b> &rarr; <b class="rp-ok">and we say which</b></div>
+      </div>
+    </div>
   </div>
 </header>
 
