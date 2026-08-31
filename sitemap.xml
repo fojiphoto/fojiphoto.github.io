@@ -35,8 +35,8 @@
   <url><loc>https://factorialstudio.com/game-development.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/mobile-publishing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/art-animation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://factorialstudio.com/console-porting.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://factorialstudio.com/live-operations.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/console-porting/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://factorialstudio.com/live-ops/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/casual-publishing.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- legal -->

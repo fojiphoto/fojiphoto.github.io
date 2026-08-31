@@ -24,6 +24,83 @@
 "areaServed":"Worldwide",
 "description":"Full-cycle 2D and 3D game development for mobile, PC, web and console — design, engineering, art, QA and publishing."}
 </script>
+<style>
+/* -- one build, every platform: the vertical fan ------------------------
+   The homepage runs this left to right; here it runs top to bottom. Wires
+   and particles share identical path data, and the badges are placed from
+   the same numbers the paths end at, so a dot cannot drift off its wire and
+   a badge cannot miss its endpoint.
+   preserveAspectRatio is none on purpose -- the SVG stretches with the box
+   exactly as the percentage-positioned HTML over it does. */
+.gd-fan{position:relative}
+.gd-stage{position:relative;aspect-ratio:560/430;width:100%}
+.gd-svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* userSpaceOnUse, not objectBoundingBox: the centre wire runs vertically and
+   its bounding box has zero width, which an objectBoundingBox gradient
+   cannot resolve against -- the path would not paint at all. */
+.gd-wire{fill:none;stroke:url(#gdGrad);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:400;stroke-dashoffset:400;
+  animation:gdDraw 1.5s ease-out forwards;animation-delay:var(--d)}
+@keyframes gdDraw{to{stroke-dashoffset:0}}
+
+.gd-dot{fill:var(--gold);offset-rotate:0deg;opacity:0;
+  animation:gdFlow 3.2s cubic-bezier(.45,0,.55,1) infinite;animation-delay:var(--d)}
+@keyframes gdFlow{
+  0%{offset-distance:0%;opacity:0;r:3}
+  10%{opacity:1;r:5}
+  85%{opacity:1;r:5}
+  100%{offset-distance:100%;opacity:0;r:3}}
+
+/* the single source, centred on the path start */
+.gd-src{position:absolute;transform:translate(-50%,-50%);width:22%;
+  display:flex;flex-direction:column;align-items:center}
+.gd-game{display:block;width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;
+  border:2.5px solid rgba(251,191,36,.55);animation:gdPulse 3.2s ease-in-out infinite}
+.gd-game img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes gdPulse{0%,100%{box-shadow:0 0 20px rgba(251,191,36,.2)}
+  50%{box-shadow:0 0 36px rgba(251,191,36,.45)}}
+.gd-srclab{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+  font-family:var(--f-body);font-weight:700;font-size:.66rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+/* the seven destinations. Shifted by half the BADGE, never half the node --
+   the label sits underneath, so centring the whole column would lift the
+   badge off its endpoint the moment a label grew a letter. */
+.gd-node{position:absolute;transform:translate(-50%,-26px);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:gdIn .5s ease-out forwards;animation-delay:var(--d)}
+@keyframes gdIn{from{opacity:0;transform:translate(-50%,-38px)}
+  to{opacity:1;transform:translate(-50%,-26px)}}
+.gd-badge{flex:none;width:52px;height:52px;border-radius:15px;display:flex;
+  align-items:center;justify-content:center;padding:10px;
+  background:var(--cream2);border:2px solid rgba(163,217,119,.42);
+  box-shadow:0 0 16px rgba(124,179,66,.2)}
+/* the icons carry no stroke of their own -- without this they draw nothing */
+.gd-badge svg{width:100%;height:100%;fill:none;stroke:#0d4a32;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.gd-name{font-family:var(--f-body);font-weight:600;font-size:.72rem;color:#dff0e4;
+  white-space:nowrap;letter-spacing:.02em}
+
+.gd-foot{margin-top:10px;text-align:center;font-family:var(--f-body);font-weight:600;
+  font-size:.9rem;color:var(--muted)}
+.gd-foot b{color:var(--gold)}
+
+/* seven badges will not fit a phone at full size */
+@media (max-width:640px){
+  .gd-badge{width:38px;height:38px;border-radius:11px;padding:7px;border-width:1.6px}
+  .gd-node{transform:translate(-50%,-19px);gap:6px}
+  @keyframes gdIn{from{opacity:0;transform:translate(-50%,-30px)}
+    to{opacity:1;transform:translate(-50%,-19px)}}
+  .gd-name{font-size:.58rem}
+  .gd-foot{font-size:.8rem}}
+
+@media (prefers-reduced-motion:reduce){
+  .gd-wire{stroke-dashoffset:0;animation:none}
+  .gd-dot{animation:none;opacity:.9;offset-distance:60%}
+  .gd-game{animation:none}
+  .gd-node{opacity:1;animation:none;transform:translate(-50%,-26px)}}
+</style>
 </head>
 <body>
 
@@ -36,7 +113,7 @@
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-grid solo">
+  <div class="wrap hero-grid">
     <div>
       <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>›</span><a href="../">Development</a><span>›</span>Game Development</div>
       <span class="tag">Concept to launch</span>
@@ -50,7 +127,77 @@
       </ul>
     </div>
 
-    
+    <div class="gd-fan" aria-label="One game built once and shipped to console, mobile, PC and web">
+        <div class="gd-stage">
+          <svg class="gd-svg" viewBox="0 0 560 430" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="gdGrad" gradientUnits="userSpaceOnUse" x1="0" y1="74" x2="0" y2="322">
+                <stop offset="0%" stop-color="#a3d977" stop-opacity=".22"/>
+                <stop offset="55%" stop-color="#7cb342" stop-opacity=".72"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity=".95"/>
+              </linearGradient>
+              <filter id="gdGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <g filter="url(#gdGlow)">
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 40.0 204.0, 40.0 322.0" style="--d:0.00s"/>
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 120.0 204.0, 120.0 322.0" style="--d:0.09s"/>
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 200.0 204.0, 200.0 322.0" style="--d:0.18s"/>
+          <path class="gd-wire" d="M280 74 C 281.4 192.0, 281.4 204.0, 280.0 322.0" style="--d:0.27s"/>
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 360.0 204.0, 360.0 322.0" style="--d:0.36s"/>
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 440.0 204.0, 440.0 322.0" style="--d:0.45s"/>
+          <path class="gd-wire" d="M280 74 C 280.0 192.0, 520.0 204.0, 520.0 322.0" style="--d:0.54s"/>
+            </g>
+            <g filter="url(#gdGlow)">
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 40.0 204.0, 40.0 322.0');--d:0.00s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 120.0 204.0, 120.0 322.0');--d:0.42s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 200.0 204.0, 200.0 322.0');--d:0.84s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 281.4 192.0, 281.4 204.0, 280.0 322.0');--d:1.26s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 360.0 204.0, 360.0 322.0');--d:1.68s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 440.0 204.0, 440.0 322.0');--d:2.10s"/>
+          <circle class="gd-dot" r="4.5" style="offset-path:path('M280 74 C 280.0 192.0, 520.0 204.0, 520.0 322.0');--d:2.52s"/>
+            </g>
+          </svg>
+
+          <div class="gd-src" style="left:50.000%;top:17.209%">
+            <span class="gd-game"><img src="../../images/gamezone/fortress-merge.jpg"
+              alt="A game built by Factorial Studio" width="120" height="120" loading="lazy"></span>
+            <span class="gd-srclab">Built once</span>
+          </div>
+
+        <div class="gd-node" style="left:7.143%;top:74.884%;--d:0.50s">
+          <span class="gd-badge" role="img" aria-label="PlayStation 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 8h7a5 5 0 0 1 5 4.6l.5 4.2a2.1 2.1 0 0 1-3.7 1.6L15.2 16H8.8l-2.1 2.4A2.1 2.1 0 0 1 3 16.8l.5-4.2A5 5 0 0 1 8.5 8Z"/><path d="M7.4 11.6v2.2M6.3 12.7h2.2M16 11.8h.01M17.6 13.4h.01"/></svg></span>
+          <span class="gd-name">PS5</span>
+        </div>
+        <div class="gd-node" style="left:21.429%;top:74.884%;--d:0.92s">
+          <span class="gd-badge" role="img" aria-label="Xbox Series X and S"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M6 5.5c3 1.5 4.5 3.5 6 6.5 1.5-3 3-5 6-6.5M6 18.5c3-1.5 4.5-3.5 6-6.5 1.5 3 3 5 6 6.5"/></svg></span>
+          <span class="gd-name">Xbox</span>
+        </div>
+        <div class="gd-node" style="left:35.714%;top:74.884%;--d:1.34s">
+          <span class="gd-badge" role="img" aria-label="Nintendo Switch"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="2.5"/><rect x="14" y="4" width="7" height="16" rx="2.5"/><path d="M6.5 8h.01M17.5 15h.01"/></svg></span>
+          <span class="gd-name">Switch</span>
+        </div>
+        <div class="gd-node" style="left:50.000%;top:74.884%;--d:1.76s">
+          <span class="gd-badge" role="img" aria-label="PC and Steam"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="13" rx="2"/><path d="M8 21h8M12 17.5V21"/></svg></span>
+          <span class="gd-name">PC</span>
+        </div>
+        <div class="gd-node" style="left:64.286%;top:74.884%;--d:2.18s">
+          <span class="gd-badge" role="img" aria-label="iOS"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3M12 18.5h.01"/></svg></span>
+          <span class="gd-name">iOS</span>
+        </div>
+        <div class="gd-node" style="left:78.571%;top:74.884%;--d:2.60s">
+          <span class="gd-badge" role="img" aria-label="Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0"/><path d="M5 11v5.5a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5-1.5V11"/><path d="M8 7.5 6.5 5M16 7.5 17.5 5M9.5 8.5h.01M14.5 8.5h.01"/></svg></span>
+          <span class="gd-name">Android</span>
+        </div>
+        <div class="gd-node" style="left:92.857%;top:74.884%;--d:3.02s">
+          <span class="gd-badge" role="img" aria-label="WebGL and instant play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></span>
+          <span class="gd-name">Web</span>
+        </div>
+        </div>
+        <p class="gd-foot">Console, mobile, PC and web &mdash; <b>from one codebase</b></p>
+      </div>
   </div>
 </header>
 
