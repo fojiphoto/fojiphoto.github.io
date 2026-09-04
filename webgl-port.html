@@ -693,16 +693,19 @@ function wgSubmit(e){
     method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)
   })
   .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
-  .then(function(){
+  .then(function(d){
+    // 200 does not mean sent -- FormSubmit reports rejection in the body
+    if(!d || String(d.success)!=='true'){ throw new Error(d&&d.message||'rejected'); }
     form.reset();
     msg.className='fmsg ok';
     msg.textContent='Got it — we’ll come back with the assessment.';
     document.dispatchEvent(new CustomEvent('fs:lead',{detail:{form:'webgl-port'}}));
     btn.innerHTML=original; btn.disabled=false;
   })
-  .catch(function(){
+  .catch(function(err){
+    console.error('form:', err && err.message);
     msg.className='fmsg err';
-    msg.innerHTML='Something went wrong. Email us directly at <b>contact@factorialstudio.com</b>.';
+    msg.innerHTML='Sorry — that did not send. Please email <a href="mailto:contact@factorialstudio.com">contact@factorialstudio.com</a> and we will reply the same day.';
     btn.innerHTML=original; btn.disabled=false;
   });
   return false;

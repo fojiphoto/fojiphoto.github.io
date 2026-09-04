@@ -1948,10 +1948,15 @@ function cozySubmit(e){
   btn.disabled=true; btn.textContent='Sending…'; st.textContent=''; st.className='form-msg';
   fetch('https://formsubmit.co/ajax/ed1d5b72ba86e31cb741a2f58d48cd92',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)})
     .then(function(r){return r.json()})
-    .then(function(){btn.textContent='✓ Message Sent!';st.textContent="Thanks — we'll reply within 24 hours.";st.classList.add('ok');form.reset();
+    .then(function(d){
+      // 200 does not mean sent -- FormSubmit reports rejection in the body
+      if(!d || String(d.success)!=='true'){ throw new Error(d&&d.message||'rejected'); }btn.textContent='✓ Message Sent!';st.textContent="Thanks — we'll reply within 24 hours.";st.classList.add('ok');form.reset();
       document.dispatchEvent(new CustomEvent('fs:lead',{detail:{form:'homepage-contact'}}));
       setTimeout(function(){btn.textContent='Send Message →';btn.disabled=false;},4000);})
-    .catch(function(){btn.disabled=false;btn.textContent='Send Message →';st.textContent='Something went wrong. Email contact@factorialstudio.com';st.classList.add('err');});
+    .catch(function(err){btn.disabled=false;btn.textContent='Send Message →';
+      console.error('contact form:', err && err.message);
+      st.innerHTML='Sorry — that did not send. Please email <a href="mailto:contact@factorialstudio.com">contact@factorialstudio.com</a> and we will reply the same day.';
+      st.classList.add('err');});
   return false;
 }
 </script>
