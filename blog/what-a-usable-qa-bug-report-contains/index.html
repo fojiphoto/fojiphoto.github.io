@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Usable QA Bug Report Actually Contains</title>
+<meta name="description" content="Most bug reports cost a developer more time than the bug. A usable one is reproducible, ranked, and specific about the build and device it came from.">
+<link rel="canonical" href="https://factorialstudio.com/blog/what-a-usable-qa-bug-report-contains/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What a Usable QA Bug Report Actually Contains">
+<meta property="og:description" content="Most bug reports cost a developer more time than the bug. A usable one is reproducible, ranked, and specific about the build and device it came from.">
+<meta property="og:url" content="https://factorialstudio.com/blog/what-a-usable-qa-bug-report-contains/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"What a Usable QA Bug Report Actually Contains",
+"description":"Most bug reports cost a developer more time than the bug. A usable one is reproducible, ranked, and specific about the build and device it came from.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/what-a-usable-qa-bug-report-contains/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>Game QA</div>
+  <span class="bl-tag">Game QA</span>
+  <h1>What a Usable Bug Report <em>Actually Contains</em></h1>
+  <p class="lede">A report that cannot be reproduced is not a report. It is a rumour with a ticket number.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>The purpose of a bug report is to let somebody fix the bug without talking to you.
+Measured against that, most reports fail, and the cost is paid by the developer who has
+to go hunting.</p>
+
+<h2>Numbered steps that start from a known state</h2>
+
+<p>"Crashes in level 3" is not a repro. A repro begins somewhere a developer can get to —
+fresh install, existing save, specific menu — and proceeds in numbered steps, each one an
+action, ending with what happened and what should have happened instead.</p>
+
+<blockquote>
+1. Fresh install, skip the tutorial.<br>
+2. Play to level 3.<br>
+3. Pause during the boss intro cinematic.<br>
+4. Background the app for about 30 seconds.<br>
+5. Resume.<br>
+<strong>Expected:</strong> cinematic resumes.<br>
+<strong>Actual:</strong> black screen, audio keeps playing, no input accepted.
+</blockquote>
+
+<h2>Severity, decided on impact rather than annoyance</h2>
+
+<p>Without ranking, everything arrives flat and the developer does the triage — which is
+the work you were supposed to do. A workable scale:</p>
+
+<table>
+  <tr><th>Rank</th><th>Means</th></tr>
+  <tr><td>Blocker</td><td>Progress is impossible. Crash, hard lock, purchase fails.</td></tr>
+  <tr><td>Major</td><td>A feature is broken but there is a way around it.</td></tr>
+  <tr><td>Minor</td><td>Wrong behaviour that does not stop play.</td></tr>
+  <tr><td>Cosmetic</td><td>Visual only. Alignment, clipping, a typo.</td></tr>
+</table>
+
+<h2>The build and the device, on every single finding</h2>
+
+<p>A bug without a build number is not actionable next week. Every finding carries the
+build or version, the device and OS, and — where it matters — the network conditions and
+whether the account was fresh.</p>
+
+<p>This is also what makes a report verifiable. A fix is confirmed against the same build
+and the same device, or it is not confirmed.</p>
+
+<h2>Evidence, where words are slower than a clip</h2>
+
+<p>A screenshot for anything visual. A short clip for anything about timing, physics or
+sequence. A log excerpt where there is a stack trace. Not everything needs it; the test is
+whether a developer reading it cold would get there faster with the evidence than without.</p>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  Numbered steps from a known state, a severity you can defend, the build and device on
+  every finding, and a regression pass after the fix. Everything else is optional.
+</div>
+
+<h2>And a regression pass afterwards</h2>
+
+<p>A bug is closed when it has been retested on a build that contains the fix, and the
+area around it has been checked for what the fix moved. Closing on a developer's word is
+how the same bug arrives again two releases later.</p>
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads — send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>

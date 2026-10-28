@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Unity WebGL Builds Fail on Mobile Browsers</title>
+<meta name="description" content="Unity exports to WebGL in one click and the result usually will not run on a mid-range Android. The reasons are memory, build size and compression — and each has a fix.">
+<link rel="canonical" href="https://factorialstudio.com/blog/why-unity-webgl-builds-fail-on-mobile-browsers/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why Unity WebGL Builds Fail on Mobile Browsers">
+<meta property="og:description" content="Unity exports to WebGL in one click and the result usually will not run on a mid-range Android. The reasons are memory, build size and compression — and each has a fix.">
+<meta property="og:url" content="https://factorialstudio.com/blog/why-unity-webgl-builds-fail-on-mobile-browsers/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"Why Unity WebGL Builds Fail on Mobile Browsers",
+"description":"Unity exports to WebGL in one click and the result usually will not run on a mid-range Android. The reasons are memory, build size and compression — and each has a fix.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/why-unity-webgl-builds-fail-on-mobile-browsers/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>WebGL porting</div>
+  <span class="bl-tag">WebGL porting</span>
+  <h1>Why Unity WebGL Builds <em>Fail on Mobile</em></h1>
+  <p class="lede">The export button is not the hard part. Getting the result to load on a phone a real player owns is the hard part.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>Unity will produce a WebGL build from almost any project. Whether that build runs on
+the device a player is actually holding is a different question, and it is the question
+that decides whether a web port is worth doing.</p>
+
+<h2>Memory is the first wall</h2>
+
+<p>A WebGL build allocates a single contiguous heap. On desktop that is rarely a problem.
+On mobile Safari and on mid-range Android, the browser will refuse an allocation long
+before the device runs out of physical memory, and the failure is not graceful — the tab
+reloads or dies.</p>
+
+<p>What actually helps:</p>
+
+<ul>
+  <li>Set the memory size deliberately rather than leaving the default. Measure the real
+      peak and set it just above, not comfortably above.</li>
+  <li>Strip texture sizes hard. A 2048 atlas that looked free on desktop is not free here.</li>
+  <li>Load scenes additively and unload what you leave. Every scene you keep resident is
+      heap you cannot spend elsewhere.</li>
+</ul>
+
+<h2>Build size decides whether anyone waits</h2>
+
+<p>Instant-play portals exist because nobody installs anything. That advantage disappears
+if the first load takes forty seconds. The levers, in the order they pay off:</p>
+
+<ul>
+  <li><strong>Brotli compression</strong>, with the server configured to serve it. Gzip is
+      the fallback, not the target.</li>
+  <li><strong>IL2CPP code stripping</strong> set to High, then fix what breaks. It will
+      break something that uses reflection; that is the cost.</li>
+  <li><strong>Audio</strong> — compress aggressively and stream anything long. Uncompressed
+      audio is the single most common reason a build is twice the size it needs to be.</li>
+  <li><strong>Unused packages</strong>. Open the manifest and remove what the project no
+      longer imports. The default template carries more than most games use.</li>
+</ul>
+
+<h2>Things that work on desktop and silently do not on mobile web</h2>
+
+<ul>
+  <li><strong>Audio before a user gesture.</strong> Mobile browsers block it. If your
+      splash screen plays music, it plays silence.</li>
+  <li><strong>Deep pointer-lock and cursor behaviour.</strong> There is no cursor.</li>
+  <li><strong>Heavy post-processing.</strong> It compiles, it runs, and it runs at eleven
+      frames per second.</li>
+  <li><strong>Threads.</strong> Available only where cross-origin isolation headers are
+      set, and most portals do not set them for you.</li>
+</ul>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  Decide the target device before you start, then build to it. A port tuned for a desktop
+  browser and discovered on a phone is a rebuild, not a fix.
+</div>
+
+<h2>Test on the thing, not the emulator</h2>
+
+<p>Chrome's device emulation tells you about layout. It tells you nothing about the memory
+ceiling, the GPU, or the thermal throttling that arrives ninety seconds in. A cheap
+Android handset on the desk is worth more than any emulator for this specific job.</p>
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads — send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>

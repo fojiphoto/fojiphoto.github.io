@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The app-ads.txt Mistakes That Quietly Cost You Ad Revenue</title>
+<meta name="description" content="app-ads.txt fails silently. The file is live, the format looks right, and buyers still will not bid. These are the specific faults that cause it.">
+<link rel="canonical" href="https://factorialstudio.com/blog/app-ads-txt-mistakes-that-cost-ad-revenue/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The app-ads.txt Mistakes That Quietly Cost You Ad Revenue">
+<meta property="og:description" content="app-ads.txt fails silently. The file is live, the format looks right, and buyers still will not bid. These are the specific faults that cause it.">
+<meta property="og:url" content="https://factorialstudio.com/blog/app-ads-txt-mistakes-that-cost-ad-revenue/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"The app-ads.txt Mistakes That Quietly Cost You Ad Revenue",
+"description":"app-ads.txt fails silently. The file is live, the format looks right, and buyers still will not bid. These are the specific faults that cause it.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/app-ads-txt-mistakes-that-cost-ad-revenue/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>Monetization</div>
+  <span class="bl-tag">Monetization</span>
+  <h1>The <em>app-ads.txt</em> Mistakes That Cost Revenue</h1>
+  <p class="lede">Nothing warns you. The file returns 200, the format passes a glance, and the revenue is simply lower than it should be.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p><code>app-ads.txt</code> tells buyers which sellers are authorised to sell your
+inventory. When it is wrong, nothing breaks loudly — buyers quietly stop bidding on
+your traffic, and you have no error to go and read.</p>
+
+<h2>The developer website does not match the store listing</h2>
+
+<p>This is the most common fault and the hardest to spot, because the file itself is
+perfect. Crawlers find the file by reading the <strong>developer website field on your
+store listing</strong>, then requesting <code>/app-ads.txt</code> from that domain. If the
+listing points at an old domain, a landing page, or nothing, the crawler never arrives.</p>
+
+<p>Check the listing field first, every time, before you debug the file.</p>
+
+<h2>It is served as the wrong content type</h2>
+
+<p>The file must come back as <code>text/plain</code>. A host that serves it as
+<code>text/html</code> — which happens when a routing rule or a single-page app catches
+the path — will not be parsed, even though the browser shows you the right text.</p>
+
+<pre><code>curl -sI https://yourdomain.com/app-ads.txt | grep -i content-type</code></pre>
+
+<h2>It is not reachable the way the crawler asks for it</h2>
+
+<ul>
+  <li>Both <code>http</code> and <code>https</code> should answer. A redirect is fine.</li>
+  <li><code>www</code> and the apex should both resolve to the file.</li>
+  <li><code>robots.txt</code> must not disallow it.</li>
+  <li>It lives at the <strong>root</strong>. Not in a subfolder, not behind a path.</li>
+</ul>
+
+<h2>Formatting faults that invalidate lines</h2>
+
+<ul>
+  <li><strong>A missing final newline</strong> before an appended line. The new entry
+      merges with the previous one and both become invalid. This is the single easiest
+      way to break a working file while adding to it.</li>
+  <li><strong>A byte order mark</strong> at the start, courtesy of an editor saving as
+      UTF-8 with BOM. It corrupts the first record.</li>
+  <li><strong>Smart quotes and en dashes</strong>, courtesy of pasting through a word
+      processor.</li>
+  <li><strong>Wrong field count.</strong> Each line is three or four comma-separated
+      fields. Anything else is skipped.</li>
+</ul>
+
+<h2>Duplicates are harmless, but tell you something</h2>
+
+<p>Networks hand you blocks to paste, and the blocks overlap. A file with twelve thousand
+lines and three thousand unique entries is common and crawlers ignore the repeats. It is
+not an error — but it is a sign the file has been pasted into rather than maintained, and
+that is usually where the other faults live too.</p>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  Verify the store listing's website field, confirm <code>text/plain</code>, and never
+  append without checking the file ends in a newline.
+</div>
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads — send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>
