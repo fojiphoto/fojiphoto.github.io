@@ -31,8 +31,6 @@
   <!-- portfolio + legacy service pages -->
   <url><loc>https://factorialstudio.com/portfolio.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://factorialstudio.com/webgl-publishing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://factorialstudio.com/qa-testing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://factorialstudio.com/game-development.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/mobile-publishing.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/art-animation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://factorialstudio.com/console-porting/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -48,4 +46,44 @@
   <url><loc>https://factorialstudio.com/developer-tcs.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://factorialstudio.com/hr-privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 
+  <url>
+    <loc>https://factorialstudio.com/fsa-live.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/talent-recruitment.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/employee-management.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/flat-monthly-fee.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/hardware-it-setup.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/onsite-team-lead.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://factorialstudio.com/fsa.io/replacement-guarantee.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
