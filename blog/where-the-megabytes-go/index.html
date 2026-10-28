@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Your Build Size Actually Goes</title>
+<meta name="description" content="Build size is the difference between a player installing and not. The megabytes are almost never where people look first.">
+<link rel="canonical" href="https://factorialstudio.com/blog/where-the-megabytes-go/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Your Build Size Actually Goes">
+<meta property="og:description" content="Build size is the difference between a player installing and not. The megabytes are almost never where people look first.">
+<meta property="og:url" content="https://factorialstudio.com/blog/where-the-megabytes-go/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"Where Your Build Size Actually Goes",
+"description":"Build size is the difference between a player installing and not. The megabytes are almost never where people look first.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"articleSection":"Engineering",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/where-the-megabytes-go/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>Engineering</div>
+  <span class="bl-tag">Engineering</span>
+  <h1>Where Your Build Size <em>Actually Goes</em></h1>
+  <p class="lede">Everyone blames the code. The code is almost never the problem.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>Before optimising anything, build the size report and read it. Guessing at this wastes
+days on the wrong file, and the distribution is remarkably consistent across projects.</p>
+
+<h2>Textures, every time</h2>
+
+<p>Usually more than half. The usual causes:</p>
+
+<ul>
+  <li>Import settings left at the default maximum for assets that render at a fraction
+      of it</li>
+  <li>Uncompressed or poorly compressed formats — platform-specific compression is not
+      optional</li>
+  <li>Atlases with large empty regions</li>
+  <li>Sprites imported at source resolution because nobody changed it</li>
+</ul>
+
+<p>Halving the max size on UI textures alone often takes a tenth off the build, and
+nobody can see the difference.</p>
+
+<h2>Audio, the easiest win nobody takes</h2>
+
+<p>Music imported uncompressed is the single most common large file in a casual game.
+Compress it, stream anything over a few seconds, and drop the sample rate — nobody is
+listening to your menu loop in studio quality on a phone speaker.</p>
+
+<h2>Unused assets that ship anyway</h2>
+
+<p>Anything in a Resources folder ships whether or not it is referenced. So does anything
+referenced by a scene in the build list, including scenes you forgot were in it. This is
+where the mysterious megabytes live.</p>
+
+<h2>The engine and its packages</h2>
+
+<p>Code stripping set to High removes what is genuinely unused, at the cost of breaking
+anything reached by reflection. It is worth the debugging. Open the package manifest and
+remove what the project no longer imports — the default template carries more than most
+games use.</p>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  Read the size report first. Textures, then audio, then things shipping that should not
+  be. Code last, if at all.
+</div>
+
+<h2>Why it matters more on the web</h2>
+
+<p>On mobile a large build costs you installs. In the browser it costs you the player
+entirely — they are watching a loading bar with nothing invested, and they leave. See
+<a href="/blog/why-unity-webgl-builds-fail-on-mobile-browsers/">why WebGL builds fail on
+mobile</a> for the rest of that story.</p>
+
+<p style="margin-top:30px;padding-top:22px;border-top:2px solid #e7e2cf">This is what we do day to day &mdash; <a href="../../webgl-port.html">Unity to WebGL porting</a> at Factorial Studio.</p>
+<div class="bl-related" style="margin-top:26px">
+  <b style="display:block;font-family:var(--f-disp);font-size:.78rem;text-transform:uppercase;color:var(--g900);margin-bottom:10px">Read next</b>
+  <ul style="margin-left:0;padding-left:22px">
+    <li><a href="../unity-vs-unreal-for-casual-mobile/">Unity or Unreal for Casual Mobile: An Honest Comparison</a></li>
+    <li><a href="../runs-in-editor-dies-on-device/">It Runs in the Editor and Dies on the Device</a></li>
+    <li><a href="../regression-testing-when-you-ship-weekly/">Regression Testing When You Ship Every Week</a></li>
+  </ul>
+</div>
+
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads &mdash; send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../analytics.js" defer></script>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>

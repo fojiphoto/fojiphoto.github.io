@@ -139,3 +139,14 @@ img{max-width:100%;display:block}
   .bl-body,.bl-author{padding-left:20px;padding-right:20px}
   .bl-list{padding:40px 20px 56px}
 }
+
+/* -- index, grouped by category -----------------------------------------
+   Twenty-five cards in one flat grid is a wall. Grouping by the tag each
+   article already carries costs nothing and makes the list scannable. */
+.bl-wrap{max-width:1080px;margin:0 auto;padding:46px 28px 60px}
+.bl-sec{font-family:var(--f-disp);text-transform:uppercase;font-size:.95rem;
+  color:var(--g900);letter-spacing:.04em;margin:38px 0 16px;
+  padding-bottom:10px;border-bottom:2px solid #e7e2cf}
+.bl-sec:first-child{margin-top:0}
+.bl-wrap .bl-list{padding:0;margin:0 0 10px}
+@media (max-width:640px){.bl-wrap{padding:34px 20px 50px}}

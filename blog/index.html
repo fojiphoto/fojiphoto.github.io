@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Game QA, WebGL Porting & Playables | Factorial Studio</title>
-<meta name="description" content="Practical notes from a studio that ships: WebGL porting, game QA, console certification, playable ads and app monetization.">
+<title>Blog — Games, Engineering, QA &amp; Applied AI | Factorial Studio</title>
+<meta name="description" content="Practical notes from a studio that ships: WebGL porting, game QA, console certification, playable ads, monetization and applied AI.">
 <link rel="canonical" href="https://factorialstudio.com/blog/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Blog — Game QA, WebGL Porting & Playables | Factorial Studio">
-<meta property="og:description" content="Practical notes from a studio that ships: WebGL porting, game QA, console certification, playable ads and app monetization.">
+<meta property="og:title" content="Blog — Games, Engineering, QA &amp; Applied AI | Factorial Studio">
+<meta property="og:description" content="Practical notes from a studio that ships: WebGL porting, game QA, console certification, playable ads, monetization and applied AI.">
 <meta property="og:url" content="https://factorialstudio.com/blog/">
 <meta property="og:image" content="https://factorialstudio.com/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/blog.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Blog","name":"Factorial Studio Blog","description":"Practical notes on game QA, WebGL porting, console certification and playable ads.","url":"https://factorialstudio.com/blog/","publisher":{"@type":"Organization","name":"Factorial Studio Private Limited"}}
+{"@context":"https://schema.org","@type":"Blog","name":"Factorial Studio Blog","description":"Practical notes on game QA, WebGL porting, console certification, playable ads and applied AI in game development.","url":"https://factorialstudio.com/blog/","publisher":{"@type":"Organization","name":"Factorial Studio Private Limited"}}
 </script>
 </head>
 <body>
@@ -30,42 +30,195 @@
 <header class="bl-hero">
   <div class="crumbs"><a href="../index.html">Factorial Studio</a><span>&rsaquo;</span>Blog</div>
   <h1>Notes From <em>Shipping Games</em></h1>
-  <p class="lede">Things we learned the expensive way — WebGL memory ceilings, playable size caps,
-  asset licences that do not transfer, and what a bug report has to contain to be worth sending.
-  No listicles.</p>
+  <p class="lede">Things we learned the expensive way &mdash; WebGL memory ceilings, playable size caps,
+  asset licences that do not transfer, where the games industry actually went, and what AI is and
+  is not good at. 25 articles. No listicles.</p>
 </header>
 
-<div class="bl-list">
+<div class="bl-wrap">
+  <h2 class="bl-sec">Selling a game</h2>
+  <div class="bl-list">
     <a class="bl-card" href="unity-asset-store-licence-when-selling-a-game/">
       <span class="bl-tag">Selling a game</span>
       <h2>Unity Asset Store Licences Do Not Transfer on a Sale</h2>
       <p>A buyer opens your project, finds four purchased assets, and asks who owns them. If you have not checked first, that is where the deal stops.</p>
       <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
     </a>
+    <a class="bl-card" href="what-a-casual-game-is-worth-when-you-sell-it/">
+      <span class="bl-tag">Selling a game</span>
+      <h2>What a Casual Game Is Actually Worth When You Sell It</h2>
+      <p>The number has almost nothing to do with how long it took you. It has everything to do with what the buyer is avoiding by not building it.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">WebGL porting</h2>
+  <div class="bl-list">
     <a class="bl-card" href="why-unity-webgl-builds-fail-on-mobile-browsers/">
       <span class="bl-tag">WebGL porting</span>
       <h2>Why Unity WebGL Builds Fail on Mobile Browsers</h2>
       <p>The export button is not the hard part. Getting the result to load on a phone a real player owns is the hard part.</p>
       <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
     </a>
+  </div>
+  <h2 class="bl-sec">Playable ads</h2>
+  <div class="bl-list">
     <a class="bl-card" href="playable-ad-size-limits-by-network/">
       <span class="bl-tag">Playable ads</span>
       <h2>Playable Ad Size Limits, and Why Builds Get Rejected</h2>
       <p>The hard part of a playable is not making it fun. It is making it fun inside a single HTML file small enough that the network will take it.</p>
       <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
     </a>
+    <a class="bl-card" href="playable-ads-vs-video-ads/">
+      <span class="bl-tag">Playable ads</span>
+      <h2>Playable Ads or Video: What Actually Converts</h2>
+      <p>A video shows someone your game. A playable lets them find out whether they like it — before they install anything.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Monetization</h2>
+  <div class="bl-list">
     <a class="bl-card" href="app-ads-txt-mistakes-that-cost-ad-revenue/">
       <span class="bl-tag">Monetization</span>
       <h2>The app-ads.txt Mistakes That Quietly Cost You Ad Revenue</h2>
       <p>Nothing warns you. The file returns 200, the format passes a glance, and the revenue is simply lower than it should be.</p>
       <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
     </a>
+    <a class="bl-card" href="ad-mediation-why-one-network-leaves-money/">
+      <span class="bl-tag">Monetization</span>
+      <h2>Why One Ad Network Is Leaving Money on the Table</h2>
+      <p>With one network, you take whatever it offers. With several, they have to outbid each other for the same impression.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Game QA</h2>
+  <div class="bl-list">
     <a class="bl-card" href="what-a-usable-qa-bug-report-contains/">
       <span class="bl-tag">Game QA</span>
       <h2>What a Usable QA Bug Report Actually Contains</h2>
       <p>A report that cannot be reproduced is not a report. It is a rumour with a ticket number.</p>
       <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
     </a>
+    <a class="bl-card" href="bugs-that-only-appear-on-real-devices/">
+      <span class="bl-tag">Game QA</span>
+      <h2>The Bugs That Only Appear on Real Devices</h2>
+      <p>An emulator is a desktop pretending. The bugs that matter are the ones a desktop cannot have.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="regression-testing-when-you-ship-weekly/">
+      <span class="bl-tag">Game QA</span>
+      <h2>Regression Testing When You Ship Every Week</h2>
+      <p>You cannot retest everything every week. You can retest the things that, if broken, end the release.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="how-to-test-a-game-you-did-not-build/">
+      <span class="bl-tag">Game QA</span>
+      <h2>How to Test a Game You Did Not Build</h2>
+      <p>You have a build, no documentation, and nobody to ask. That is the normal case, not the hard one.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Industry</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="why-hyper-casual-collapsed/">
+      <span class="bl-tag">Industry</span>
+      <h2>Why Hyper-Casual Collapsed, and What Took Its Place</h2>
+      <p>The model was never about the games. It was about an arbitrage between install cost and ad revenue — and the arbitrage closed.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="why-webgl-gaming-is-booming/">
+      <span class="bl-tag">Industry</span>
+      <h2>Why Browser Games Are Growing Again</h2>
+      <p>Not nostalgia. The install step is the most expensive thing in mobile gaming, and the browser does not have one.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="why-mobile-game-discovery-broke/">
+      <span class="bl-tag">Industry</span>
+      <h2>Why Nobody Finds Your Mobile Game Any More</h2>
+      <p>Store search still exists. It just stopped being a place where an unknown game gets found by accident.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Engineering</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="unity-vs-unreal-for-casual-mobile/">
+      <span class="bl-tag">Engineering</span>
+      <h2>Unity or Unreal for Casual Mobile: An Honest Comparison</h2>
+      <p>This argument is usually had about rendering. For casual mobile, rendering is the least important factor in it.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="runs-in-editor-dies-on-device/">
+      <span class="bl-tag">Engineering</span>
+      <h2>It Runs in the Editor and Dies on the Device</h2>
+      <p>The editor is a desktop with infinite memory, a warm GPU and no thermal limit. Your player has none of those.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="where-the-megabytes-go/">
+      <span class="bl-tag">Engineering</span>
+      <h2>Where Your Build Size Actually Goes</h2>
+      <p>Everyone blames the code. The code is almost never the problem.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Distribution</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="why-studios-are-moving-to-the-browser/">
+      <span class="bl-tag">Distribution</span>
+      <h2>Why Studios Are Putting Existing Games on the Web</h2>
+      <p>The cheapest game you will ever ship is one you already finished.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">LiveOps</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="what-liveops-actually-moves/">
+      <span class="bl-tag">LiveOps</span>
+      <h2>What LiveOps Actually Moves, and What It Does Not</h2>
+      <p>LiveOps cannot create a reason to play. It can create a reason to return, which is a different problem.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">Console</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="what-console-certification-checks/">
+      <span class="bl-tag">Console</span>
+      <h2>What Console Certification Actually Checks</h2>
+      <p>Cert does not ask whether your game is good. It asks whether it behaves the way the platform requires, in a few hundred specific situations.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
+  <h2 class="bl-sec">AI</h2>
+  <div class="bl-list">
+    <a class="bl-card" href="what-ai-coding-agents-are-good-at-in-game-dev/">
+      <span class="bl-tag">AI</span>
+      <h2>What AI Coding Agents Are Good At in Game Development</h2>
+      <p>The useful question is not whether they work. It is which half of the job they are better at than you, and that line is sharper than the marketing.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="will-ai-replace-programmers/">
+      <span class="bl-tag">AI</span>
+      <h2>Why "AI Will Replace Programmers" Misreads the Job</h2>
+      <p>If programming were writing code, this would already be settled. Writing code is the part that was never the bottleneck.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="local-vs-cloud-ai-the-ip-question/">
+      <span class="bl-tag">AI</span>
+      <h2>Local or Cloud AI: The Question Studios Actually Ask</h2>
+      <p>Nobody asks how good it is first. They ask where their project ends up.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="art-from-code-games-with-zero-asset-files/">
+      <span class="bl-tag">AI</span>
+      <h2>Games With Zero Asset Files: Art Drawn From Code</h2>
+      <p>No sprites, no textures, no audio files. Everything drawn and synthesised at runtime — and the reasons are practical, not aesthetic.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+    <a class="bl-card" href="verifying-generated-levels-are-finishable/">
+      <span class="bl-tag">AI</span>
+      <h2>How to Prove a Generated Level Is Actually Finishable</h2>
+      <p>A generator that produces an impossible level has not produced a hard level. It has produced a bug that ships.</p>
+      <div class="foot"><b>Muhammad Qasim</b><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+    </a>
+  </div>
 </div>
 
 <section class="bl-cta">
@@ -82,6 +235,7 @@
     <a href="../playables/">Playable Ads</a><a href="../privacy.html">Privacy</a>
   </div>
 </footer>
+<script src="../analytics.js" defer></script>
 <script src="../assets/visitor-bot.js" defer></script>
 </body>
 </html>

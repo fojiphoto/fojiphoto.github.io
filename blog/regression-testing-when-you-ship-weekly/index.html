@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regression Testing When You Ship Every Week</title>
+<meta name="description" content="A weekly release cadence makes full regression impossible and makes skipping it expensive. The answer is a small suite that never changes.">
+<link rel="canonical" href="https://factorialstudio.com/blog/regression-testing-when-you-ship-weekly/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regression Testing When You Ship Every Week">
+<meta property="og:description" content="A weekly release cadence makes full regression impossible and makes skipping it expensive. The answer is a small suite that never changes.">
+<meta property="og:url" content="https://factorialstudio.com/blog/regression-testing-when-you-ship-weekly/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"Regression Testing When You Ship Every Week",
+"description":"A weekly release cadence makes full regression impossible and makes skipping it expensive. The answer is a small suite that never changes.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"articleSection":"Game QA",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/regression-testing-when-you-ship-weekly/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>Game QA</div>
+  <span class="bl-tag">Game QA</span>
+  <h1>Regression Testing <em>When You Ship Weekly</em></h1>
+  <p class="lede">You cannot retest everything every week. You can retest the things that, if broken, end the release.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>The usual failure is binary: either a full regression pass that nobody has time for,
+so it gets skipped, or no regression at all and a live fix every second Friday.</p>
+
+<h2>Build a core suite and freeze it</h2>
+
+<p>Twenty to forty cases that cover the paths where breakage is fatal:</p>
+
+<ul>
+  <li>Fresh install through to first session complete</li>
+  <li>Existing save loads and progress is intact</li>
+  <li>The core loop, start to finish, once</li>
+  <li>Every purchase path, including restore</li>
+  <li>Ads: load, show, reward granted, and the no-fill case</li>
+  <li>Suspend and resume at three different points</li>
+  <li>No connection at launch, and connection lost mid-session</li>
+</ul>
+
+<p>This suite runs every release, unchanged. Its value is precisely that it does not
+change — a failure means something regressed, not that the test is new.</p>
+
+<h2>Then test what moved</h2>
+
+<p>Around the core suite, test the area the release actually touched, plus whatever that
+area talks to. The second half is where most regressions hide: a fix to the shop breaks
+the inventory, and nobody looked at the inventory.</p>
+
+<h2>Automate the dull half</h2>
+
+<p>Launch, load a save, walk a scripted path, assert no crash and no error log. It will
+never replace a human playing, but it catches the catastrophic failures before anyone
+opens the build, and it costs nothing to run.</p>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  A small suite that never changes, run every time, plus focused testing on what moved.
+  Full regression every week is a plan that becomes no regression at all.
+</div>
+
+<p style="margin-top:30px;padding-top:22px;border-top:2px solid #e7e2cf">This is what we do day to day &mdash; <a href="../../qa/">game, app and website QA</a> at Factorial Studio.</p>
+<div class="bl-related" style="margin-top:26px">
+  <b style="display:block;font-family:var(--f-disp);font-size:.78rem;text-transform:uppercase;color:var(--g900);margin-bottom:10px">Read next</b>
+  <ul style="margin-left:0;padding-left:22px">
+    <li><a href="../what-a-usable-qa-bug-report-contains/">What a Usable QA Bug Report Actually Contains</a></li>
+    <li><a href="../bugs-that-only-appear-on-real-devices/">The Bugs That Only Appear on Real Devices</a></li>
+    <li><a href="../how-to-test-a-game-you-did-not-build/">How to Test a Game You Did Not Build</a></li>
+  </ul>
+</div>
+
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads &mdash; send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../analytics.js" defer></script>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>

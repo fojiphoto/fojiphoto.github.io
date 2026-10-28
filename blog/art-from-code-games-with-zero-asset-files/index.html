@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games With Zero Asset Files: Art Drawn From Code</title>
+<meta name="description" content="Drawing everything procedurally instead of shipping images sounds like a constraint. For small games it removes several problems at once.">
+<link rel="canonical" href="https://factorialstudio.com/blog/art-from-code-games-with-zero-asset-files/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Games With Zero Asset Files: Art Drawn From Code">
+<meta property="og:description" content="Drawing everything procedurally instead of shipping images sounds like a constraint. For small games it removes several problems at once.">
+<meta property="og:url" content="https://factorialstudio.com/blog/art-from-code-games-with-zero-asset-files/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"Games With Zero Asset Files: Art Drawn From Code",
+"description":"Drawing everything procedurally instead of shipping images sounds like a constraint. For small games it removes several problems at once.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"articleSection":"AI",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/art-from-code-games-with-zero-asset-files/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>AI</div>
+  <span class="bl-tag">AI</span>
+  <h1>Games With <em>Zero Asset Files</em></h1>
+  <p class="lede">No sprites, no textures, no audio files. Everything drawn and synthesised at runtime — and the reasons are practical, not aesthetic.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>The usual assumption is that a game without art files must look worse. For a certain
+class of game — arcade, puzzle, abstract — it does not, and it solves problems that are
+otherwise expensive.</p>
+
+<h2>What it removes</h2>
+
+<p><strong>Build size, almost entirely.</strong> Assets are nearly all of a small game's
+size. Remove them and what remains is code, which compresses extremely well. This matters
+most where size is a hard cap — see
+<a href="/blog/playable-ad-size-limits-by-network/">playable ad size limits</a>, where the
+entire game must fit in one small HTML file.</p>
+
+<p><strong>Resolution problems.</strong> Vector-style drawing is resolution-independent by
+construction. No atlases per density, no blurry upscales, no separate asset sets.</p>
+
+<p><strong>Licensing questions.</strong> Nothing was bought, so nothing has a licence
+attached — which quietly avoids
+<a href="/blog/unity-asset-store-licence-when-selling-a-game/">the problem that breaks
+game sales</a>.</p>
+
+<p><strong>Theming cost.</strong> If colour is a variable, a new theme is a palette, not
+a new set of files. Five themes cost what one does.</p>
+
+<h2>What it costs</h2>
+
+<ul>
+  <li>A narrow visual range. This suits geometric and abstract work; it does not suit
+      character art.</li>
+  <li>Draw calls instead of file size — the cost moves to the GPU rather than disappearing.</li>
+  <li>Harder iteration. An artist changes a PNG; here they change code, or somebody does
+      it for them.</li>
+  <li>Procedural audio is a real craft and the pool of people who do it well is small.</li>
+</ul>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  For small arcade and puzzle games under a size cap, art from code removes size,
+  resolution and licensing problems at once. For anything character-driven it is the
+  wrong tool.
+</div>
+
+<p style="margin-top:30px;padding-top:22px;border-top:2px solid #e7e2cf">This is what we do day to day &mdash; <a href="../../AIGameGen/">the AI Game Generator</a> at Factorial Studio.</p>
+<div class="bl-related" style="margin-top:26px">
+  <b style="display:block;font-family:var(--f-disp);font-size:.78rem;text-transform:uppercase;color:var(--g900);margin-bottom:10px">Read next</b>
+  <ul style="margin-left:0;padding-left:22px">
+    <li><a href="../what-ai-coding-agents-are-good-at-in-game-dev/">What AI Coding Agents Are Good At in Game Development</a></li>
+    <li><a href="../will-ai-replace-programmers/">Why "AI Will Replace Programmers" Misreads the Job</a></li>
+    <li><a href="../local-vs-cloud-ai-the-ip-question/">Local or Cloud AI: The Question Studios Actually Ask</a></li>
+  </ul>
+</div>
+
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads &mdash; send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../analytics.js" defer></script>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>

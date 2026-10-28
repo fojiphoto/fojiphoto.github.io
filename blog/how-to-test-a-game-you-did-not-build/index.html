@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Test a Game You Did Not Build</title>
+<meta name="description" content="Testing someone else's build with no documentation and no access to the team is a specific skill. It starts with mapping, not playing.">
+<link rel="canonical" href="https://factorialstudio.com/blog/how-to-test-a-game-you-did-not-build/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Test a Game You Did Not Build">
+<meta property="og:description" content="Testing someone else's build with no documentation and no access to the team is a specific skill. It starts with mapping, not playing.">
+<meta property="og:url" content="https://factorialstudio.com/blog/how-to-test-a-game-you-did-not-build/">
+<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"How to Test a Game You Did Not Build",
+"description":"Testing someone else's build with no documentation and no access to the team is a specific skill. It starts with mapping, not playing.",
+"datePublished":"2026-10-28","dateModified":"2026-10-28",
+"articleSection":"Game QA",
+"author":{"@type":"Person","name":"Muhammad Qasim","jobTitle":"Founder & CEO","worksFor":{"@type":"Organization","name":"Factorial Studio Private Limited"}},
+"publisher":{"@type":"Organization","name":"Factorial Studio Private Limited","logo":{"@type":"ImageObject","url":"https://factorialstudio.com/images/logo.png"}},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://factorialstudio.com/blog/how-to-test-a-game-you-did-not-build/"}}
+</script>
+</head>
+<body>
+<nav class="bl-nav">
+  <a href="../../index.html" class="bl-logo"><img src="../../images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="../../index.html#contact" class="bl-back">Start a project &rarr;</a>
+</nav>
+<header class="bl-hero">
+  <div class="crumbs"><a href="../../index.html">Factorial Studio</a><span>&rsaquo;</span><a href="../../blog/">Blog</a><span>&rsaquo;</span>Game QA</div>
+  <span class="bl-tag">Game QA</span>
+  <h1>How to Test a Game <em>You Did Not Build</em></h1>
+  <p class="lede">You have a build, no documentation, and nobody to ask. That is the normal case, not the hard one.</p>
+  <div class="bl-meta"><span>By <b>Muhammad Qasim</b></span><span>&middot;</span><time datetime="2026-10-28">2026-10-28</time></div>
+</header>
+
+<main class="bl-body">
+<p>External QA almost always begins here. The instinct is to start playing. The better
+first hour is spent mapping instead, because an unmapped game produces findings that
+cluster in the first ten minutes and miss everything after.</p>
+
+<h2>Map before you test</h2>
+
+<p>Play once, deliberately, writing down every screen, every state and every transition.
+You are building a list of places, not looking for bugs yet. Note what the game appears
+to want you to do, and what it allows you to do instead — the gap between those two is
+where most defects live.</p>
+
+<h2>Find the boundaries</h2>
+
+<p>Without source access, probe for edges:</p>
+
+<ul>
+  <li>What happens at zero, at maximum, and one past maximum of any counter</li>
+  <li>Every screen entered and left by every available route, including back</li>
+  <li>Every action performed twice, quickly</li>
+  <li>Every input during a transition or animation</li>
+  <li>Suspend and resume at each distinct state</li>
+</ul>
+
+<p>Most defects in a finished build are at boundaries and in transitions, not in the main
+path. The main path is what the developers tested.</p>
+
+<h2>Report so it is actionable without you</h2>
+
+<p>You will not be in the room when someone reads your report, and you cannot explain it.
+Numbered steps from a known state, a severity you can defend, the build and device on
+every finding. The full shape is in
+<a href="/blog/what-a-usable-qa-bug-report-contains/">what a usable bug report
+contains</a>.</p>
+
+<div class="bl-takeaway">
+  <b>The short version</b>
+  Spend the first hour mapping, then attack boundaries and transitions. The main path has
+  already been tested by the people who built it.
+</div>
+
+<p style="margin-top:30px;padding-top:22px;border-top:2px solid #e7e2cf">This is what we do day to day &mdash; <a href="../../qa/">game, app and website QA</a> at Factorial Studio.</p>
+<div class="bl-related" style="margin-top:26px">
+  <b style="display:block;font-family:var(--f-disp);font-size:.78rem;text-transform:uppercase;color:var(--g900);margin-bottom:10px">Read next</b>
+  <ul style="margin-left:0;padding-left:22px">
+    <li><a href="../what-a-usable-qa-bug-report-contains/">What a Usable QA Bug Report Actually Contains</a></li>
+    <li><a href="../bugs-that-only-appear-on-real-devices/">The Bugs That Only Appear on Real Devices</a></li>
+    <li><a href="../regression-testing-when-you-ship-weekly/">Regression Testing When You Ship Every Week</a></li>
+  </ul>
+</div>
+
+</main>
+
+<div class="bl-author">
+  <div class="bl-author-in">
+    <img src="../../coreleadership/qasim.jpg" alt="Muhammad Qasim" width="58" height="58" loading="lazy">
+    <div>
+      <b>Muhammad Qasim</b>
+      <div class="role">Founder &amp; CEO, Factorial Studio</div>
+      <p>Runs Factorial Studio in Lahore — game QA, WebGL porting, console certification and playable ads. Has shipped and tested games on Unity and Unreal for studios in eight countries.</p>
+    </div>
+  </div>
+</div>
+
+<section class="bl-cta">
+  <h2>Got a build that needs <em>this kind of attention?</em></h2>
+  <p>QA, WebGL porting, console certification and playable ads &mdash; send us the build and we will tell you what we find.</p>
+  <a href="../../index.html#contact">Start a project &rarr;</a>
+</section>
+<footer class="bl-foot">
+  <p><a href="mailto:contact@factorialstudio.com" style="color:var(--gold);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold);font-weight:600">+92 322 469 5140</a></p>
+  <p>&copy; 2026 Factorial Studio Private Limited &middot; Lahore, Pakistan &middot; NTN: 9232454 &middot; DUNS: 85-040-5962</p>
+  <div class="links">
+    <a href="../../index.html">Home</a><a href="../../blog/">Blog</a>
+    <a href="../../qa/">QA</a><a href="../../webgl-port.html">WebGL Porting</a>
+    <a href="../../playables/">Playable Ads</a><a href="../../privacy.html">Privacy</a>
+  </div>
+</footer>
+<script src="../../analytics.js" defer></script>
+<script src="../../assets/visitor-bot.js" defer></script>
+</body>
+</html>
