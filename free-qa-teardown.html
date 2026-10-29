@@ -3,22 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06281c">
 <title>Free QA Teardown for Live Games | Factorial Studio</title>
-<meta name="description" content="Send us your live game. Our QA team plays it on real devices and sends back a written bug report — reproduction steps, severity, hardware. No charge, no call required, no obligation.">
+<link rel="preload" href="/assets/fonts/bungee-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+
+<meta name="description" content="Send us your live game. Our QA team plays it on real devices and returns a written bug report — repro steps, severity, hardware. No call, no obligation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Factorial Studio">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://factorialstudio.com/free-qa-teardown.html">
+<meta property="og:title" content="Free QA Teardown for Live Games">
+<meta property="og:description" content="Send us your live game. Our QA team plays it on real devices and returns a written bug report — repro steps, severity, hardware. No call, no obligation.">
+<meta property="og:image" content="https://factorialstudio.com/images/og/free-qa-teardown.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Free QA Teardown for Live Games — Factorial Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free QA Teardown for Live Games">
+<meta name="twitter:description" content="Send us your live game. Our QA team plays it on real devices and returns a written bug report — repro steps, severity, hardware. No call, no obligation.">
+<meta name="twitter:image" content="https://factorialstudio.com/images/og/free-qa-teardown.jpg">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://factorialstudio.com/free-qa-teardown.html">
-<meta property="og:title" content="Free QA Teardown — We Test Your Live Game, Free">
-<meta property="og:description" content="Our QA team plays your live game on real devices and sends a written bug report with reproduction steps. Free, no obligation.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://factorialstudio.com/images/logo.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+img[width][height]{height:auto}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;
-  --gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;
+  --gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#b3cfbf;--ink-text:#123a2a;--ink-muted:#587564;
   --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
 html{scroll-behavior:smooth;font-size:16px}
 /* the roomier reading size starts where there is room for it. A flat 17px
@@ -59,7 +73,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .fcard .btn{width:100%;justify-content:center;margin-top:22px;font-size:1rem;padding:15px 26px}
 .fmsg{margin-top:14px;font-size:.88rem;font-weight:600;text-align:center;min-height:20px}
 .fmsg.ok{color:var(--g600)}.fmsg.err{color:#c2410c}
-.fnote{margin-top:14px;font-size:.76rem;color:var(--ink-muted);text-align:center;line-height:1.5}
+.cta .fcard .fnote{margin-top:14px;font-size:.76rem;color:var(--ink-muted);text-align:center;line-height:1.5}
 
 .report{background:linear-gradient(165deg,#0e6347,#0a4d38);border:2px solid rgba(163,217,119,.25);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
 .rp-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:2px solid rgba(163,217,119,.15);background:rgba(0,0,0,.2)}
@@ -74,20 +88,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 .section{padding:84px 0;position:relative}.section.cream{background:var(--cream);color:var(--ink-text)}
 .eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.section.cream .eyebrow{color:var(--g600)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+.section.cream .eyebrow{color:var(--g700)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
 h2.disp{font-size:clamp(1.7rem,3.6vw,2.6rem);color:#fff;margin-bottom:16px}.section.cream h2.disp{color:var(--g900)}
-h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:var(--gold2)}
+h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:#b45309}
 .lead{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:44px}.section.cream .lead{color:var(--ink-muted)}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .steps{display:flex;flex-direction:column;gap:14px}
 .step{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-left:4px solid var(--leaf);padding:22px 26px;border-radius:0 var(--r) var(--r) 0}
 .step .n{font-family:var(--f-disp);font-size:1.4rem;color:var(--gold);min-width:44px}
-.step h4{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:6px}.step p{font-size:.92rem;color:var(--muted)}.step p b{color:#fff}
+.step h3{font-family:var(--f-disp);font-size:1rem;color:#fff;margin-bottom:6px}.step p{font-size:.92rem;color:var(--muted)}.step p b{color:#fff}
 .faq{max-width:820px;margin:0 auto}
 .fq{border-bottom:2px solid #e2ddc8;padding:20px 0}
 .fq:last-child{border-bottom:none}
-.fq h4{font-family:var(--f-disp);font-size:.95rem;color:var(--g900);margin-bottom:8px}
+.fq h3{font-family:var(--f-disp);font-size:.95rem;color:var(--g900);margin-bottom:8px}
 .fq p{font-size:.94rem;color:var(--ink-muted)}.fq p b{color:var(--ink-text)}
 /* the lead form moved to the bottom CTA, so the hero runs full width now */
 .hero-grid.solo{grid-template-columns:1fr}
@@ -146,7 +160,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 
 .dir{background:#052018;border-top:2px solid rgba(124,179,66,.16);padding:64px 0 56px}
 .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-.dir-col h4{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
+.dir-col h3{font-family:var(--f-disp);font-size:.8rem;letter-spacing:.06em;color:var(--gold);
   margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(163,217,119,.18)}
 .dir-col a{display:block;font-size:.9rem;font-weight:500;color:var(--muted);padding:7px 0;transition:color .18s}
 .dir-col a:hover{color:#fff}
@@ -203,14 +217,14 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
    h1/h2 at clamp() sizes. Below ~1.05rem it stops being read and starts
    being texture, so every smaller heading uses the body face instead,
    one step larger and in its authored sentence case. */
-.tc h3,.step h4,.fq h4,.vs-col h3,.d-card h3,.c-card h3,.driver h4,.feat-row h4,
-.ba-col h4,.h-card h3,.miss-card h3,.pl-stage h4,.play-name,.pname,
+.tc h3,.step h3,.fq h4,.vs-col h3,.d-card h3,.c-card h3,.driver h4,.feat-row h3,
+.ba-col h4,.h-card h3,.miss-card h3,.pl-stage h3,.play-name,.pname,
 .ceo-name,.eng-card h3,.model h3,.cw-card h3,.mod h4,.pill-card h3{
   font-family:var(--f-body);font-weight:700;font-size:1.07rem;
   letter-spacing:.004em;line-height:1.32;text-transform:none}
 /* column labels stay caps -- they are signposts, not sentences -- but the
    body face holds together at this size where the display face does not */
-.dir-col h4{font-family:var(--f-body);font-weight:700;font-size:.84rem;
+.dir-col h3{font-family:var(--f-body);font-weight:700;font-size:.84rem;
   letter-spacing:.1em}
 /* short all-caps labels: same swap, size kept, tracking opened up */
 .pl-cap,.hc-stat,.p-tag,.mq b,.hc-g-info b,.testi-who b,.t-who b,
@@ -236,7 +250,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="index.html" class="logo"><img width="184" height="197" src="images/logo.webp" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
   <div class="nav-actions">
     <a href="index.html" class="nav-back">← Factorial Studio</a>
     <a href="#request" class="btn btn-gold">Request Teardown</a>
@@ -263,6 +277,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     
   </div>
 </header>
+<main id="main">
 
 <!-- CLIENT LOGOS — same block on every page, directly under the hero.
      The chip list appears twice on purpose: the second copy is what the
@@ -360,9 +375,9 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <div class="eyebrow">The Obvious Questions</div>
     <h2 class="disp">Why Would Anyone<br><em>Do This For Free?</em></h2>
     <div class="steps" style="margin-top:34px">
-      <div class="step"><div class="n">01</div><div><h4>Because talking about QA is cheap</h4><p>Every QA vendor claims to be thorough. <b>Showing you three reproducible bugs in your own game</b> settles the argument in about four minutes of your time.</p></div></div>
-      <div class="step"><div class="n">02</div><div><h4>Because it costs us less than a sales call</h4><p>A few hours of testing tells you more than any pitch deck — and tells us whether we're actually useful to you before either side commits.</p></div></div>
-      <div class="step"><div class="n">03</div><div><h4>Because the report is yours regardless</h4><p>No watermark, no "unlock the full version", no follow-up sequence you have to escape. <b>If you never reply, the bugs are still fixed.</b></p></div></div>
+      <div class="step"><div class="n">01</div><div><h3>Because talking about QA is cheap</h3><p>Every QA vendor claims to be thorough. <b>Showing you three reproducible bugs in your own game</b> settles the argument in about four minutes of your time.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>Because it costs us less than a sales call</h3><p>A few hours of testing tells you more than any pitch deck — and tells us whether we're actually useful to you before either side commits.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>Because the report is yours regardless</h3><p>No watermark, no "unlock the full version", no follow-up sequence you have to escape. <b>If you never reply, the bugs are still fixed.</b></p></div></div>
     </div>
   </div>
 </section>
@@ -373,13 +388,13 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
     <div class="eyebrow">FAQ</div>
     <h2 class="disp" style="text-align:center;margin-bottom:38px">Straight <em>Answers</em></h2>
     <div class="faq">
-      <div class="fq"><h4>Do I have to send you my project files?</h4><p><b>No.</b> We test the public build — the same one your players download. Source access only matters later, if you hire us for engine-level work.</p></div>
-      <div class="fq"><h4>How long does it take?</h4><p>Usually a few working days. If your game is live and we can download it immediately, often sooner.</p></div>
-      <div class="fq"><h4>How much of my game will you actually test?</h4><p>A few hours' worth — enough to cover the opening, core loop, and the paths players hit most. <b>We'll tell you exactly what we skipped</b> rather than implying we covered everything.</p></div>
-      <div class="fq"><h4>What if you don't find anything?</h4><p>Then you get a short report saying so, and that's genuinely useful information. It happens, and we won't invent findings to look busy.</p></div>
-      <div class="fq"><h4>Will I get chased by a sales team?</h4><p>You'll get the report and one follow-up asking if it was useful. That's it. <b>We don't run outreach sequences on people who did us the favour of replying.</b></p></div>
-      <div class="fq"><h4>Is my unreleased game eligible?</h4><p>Not through this offer — we only teardown builds that are already public. For pre-release work we'd sign an NDA and scope it properly as a paid engagement.</p></div>
-      <div class="fq"><h4>Who actually does the testing?</h4><p>Our own QA engineers in Lahore — not a crowdsourced tester pool. The person who writes your report is the person who played your game.</p></div>
+      <div class="fq"><h3>Do I have to send you my project files?</h3><p><b>No.</b> We test the public build — the same one your players download. Source access only matters later, if you hire us for engine-level work.</p></div>
+      <div class="fq"><h3>How long does it take?</h3><p>Usually a few working days. If your game is live and we can download it immediately, often sooner.</p></div>
+      <div class="fq"><h3>How much of my game will you actually test?</h3><p>A few hours' worth — enough to cover the opening, core loop, and the paths players hit most. <b>We'll tell you exactly what we skipped</b> rather than implying we covered everything.</p></div>
+      <div class="fq"><h3>What if you don't find anything?</h3><p>Then you get a short report saying so, and that's genuinely useful information. It happens, and we won't invent findings to look busy.</p></div>
+      <div class="fq"><h3>Will I get chased by a sales team?</h3><p>You'll get the report and one follow-up asking if it was useful. That's it. <b>We don't run outreach sequences on people who did us the favour of replying.</b></p></div>
+      <div class="fq"><h3>Is my unreleased game eligible?</h3><p>Not through this offer — we only teardown builds that are already public. For pre-release work we'd sign an NDA and scope it properly as a paid engagement.</p></div>
+      <div class="fq"><h3>Who actually does the testing?</h3><p>Our own QA engineers in Lahore — not a crowdsourced tester pool. The person who writes your report is the person who played your game.</p></div>
     </div>
   </div>
 </section>
@@ -431,7 +446,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
   <div class="wrap">
     <div class="dir-grid">
       <div class="dir-col">
-        <h4>Development</h4>
+        <h3>Development</h3>
         <a href="/development/">All Development</a>
         <a href="/development/game-development/">Game Development</a>
         <a href="/development/app-development/">App Development</a>
@@ -439,7 +454,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
         <a href="/development/webgl-game-development/">WebGL Game Development</a>
       </div>
       <div class="dir-col">
-        <h4>Production</h4>
+        <h3>Production</h3>
         <a href="/qa/">QA &amp; Testing</a>
         <a href="/design/">Design &amp; Game Art</a>
         <a href="/publishing/">App &amp; Game Publishing</a>
@@ -448,7 +463,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
         <a href="/free-qa-teardown.html">Free QA Teardown <em>FREE</em></a>
       </div>
       <div class="dir-col">
-        <h4>Growth</h4>
+        <h3>Growth</h3>
         <a href="/marketing/">Marketing — Google &amp; Meta</a>
         <a href="/ua-services/">User Acquisition</a>
         <a href="/aso-services/">ASO</a>
@@ -456,7 +471,7 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
         <a href="/seo/">SEO</a>
       </div>
       <div class="dir-col">
-        <h4>Company</h4>
+        <h3>Company</h3>
         <a href="/index.html#platform">Factorial AI Platform</a>
         <a href="/case-studies/">Case Studies</a><a href="blog/">Blog</a>
         <a href="/pricing/">Pricing &amp; Engagement</a>
@@ -464,18 +479,19 @@ footer .fl a{color:var(--muted);font-weight:500;font-size:.84rem}footer .fl a:ho
         <a href="/index.html#about">About Us</a>
         <a href="https://games.factorialstudio.com/" target="_blank" rel="noopener">GameZone ↗</a>
         <a href="https://appspy.factorialstudio.com/" target="_blank" rel="noopener">AppSpy ↗</a>
-        <a href="/fsa-live.html" target="_blank" rel="noopener">FSA Workspace ↗</a>
+        <a href="/fsa.io/" target="_blank" rel="noopener">FSA Workspace ↗</a>
         <a href="/index.html#contact">Contact</a>
       </div>
     </div>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="fl">
       <a href="index.html">Home</a><a href="index.html#platform">Platform</a><a href="index.html#services">Services</a>
-      <a href="qa-testing.html">QA &amp; Testing</a><a href="webgl-publishing.html">WebGL</a>
+      <a href="/qa/">QA &amp; Testing</a><a href="webgl-publishing.html">WebGL</a>
       <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
     </div>
     <p style="margin-bottom:10px"><a href="mailto:contact@factorialstudio.com" style="color:var(--gold,#fbbf24);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold,#fbbf24);font-weight:600">+92 322 469 5140</a></p>

@@ -12,7 +12,7 @@
   --leaf:#7cb342;--leaf2:#a3d977;
   --gold:#fbbf24;--gold2:#f59e0b;
   --cream:#f6f3e7;--cream2:#fffdf6;
-  --text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;
+  --text:#eaf5ee;--muted:#b3cfbf;--ink-text:#123a2a;--ink-muted:#587564;
   --f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;
   --r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35);
 }
@@ -150,3 +150,6 @@ img{max-width:100%;display:block}
 .bl-sec:first-child{margin-top:0}
 .bl-wrap .bl-list{padding:0;margin:0 0 10px}
 @media (max-width:640px){.bl-wrap{padding:34px 20px 50px}}
+
+/* width/height attributes are CLS hints, not sizes */
+img[width][height]{height:auto}

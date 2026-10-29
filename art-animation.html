@@ -3,16 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06281c">
 <title>Game Art &amp; Animation Services | Factorial Studio</title>
+<link rel="preload" href="/assets/fonts/bungee-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+
 <link rel="canonical" href="https://factorialstudio.com/art-animation.html">
-<meta name="description" content="Game art &amp; animation — concept, 2D/3D, character &amp; environment design, rigging, animation, VFX, UI art and marketing key art. Engine-ready for Unity &amp; Unreal, in any style.">
+<meta name="description" content="Game art and animation for Unity and Unreal — concept, 2D/3D characters and environments, rigging, VFX, UI art and key art, delivered engine-ready.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Factorial Studio">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://factorialstudio.com/art-animation.html">
+<meta property="og:title" content="Game Art &amp; Animation Services">
+<meta property="og:description" content="Game art and animation for Unity and Unreal — concept, 2D/3D characters and environments, rigging, VFX, UI art and key art, delivered engine-ready.">
+<meta property="og:image" content="https://factorialstudio.com/images/og/art-animation.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Game Art &amp; Animation Services — Factorial Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Game Art &amp; Animation Services">
+<meta name="twitter:description" content="Game art and animation for Unity and Unreal — concept, 2D/3D characters and environments, rigging, VFX, UI art and key art, delivered engine-ready.">
+<meta name="twitter:image" content="https://factorialstudio.com/images/og/art-animation.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+img[width][height]{height:auto}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;--gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#a9c6b5;--ink-text:#123a2a;--ink-muted:#5f7d6c;--f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
+:root{--ink:#06281c;--g900:#064e3b;--g700:#11704f;--g600:#15803d;--leaf:#7cb342;--leaf2:#a3d977;--gold:#fbbf24;--gold2:#f59e0b;--orange:#ff7043;--cream:#f6f3e7;--cream2:#fffdf6;--text:#eaf5ee;--muted:#b3cfbf;--ink-text:#123a2a;--ink-muted:#587564;--f-disp:'Bungee',cursive;--f-body:'Fredoka',sans-serif;--r:22px;--r-lg:30px;--shadow:0 18px 44px rgba(3,30,20,.35)}
 html{scroll-behavior:smooth;font-size:16px}
 /* the roomier reading size starts where there is room for it. A flat 17px
    pushed card headings out of their boxes at 375px. */
@@ -38,8 +56,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .rp-tags{margin-top:8px}.rp-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf2);border:2px solid rgba(163,217,119,.3);padding:3px 9px;border-radius:999px;margin-right:6px}
 .rp-repro{margin-top:14px;padding-top:14px;border-top:2px dashed rgba(163,217,119,.2);font-size:.78rem;color:var(--muted);line-height:1.8}.rp-repro b{color:#fff}
 .section{padding:88px 0;position:relative}.section.cream{background:var(--cream);color:var(--ink-text)}
-.eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}.section.cream .eyebrow{color:var(--g600)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
-h2.disp{font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;margin-bottom:16px}.section.cream h2.disp{color:var(--g900)}h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:var(--gold2)}
+.eyebrow{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}.section.cream .eyebrow{color:var(--g700)}.eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:currentColor}
+h2.disp{font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;margin-bottom:16px}.section.cream h2.disp{color:var(--g900)}h2.disp em{color:var(--gold);font-style:normal}.section.cream h2.disp em{color:#b45309}
 .lead{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:46px}.section.cream .lead{color:var(--ink-muted)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.stat{background:rgba(255,255,255,.05);border:2px solid rgba(163,217,119,.18);border-radius:var(--r);padding:26px 18px;text-align:center}
 .stat b{font-family:var(--f-disp);font-size:1.9rem;color:var(--gold);display:block;line-height:1}.stat span{font-weight:500;font-size:.78rem;color:var(--muted);margin-top:8px;display:block}
@@ -130,10 +148,11 @@ footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:4
 "provider":{"@type":"Organization","name":"Factorial Studio Private Limited","url":"https://factorialstudio.com/","logo":"https://factorialstudio.com/images/logo.png"},
 "areaServed":"Worldwide","url":"https://factorialstudio.com/art-animation.html"}
 </script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Factorial Studio", "item": "https://factorialstudio.com/"}, {"@type": "ListItem", "position": 2, "name": "Art & Animation"}]}</script>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo"><img src="images/logo.png" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
+  <a href="index.html" class="logo"><img width="184" height="197" src="images/logo.webp" alt="Factorial Studio"><b>FACTORIAL<em>STUDIO</em></b></a>
   <div class="nav-actions"><a href="index.html" class="nav-back">← Back to Home</a><a href="index.html#contact" class="btn btn-gold">Start a Project</a></div>
 </nav>
 <header class="hero"><div class="wrap hero-grid">
@@ -156,6 +175,7 @@ footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:4
     </div>
   </div>
 </div></header>
+<main id="main">
 
 <section class="section" style="padding-top:56px;padding-bottom:56px"><div class="wrap"><div class="stats">
   <div class="stat"><b>2D</b><span>&amp; 3D Production</span></div>
@@ -205,8 +225,9 @@ footer{background:var(--ink);border-top:2px solid rgba(124,179,66,.18);padding:4
   <div class="hero-cta"><a href="index.html#contact" class="btn btn-gold">Start a Project</a><a href="index.html#portfolio" class="btn btn-ghost">See Our Work</a></div>
 </div></section>
 
+</main>
 <footer><div class="wrap"><div class="fl"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><p style="margin-bottom:10px"><a href="mailto:contact@factorialstudio.com" style="color:var(--gold,#fbbf24);font-weight:600">contact@factorialstudio.com</a><span style="opacity:.45;margin:0 10px">&middot;</span><a href="tel:+923224695140" style="color:var(--gold,#fbbf24);font-weight:600">+92 322 469 5140</a></p>
-<p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan</p></div></footer>
+<p>© 2026 Factorial Studio Private Limited · Lahore, Pakistan · NTN: 9232454 · DUNS: 85-040-5962</p></div></footer>
 <script src="analytics.js" defer></script>
 <script src="assets/visitor-bot.js" defer></script>
 </body>
